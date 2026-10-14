@@ -411,7 +411,7 @@ A 20px-cornered card topped by a 12px rail: 60px photo, offer sentence, struck a
 A radio group in one flat `surface` card with `line` dividers: a 40px icon well (`muted`, or `brand` when selected), name and hint, and a 22px ring that fills with a brand dot. Unavailable providers sit at 45% opacity with a "soon" hint.
 
 ### Atlas Band (signature)
-The `AtlasBand` component (see Shapes). The category rail under the tabs is the signature interaction: on category change the rail translates by half a motif cell per index (320ms, silk ease) and re-mounts with a skew ripple (`skewX(-9deg)` and 0.5px blur to rest, 320ms). It never animates on its own.
+The `AtlasBand` component (see Shapes). The category rail under the tabs is the signature interaction: on category change the rail translates by half a motif cell per index (320ms, silk ease) and re-mounts with a travelling ripple: the motif flows in from one full 64px lozenge cell on the side of the newly chosen tab, with a ±22deg skew and 0.6px blur easing to rest (320ms). It never animates on its own.
 
 ### Motion
 One curve, `cubic-bezier(0.16, 1, 0.3, 1)` (expo ease-out, `--ease-silk`), for sheets (360ms), rail ripple (320ms), badges (360ms), list rise (420ms, 10px up with fade), switches (300ms) and button press (200ms). Fades are 200ms ease-out. Reduced-motion collapses every animation and transition to 0.01ms.

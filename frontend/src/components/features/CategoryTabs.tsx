@@ -4,7 +4,7 @@
  * Gorizontal kategoriyalar + atlas lentasi.
  * Imzo harakati: kategoriya almashganda tagidagi abr lentasi bir naqsh qadamiga "siljiydi".
  */
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import { CupSoda, Crown, Pizza, Sandwich, UtensilsCrossed, type LucideIcon } from 'lucide-react';
 import { AtlasBand } from '@/components/ui/AtlasBand';
 import { useI18n } from '@/hooks/useI18n';
@@ -29,6 +29,12 @@ export function CategoryTabs({ value, onChange }: { value: CategoryFilter; onCha
   const { haptic } = useTelegram();
   const listRef = useRef<HTMLDivElement>(null);
   const index = Math.max(0, CATEGORIES.findIndex((category) => category.id === value));
+  // Silkinish yo'nalishi: o'ngdagi kategoriyaga o'tilsa naqsh o'ngdan, chapga — chapdan oqib keladi
+  const previousIndex = useRef(index);
+  const direction = index >= previousIndex.current ? 1 : -1;
+  useEffect(() => {
+    previousIndex.current = index;
+  }, [index]);
 
   // Faol tabni ko'rinadigan joyga suramiz
   useEffect(() => {
@@ -72,7 +78,16 @@ export function CategoryTabs({ value, onChange }: { value: CategoryFilter; onCha
             transform: `translateX(-${index * (RAIL_TILE / 2)}px)`,
           }}
         >
-          <div key={value} className="origin-bottom animate-silk-ripple">
+          <div
+            key={value}
+            className="origin-bottom animate-silk-ripple"
+            style={
+              {
+                '--ripple-from': `${direction * RAIL_TILE}px`,
+                '--ripple-skew': `${direction * -22}deg`,
+              } as CSSProperties
+            }
+          >
             <AtlasBand variant="rail" height={16} tile={RAIL_TILE} seed={3} />
           </div>
         </div>

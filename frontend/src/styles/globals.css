@@ -83,9 +83,10 @@
     to { transform: scaleX(1); }
   }
   /* Kategoriya almashganda atlas lentasining "silkinishi" */
+  /* Naqsh bir romb qadamiga "oqib" keladi: --ripple-from (±px) va kuchli skew'dan tinch holatga */
   @keyframes silk-ripple {
-    0% { transform: skewX(-9deg); filter: blur(0.5px); }
-    100% { transform: skewX(0); filter: blur(0); }
+    0% { transform: translateX(var(--ripple-from, 32px)) skewX(var(--ripple-skew, -22deg)); filter: blur(0.6px); }
+    100% { transform: none; filter: blur(0); }
   }
   @keyframes rise {
     from { opacity: 0; transform: translateY(10px); }
