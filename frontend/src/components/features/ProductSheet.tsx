@@ -5,6 +5,8 @@
  * Katta rasm, tarkibi (bullet), xavfni yopuvchi blok va pastga yopishgan "Savatchaga qo'shish — narx" tugmasi.
  */
 import { useEffect, useState } from 'react';
+import { Leaf, ShieldCheck, Timer } from 'lucide-react';
+import { AtlasBand } from '@/components/ui/AtlasBand';
 import { BottomSheet } from '@/components/ui/BottomSheet';
 import { Button } from '@/components/ui/Button';
 import { QuantityStepper } from '@/components/ui/QuantityStepper';
@@ -16,9 +18,9 @@ import { useUiStore } from '@/store/uiStore';
 import type { Product } from '@/types';
 
 const TRUST_ITEMS = [
-  { icon: '✅', key: 'product.trustHalal' },
-  { icon: '⚡', key: 'product.trustFast' },
-  { icon: '🥬', key: 'product.trustFresh' },
+  { icon: ShieldCheck, key: 'product.trustHalal' },
+  { icon: Timer, key: 'product.trustFast' },
+  { icon: Leaf, key: 'product.trustFresh' },
 ] as const;
 
 export function ProductSheet() {
@@ -62,37 +64,42 @@ function ProductDetails({
 
   return (
     <div>
-      <div className="relative aspect-[4/3] w-full bg-muted">
+      <div className="relative aspect-[5/4] w-full bg-muted">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={product.image} alt={pick(product.name)} className="size-full object-cover" />
         {discount > 0 && (
-          <span className="absolute bottom-3 left-4 rounded-full bg-sale px-3 py-1 text-sm font-bold text-white shadow-lg">
+          <span className="price absolute bottom-3 left-4 rounded-[9px] bg-silk-3 px-2 py-1 text-sm font-bold text-[#17142a]">
             −{discount}%
           </span>
         )}
       </div>
+      <AtlasBand variant="rail" height={8} tile={40} seed={5} />
 
-      <div className="space-y-5 px-5 pt-5 pb-6">
+      <div className="space-y-6 px-5 pt-5 pb-6">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <h2 className="text-2xl leading-tight font-extrabold">{pick(product.name)}</h2>
-            <p className="mt-1.5 text-[15px] text-hint">{pick(product.description)}</p>
+            <h2 className="text-[24px] leading-tight font-bold">{pick(product.name)}</h2>
+            <p className="mt-1.5 text-[15px] text-ink-2">{pick(product.description)}</p>
           </div>
           <div className="shrink-0 text-right">
-            {product.oldPrice && <p className="text-sm text-hint line-through">{formatPrice(product.oldPrice)}</p>}
-            <p className="text-xl font-extrabold whitespace-nowrap text-sale">{formatPrice(product.price)}</p>
-            <p className="text-xs text-hint">{t('common.currency')}</p>
+            {product.oldPrice && (
+              <p className="price text-sm text-ink-2 line-through decoration-[1.5px]">{formatPrice(product.oldPrice)}</p>
+            )}
+            <p className="price text-[22px] leading-tight font-bold whitespace-nowrap text-sale">{formatPrice(product.price)}</p>
+            <p className="text-xs text-ink-2">{t('common.currency')}</p>
           </div>
         </div>
 
-        {/* Tarkibi */}
         {pick(product.ingredients).length > 0 && (
           <section>
-            <h3 className="mb-2 text-base font-bold">{t('product.ingredients')}</h3>
-            <ul className="space-y-1.5">
+            <h3 className="mb-2.5 text-base font-semibold">{t('product.ingredients')}</h3>
+            <ul className="space-y-2">
               {pick(product.ingredients).map((ingredient) => (
-                <li key={ingredient} className="flex items-center gap-2.5 text-[15px]">
-                  <span className="size-1.5 shrink-0 rounded-full bg-brand" />
+                <li key={ingredient} className="flex items-center gap-3 text-[15px]">
+                  {/* Atlas rombi — ro'yxat belgisi */}
+                  <svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" className="shrink-0">
+                    <path d="M5 0 6 2H7L8 4H9L10 5 9 6H8L7 8H6L5 10 4 8H3L2 6H1L0 5 1 4H2L3 2H4Z" style={{ fill: 'var(--brand-ink)' }} />
+                  </svg>
                   {ingredient}
                 </li>
               ))}
@@ -100,18 +107,18 @@ function ProductDetails({
           </section>
         )}
 
-        {/* Xavfni yopuvchi (risk reversal) blok */}
-        <section className="grid gap-2 rounded-2xl bg-success/10 p-3">
-          {TRUST_ITEMS.map((item) => (
-            <div key={item.key} className="flex items-center gap-2.5 text-sm font-semibold text-success">
-              <span className="text-base">{item.icon}</span>
-              {t(item.key)}
+        {/* Xavfni yopuvchi blok */}
+        <section className="grid gap-2.5 rounded-[18px] bg-brand-soft px-4 py-3.5">
+          {TRUST_ITEMS.map(({ icon: Icon, key }) => (
+            <div key={key} className="flex items-center gap-3 text-sm font-medium">
+              <Icon size={18} strokeWidth={1.9} className="shrink-0 text-brand-ink" />
+              {t(key)}
             </div>
           ))}
         </section>
 
         <div className="flex items-center justify-between">
-          <span className="text-base font-semibold">×{quantity}</span>
+          <span className="text-[15px] font-medium text-ink-2">{t('product.quantity')}</span>
           <QuantityStepper
             value={quantity}
             onIncrement={() => {

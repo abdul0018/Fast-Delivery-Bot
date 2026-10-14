@@ -9,11 +9,11 @@ import { cn, formatDate } from '@/lib/utils';
 import type { Order, OrderStatus } from '@/types';
 
 const STATUS_STYLES: Record<OrderStatus, string> = {
-  new: 'bg-blue-500/15 text-blue-600',
-  confirmed: 'bg-amber-500/15 text-amber-600',
-  delivering: 'bg-violet-500/15 text-violet-600',
-  completed: 'bg-success/15 text-success',
-  cancelled: 'bg-sale/15 text-sale',
+  new: 'bg-brand-soft text-brand-ink',
+  confirmed: 'bg-silk-3/20 text-[#8a5a00] dark:text-silk-3',
+  delivering: 'bg-silk-2/12 text-silk-2',
+  completed: 'bg-ok/12 text-ok',
+  cancelled: 'bg-muted text-ink-2',
 };
 
 export function OrderHistory() {
@@ -29,9 +29,9 @@ export function OrderHistory() {
       .catch(() => setOrders([]));
   }, [authenticated]);
 
-  if (!authenticated) return <p className="rounded-3xl bg-surface p-4 text-sm text-hint">{t('profile.openInTelegram')}</p>;
-  if (!orders) return <Skeleton className="h-24" />;
-  if (!orders.length) return <p className="rounded-3xl bg-surface p-4 text-center text-sm text-hint">{t('profile.noOrders')} 🍟</p>;
+  if (!authenticated) return <p className="rounded-[20px] bg-surface p-4 text-sm text-ink-2">{t('profile.openInTelegram')}</p>;
+  if (!orders) return <Skeleton className="h-24 rounded-[20px]" />;
+  if (!orders.length) return <p className="rounded-[20px] bg-surface p-4 text-center text-sm text-ink-2">{t('profile.noOrders')}</p>;
 
   return (
     <ul className="space-y-2">
@@ -39,22 +39,22 @@ export function OrderHistory() {
         const names = order.items.map((line) => (lang === 'ru' ? line.nameRu : line.nameUz)).join(', ');
         const count = order.items.reduce((sum, line) => sum + line.quantity, 0);
         return (
-          <li key={order.id} className="rounded-3xl bg-surface p-4">
+          <li key={order.id} className="rounded-[20px] bg-surface p-4">
             <div className="flex items-center justify-between gap-2">
-              <span className="font-bold">#{order.id}</span>
-              <span className={cn('rounded-full px-2.5 py-1 text-xs font-semibold', STATUS_STYLES[order.status])}>
+              <span className="price font-bold">#{order.id}</span>
+              <span className={cn('rounded-[8px] px-2 py-1 text-xs font-semibold', STATUS_STYLES[order.status])}>
                 {t(`status.${order.status}`)}
               </span>
             </div>
-            <p className="mt-1 line-clamp-1 text-sm text-hint">{names}</p>
+            <p className="mt-1 line-clamp-1 text-sm text-ink-2">{names}</p>
             <div className="mt-2 flex items-center justify-between text-sm">
-              <span className="text-hint">
+              <span className="text-ink-2">
                 {formatDate(order.createdAt, lang)} · {t('profile.items', { count })}
               </span>
-              <span className="font-bold">{price(order.total)}</span>
+              <span className="price font-bold">{price(order.total)}</span>
             </div>
             {order.paymentMethod !== 'cash' && order.paymentStatus !== 'paid' && order.status !== 'cancelled' && (
-              <p className="mt-1 text-xs font-medium text-amber-600">{t(`paymentStatus.${order.paymentStatus}`)}</p>
+              <p className="mt-1 text-xs font-medium text-[#8a5a00] dark:text-silk-3">{t(`paymentStatus.${order.paymentStatus}`)}</p>
             )}
           </li>
         );

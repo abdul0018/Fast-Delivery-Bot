@@ -10,7 +10,9 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Onboarding } from '@/components/features/Onboarding';
 import { ProductSheet } from '@/components/features/ProductSheet';
+import { AtlasBand } from '@/components/ui/AtlasBand';
 import { Toast } from '@/components/ui/Toast';
+import { brand } from '@/config/brand';
 import { useBackButton, useTelegram } from '@/hooks/useTelegram';
 import { useI18n } from '@/hooks/useI18n';
 import { useSettingsStore } from '@/store/settingsStore';
@@ -19,10 +21,12 @@ import { BottomNavigation } from './BottomNavigation';
 
 function Splash() {
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center gap-3">
-      <div className="animate-pop text-6xl">🍔</div>
-      <div className="h-1 w-24 overflow-hidden rounded-full bg-muted">
-        <div className="h-full w-1/2 animate-pulse rounded-full bg-brand" />
+    <div className="flex min-h-dvh flex-col bg-brand text-on-brand">
+      <div className="flex flex-1 items-end px-6 pb-6">
+        <p className="font-display text-3xl font-bold">{brand.name}</p>
+      </div>
+      <div className="flex-1 bg-ground">
+        <AtlasBand variant="edge" height={30} tile={78} seed={11} />
       </div>
     </div>
   );

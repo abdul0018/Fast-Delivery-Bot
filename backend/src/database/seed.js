@@ -7,7 +7,7 @@ const { syncDatabase } = require('./sync');
 const { Product } = require('../models');
 const logger = require('../utils/logger');
 
-const img = (slug) => `/images/products/${slug}.svg`;
+const img = (slug) => `/images/products/${slug}.jpg`;
 
 const products = [
   // ---------- Burgerlar / Бургеры ----------

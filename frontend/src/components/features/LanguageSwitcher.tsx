@@ -7,12 +7,12 @@ import { useUserStore } from '@/store/userStore';
 import type { Lang } from '@/types';
 
 const OPTIONS: { value: Lang; label: string }[] = [
-  { value: 'uz', label: "🇺🇿 O'zbekcha" },
-  { value: 'ru', label: '🇷🇺 Русский' },
+  { value: 'uz', label: "O'zbekcha" },
+  { value: 'ru', label: 'Русский' },
 ];
 
 /** UZ / RU almashtirgich — tanlov backend'ga ham saqlanadi (bot ham shu tilda javob beradi) */
-export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
+export function LanguageSwitcher({ compact = false, onBrand = false }: { compact?: boolean; onBrand?: boolean }) {
   const { lang, setLang } = useI18n();
   const { haptic } = useTelegram();
   const updateMe = useUserStore((state) => state.updateMe);
@@ -25,21 +25,39 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   };
 
   return (
-    <div className={cn('inline-flex rounded-full bg-muted p-1', !compact && 'w-full')}>
-      {OPTIONS.map((option) => (
-        <button
-          key={option.value}
-          type="button"
-          onClick={() => change(option.value)}
-          className={cn(
-            'flex-1 rounded-full font-semibold transition-all',
-            compact ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm',
-            lang === option.value ? 'bg-surface text-ink shadow-sm' : 'text-hint',
-          )}
-        >
-          {compact ? option.value.toUpperCase() : option.label}
-        </button>
-      ))}
+    <div
+      role="radiogroup"
+      className={cn(
+        'inline-flex rounded-[12px] p-1',
+        onBrand ? 'bg-black/20' : 'border border-line bg-surface',
+        !compact && 'w-full',
+      )}
+    >
+      {OPTIONS.map((option) => {
+        const active = lang === option.value;
+        return (
+          <button
+            key={option.value}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            onClick={() => change(option.value)}
+            className={cn(
+              'flex-1 rounded-[9px] font-semibold transition-colors duration-200',
+              compact ? 'px-2.5 py-1 text-xs' : 'px-4 py-2.5 text-sm',
+              active
+                ? onBrand
+                  ? 'bg-on-brand text-brand'
+                  : 'bg-brand text-on-brand'
+                : onBrand
+                  ? 'text-on-brand/80'
+                  : 'text-ink-2',
+            )}
+          >
+            {compact ? option.value.toUpperCase() : option.label}
+          </button>
+        );
+      })}
     </div>
   );
 }

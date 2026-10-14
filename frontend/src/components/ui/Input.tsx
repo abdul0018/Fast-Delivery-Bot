@@ -8,39 +8,50 @@ interface FieldProps {
 }
 
 const fieldClass =
-  'w-full rounded-2xl border border-line bg-surface px-4 py-3 text-ink placeholder:text-hint outline-none transition focus:border-brand focus:ring-4 focus:ring-brand-soft';
+  'w-full rounded-[14px] border border-line bg-surface px-4 py-3 text-ink placeholder:text-ink-2/70 outline-none transition-[border-color,box-shadow] duration-200 focus:border-brand focus:shadow-[0_0_0_4px_color-mix(in_srgb,var(--brand)_14%,transparent)]';
 
-function FieldWrapper({ label, icon, error, children }: FieldProps & { children: ReactNode }) {
+function FieldWrapper({ label, icon, error, id, children }: FieldProps & { id?: string; children: ReactNode }) {
   return (
-    <label className="block">
+    <div>
       {label && (
-        <span className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-hint">
+        <label htmlFor={id} className="mb-1.5 flex items-center gap-1.5 text-[13px] font-medium text-ink-2">
           {icon}
           {label}
-        </span>
+        </label>
       )}
       {children}
-      {error && <span className="mt-1 block text-xs text-sale">{error}</span>}
-    </label>
+      {error && (
+        <p role="alert" className="mt-1.5 text-[13px] font-medium text-sale">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }
 
 export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement> & FieldProps>(function Input(
-  { label, icon, error, className, ...props },
+  { label, icon, error, className, id, ...props },
   ref,
 ) {
   return (
-    <FieldWrapper label={label} icon={icon} error={error}>
-      <input ref={ref} className={cn(fieldClass, error && 'border-sale', className)} {...props} />
+    <FieldWrapper label={label} icon={icon} error={error} id={id}>
+      <input ref={ref} id={id} aria-invalid={Boolean(error) || undefined} className={cn(fieldClass, error && 'border-sale', className)} {...props} />
     </FieldWrapper>
   );
 });
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaHTMLAttributes<HTMLTextAreaElement> & FieldProps>(
-  function Textarea({ label, icon, error, className, ...props }, ref) {
+  function Textarea({ label, icon, error, className, id, ...props }, ref) {
     return (
-      <FieldWrapper label={label} icon={icon} error={error}>
-        <textarea ref={ref} rows={2} className={cn(fieldClass, 'resize-none', error && 'border-sale', className)} {...props} />
+      <FieldWrapper label={label} icon={icon} error={error} id={id}>
+        <textarea
+          ref={ref}
+          id={id}
+          rows={2}
+          aria-invalid={Boolean(error) || undefined}
+          className={cn(fieldClass, 'resize-none', error && 'border-sale', className)}
+          {...props}
+        />
       </FieldWrapper>
     );
   },

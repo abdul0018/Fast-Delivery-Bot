@@ -5,7 +5,7 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 | Qism | Texnologiyalar | Papka |
 |---|---|---|
 | Bot + REST API | Node.js, Telegraf, Express, Sequelize, PostgreSQL (Neon) | [`backend/`](backend) |
-| Mini App | Next.js (App Router), TypeScript, Tailwind CSS v4, Zustand | [`frontend/`](frontend) |
+| Mini App | Next.js (App Router), TypeScript, Tailwind CSS v4, Zustand, Lucide, Geologica | [`frontend/`](frontend) |
 
 ## Imkoniyatlar
 
@@ -23,6 +23,21 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 3. **Katalog** — gorizontal kategoriyalar, eski (chizilgan) va yangi (qizil) narx, tezkor "+" tugmasi
 4. **Mahsulot** — Bottom Sheet: katta rasm, tarkibi, ishonch bloki, sticky "Savatchaga qo'shish — narx"
 5. **Savatcha** — Order Stack, Order Bump (Switch), manzil, to'lov usullari, jami summa, bitta bosishda tasdiqlash
+
+### Dizayn: "Atlas Silk"
+
+UI [Impeccable](https://impeccable.style) (`.claude/skills/impeccable`) yordamida qayta loyihalangan: restoran rangi
+o'zbek **abr (ikat) atlas** matosidek zinapoyasimon chetli lentalar bilan sarlavha, kategoriyalar va panellarda keladi,
+taomlar esa toza, rasmga yo'naltirilgan kartochkalarda. Imzo harakati — kategoriya almashganda tagidagi atlas lentasi siljiydi.
+Mahsulot konteksti: [`PRODUCT.md`](PRODUCT.md), yo'nalish shartnomasi: `.impeccable/surfaces/`.
+
+**Boshqa restoranga moslashtirish:** faqat [`frontend/src/config/brand.ts`](frontend/src/config/brand.ts) ni o'zgartiring —
+`name`, `brand` (asosiy rang), `onBrand` (uning ustidagi matn), `silk2`/`silk3` (atlas naqshining yordamchi ranglari).
+Butun interfeys, Telegram sarlavha rangi va atlas lentalari shu tokenlardan olinadi; tungi (dark) mavzu avtomatik.
+
+**Rasmlar:** `frontend/public/images/products/*.jpg` — Pollinations.ai (bepul) orqali yaratilgan **namuna** rasmlar
+(har bir faylga prompt va manba JPEG izohi sifatida yozilgan). Restoranning haqiqiy fotosuratlari bilan shu nomlarda almashtiring.
+Onboarding'dagi "10,000+" va "4.9" raqamlari ham namuna — haqiqiy ko'rsatkichlar bilan almashtiring.
 
 Xavfsizlik: Mini App so'rovlari Telegram `initData` imzosi (HMAC-SHA256) bilan tekshiriladi, narxlar faqat serverda hisoblanadi.
 
@@ -84,7 +99,8 @@ backend/src/
 
 frontend/src/
 ├── app/                         # layout.tsx, page.tsx, catalog/, cart/, profile/
-├── components/ui/               # Button, Input, BottomSheet, Switch, QuantityStepper, Toast, Skeleton
+├── config/brand.ts              # restoran nomi va brend ranglari (rebrend shu yerda)
+├── components/ui/               # AtlasBand, Button, Input, BottomSheet, Switch, QuantityStepper, Toast, Skeleton
 ├── components/features/         # Onboarding, Stories, HeroWidget, ProductCard, ProductSheet, CartList, OrderBump ...
 ├── components/layout/           # Header, BottomNavigation, AppShell
 ├── hooks/                       # useTelegram, useCart, useI18n, useCatalog

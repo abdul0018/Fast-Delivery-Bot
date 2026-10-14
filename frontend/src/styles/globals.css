@@ -1,34 +1,68 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/geologica/wght.css';
 
-/* Qo'lda "dark" klassi (Telegram colorScheme) bilan dark: variant */
+/* Telegram colorScheme "dark" bo'lsa <html class="dark"> qo'yiladi */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Ranglar Telegram mavzusidan olinadi (telegram-web-app.js --tg-theme-* o'zgaruvchilarini o'rnatadi),
- * brauzerda esa standart qiymatlar ishlaydi.
+ * Atlas Silk dizayn tizimi.
+ * Brend ranglari (--brand, --silk-2, --silk-3, --on-brand) src/config/brand.ts dan <html> ga yoziladi.
  */
+:root {
+  --ground: #f7f3ec;
+  --surface: #ffffff;
+  --ink: #17142a;
+  --ink-2: #5d5870;
+  --line: #e7e0d4;
+  --muted: #efe9df;
+  --sale: #e0182d;
+  --ok: #138a4b;
+  /* Brend rangidagi matn/ikonka (sirt ustida) va yumshoq brend foni */
+  --brand-ink: var(--brand);
+  --brand-soft: color-mix(in srgb, var(--brand) 10%, var(--surface));
+}
+.dark {
+  --brand-ink: color-mix(in srgb, var(--brand) 38%, #ffffff);
+  --brand-soft: color-mix(in srgb, var(--brand) 32%, var(--surface));
+  --ground: #13111c;
+  --surface: #1e1b2a;
+  --ink: #f4f1fa;
+  --ink-2: #aaa4bd;
+  --line: #2f2b3f;
+  --muted: #2a2638;
+  --sale: #ff4d5e;
+  --ok: #3ccf7f;
+}
+
 @theme inline {
-  --color-bg: var(--tg-theme-secondary-bg-color, #f2f2f7);
-  --color-surface: var(--tg-theme-bg-color, #ffffff);
-  --color-ink: var(--tg-theme-text-color, #111111);
-  --color-hint: var(--tg-theme-hint-color, #8e8e93);
-  --color-line: color-mix(in srgb, var(--tg-theme-text-color, #111111) 9%, transparent);
-  --color-muted: color-mix(in srgb, var(--tg-theme-text-color, #111111) 5%, transparent);
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-sale: var(--sale);
+  --color-ok: var(--ok);
+  --color-brand: var(--brand, #2a2c9b);
+  --color-on-brand: var(--on-brand, #ffffff);
+  --color-silk-2: var(--silk-2, #d11d6b);
+  --color-silk-3: var(--silk-3, #ffb31a);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
 
-  --color-brand: #ff6b00;
-  --color-brand-600: #e85f00;
-  --color-brand-soft: color-mix(in srgb, #ff6b00 12%, transparent);
-  --color-sale: #ef233c;
-  --color-success: #16a34a;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Geologica Variable', system-ui, sans-serif;
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme {
-  --animate-sheet-up: sheet-up 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-sheet-up: sheet-up 0.36s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-fade-in: fade-in 0.2s ease-out;
-  --animate-pop: pop 0.25s ease-out;
+  --animate-badge: badge 0.36s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-story: story-progress linear forwards;
+  --animate-silk-ripple: silk-ripple 0.46s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-rise: rise 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 
   @keyframes sheet-up {
     from { transform: translateY(100%); }
@@ -38,33 +72,63 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  @keyframes pop {
-    0% { transform: scale(0.85); }
-    60% { transform: scale(1.08); }
+  @keyframes badge {
+    0% { transform: scale(0.6); }
     100% { transform: scale(1); }
   }
   @keyframes story-progress {
     from { transform: scaleX(0); }
     to { transform: scaleX(1); }
   }
+  /* Kategoriya almashganda atlas lentasining "silkinishi" */
+  @keyframes silk-ripple {
+    0% { filter: blur(0); }
+    35% { filter: blur(0.6px); }
+    100% { filter: blur(0); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
 }
 
 @layer base {
   html,
   body {
-    background: var(--color-bg);
-    color: var(--color-ink);
+    background: var(--ground);
+    color: var(--ink);
     -webkit-tap-highlight-color: transparent;
     overscroll-behavior-y: none;
+    font-size: 15px;
+    line-height: 1.45;
   }
-
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
   button {
     cursor: pointer;
   }
-
   input,
   textarea {
     font-size: 16px; /* iOS zoom bo'lmasligi uchun */
+    caret-color: var(--brand);
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--silk-3) 55%, transparent);
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+    border-radius: 10px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -78,4 +142,11 @@
 /* iPhone pastki "home indicator" uchun xavfsiz joy */
 @utility pb-safe {
   padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+}
+
+/* Narxlar: displey shrift, raqamlar bir xil kenglikda */
+@utility price {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }

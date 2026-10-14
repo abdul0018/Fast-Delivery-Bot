@@ -79,7 +79,7 @@ export function BottomSheet({ open, onClose, children, footer, ariaLabel, classN
       {/* Backdrop */}
       <div
         className={cn(
-          'absolute inset-0 bg-black/50 backdrop-blur-[2px] transition-opacity duration-200',
+          'absolute inset-0 bg-[#0b0a14]/55 transition-opacity duration-200',
           closing ? 'opacity-0' : 'animate-fade-in',
         )}
         onClick={onClose}
@@ -88,7 +88,7 @@ export function BottomSheet({ open, onClose, children, footer, ariaLabel, classN
       {/* Panel */}
       <div
         className={cn(
-          'absolute inset-x-0 bottom-0 mx-auto flex max-h-[92dvh] max-w-lg flex-col overflow-hidden rounded-t-[28px] bg-surface shadow-2xl',
+          'absolute inset-x-0 bottom-0 mx-auto flex max-h-[92dvh] max-w-lg flex-col overflow-hidden rounded-t-[26px] bg-surface shadow-[0_-12px_40px_-12px_rgba(0,0,0,0.35)]',
           closing ? 'translate-y-full transition-transform duration-200 ease-in' : 'animate-sheet-up',
           className,
         )}
@@ -102,7 +102,7 @@ export function BottomSheet({ open, onClose, children, footer, ariaLabel, classN
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
         >
-          <span className="h-1.5 w-11 rounded-full bg-white/90 shadow-sm" />
+          <span className="h-1.5 w-10 rounded-full bg-white/85 shadow-[0_1px_3px_rgba(0,0,0,0.25)]" />
         </div>
 
         <div className="no-scrollbar flex-1 overflow-y-auto overscroll-contain">{children}</div>

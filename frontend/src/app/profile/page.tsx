@@ -1,9 +1,10 @@
 'use client';
 
 /** Profil: foydalanuvchi ma'lumotlari, til tanlash va buyurtmalar tarixi */
+import { MapPin, Phone } from 'lucide-react';
 import { LanguageSwitcher } from '@/components/features/LanguageSwitcher';
 import { OrderHistory } from '@/components/features/OrderHistory';
-import { PageHeader } from '@/components/layout/Header';
+import { AtlasBand } from '@/components/ui/AtlasBand';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import { useUserStore } from '@/store/userStore';
@@ -13,50 +14,58 @@ export default function ProfilePage() {
   const { user } = useTelegram();
   const me = useUserStore((state) => state.me);
 
-  const name = [user?.first_name ?? me?.firstName, user?.last_name ?? me?.lastName].filter(Boolean).join(' ') || t('profile.guest');
+  const name =
+    [user?.first_name ?? me?.firstName, user?.last_name ?? me?.lastName].filter(Boolean).join(' ') || t('profile.guest');
   const username = user?.username ?? me?.username;
+
+  const rows = [
+    { icon: Phone, label: t('profile.phone'), value: me?.phone },
+    { icon: MapPin, label: t('profile.address'), value: me?.address },
+  ];
 
   return (
     <div>
-      <PageHeader title={t('profile.title')} />
-
-      <div className="space-y-6 px-4">
-        <section className="flex items-center gap-4 rounded-3xl bg-surface p-4">
+      <header className="text-on-brand">
+        <div className="flex items-center gap-4 bg-brand px-4 pt-6 pb-4">
           {user?.photo_url ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={user.photo_url} alt="" className="size-16 rounded-full object-cover" />
+            <img src={user.photo_url} alt="" className="size-16 rounded-full object-cover ring-2 ring-on-brand/40" />
           ) : (
-            <div className="flex size-16 items-center justify-center rounded-full bg-gradient-to-br from-brand to-sale text-2xl font-bold text-white">
+            <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-silk-3 font-display text-2xl font-bold text-[#17142a]">
               {name.charAt(0).toUpperCase()}
-            </div>
+            </span>
           )}
           <div className="min-w-0">
-            <h2 className="truncate text-xl font-bold">{name}</h2>
-            {username && <p className="text-sm text-hint">@{username}</p>}
+            <h1 className="truncate text-[24px] leading-tight font-bold">{name}</h1>
+            {username && <p className="text-sm text-on-brand/75">@{username}</p>}
           </div>
-        </section>
+        </div>
+        <AtlasBand variant="edge" height={26} tile={78} seed={11} />
+      </header>
 
-        <section className="space-y-2">
-          <h3 className="px-1 text-sm font-semibold text-hint uppercase">🌐 {t('profile.language')}</h3>
+      <div className="space-y-7 px-4 pt-2">
+        <section className="space-y-2.5">
+          <h2 className="text-[17px] font-semibold">{t('profile.language')}</h2>
           <LanguageSwitcher />
         </section>
 
-        <section className="space-y-2">
-          <h3 className="px-1 text-sm font-semibold text-hint uppercase">{t('profile.contacts')}</h3>
-          <div className="divide-y divide-line rounded-3xl bg-surface">
-            <div className="flex items-center justify-between gap-4 p-4">
-              <span className="text-hint">📱 {t('profile.phone')}</span>
-              <span className="truncate font-medium">{me?.phone || t('profile.notSet')}</span>
-            </div>
-            <div className="flex items-center justify-between gap-4 p-4">
-              <span className="shrink-0 text-hint">📍 {t('profile.address')}</span>
-              <span className="truncate text-right font-medium">{me?.address || t('profile.notSet')}</span>
-            </div>
-          </div>
+        <section className="space-y-2.5">
+          <h2 className="text-[17px] font-semibold">{t('profile.contacts')}</h2>
+          <dl className="divide-y divide-line rounded-[20px] bg-surface">
+            {rows.map(({ icon: Icon, label, value }) => (
+              <div key={label} className="flex items-center gap-3 px-4 py-3.5">
+                <Icon size={18} strokeWidth={1.8} className="shrink-0 text-brand-ink" />
+                <dt className="shrink-0 text-ink-2">{label}</dt>
+                <dd className={value ? 'min-w-0 flex-1 truncate text-right font-medium' : 'flex-1 text-right text-ink-2'}>
+                  {value || t('profile.notSet')}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
-        <section className="space-y-2">
-          <h3 className="px-1 text-sm font-semibold text-hint uppercase">🧾 {t('profile.orders')}</h3>
+        <section className="space-y-2.5">
+          <h2 className="text-[17px] font-semibold">{t('profile.orders')}</h2>
           <OrderHistory />
         </section>
       </div>

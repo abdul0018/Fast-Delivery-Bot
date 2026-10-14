@@ -11,3 +11,8 @@ coverage/
 .env.local
 .env.*.local
 *.tsbuildinfo
+
+# Impeccable: lokal skrinshotlar va vaqtinchalik fayllar
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/build/

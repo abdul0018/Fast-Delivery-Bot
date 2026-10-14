@@ -1,39 +1,52 @@
 'use client';
 
 import Link from 'next/link';
+import { Bike, ShieldCheck, Timer } from 'lucide-react';
 import { useI18n } from '@/hooks/useI18n';
 
 /** Asosiy vidjet: "Katalogni ko'rish" / "Yangi buyurtma berish" */
 export function HeroWidget() {
   const { t } = useI18n();
 
+  const facts = [
+    { icon: Timer, label: t('home.featureFast') },
+    { icon: ShieldCheck, label: t('home.featureHalal') },
+    { icon: Bike, label: t('home.featureFree') },
+  ];
+
   return (
-    <section className="relative mx-4 overflow-hidden rounded-[28px] bg-gradient-to-br from-brand via-orange-500 to-sale p-5 text-white shadow-xl shadow-brand/30">
-      <div className="absolute -top-6 -right-6 size-40 rounded-full bg-white/10" />
-      <div className="absolute -right-2 -bottom-10 size-28 rounded-full bg-white/10" />
-      <span className="absolute top-4 right-4 rotate-12 text-[76px] leading-none drop-shadow-xl">🍔</span>
-
-      <div className="relative max-w-[68%]">
-        <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur">
-          {t('home.heroBadge')}
-        </span>
-        <h2 className="mt-3 text-[26px] leading-tight font-extrabold">{t('home.heroTitle')}</h2>
-        <p className="mt-2 text-sm text-white/85">{t('home.heroText')}</p>
+    <section className="mx-4 overflow-hidden rounded-[24px] bg-surface shadow-[0_1px_2px_rgba(23,20,42,0.06),0_14px_32px_-20px_rgba(23,20,42,0.35)]">
+      <div className="relative aspect-[16/8] bg-muted">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/products/hero-spread.jpg" alt="" className="size-full object-cover" />
       </div>
+      <div className="px-4 pt-4 pb-4">
+        <h2 className="text-[22px] leading-tight font-bold">{t('home.heroTitle')}</h2>
+        <p className="mt-1.5 text-[14px] text-ink-2">{t('home.heroText')}</p>
 
-      <div className="relative mt-5 grid grid-cols-2 gap-2">
-        <Link
-          href="/catalog"
-          className="flex min-h-12 items-center justify-center rounded-2xl bg-white px-2 text-center text-[13px] leading-tight font-bold text-brand transition active:scale-[0.97]"
-        >
-          {t('home.viewCatalog')}
-        </Link>
-        <Link
-          href="/catalog?category=burgers"
-          className="flex min-h-12 items-center justify-center rounded-2xl bg-black/20 px-2 text-center text-[13px] leading-tight font-bold text-white backdrop-blur transition active:scale-[0.97]"
-        >
-          {t('home.newOrder')}
-        </Link>
+        <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] font-medium">
+          {facts.map(({ icon: Icon, label }) => (
+            <li key={label} className="flex items-center gap-1.5">
+              <Icon size={16} strokeWidth={1.9} className="text-brand-ink" />
+              {label}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-4 grid grid-cols-[1.25fr_1fr] gap-2">
+          <Link
+            href="/catalog"
+            className="flex min-h-12 items-center justify-center rounded-[14px] bg-brand px-3 text-center font-display text-[14px] leading-tight font-semibold text-on-brand shadow-[0_8px_18px_-10px_var(--brand)] transition-transform active:scale-[0.98]"
+          >
+            {t('home.viewCatalog')}
+          </Link>
+          <Link
+            href="/catalog?category=burgers"
+            className="flex min-h-12 items-center justify-center rounded-[14px] bg-brand-soft px-3 text-center font-display text-[14px] leading-tight font-semibold text-brand-ink transition-transform active:scale-[0.98]"
+          >
+            {t('home.newOrder')}
+          </Link>
+        </div>
       </div>
     </section>
   );

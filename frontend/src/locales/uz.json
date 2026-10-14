@@ -24,22 +24,23 @@
     "slide2Step3": "Kutib oling",
     "slide3Title": "10,000+ mijozlarimiz safiga qo'shiling!",
     "slide3Text": "Har kuni minglab issiq va mazali buyurtmalar — o'z vaqtida.",
-    "rating": "4.9 ★ reyting"
+    "rating": "4.9 reyting"
   },
   "home": {
-    "welcome": "Xush kelibsiz 👋",
+    "welcome": "Xush kelibsiz",
     "greeting": "Salom, {name}!",
     "guest": "mehmon",
-    "heroBadge": "🔥 Bugun -20% gacha",
     "heroTitle": "Issiq va mazali — 30 daqiqada",
     "heroText": "Burger, pitsa va ichimliklar to'g'ridan-to'g'ri eshigingizgacha.",
     "viewCatalog": "Katalogni ko'rish",
     "newOrder": "Yangi buyurtma berish",
-    "popular": "🔥 Ommabop",
+    "popular": "Ommabop",
     "seeAll": "Barchasi",
     "featureFast": "30 daqiqa",
     "featureHalal": "100% halol",
-    "featureFree": "Bepul yetkazish"
+    "featureFree": "Bepul yetkazish",
+    "storiesTitle": "Chegirmalar",
+    "menuTitle": "Menyu"
   },
   "stories": {
     "s1Title": "-20%",
@@ -71,7 +72,8 @@
     "trustFast": "Tezkor yetkazib berish — 30 daqiqa",
     "trustFresh": "Har kuni yangi masalliqlar",
     "addToCart": "Savatchaga qo'shish — {price}",
-    "added": "Savatchaga qo'shildi ✅"
+    "added": "Savatchaga qo'shildi",
+    "quantity": "Soni"
   },
   "cart": {
     "title": "Savatcha",
@@ -79,7 +81,7 @@
     "empty": "Savatchangiz bo'sh",
     "emptyText": "Katalogdan sevimli taomlaringizni tanlang",
     "goCatalog": "Katalogga o'tish",
-    "bumpTitle": "Maxsus taklif!",
+    "bumpTitle": "Qo'shimcha taklif",
     "bumpText": "Bunga qo'shimcha ravishda {name} ni atigi {price} so'mga qo'shasizmi?",
     "delivery": "Yetkazib berish",
     "address": "Manzil",
@@ -95,7 +97,7 @@
       "payme_click": "Payme / Click",
       "payme_clickHint": "Karta orqali onlayn",
       "stars": "Telegram Stars",
-      "starsHint": "≈ {stars} ⭐"
+      "starsHint": "≈ {stars} Stars"
     },
     "soon": "Tez orada",
     "subtotal": "Mahsulotlar",
@@ -106,11 +108,12 @@
     "confirm": "Tasdiqlash — {price}",
     "pay": "To'lash — {price}",
     "processing": "Yuborilmoqda...",
-    "successTitle": "Buyurtma qabul qilindi! 🎉",
+    "successTitle": "Buyurtma qabul qilindi!",
     "successText": "Buyurtma #{id}. Operatorimiz tez orada siz bilan bog'lanadi.",
     "paidText": "Buyurtma #{id} to'landi va tayyorlashga yuborildi.",
     "backHome": "Bosh sahifaga",
-    "paymentCancelled": "To'lov bekor qilindi. Buyurtmani qayta tasdiqlashingiz mumkin."
+    "paymentCancelled": "To'lov bekor qilindi. Buyurtmani qayta tasdiqlashingiz mumkin.",
+    "summary": "Hisob"
   },
   "errors": {
     "CART_EMPTY": "Savatcha bo'sh",

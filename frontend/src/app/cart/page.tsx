@@ -7,6 +7,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { MapPin, MessageSquareText, Phone, ShoppingBag } from 'lucide-react';
 import { CartList } from '@/components/features/CartList';
 import { OrderBump } from '@/components/features/OrderBump';
 import { OrderSuccess } from '@/components/features/OrderSuccess';
@@ -126,9 +127,11 @@ export default function CartPage() {
       <>
         <PageHeader title={t('cart.title')} />
         <div className="flex flex-col items-center px-8 pt-16 text-center">
-          <div className="flex size-28 items-center justify-center rounded-full bg-brand-soft text-6xl">🛒</div>
-          <h2 className="mt-6 text-xl font-bold">{t('cart.empty')}</h2>
-          <p className="mt-2 text-hint">{t('cart.emptyText')}</p>
+          <div className="flex size-24 items-center justify-center rounded-full bg-brand-soft text-brand-ink">
+            <ShoppingBag size={42} strokeWidth={1.6} />
+          </div>
+          <h2 className="mt-6 text-[22px] font-bold">{t('cart.empty')}</h2>
+          <p className="mt-2 text-ink-2">{t('cart.emptyText')}</p>
           <Link href="/catalog" className="mt-6 w-full">
             <Button size="lg" fullWidth>
               {t('cart.goCatalog')}
@@ -146,14 +149,15 @@ export default function CartPage() {
     <>
       <PageHeader
         title={t('cart.title')}
+        subtitle={t('profile.items', { count: cart.count })}
         action={
-          <button type="button" onClick={cart.clear} className="text-sm font-semibold text-sale">
+          <button type="button" onClick={cart.clear} className="pb-0.5 text-sm font-semibold text-ink-2 hover:text-sale">
             {t('cart.clear')}
           </button>
         }
       />
 
-      <div className="space-y-6 px-4">
+      <div className="space-y-7 px-4">
         {/* 1. Order Stack */}
         <CartList />
 
@@ -162,9 +166,10 @@ export default function CartPage() {
 
         {/* 3. Yetkazib berish */}
         <section className="space-y-3">
-          <h2 className="text-lg font-bold">📍 {t('cart.delivery')}</h2>
+          <h2 className="text-[20px] font-bold">{t('cart.delivery')}</h2>
           <Textarea
             id="address"
+            icon={<MapPin size={15} strokeWidth={1.9} />}
             label={t('cart.address')}
             placeholder={t('cart.addressPlaceholder')}
             value={address}
@@ -175,6 +180,8 @@ export default function CartPage() {
             }}
           />
           <Input
+            id="phone"
+            icon={<Phone size={15} strokeWidth={1.9} />}
             label={t('cart.phone')}
             type="tel"
             inputMode="tel"
@@ -183,6 +190,8 @@ export default function CartPage() {
             onChange={(event) => setPhone(event.target.value)}
           />
           <Input
+            id="comment"
+            icon={<MessageSquareText size={15} strokeWidth={1.9} />}
             label={t('cart.comment')}
             placeholder={t('cart.commentPlaceholder')}
             value={comment}
@@ -192,29 +201,31 @@ export default function CartPage() {
 
         {/* 4. To'lov usuli */}
         <section className="space-y-3">
-          <h2 className="text-lg font-bold">💳 {t('cart.payment')}</h2>
+          <h2 className="text-[20px] font-bold">{t('cart.payment')}</h2>
           <PaymentMethods available={available} starsRate={config?.starsRateUzs ?? 200} total={cart.total} />
         </section>
 
         {/* 5. Jami */}
-        <section className="space-y-2 rounded-3xl bg-surface p-4 text-[15px]">
-          <div className="flex justify-between">
-            <span className="text-hint">{t('cart.subtotal')}</span>
-            <span>{price(cart.subtotal)}</span>
-          </div>
-          {cart.bumpPrice > 0 && (
+        <section className="rounded-[20px] bg-surface px-4 py-3.5 text-[15px]">
+          <dl className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-hint">{t('cart.bump')}</span>
-              <span>{price(cart.bumpPrice)}</span>
+              <dt className="text-ink-2">{t('cart.subtotal')}</dt>
+              <dd className="price">{price(cart.subtotal)}</dd>
             </div>
-          )}
-          <div className="flex justify-between">
-            <span className="text-hint">{t('cart.deliveryFee')}</span>
-            <span className="font-semibold text-success">{t('cart.free')}</span>
-          </div>
-          <div className="flex items-center justify-between border-t border-line pt-3">
-            <span className="text-lg font-bold">{t('cart.total')}</span>
-            <span className="text-2xl font-extrabold">{price(cart.total)}</span>
+            {cart.bumpPrice > 0 && (
+              <div className="flex justify-between">
+                <dt className="text-ink-2">{t('cart.bump')}</dt>
+                <dd className="price">{price(cart.bumpPrice)}</dd>
+              </div>
+            )}
+            <div className="flex justify-between">
+              <dt className="text-ink-2">{t('cart.deliveryFee')}</dt>
+              <dd className="font-semibold text-ok">{t('cart.free')}</dd>
+            </div>
+          </dl>
+          <div className="mt-3 flex items-baseline justify-between border-t border-dashed border-line pt-3">
+            <span className="font-display text-[18px] font-semibold">{t('cart.total')}</span>
+            <span className="price text-[26px] font-bold">{price(cart.total)}</span>
           </div>
         </section>
       </div>
@@ -224,7 +235,7 @@ export default function CartPage() {
         className="fixed inset-x-0 z-30 mx-auto max-w-lg px-4 pb-2"
         style={{ bottom: 'calc(60px + max(env(safe-area-inset-bottom), 0.5rem))' }}
       >
-        <Button size="lg" fullWidth loading={submitting} onClick={submit} className="shadow-xl">
+        <Button size="lg" fullWidth loading={submitting} onClick={submit}>
           {submitting ? t('cart.processing') : t(ctaLabel, { price: price(cart.total) })}
         </Button>
       </div>

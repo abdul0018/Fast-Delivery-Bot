@@ -1,5 +1,6 @@
 'use client';
 
+import { Minus, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface QuantityStepperProps {
@@ -8,25 +9,34 @@ interface QuantityStepperProps {
   onDecrement: () => void;
   size?: 'sm' | 'md';
   className?: string;
+  label?: string;
 }
 
 /** − 2 + boshqaruvi */
-export function QuantityStepper({ value, onIncrement, onDecrement, size = 'md', className }: QuantityStepperProps) {
+export function QuantityStepper({ value, onIncrement, onDecrement, size = 'md', className, label }: QuantityStepperProps) {
   const button = cn(
-    'flex items-center justify-center rounded-full font-bold transition active:scale-90',
-    size === 'sm' ? 'size-7 text-base' : 'size-9 text-lg',
+    'flex items-center justify-center rounded-[10px] transition-[transform,background-color] duration-150 active:scale-90',
+    size === 'sm' ? 'size-8' : 'size-10',
   );
+  const icon = size === 'sm' ? 16 : 18;
 
   return (
-    <div className={cn('inline-flex items-center gap-1 rounded-full bg-muted p-1', className)}>
-      <button type="button" aria-label="−" className={cn(button, 'bg-surface text-ink shadow-sm')} onClick={onDecrement}>
-        −
+    <div
+      role="group"
+      aria-label={label}
+      className={cn('inline-flex items-center gap-0.5 rounded-[13px] border border-line bg-surface p-0.5', className)}
+    >
+      <button type="button" aria-label="−" className={cn(button, 'text-ink hover:bg-muted')} onClick={onDecrement}>
+        <Minus size={icon} strokeWidth={2} />
       </button>
-      <span className={cn('min-w-6 text-center font-semibold tabular-nums', size === 'sm' ? 'text-sm' : 'text-base')}>
+      <span
+        aria-live="polite"
+        className={cn('price min-w-7 text-center font-semibold', size === 'sm' ? 'text-sm' : 'text-base')}
+      >
         {value}
       </span>
-      <button type="button" aria-label="+" className={cn(button, 'bg-brand text-white')} onClick={onIncrement}>
-        +
+      <button type="button" aria-label="+" className={cn(button, 'bg-brand text-on-brand')} onClick={onIncrement}>
+        <Plus size={icon} strokeWidth={2} />
       </button>
     </div>
   );

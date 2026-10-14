@@ -7,6 +7,7 @@
  *  - Haptic feedback uchun qulay funksiyalar beradi
  */
 import { createContext, useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { brand } from '@/config/brand';
 import { detectLang, isLang } from '@/lib/i18n';
 import { useSettingsStore } from '@/store/settingsStore';
 import { useUserStore } from '@/store/userStore';
@@ -46,9 +47,10 @@ export function TelegramProvider({ children }: { children: ReactNode }) {
       tg.expand();
       // Bottom Sheet'ni pastga tortganda ilova yopilib qolmasligi uchun (Bot API 7.7+)
       if (tg.isVersionAtLeast('7.7')) tg.disableVerticalSwipes?.();
-      if (tg.isVersionAtLeast('6.1')) {
-        tg.setHeaderColor('secondary_bg_color');
-        tg.setBackgroundColor('secondary_bg_color');
+      // Telegram sarlavhasi brend rangida — atlas maydoni ilova tepasidan boshlanadi
+      if (tg.isVersionAtLeast('6.9')) {
+        tg.setHeaderColor(brand.colors.brand);
+        tg.setBackgroundColor(tg.colorScheme === 'dark' ? '#13111c' : '#f7f3ec');
       }
 
       applyTheme();

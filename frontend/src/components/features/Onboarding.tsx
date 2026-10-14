@@ -3,25 +3,47 @@
 /**
  * Onboarding — faqat birinchi kirishda ko'rsatiladi.
  * 3 ta slayd: barmoq bilan surish (CSS scroll-snap) yoki "Keyingi" tugmasi.
+ * Har bir slaydning yuqori qismi — brend rangidagi atlas maydoni, pastki cheti abr lentasi.
  */
 import { useRef, useState, type ReactNode } from 'react';
+import { ClipboardCheck, DoorOpen, Hand, Star } from 'lucide-react';
+import { AtlasBand } from '@/components/ui/AtlasBand';
 import { Button } from '@/components/ui/Button';
+import { brand } from '@/config/brand';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import { cn } from '@/lib/utils';
 import { useSettingsStore } from '@/store/settingsStore';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-function Slide({ visual, children }: { visual: ReactNode; children: ReactNode }) {
+function Slide({ image, seed, children }: { image: string; seed: number; children: ReactNode }) {
   return (
-    <section className="flex w-full shrink-0 snap-center snap-always flex-col items-center justify-center px-8 text-center">
-      <div className="relative mb-10 flex size-64 items-center justify-center">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-brand/25 via-sale/10 to-transparent blur-2xl" />
-        <div className="absolute inset-6 rounded-full bg-brand-soft" />
-        <div className="relative">{visual}</div>
+    <section className="flex w-full shrink-0 snap-center snap-always flex-col">
+      <div className="bg-brand px-6 pt-16 pb-2">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={image}
+          alt=""
+          className="mx-auto aspect-square w-full max-w-[320px] rounded-[28px] object-cover shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]"
+        />
       </div>
-      {children}
+      <AtlasBand variant="edge" height={30} tile={84} seed={seed} />
+      <div className="flex flex-1 flex-col px-6 pt-4">{children}</div>
     </section>
+  );
+}
+
+/** Sarlavhadagi "10,000+" / "10 000+" raqamini brend rangida, kattaroq ajratib ko'rsatish */
+function Highlighted({ text }: { text: string }) {
+  const match = /\d[\d\s,.\u00A0]*\+/.exec(text);
+  if (!match) return <>{text}</>;
+  const [number] = match;
+  return (
+    <>
+      {text.slice(0, match.index)}
+      <span className="price block text-[48px] leading-[1.05] font-extrabold text-brand-ink">{number.trim()}</span>
+      {text.slice(match.index + number.length).trim()}
+    </>
   );
 }
 
@@ -54,15 +76,24 @@ export function Onboarding() {
     completeOnboarding();
   };
 
+  const steps = [
+    { icon: Hand, key: 'onboarding.slide2Step1' },
+    { icon: ClipboardCheck, key: 'onboarding.slide2Step2' },
+    { icon: DoorOpen, key: 'onboarding.slide2Step3' },
+  ] as const;
+
   return (
-    <div className="fixed inset-0 z-50 mx-auto flex max-w-lg flex-col bg-surface">
-      <div className="flex items-center justify-between px-4 pt-4">
-        <LanguageSwitcher compact />
-        {!isLast && (
-          <button type="button" onClick={finish} className="text-sm font-medium text-hint">
-            {t('onboarding.skip')}
-          </button>
-        )}
+    <div className="fixed inset-0 z-50 mx-auto flex max-w-lg flex-col bg-ground">
+      <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-4 pt-4 text-on-brand">
+        <span className="font-display text-[15px] font-semibold">{brand.name}</span>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher compact onBrand />
+          {!isLast && (
+            <button type="button" onClick={finish} className="text-sm font-medium text-on-brand/80">
+              {t('onboarding.skip')}
+            </button>
+          )}
+        </div>
       </div>
 
       <div
@@ -71,79 +102,58 @@ export function Onboarding() {
         className="no-scrollbar flex flex-1 snap-x snap-mandatory overflow-x-auto overflow-y-hidden"
       >
         {/* 1. Muammo / Yechim */}
-        <Slide
-          visual={
-            <div className="relative text-[110px] leading-none">
-              🍔
-              <span className="absolute -top-4 -right-10 text-5xl">🍟</span>
-              <span className="absolute -bottom-2 -left-10 text-5xl">🥤</span>
-            </div>
-          }
-        >
-          <h2 className="text-3xl font-extrabold tracking-tight">{t('onboarding.slide1Title')}</h2>
-          <p className="mt-3 text-lg text-hint">{t('onboarding.slide1Text')}</p>
+        <Slide image="/images/products/classic-burger.jpg" seed={11}>
+          <h2 className="text-[30px] leading-[1.05] font-bold">{t('onboarding.slide1Title')}</h2>
+          <p className="mt-3 text-[17px] text-ink-2">{t('onboarding.slide1Text')}</p>
         </Slide>
 
         {/* 2. Qanday ishlaydi */}
-        <Slide visual={<div className="text-[110px] leading-none">🛵</div>}>
-          <h2 className="mb-6 text-3xl font-extrabold tracking-tight">{t('onboarding.slide2Title')}</h2>
-          <ol className="w-full max-w-xs space-y-3 text-left">
-            {(
-              [
-                ['👆', 'onboarding.slide2Step1'],
-                ['🧾', 'onboarding.slide2Step2'],
-                ['🚪', 'onboarding.slide2Step3'],
-              ] as const
-            ).map(([icon, key], i) => (
-              <li key={key} className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3">
-                <span className="flex size-8 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">
+        <Slide image="/images/products/bag-delivery.jpg" seed={19}>
+          <h2 className="text-[30px] leading-[1.05] font-bold">{t('onboarding.slide2Title')}</h2>
+          <ol className="mt-4 space-y-2">
+            {steps.map(({ icon: Icon, key }, i) => (
+              <li key={key} className="flex items-center gap-3">
+                <span className="price flex size-8 shrink-0 items-center justify-center rounded-[10px] bg-brand text-sm font-bold text-on-brand">
                   {i + 1}
                 </span>
-                <span className="flex-1 text-base font-semibold">{t(key)}</span>
-                <span className="text-2xl">{icon}</span>
+                <span className="flex-1 text-[17px] font-semibold">{t(key)}</span>
+                <Icon size={20} strokeWidth={1.8} className="text-ink-2" />
               </li>
             ))}
           </ol>
         </Slide>
 
-        {/* 3. Ijtimoiy isbot */}
-        <Slide
-          visual={
-            <div className="flex flex-col items-center">
-              <div className="flex -space-x-4">
-                {['😋', '🤩', '😍', '🥳'].map((face) => (
-                  <span
-                    key={face}
-                    className="flex size-16 items-center justify-center rounded-full border-4 border-surface bg-brand-soft text-4xl"
-                  >
-                    {face}
-                  </span>
-                ))}
-              </div>
-              <span className="mt-4 text-5xl font-black text-brand">10 000+</span>
-              <span className="mt-1 text-sm font-semibold text-hint">{t('onboarding.rating')}</span>
-            </div>
-          }
-        >
-          <h2 className="text-3xl font-extrabold tracking-tight">{t('onboarding.slide3Title')}</h2>
-          <p className="mt-3 text-lg text-hint">{t('onboarding.slide3Text')}</p>
+        {/* 3. Ijtimoiy isbot (raqamlar har bir restoran uchun almashtiriladi) */}
+        <Slide image="/images/products/hero-spread.jpg" seed={27}>
+          <h2 className="text-[30px] leading-[1.05] font-bold">
+            <Highlighted text={t('onboarding.slide3Title')} />
+          </h2>
+          <p className="mt-2 flex items-center gap-1.5 text-[15px] font-medium text-ink-2">
+            <Star size={16} strokeWidth={0} className="fill-silk-3" />
+            {t('onboarding.rating')}
+          </p>
         </Slide>
       </div>
 
-      <div className="space-y-5 px-6 pt-4 pb-safe">
-        <div className="flex justify-center gap-2">
+      <div className="space-y-4 px-6 pt-3 pb-safe">
+        <div className="flex justify-center gap-1.5" role="tablist">
           {Array.from({ length: total }, (_, i) => (
             <button
               key={i}
               type="button"
-              aria-label={`${i + 1}`}
+              role="tab"
+              aria-selected={i === index}
+              aria-label={`${i + 1} / ${total}`}
               onClick={() => goTo(i)}
-              className={cn('h-2 rounded-full transition-all duration-300', i === index ? 'w-8 bg-brand' : 'w-2 bg-hint/30')}
+              className={cn(
+                'h-1.5 rounded-full transition-all duration-300 ease-silk',
+                i === index ? 'w-7 bg-brand' : 'w-1.5 bg-ink-2/30',
+              )}
             />
           ))}
         </div>
         <Button size="lg" fullWidth onClick={isLast ? finish : () => goTo(index + 1)} className="mb-2">
-          {isLast ? `${t('onboarding.start')} 🚀` : t('onboarding.next')}
+          {isLast ? t('onboarding.start') : t('onboarding.next')}
         </Button>
       </div>
     </div>
