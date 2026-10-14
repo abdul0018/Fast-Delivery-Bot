@@ -1,0 +1,745 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-14T09:26:46+00:00",
+  "title": "Design System: Fast Delivery",
+  "extensions": {
+    "colorMeta": {
+      "brand": {
+        "role": "primary",
+        "displayName": "Atlas Indigo",
+        "canonical": "var(--brand)",
+        "tonalRamp": [
+          "oklch(15.0% 0.175 273.3)",
+          "oklch(26.4% 0.175 273.3)",
+          "oklch(37.9% 0.175 273.3)",
+          "oklch(49.3% 0.175 273.3)",
+          "oklch(60.7% 0.175 273.3)",
+          "oklch(72.1% 0.175 273.3)",
+          "oklch(83.6% 0.175 273.3)",
+          "oklch(95.0% 0.175 273.3)"
+        ],
+        "approximation": "oklch(37.5% 0.175 273.3) for the default brand"
+      },
+      "on-brand": {
+        "role": "primary",
+        "displayName": "White Weft",
+        "canonical": "var(--on-brand)",
+        "tonalRamp": [
+          "oklch(15.0% 0.0 89.9)",
+          "oklch(26.4% 0.0 89.9)",
+          "oklch(37.9% 0.0 89.9)",
+          "oklch(49.3% 0.0 89.9)",
+          "oklch(60.7% 0.0 89.9)",
+          "oklch(72.1% 0.0 89.9)",
+          "oklch(83.6% 0.0 89.9)",
+          "oklch(95.0% 0.0 89.9)"
+        ],
+        "approximation": "oklch(100.0% 0.0 89.9) for the default brand"
+      },
+      "silk-magenta": {
+        "role": "secondary",
+        "displayName": "Pomegranate Silk",
+        "canonical": "var(--silk-2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.2 2.5)",
+          "oklch(26.4% 0.2 2.5)",
+          "oklch(37.9% 0.2 2.5)",
+          "oklch(49.3% 0.2 2.5)",
+          "oklch(60.7% 0.2 2.5)",
+          "oklch(72.1% 0.2 2.5)",
+          "oklch(83.6% 0.2 2.5)",
+          "oklch(95.0% 0.2 2.5)"
+        ],
+        "approximation": "oklch(56.5% 0.214 2.5) for the default brand"
+      },
+      "silk-saffron": {
+        "role": "tertiary",
+        "displayName": "Saffron Silk",
+        "canonical": "var(--silk-3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.167 77.0)",
+          "oklch(26.4% 0.167 77.0)",
+          "oklch(37.9% 0.167 77.0)",
+          "oklch(49.3% 0.167 77.0)",
+          "oklch(60.7% 0.167 77.0)",
+          "oklch(72.1% 0.167 77.0)",
+          "oklch(83.6% 0.167 77.0)",
+          "oklch(95.0% 0.167 77.0)"
+        ],
+        "approximation": "oklch(81.8% 0.167 77.0) for the default brand"
+      },
+      "brand-ink": {
+        "role": "primary",
+        "displayName": "Indigo Ink",
+        "canonical": "var(--brand)",
+        "tonalRamp": [
+          "oklch(15.0% 0.175 273.3)",
+          "oklch(26.4% 0.175 273.3)",
+          "oklch(37.9% 0.175 273.3)",
+          "oklch(49.3% 0.175 273.3)",
+          "oklch(60.7% 0.175 273.3)",
+          "oklch(72.1% 0.175 273.3)",
+          "oklch(83.6% 0.175 273.3)",
+          "oklch(95.0% 0.175 273.3)"
+        ],
+        "approximation": "oklch(37.5% 0.175 273.3) for the default brand"
+      },
+      "brand-soft": {
+        "role": "primary",
+        "displayName": "Indigo Wash",
+        "canonical": "color-mix(in srgb, var(--brand) 10%, var(--surface))",
+        "tonalRamp": [
+          "oklch(15.0% 0.015 286.1)",
+          "oklch(26.4% 0.015 286.1)",
+          "oklch(37.9% 0.015 286.1)",
+          "oklch(49.3% 0.015 286.1)",
+          "oklch(60.7% 0.015 286.1)",
+          "oklch(72.1% 0.015 286.1)",
+          "oklch(83.6% 0.015 286.1)",
+          "oklch(95.0% 0.015 286.1)"
+        ],
+        "approximation": "oklch(94.0% 0.015 286.1) for the default brand"
+      },
+      "sale": {
+        "role": "neutral",
+        "displayName": "Price Red",
+        "canonical": "oklch(57.8% 0.225 24.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.2 24.5)",
+          "oklch(26.4% 0.2 24.5)",
+          "oklch(37.9% 0.2 24.5)",
+          "oklch(49.3% 0.2 24.5)",
+          "oklch(60.7% 0.2 24.5)",
+          "oklch(72.1% 0.2 24.5)",
+          "oklch(83.6% 0.2 24.5)",
+          "oklch(95.0% 0.2 24.5)"
+        ]
+      },
+      "ok": {
+        "role": "neutral",
+        "displayName": "Leaf Green",
+        "canonical": "oklch(55.8% 0.137 153.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.137 153.1)",
+          "oklch(26.4% 0.137 153.1)",
+          "oklch(37.9% 0.137 153.1)",
+          "oklch(49.3% 0.137 153.1)",
+          "oklch(60.7% 0.137 153.1)",
+          "oklch(72.1% 0.137 153.1)",
+          "oklch(83.6% 0.137 153.1)",
+          "oklch(95.0% 0.137 153.1)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Loom Ink",
+        "canonical": "oklch(20.7% 0.043 288.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.043 288.3)",
+          "oklch(26.4% 0.043 288.3)",
+          "oklch(37.9% 0.043 288.3)",
+          "oklch(49.3% 0.043 288.3)",
+          "oklch(60.7% 0.043 288.3)",
+          "oklch(72.1% 0.043 288.3)",
+          "oklch(83.6% 0.043 288.3)",
+          "oklch(95.0% 0.043 288.3)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "oklch(47.4% 0.039 294.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.039 294.4)",
+          "oklch(26.4% 0.039 294.4)",
+          "oklch(37.9% 0.039 294.4)",
+          "oklch(49.3% 0.039 294.4)",
+          "oklch(60.7% 0.039 294.4)",
+          "oklch(72.1% 0.039 294.4)",
+          "oklch(83.6% 0.039 294.4)",
+          "oklch(95.0% 0.039 294.4)"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Undyed Cotton",
+        "canonical": "oklch(96.5% 0.01 81.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.01 81.8)",
+          "oklch(26.4% 0.01 81.8)",
+          "oklch(37.9% 0.01 81.8)",
+          "oklch(49.3% 0.01 81.8)",
+          "oklch(60.7% 0.01 81.8)",
+          "oklch(72.1% 0.01 81.8)",
+          "oklch(83.6% 0.01 81.8)",
+          "oklch(95.0% 0.01 81.8)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Bleached Cotton",
+        "canonical": "oklch(100.0% 0.0 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.0 89.9)",
+          "oklch(26.4% 0.0 89.9)",
+          "oklch(37.9% 0.0 89.9)",
+          "oklch(49.3% 0.0 89.9)",
+          "oklch(60.7% 0.0 89.9)",
+          "oklch(72.1% 0.0 89.9)",
+          "oklch(83.6% 0.0 89.9)",
+          "oklch(95.0% 0.0 89.9)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Selvedge Line",
+        "canonical": "oklch(90.9% 0.018 81.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.018 81.3)",
+          "oklch(26.4% 0.018 81.3)",
+          "oklch(37.9% 0.018 81.3)",
+          "oklch(49.3% 0.018 81.3)",
+          "oklch(60.7% 0.018 81.3)",
+          "oklch(72.1% 0.018 81.3)",
+          "oklch(83.6% 0.018 81.3)",
+          "oklch(95.0% 0.018 81.3)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Raw Cotton",
+        "canonical": "oklch(93.6% 0.015 80.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.015 80.7)",
+          "oklch(26.4% 0.015 80.7)",
+          "oklch(37.9% 0.015 80.7)",
+          "oklch(49.3% 0.015 80.7)",
+          "oklch(60.7% 0.015 80.7)",
+          "oklch(72.1% 0.015 80.7)",
+          "oklch(83.6% 0.015 80.7)",
+          "oklch(95.0% 0.015 80.7)"
+        ]
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Night Scrim",
+        "canonical": "oklch(15.2% 0.021 288.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.021 288.2)",
+          "oklch(26.4% 0.021 288.2)",
+          "oklch(37.9% 0.021 288.2)",
+          "oklch(49.3% 0.021 288.2)",
+          "oklch(60.7% 0.021 288.2)",
+          "oklch(72.1% 0.021 288.2)",
+          "oklch(83.6% 0.021 288.2)",
+          "oklch(95.0% 0.021 288.2)"
+        ]
+      },
+      "ground-dark": {
+        "role": "neutral",
+        "displayName": "Undyed Cotton (dark)",
+        "canonical": "oklch(18.6% 0.022 292.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.022 292.4)",
+          "oklch(26.4% 0.022 292.4)",
+          "oklch(37.9% 0.022 292.4)",
+          "oklch(49.3% 0.022 292.4)",
+          "oklch(60.7% 0.022 292.4)",
+          "oklch(72.1% 0.022 292.4)",
+          "oklch(83.6% 0.022 292.4)",
+          "oklch(95.0% 0.022 292.4)"
+        ]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Bleached Cotton (dark)",
+        "canonical": "oklch(23.3% 0.029 293.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.029 293.2)",
+          "oklch(26.4% 0.029 293.2)",
+          "oklch(37.9% 0.029 293.2)",
+          "oklch(49.3% 0.029 293.2)",
+          "oklch(60.7% 0.029 293.2)",
+          "oklch(72.1% 0.029 293.2)",
+          "oklch(83.6% 0.029 293.2)",
+          "oklch(95.0% 0.029 293.2)"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Loom Ink (dark)",
+        "canonical": "oklch(96.3% 0.012 301.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 301.3)",
+          "oklch(26.4% 0.012 301.3)",
+          "oklch(37.9% 0.012 301.3)",
+          "oklch(49.3% 0.012 301.3)",
+          "oklch(60.7% 0.012 301.3)",
+          "oklch(72.1% 0.012 301.3)",
+          "oklch(83.6% 0.012 301.3)",
+          "oklch(95.0% 0.012 301.3)"
+        ]
+      },
+      "ink-2-dark": {
+        "role": "neutral",
+        "displayName": "Faded Ink (dark)",
+        "canonical": "oklch(73.2% 0.036 296.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.036 296.5)",
+          "oklch(26.4% 0.036 296.5)",
+          "oklch(37.9% 0.036 296.5)",
+          "oklch(49.3% 0.036 296.5)",
+          "oklch(60.7% 0.036 296.5)",
+          "oklch(72.1% 0.036 296.5)",
+          "oklch(83.6% 0.036 296.5)",
+          "oklch(95.0% 0.036 296.5)"
+        ]
+      },
+      "line-dark": {
+        "role": "neutral",
+        "displayName": "Selvedge Line (dark)",
+        "canonical": "oklch(30.2% 0.036 293.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.036 293.3)",
+          "oklch(26.4% 0.036 293.3)",
+          "oklch(37.9% 0.036 293.3)",
+          "oklch(49.3% 0.036 293.3)",
+          "oklch(60.7% 0.036 293.3)",
+          "oklch(72.1% 0.036 293.3)",
+          "oklch(83.6% 0.036 293.3)",
+          "oklch(95.0% 0.036 293.3)"
+        ]
+      },
+      "muted-dark": {
+        "role": "neutral",
+        "displayName": "Raw Cotton (dark)",
+        "canonical": "oklch(28.1% 0.033 294.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.033 294.4)",
+          "oklch(26.4% 0.033 294.4)",
+          "oklch(37.9% 0.033 294.4)",
+          "oklch(49.3% 0.033 294.4)",
+          "oklch(60.7% 0.033 294.4)",
+          "oklch(72.1% 0.033 294.4)",
+          "oklch(83.6% 0.033 294.4)",
+          "oklch(95.0% 0.033 294.4)"
+        ]
+      },
+      "brand-ink-dark": {
+        "role": "primary",
+        "displayName": "Indigo Ink (dark)",
+        "canonical": "color-mix(in srgb, var(--brand) 38%, #ffffff)",
+        "tonalRamp": [
+          "oklch(15.0% 0.06 283.8)",
+          "oklch(26.4% 0.06 283.8)",
+          "oklch(37.9% 0.06 283.8)",
+          "oklch(49.3% 0.06 283.8)",
+          "oklch(60.7% 0.06 283.8)",
+          "oklch(72.1% 0.06 283.8)",
+          "oklch(83.6% 0.06 283.8)",
+          "oklch(95.0% 0.06 283.8)"
+        ],
+        "approximation": "oklch(76.8% 0.06 283.8) for the default brand"
+      },
+      "brand-soft-dark": {
+        "role": "primary",
+        "displayName": "Indigo Wash (dark)",
+        "canonical": "color-mix(in srgb, var(--brand) 32%, var(--surface))",
+        "tonalRamp": [
+          "oklch(15.0% 0.081 280.7)",
+          "oklch(26.4% 0.081 280.7)",
+          "oklch(37.9% 0.081 280.7)",
+          "oklch(49.3% 0.081 280.7)",
+          "oklch(60.7% 0.081 280.7)",
+          "oklch(72.1% 0.081 280.7)",
+          "oklch(83.6% 0.081 280.7)",
+          "oklch(95.0% 0.081 280.7)"
+        ],
+        "approximation": "oklch(27.6% 0.081 280.7) for the default brand"
+      },
+      "sale-dark": {
+        "role": "neutral",
+        "displayName": "Price Red (dark)",
+        "canonical": "oklch(67.6% 0.213 19.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.2 19.8)",
+          "oklch(26.4% 0.2 19.8)",
+          "oklch(37.9% 0.2 19.8)",
+          "oklch(49.3% 0.2 19.8)",
+          "oklch(60.7% 0.2 19.8)",
+          "oklch(72.1% 0.2 19.8)",
+          "oklch(83.6% 0.2 19.8)",
+          "oklch(95.0% 0.2 19.8)"
+        ]
+      },
+      "ok-dark": {
+        "role": "neutral",
+        "displayName": "Leaf Green (dark)",
+        "canonical": "oklch(75.9% 0.168 154.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.168 154.6)",
+          "oklch(26.4% 0.168 154.6)",
+          "oklch(37.9% 0.168 154.6)",
+          "oklch(49.3% 0.168 154.6)",
+          "oklch(60.7% 0.168 154.6)",
+          "oklch(72.1% 0.168 154.6)",
+          "oklch(83.6% 0.168 154.6)",
+          "oklch(95.0% 0.168 154.6)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Onboarding slide titles; the story viewer scales it to 44px / 1."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The Home offer on the silk field and the order-success title."
+      },
+      "page-title": {
+        "displayName": "Page Title",
+        "purpose": "Inner-page headers: Catalog, Cart, Profile."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section headings; the product sheet name runs at 24px."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base text on html; inputs at 16px to stop iOS zoom."
+      },
+      "body-strong": {
+        "displayName": "Body Strong",
+        "purpose": "Dish names on cards (system face, normal tracking), payment names, tab labels."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, fact rows, hints and error text."
+      },
+      "nav-label": {
+        "displayName": "Nav Label",
+        "purpose": "Bottom navigation captions."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Every button and button-styled link; 16px at large size."
+      },
+      "price": {
+        "displayName": "Price",
+        "purpose": "Card prices, tabular; 22px in the product sheet."
+      },
+      "price-total": {
+        "displayName": "Price Total",
+        "purpose": "Cart total; 28px on the success sheet."
+      },
+      "price-old": {
+        "displayName": "Old Price",
+        "purpose": "Struck old price in ink-2 with 1.5px line-through; discount tags."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-rest",
+        "value": "0 1px 2px rgba(23,20,42,0.06), 0 8px 24px -16px rgba(23,20,42,0.25)",
+        "purpose": "Product cards on cotton."
+      },
+      {
+        "name": "hero-lift",
+        "value": "0 2px 4px rgba(23,20,42,0.06), 0 18px 36px -18px rgba(23,20,42,0.4)",
+        "purpose": "The Home hero photo card."
+      },
+      {
+        "name": "brand-glow",
+        "value": "0 8px 18px -10px var(--brand)",
+        "purpose": "Primary buttons."
+      },
+      {
+        "name": "brand-glow-sm",
+        "value": "0 6px 14px -8px var(--brand)",
+        "purpose": "Quick-add button on product cards."
+      },
+      {
+        "name": "sheet-rise",
+        "value": "0 -12px 40px -12px rgba(0,0,0,0.35)",
+        "purpose": "Bottom sheets."
+      },
+      {
+        "name": "toast-float",
+        "value": "0 10px 30px -12px rgba(0,0,0,0.5)",
+        "purpose": "The toast."
+      },
+      {
+        "name": "photo-on-silk",
+        "value": "0 24px 48px -24px rgba(0,0,0,0.6)",
+        "purpose": "Onboarding photos on the silk field."
+      },
+      {
+        "name": "thumb",
+        "value": "0 2px 6px rgba(0,0,0,0.22)",
+        "purpose": "Switch knob."
+      },
+      {
+        "name": "focus-halo",
+        "value": "0 0 0 4px color-mix(in srgb, var(--brand) 14%, transparent)",
+        "purpose": "Focused inputs, with a brand border."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-silk",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve: expo ease-out for every state change."
+      },
+      {
+        "name": "sheet-up",
+        "value": "translateY(100%) to 0, 360ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Bottom sheets rise; close is 240ms ease-in down."
+      },
+      {
+        "name": "silk-ripple",
+        "value": "skewX(-9deg) blur(0.5px) to rest, 320ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Category rail ripple on category change, with a 320ms half-cell translate."
+      },
+      {
+        "name": "badge",
+        "value": "scale(0.6) to 1, 360ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Cart and quantity badges on count change; no overshoot."
+      },
+      {
+        "name": "rise",
+        "value": "opacity 0, translateY(10px) to rest, 420ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Catalog grid and toast entrance."
+      },
+      {
+        "name": "fade-in",
+        "value": "opacity 0 to 1, 200ms ease-out",
+        "purpose": "Scrim and story images."
+      },
+      {
+        "name": "press",
+        "value": "scale(0.98), 200ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Buttons; quick-add and stepper buttons press to 0.9 over 150ms."
+      },
+      {
+        "name": "switch",
+        "value": "300ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Switch track colour and knob travel; bump card fill 300ms."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "prefers-reduced-motion collapses all animation and transition durations."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "column",
+        "value": "512px",
+        "purpose": "Max app column (max-w-lg); no other breakpoints, the layout is one phone column."
+      }
+    ],
+    "silkField": {
+      "value": "background-color: var(--brand); background-image: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.028) 0 1px, transparent 1px 4px), linear-gradient(100deg, transparent 0%, rgb(255 255 255 / 0.07) 22%, transparent 40%, rgb(0 0 0 / 0.07) 62%, transparent 78%, rgb(255 255 255 / 0.05) 92%, transparent 100%); color: var(--on-brand);",
+      "purpose": "The silk-field utility: brand ground with warp threads and a low-contrast satin sheen (about 6% luminance shift)."
+    },
+    "atlasBand": {
+      "edge": {
+        "tile": "520px",
+        "height": "32px",
+        "threads": "2-4px",
+        "tongues": "34-80px",
+        "layers": [
+          "saffron bleed 45%",
+          "saffron",
+          "magenta bleed 50%",
+          "magenta",
+          "brand bleed 55%",
+          "brand"
+        ]
+      },
+      "rail": {
+        "tile": "64px (48px in sheet and bump)",
+        "height": "16px (12px in sheet and bump)",
+        "motif": "two stepped lozenges with a 40% copy offset 1.5px"
+      }
+    },
+    "icons": {
+      "library": "Lucide",
+      "stroke": 1.75,
+      "actionStroke": 2.25,
+      "actionStrokeScope": "Action glyphs inside filled controls only."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary-lg",
+      "description": "Full-width brand action: catalogue, add to cart with price, confirm order.",
+      "html": "<button class=\"ds-btn-primary\">Savatchaga qo'shish — 64 000 so'm</button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:54px; padding:0 24px; border:0; border-radius:16px; background:var(--brand, #2a2c9b); color:var(--on-brand, #ffffff); font-family:'Geologica Variable', system-ui, sans-serif; font-size:16px; font-weight:600; letter-spacing:-0.01em; box-shadow:0 8px 18px -10px var(--brand, #2a2c9b); cursor:pointer; transition:transform .2s cubic-bezier(0.16,1,0.3,1), filter .2s cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover { filter:brightness(1.1); } .ds-btn-primary:active { filter:brightness(.95); transform:scale(.98); } .ds-btn-primary:focus-visible { outline:2px solid var(--brand, #2a2c9b); outline-offset:2px; } .ds-btn-primary:disabled { opacity:.45; pointer-events:none; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Indigo-wash companion action: new order, retry.",
+      "html": "<button class=\"ds-btn-secondary\">Yangi buyurtma</button>",
+      "css": ".ds-btn-secondary { display:inline-flex; align-items:center; justify-content:center; height:44px; padding:0 16px; border:0; border-radius:14px; background:var(--brand-soft, #eaeaf5); color:var(--brand-ink, var(--brand, #2a2c9b)); font-family:'Geologica Variable', system-ui, sans-serif; font-size:15px; font-weight:600; letter-spacing:-0.01em; cursor:pointer; transition:transform .2s cubic-bezier(0.16,1,0.3,1), filter .2s cubic-bezier(0.16,1,0.3,1); } .ds-btn-secondary:hover { filter:brightness(.98); } .ds-btn-secondary:active { transform:scale(.98); } .ds-btn-secondary:focus-visible { outline:2px solid var(--brand, #2a2c9b); outline-offset:2px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labelled field with a Lucide icon; brand border and halo on focus, sale red on error.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-addr\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>Manzil</label><input id=\"ds-addr\" class=\"ds-field-input\" placeholder=\"Ko'cha, uy, kvartira\"></div>",
+      "css": ".ds-field { font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; } .ds-field-label { display:flex; align-items:center; gap:6px; margin-bottom:6px; font-size:13px; font-weight:500; color:var(--ink-2, #5d5870); } .ds-field-input { width:100%; box-sizing:border-box; padding:12px 16px; border:1px solid var(--line, #e7e0d4); border-radius:14px; background:var(--surface, #ffffff); color:var(--ink, #17142a); font:inherit; font-size:16px; outline:none; caret-color:var(--brand, #2a2c9b); transition:border-color .2s, box-shadow .2s; } .ds-field-input::placeholder { color:color-mix(in srgb, var(--ink-2, #5d5870) 70%, transparent); } .ds-field-input:focus { border-color:var(--brand, #2a2c9b); box-shadow:0 0 0 4px color-mix(in srgb, var(--brand, #2a2c9b) 14%, transparent); } .ds-field-input[aria-invalid=true] { border-color:var(--sale, #e0182d); }"
+    },
+    {
+      "name": "Category Tabs + Atlas Rail",
+      "kind": "chip",
+      "refersTo": "category-tab-active",
+      "description": "Horizontal category chips over the ikat rail; the rail shifts half a motif and ripples on change.",
+      "html": "<div class=\"ds-tabs\"><div class=\"ds-tabs-row\"><button class=\"ds-tab ds-tab-active\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8\"/><path d=\"M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7\"/><path d=\"m2.1 21.8 6.4-6.3\"/><path d=\"m19 5-7 7\"/></svg>Hammasi</button><button class=\"ds-tab\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 14-1 1\"/><path d=\"m13.75 18.25-1.25 1.42\"/><path d=\"M17.775 5.654a15.68 15.68 0 0 0-12.121 12.12\"/><path d=\"M18.8 9.3a1 1 0 0 0 2.1 7.7\"/><path d=\"M21.964 20.732a1 1 0 0 1-1.232 1.232l-18-5a1 1 0 0 1-.695-1.232A19.68 19.68 0 0 1 15.732 2.037a1 1 0 0 1 1.232.695z\"/></svg>Pitsa</button></div><div class=\"ds-rail\"><svg class=\"ds-atlas-rail\" aria-hidden=\"true\" width=\"100%\" height=\"16\" preserveAspectRatio=\"none\"><defs><pattern id=\"ds-abr-rail\" width=\"64\" height=\"16\" patternUnits=\"userSpaceOnUse\"><rect width=\"64\" height=\"16\" style=\"fill:var(--brand,#2a2c9b)\"/><polygon points=\"2.18,7.5 4.18,7.5 4.18,6 6.18,6 6.18,5.5 9.18,5.5 9.18,5 11.18,5 11.18,4 14.18,4 14.18,2 16.18,2 16.18,2 19.18,2 19.18,4.5 23.18,4.5 23.18,6 26.18,6 26.18,7 29.18,7 29.18,8 33.18,8 33.18,8 29.18,8 29.18,9 26.18,9 26.18,10 23.18,10 23.18,11.5 19.18,11.5 19.18,14 16.18,14 16.18,14 14.18,14 14.18,12 11.18,12 11.18,11 9.18,11 9.18,10.5 6.18,10.5 6.18,10 4.18,10 4.18,8.5 2.18,8.5\" transform=\"translate(1.5 0)\" style=\"fill:var(--silk-3,#ffb31a);opacity:.4\"/><polygon points=\"2.18,7.5 4.18,7.5 4.18,6 6.18,6 6.18,5.5 9.18,5.5 9.18,5 11.18,5 11.18,4 14.18,4 14.18,2 16.18,2 16.18,2 19.18,2 19.18,4.5 23.18,4.5 23.18,6 26.18,6 26.18,7 29.18,7 29.18,8 33.18,8 33.18,8 29.18,8 29.18,9 26.18,9 26.18,10 23.18,10 23.18,11.5 19.18,11.5 19.18,14 16.18,14 16.18,14 14.18,14 14.18,12 11.18,12 11.18,11 9.18,11 9.18,10.5 6.18,10.5 6.18,10 4.18,10 4.18,8.5 2.18,8.5\" style=\"fill:var(--silk-3,#ffb31a)\"/><polygon points=\"36.44,7.5 40.44,7.5 40.44,4.5 44.44,4.5 44.44,2.5 47.44,2.5 47.44,2.5 49.44,2.5 49.44,4.5 52.44,4.5 52.44,5 54.44,5 54.44,6 58.44,6 58.44,7.5 61.44,7.5 61.44,8.5 58.44,8.5 58.44,10 54.44,10 54.44,11 52.44,11 52.44,11.5 49.44,11.5 49.44,13.5 47.44,13.5 47.44,13.5 44.44,13.5 44.44,11.5 40.44,11.5 40.44,8.5 36.44,8.5\" transform=\"translate(1.5 0)\" style=\"fill:var(--silk-2,#d11d6b);opacity:.4\"/><polygon points=\"36.44,7.5 40.44,7.5 40.44,4.5 44.44,4.5 44.44,2.5 47.44,2.5 47.44,2.5 49.44,2.5 49.44,4.5 52.44,4.5 52.44,5 54.44,5 54.44,6 58.44,6 58.44,7.5 61.44,7.5 61.44,8.5 58.44,8.5 58.44,10 54.44,10 54.44,11 52.44,11 52.44,11.5 49.44,11.5 49.44,13.5 47.44,13.5 47.44,13.5 44.44,13.5 44.44,11.5 40.44,11.5 40.44,8.5 36.44,8.5\" style=\"fill:var(--silk-2,#d11d6b)\"/></pattern></defs><rect width=\"100%\" height=\"16\" fill=\"url(#ds-abr-rail)\"/></svg></div></div>",
+      "css": ".ds-tabs { font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; } .ds-tabs-row { display:flex; gap:8px; padding:4px 16px 12px; } .ds-tab { display:flex; align-items:center; gap:6px; height:40px; padding:0 14px; border:1px solid var(--line, #e7e0d4); border-radius:12px; background:var(--surface, #ffffff); color:var(--ink, #17142a); font:inherit; font-size:14px; font-weight:600; cursor:pointer; transition:background-color .2s, color .2s, border-color .2s; } .ds-tab:hover { background:var(--muted, #efe9df); } .ds-tab:focus-visible { outline:2px solid var(--brand, #2a2c9b); outline-offset:2px; } .ds-tab-active, .ds-tab-active:hover { background:var(--brand, #2a2c9b); border-color:var(--brand, #2a2c9b); color:var(--on-brand, #ffffff); } .ds-rail { overflow:hidden; } .ds-rail svg { display:block; width:100%; transform-origin:bottom; } .ds-tabs:hover .ds-rail svg { animation:ds-ripple .32s cubic-bezier(0.16,1,0.3,1); } @keyframes ds-ripple { 0% { transform:skewX(-9deg); filter:blur(.5px); } 100% { transform:none; filter:none; } }"
+    },
+    {
+      "name": "Product Card",
+      "kind": "card",
+      "refersTo": "product-card",
+      "description": "Photo-first dish card: saffron discount tag, two-line name, struck old price, red new price, brand quick-add.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%23efe9df'/%3E%3C/svg%3E\" alt=\"\"><span class=\"ds-card-tag\">−20%</span></div><div class=\"ds-card-body\"><h3 class=\"ds-card-name\">Klassik burger</h3><p class=\"ds-card-old\">40 000</p><p class=\"ds-card-price\">32 000 <span>so'm</span></p></div><button class=\"ds-card-add\" aria-label=\"Add\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></button></article>",
+      "css": ".ds-card { position:relative; width:158px; overflow:hidden; border-radius:20px; background:var(--surface, #ffffff); color:var(--ink, #17142a); font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; box-shadow:0 1px 2px rgba(23,20,42,.06), 0 8px 24px -16px rgba(23,20,42,.25); } .ds-card-photo { position:relative; aspect-ratio:1; background:var(--muted, #efe9df); overflow:hidden; } .ds-card-photo img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s cubic-bezier(0.16,1,0.3,1); } .ds-card:active .ds-card-photo img { transform:scale(1.03); } .ds-card-tag { position:absolute; top:10px; left:10px; padding:2px 6px; border-radius:8px; background:var(--silk-3, #ffb31a); color:#17142a; font-family:'Geologica Variable', system-ui, sans-serif; font-variant-numeric:tabular-nums; font-size:12px; font-weight:700; } .ds-card-body { padding:10px 12px 12px; } .ds-card-name { margin:0; min-height:2.5em; font-size:15px; line-height:1.25; font-weight:600; } .ds-card-old { margin:6px 0 0; font-family:'Geologica Variable', system-ui, sans-serif; font-variant-numeric:tabular-nums; font-size:12px; color:var(--ink-2, #5d5870); text-decoration:line-through; text-decoration-thickness:1.5px; } .ds-card-price { margin:0; font-family:'Geologica Variable', system-ui, sans-serif; font-variant-numeric:tabular-nums; letter-spacing:-0.01em; font-size:17px; line-height:1.25; font-weight:700; color:var(--sale, #e0182d); } .ds-card-price span { font-size:12px; font-weight:600; } .ds-card-add { position:absolute; right:10px; bottom:12px; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border:0; border-radius:12px; background:var(--brand, #2a2c9b); color:var(--on-brand, #ffffff); box-shadow:0 6px 14px -8px var(--brand, #2a2c9b); cursor:pointer; transition:transform .15s; } .ds-card-add:active { transform:scale(.9); } .ds-card-add:focus-visible { outline:2px solid var(--brand, #2a2c9b); outline-offset:2px; }"
+    },
+    {
+      "name": "Bottom Navigation",
+      "kind": "nav",
+      "refersTo": "bottom-nav",
+      "description": "Four-tab white bar; the active tab turns brand-ink with a tri-colour silk thread on top.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item ds-nav-active\" href=\"#\"><span class=\"ds-nav-thread\"><i></i><i></i><i></i></span><svg width=\"23\" height=\"23\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg>Bosh sahifa</a><a class=\"ds-nav-item\" href=\"#\"><span class=\"ds-nav-thread\"><i></i><i></i><i></i></span><svg width=\"23\" height=\"23\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\"/></svg>Katalog</a><a class=\"ds-nav-item\" href=\"#\"><span class=\"ds-nav-thread\"><i></i><i></i><i></i></span><svg width=\"23\" height=\"23\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Savatcha<b class=\"ds-nav-badge\">2</b></a><a class=\"ds-nav-item\" href=\"#\"><span class=\"ds-nav-thread\"><i></i><i></i><i></i></span><svg width=\"23\" height=\"23\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"5\"/><path d=\"M20 21a8 8 0 0 0-16 0\"/></svg>Profil</a></nav>",
+      "css": ".ds-nav { display:grid; grid-template-columns:repeat(4,1fr); padding:4px 8px 8px; border-top:1px solid var(--line, #e7e0d4); background:var(--surface, #ffffff); font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; } .ds-nav-item { position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; padding:10px 0 4px; font-size:11px; font-weight:500; color:var(--ink-2, #5d5870); text-decoration:none; transition:color .2s; } .ds-nav-item:hover { color:var(--ink, #17142a); } .ds-nav-item:focus-visible { outline:2px solid var(--brand, #2a2c9b); outline-offset:2px; border-radius:10px; } .ds-nav-thread { position:absolute; top:0; display:flex; width:32px; height:3px; overflow:hidden; border-radius:9999px; opacity:0; transition:opacity .2s; } .ds-nav-thread i:nth-child(1) { flex:3; background:var(--brand, #2a2c9b); } .ds-nav-thread i:nth-child(2) { flex:1; background:var(--silk-2, #d11d6b); } .ds-nav-thread i:nth-child(3) { flex:1; background:var(--silk-3, #ffb31a); } .ds-nav-active { color:var(--brand-ink, var(--brand, #2a2c9b)); } .ds-nav-active .ds-nav-thread { opacity:1; } .ds-nav-badge { position:absolute; top:4px; left:50%; margin-left:6px; display:flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 4px; box-sizing:border-box; border-radius:9999px; background:var(--silk-2, #d11d6b); color:#fff; font-family:'Geologica Variable', system-ui, sans-serif; font-variant-numeric:tabular-nums; font-size:10px; font-weight:700; }"
+    },
+    {
+      "name": "Silk Field Header",
+      "kind": "custom",
+      "refersTo": "brand",
+      "description": "Signature: brand silk field with satin sheen, ended by the seeded 520px abr edge.",
+      "html": "<header class=\"ds-silk\"><div class=\"ds-silk-field\"><h1 class=\"ds-silk-greet\">Xush kelibsiz, Aziz!</h1><h2 class=\"ds-silk-head\">Bugun nima yeymiz?</h2><p class=\"ds-silk-text\">30 daqiqada eshigingizgacha.</p></div><svg class=\"ds-atlas-edge\" aria-hidden=\"true\" width=\"100%\" height=\"32\" preserveAspectRatio=\"none\"><defs><pattern id=\"ds-abr-edge\" width=\"520\" height=\"32\" patternUnits=\"userSpaceOnUse\"><path d=\"M0 0H520V19.5H519V21H516V19.5H513V19.5H511V22.5H508V23H505V29H501V27H498V22H495V20.5H492V19.5H489V21.5H486V18.5H483V18.5H480V18.5H477V19H475V21H473V23H470V22H467V23H464V24.5H461V24H459V24H457V23.5H453V28H449V25.5H445V24H442V25H439V22H435V23.5H433V21H431V19H427V18.5H425V19H422V19.5H419V20H417V18.5H414V19.5H411V22.5H408V20.5H404V22.5H401V24H399V27H395V22.5H391V22H387V21.5H385V20H382V20H379V18H377V21.5H374V19.5H371V20H369V21H366V23H363V23H360V25.5H357V25.5H355V27H352V29H348V29.5H345V30.5H341V29.5H338V26H334V27H331V22H329V22H327V20.5H324V20H320V21.5H317V22H314V19.5H312V21H309V19.5H306V18.5H303V21.5H300V20H296V24H292V25.5H289V25.5H286V26.5H284V29H281V32H278V31.5H275V29H273V28.5H271V25.5H268V26H265V21.5H261V23.5H259V23H256V19H253V21H250V20H247V18.5H243V18.5H240V21H237V20H233V23H229V23H226V22.5H223V24H221V24.5H218V25.5H215V27.5H213V26.5H211V25.5H207V24H204V25H201V21.5H198V20.5H194V22H191V20H188V19H186V20H183V20H180V19H177V21.5H173V20H170V19H167V20.5H165V21H162V20.5H160V23.5H157V22H154V23H151V25H148V23H145V25H141V25.5H139V26H137V25H134V22.5H130V22H126V23.5H124V20H120V23H117V19.5H114V20.5H111V20H108V21.5H106V18H103V18.5H99V19.5H96V19.5H94V22H91V23.5H88V24.5H85V28.5H81V26H77V22H73V22.5H70V19H67V22H64V19H62V21H59V20H56V18.5H53V22H50V21H48V23H46V24H43V23H40V21.5H37V25.5H33V24.5H30V23.5H27V22.5H24V24H21V22H19V22.5H16V22H12V21H9V21H6V20.5H3V21.5H0V0Z\" style=\"fill:var(--silk-3,#ffb31a);opacity:0.45\"/><path d=\"M0 0H520V17.5H519V18.5H516V17.5H513V18H511V20.5H508V21H505V26.5H501V24.5H498V20H495V18.5H492V17.5H489V19H486V17H483V16.5H480V16.5H477V17H475V19H473V20H470V19.5H467V20.5H464V22H461V22H459V22H457V22H453V25.5H449V23H445V22H442V22.5H439V20H435V21H433V19H431V17.5H427V17H425V17H422V17.5H419V18H417V16.5H414V17.5H411V19.5H408V18.5H404V20.5H401V22H399V24.5H395V20.5H391V20H387V19H385V18H382V18H379V16.5H377V19H374V17.5H371V18H369V19H366V20.5H363V20.5H360V23H357V23H355V24.5H352V26.5H348V27.5H345V28.5H341V27H338V24H334V24H331V20.5H329V20H327V19H324V18H320V19H317V19.5H314V17.5H312V18.5H309V17.5H306V17H303V19H300V18H296V21.5H292V23H289V23.5H286V24.5H284V26.5H281V30.5H278V29H275V26.5H273V26H271V23.5H268V23.5H265V19.5H261V21H259V20H256V17H253V18.5H250V17.5H247V16.5H243V16.5H240V18.5H237V18H233V20.5H229V20.5H226V20H223V22H221V22.5H218V23.5H215V25H213V24.5H211V23.5H207V22H204V22.5H201V20H198V18.5H194V19.5H191V18H188V17.5H186V18H183V17.5H180V17H177V19H173V17.5H170V17H167V18H165V18.5H162V18.5H160V20.5H157V19.5H154V20.5H151V22.5H148V21H145V23H141V23.5H139V23.5H137V23H134V20.5H130V20H126V21H124V18H120V20H117V17.5H114V18H111V18H108V19H106V16.5H103V16.5H99V17.5H96V17.5H94V19.5H91V21H88V22.5H85V26H81V23H77V20H73V20H70V17H67V19H64V17H62V18.5H59V18H56V17H53V19.5H50V19H48V20.5H46V21H43V20.5H40V20H37V23H33V22.5H30V21.5H27V20.5H24V21.5H21V19.5H19V20H16V19.5H12V18.5H9V18.5H6V18H3V19H0V0Z\" style=\"fill:var(--silk-3,#ffb31a)\"/><path d=\"M0 0H520V14.5H519V16H516V14.5H513V15H511V17.5H508V18H505V23.5H501V22H498V17H495V15.5H492V14.5H489V16H486V13.5H483V13.5H480V13.5H477V14H475V16H473V17.5H470V17H467V18H464V19H461V19H459V19H457V19H453V22.5H449V20H445V19H442V20H439V17H435V18H433V16H431V14H427V14H425V14H422V14.5H419V15H417V13.5H414V14.5H411V17H408V15.5H404V17.5H401V19H399V22H395V17.5H391V17H387V16.5H385V15H382V15H379V13.5H377V16H374V14.5H371V15H369V16H366V17.5H363V18H360V20.5H357V20H355V22H352V23.5H348V24.5H345V25.5H341V24.5H338V21H334V21.5H331V17H329V17H327V16H324V15H320V16.5H317V16.5H314V14.5H312V15.5H309V14.5H306V14H303V16.5H300V15H296V18.5H292V20H289V20.5H286V21.5H284V24H281V28H278V26.5H275V24H273V23H271V20.5H268V21H265V16.5H261V18H259V17.5H256V14H253V15.5H250V15H247V13.5H243V13.5H240V16H237V15H233V17.5H229V18H226V17H223V19H221V19.5H218V20.5H215V22H213V21.5H211V20.5H207V19H204V20H201V16.5H198V15.5H194V17H191V15H188V14H186V15H183V15H180V14H177V16.5H173V15H170V14H167V15.5H165V15.5H162V15.5H160V18H157V17H154V18H151V20H148V18H145V20H141V20.5H139V21H137V20H134V17.5H130V17H126V18.5H124V15H120V17.5H117V14.5H114V15.5H111V15H108V16.5H106V13.5H103V13.5H99V14.5H96V14.5H94V16.5H91V18H88V19.5H85V23.5H81V20.5H77V17H73V17H70V14H67V16.5H64V14H62V15.5H59V15H56V13.5H53V17H50V16H48V17.5H46V18.5H43V18H40V17H37V20H33V19.5H30V18.5H27V17.5H24V18.5H21V16.5H19V17.5H16V17H12V15.5H9V16H6V15.5H3V16H0V0Z\" style=\"fill:var(--silk-2,#d11d6b);opacity:0.5\"/><path d=\"M0 0H520V12.5H519V13.5H516V13H513V13.5H511V15.5H508V16.5H505V21.5H501V19.5H498V15.5H495V14H492V13H489V14H486V12H483V12H480V12H477V12.5H475V14H473V15H470V15H467V16H464V17H461V17H459V17H457V17.5H453V20.5H449V18.5H445V17H442V17.5H439V15.5H435V16H433V14H431V12.5H427V12.5H425V12.5H422V13H419V13H417V12H414V13H411V14.5H408V14H404V16H401V17H399V19.5H395V16H391V15H387V14.5H385V13H382V13H379V12H377V14H374V12.5H371V13H369V14H366V15.5H363V16H360V18H357V18H355V19.5H352V21.5H348V23H345V23.5H341V22H338V19H334V19H331V15.5H329V15.5H327V14.5H324V13.5H320V14H317V14H314V12.5H312V13.5H309V12.5H306V12H303V14H300V13.5H296V16.5H292V18H289V18.5H286V20H284V22H281V25.5H278V24H275V22H273V21H271V18.5H268V18.5H265V15H261V16H259V15H256V12.5H253V13.5H250V13H247V12H243V12H240V13.5H237V13H233V15.5H229V15.5H226V15.5H223V17H221V17.5H218V18.5H215V20H213V20H211V18.5H207V17H204V17.5H201V15H198V14H194V15H191V13.5H188V12.5H186V13H183V13H180V12.5H177V14H173V13H170V12.5H167V13.5H165V14H162V13.5H160V15.5H157V15H154V16H151V17.5H148V16.5H145V18H141V19H139V19H137V18H134V16H130V15.5H126V16H124V13.5H120V15H117V13H114V13.5H111V13H108V14H106V12H103V12H99V12.5H96V13H94V15H91V16.5H88V18H85V21H81V18H77V15H73V15H70V12.5H67V14H64V12H62V13.5H59V13H56V12H53V14.5H50V14H48V15.5H46V16H43V16H40V15.5H37V18H33V18H30V17H27V16H24V16.5H21V15H19V15H16V14.5H12V13.5H9V13.5H6V13.5H3V14H0V0Z\" style=\"fill:var(--silk-2,#d11d6b)\"/><path d=\"M0 0H520V10H519V11.5H516V10.5H513V10.5H511V13H508V14H505V19H501V17H498V12.5H495V11H492V10H489V11.5H486V9.5H483V9H480V9.5H477V10H475V11.5H473V13H470V12.5H467V13.5H464V14.5H461V14.5H459V14.5H457V14.5H453V18H449V16H445V14.5H442V15H439V12.5H435V13.5H433V11.5H431V10H427V9.5H425V9.5H422V10H419V10.5H417V9H414V10H411V12.5H408V11H404V13H401V14.5H399V17H395V13.5H391V12.5H387V12H385V10.5H382V10.5H379V9H377V11.5H374V10H371V10.5H369V11.5H366V13H363V13.5H360V15.5H357V15.5H355V17.5H352V19H348V20H345V21H341V19.5H338V16.5H334V17H331V13H329V12.5H327V11.5H324V10.5H320V11.5H317V12H314V10H312V11H309V10H306V9.5H303V12H300V10.5H296V14H292V15.5H289V16H286V17H284V19.5H281V23H278V21.5H275V19.5H273V18.5H271V16H268V16H265V12.5H261V13.5H259V13H256V9.5H253V11H250V10.5H247V9H243V9H240V11.5H237V10.5H233V13H229V13H226V13H223V14.5H221V15H218V16H215V17.5H213V17H211V16H207V14.5H204V15H201V12.5H198V11.5H194V12.5H191V10.5H188V10H186V10.5H183V10.5H180V9.5H177V11.5H173V10.5H170V10H167V11H165V11H162V11H160V13.5H157V12.5H154V13.5H151V15H148V13.5H145V15.5H141V16H139V16.5H137V15.5H134V13.5H130V13H126V13.5H124V11H120V13H117V10H114V11H111V10.5H108V11.5H106V9H103V9H99V10H96V10.5H94V12.5H91V13.5H88V15H85V18.5H81V16H77V12.5H73V12.5H70V9.5H67V12H64V9.5H62V11H59V10.5H56V9.5H53V12H50V11.5H48V13H46V14H43V13.5H40V12.5H37V15.5H33V15H30V14H27V13.5H24V14H21V12.5H19V12.5H16V12H12V11H9V11H6V11H3V11.5H0V0Z\" style=\"fill:var(--brand,#2a2c9b);opacity:0.55\"/><path d=\"M0 0H520V8.5H519V9H516V8.5H513V9H511V11H508V12.5H505V17H501V15H498V11H495V9.5H492V8.5H489V9H486V8H483V7.5H480V8H477V8H475V9.5H473V10.5H470V10.5H467V11H464V12H461V12.5H459V13H457V13H453V16H449V14H445V12.5H442V13H439V11H435V11H433V9.5H431V8.5H427V8H425V8H422V8.5H419V8.5H417V7.5H414V8.5H411V10H408V9.5H404V11.5H401V13H399V15H395V11.5H391V10.5H387V10H385V8.5H382V8.5H379V7.5H377V9H374V8H371V9H369V9.5H366V11H363V11.5H360V13.5H357V13.5H355V15H352V17H348V18.5H345V19H341V17.5H338V15H334V14.5H331V11.5H329V11H327V10H324V9H320V9.5H317V9.5H314V8.5H312V9H309V8.5H306V8H303V9.5H300V9H296V12H292V13.5H289V14H286V15.5H284V17.5H281V20.5H278V19.5H275V17.5H273V16.5H271V14.5H268V14H265V10.5H261V11H259V10.5H256V8H253V9H250V8.5H247V7.5H243V7.5H240V9H237V9H233V10.5H229V11H226V11H223V12.5H221V13H218V14H215V15H213V15.5H211V14.5H207V13H204V13H201V11H198V10H194V10.5H191V9H188V8.5H186V8.5H183V8.5H180V8H177V9H173V8.5H170V8H167V9H165V9H162V9H160V11H157V10.5H154V11.5H151V13H148V12H145V14H141V14.5H139V14.5H137V14H134V12H130V11H126V11.5H124V9.5H120V10.5H117V8.5H114V9H111V8.5H108V9.5H106V7.5H103V7.5H99V8.5H96V9H94V10.5H91V12H88V13.5H85V16H81V13.5H77V10.5H73V10H70V8H67V9.5H64V8H62V9H59V8.5H56V8H53V10H50V9.5H48V10.5H46V11.5H43V11.5H40V11H37V13.5H33V13.5H30V12.5H27V11.5H24V12H21V10.5H19V10.5H16V10H12V9H9V9H6V8.5H3V9H0V0Z\" style=\"fill:var(--brand,#2a2c9b)\"/></pattern></defs><rect width=\"100%\" height=\"32\" fill=\"url(#ds-abr-edge)\"/></svg></header>",
+      "css": ".ds-silk svg { display:block; width:100%; } .ds-silk-field { padding:16px 16px 20px; background-color:var(--brand, #2a2c9b); background-image:repeating-linear-gradient(90deg, rgb(255 255 255 / .028) 0 1px, transparent 1px 4px), linear-gradient(100deg, transparent 0%, rgb(255 255 255 / .07) 22%, transparent 40%, rgb(0 0 0 / .07) 62%, transparent 78%, rgb(255 255 255 / .05) 92%, transparent 100%); color:var(--on-brand, #ffffff); } .ds-silk-greet { margin:0; font-family:'Geologica Variable', system-ui, sans-serif; font-size:22px; line-height:1.15; font-weight:700; letter-spacing:-0.02em; } .ds-silk-head { margin:24px 0 0; font-family:'Geologica Variable', system-ui, sans-serif; font-size:26px; line-height:1.1; font-weight:700; letter-spacing:-0.02em; text-wrap:balance; } .ds-silk-text { margin:8px 0 0; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size:15px; color:color-mix(in srgb, var(--on-brand, #ffffff) 80%, transparent); }"
+    },
+    {
+      "name": "Quantity Stepper",
+      "kind": "custom",
+      "refersTo": "quantity-stepper",
+      "description": "Minus / tabular count / brand plus; 2.25 stroke action glyphs.",
+      "html": "<div class=\"ds-step\" role=\"group\"><button class=\"ds-step-btn\" aria-label=\"−\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg></button><span class=\"ds-step-val\">2</span><button class=\"ds-step-btn ds-step-plus\" aria-label=\"+\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></button></div>",
+      "css": ".ds-step { display:inline-flex; align-items:center; gap:2px; padding:2px; border:1px solid var(--line, #e7e0d4); border-radius:13px; background:var(--surface, #ffffff); color:var(--ink, #17142a); } .ds-step-btn { display:flex; align-items:center; justify-content:center; width:40px; height:40px; border:0; border-radius:10px; background:transparent; color:var(--ink, #17142a); cursor:pointer; transition:transform .15s, background-color .15s; } .ds-step-btn:hover { background:var(--muted, #efe9df); } .ds-step-btn:active { transform:scale(.9); } .ds-step-btn:focus-visible { outline:2px solid var(--brand, #2a2c9b); outline-offset:2px; } .ds-step-plus, .ds-step-plus:hover { background:var(--brand, #2a2c9b); color:var(--on-brand, #ffffff); } .ds-step-val { min-width:28px; text-align:center; font-family:'Geologica Variable', system-ui, sans-serif; font-variant-numeric:tabular-nums; font-size:16px; font-weight:600; }"
+    },
+    {
+      "name": "Order Bump",
+      "kind": "custom",
+      "refersTo": "switch",
+      "description": "Rail-topped offer card with a switch; switching on floods the card with brand silk.",
+      "html": "<label class=\"ds-bump\"><div class=\"ds-bump-rail\"><svg class=\"ds-atlas-rail\" aria-hidden=\"true\" width=\"100%\" height=\"16\" preserveAspectRatio=\"none\"><defs><pattern id=\"ds-abr-rail\" width=\"64\" height=\"16\" patternUnits=\"userSpaceOnUse\"><rect width=\"64\" height=\"16\" style=\"fill:var(--brand,#2a2c9b)\"/><polygon points=\"2.18,7.5 4.18,7.5 4.18,6 6.18,6 6.18,5.5 9.18,5.5 9.18,5 11.18,5 11.18,4 14.18,4 14.18,2 16.18,2 16.18,2 19.18,2 19.18,4.5 23.18,4.5 23.18,6 26.18,6 26.18,7 29.18,7 29.18,8 33.18,8 33.18,8 29.18,8 29.18,9 26.18,9 26.18,10 23.18,10 23.18,11.5 19.18,11.5 19.18,14 16.18,14 16.18,14 14.18,14 14.18,12 11.18,12 11.18,11 9.18,11 9.18,10.5 6.18,10.5 6.18,10 4.18,10 4.18,8.5 2.18,8.5\" transform=\"translate(1.5 0)\" style=\"fill:var(--silk-3,#ffb31a);opacity:.4\"/><polygon points=\"2.18,7.5 4.18,7.5 4.18,6 6.18,6 6.18,5.5 9.18,5.5 9.18,5 11.18,5 11.18,4 14.18,4 14.18,2 16.18,2 16.18,2 19.18,2 19.18,4.5 23.18,4.5 23.18,6 26.18,6 26.18,7 29.18,7 29.18,8 33.18,8 33.18,8 29.18,8 29.18,9 26.18,9 26.18,10 23.18,10 23.18,11.5 19.18,11.5 19.18,14 16.18,14 16.18,14 14.18,14 14.18,12 11.18,12 11.18,11 9.18,11 9.18,10.5 6.18,10.5 6.18,10 4.18,10 4.18,8.5 2.18,8.5\" style=\"fill:var(--silk-3,#ffb31a)\"/><polygon points=\"36.44,7.5 40.44,7.5 40.44,4.5 44.44,4.5 44.44,2.5 47.44,2.5 47.44,2.5 49.44,2.5 49.44,4.5 52.44,4.5 52.44,5 54.44,5 54.44,6 58.44,6 58.44,7.5 61.44,7.5 61.44,8.5 58.44,8.5 58.44,10 54.44,10 54.44,11 52.44,11 52.44,11.5 49.44,11.5 49.44,13.5 47.44,13.5 47.44,13.5 44.44,13.5 44.44,11.5 40.44,11.5 40.44,8.5 36.44,8.5\" transform=\"translate(1.5 0)\" style=\"fill:var(--silk-2,#d11d6b);opacity:.4\"/><polygon points=\"36.44,7.5 40.44,7.5 40.44,4.5 44.44,4.5 44.44,2.5 47.44,2.5 47.44,2.5 49.44,2.5 49.44,4.5 52.44,4.5 52.44,5 54.44,5 54.44,6 58.44,6 58.44,7.5 61.44,7.5 61.44,8.5 58.44,8.5 58.44,10 54.44,10 54.44,11 52.44,11 52.44,11.5 49.44,11.5 49.44,13.5 47.44,13.5 47.44,13.5 44.44,13.5 44.44,11.5 40.44,11.5 40.44,8.5 36.44,8.5\" style=\"fill:var(--silk-2,#d11d6b)\"/></pattern></defs><rect width=\"100%\" height=\"16\" fill=\"url(#ds-abr-rail)\"/></svg></div><span class=\"ds-bump-row\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%23efe9df'/%3E%3C/svg%3E\" alt=\"\"><span class=\"ds-bump-copy\"><b>Coca-Cola qo'shasizmi?</b><span class=\"ds-bump-price\"><s>8 000</s> <em>5 000 so'm</em></span></span><input type=\"checkbox\" class=\"ds-switch\" role=\"switch\"></span></label>",
+      "css": ".ds-bump { display:block; overflow:hidden; border-radius:20px; background:var(--surface, #ffffff); color:var(--ink, #17142a); font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; cursor:pointer; transition:background-color .3s, color .3s; } .ds-bump:has(.ds-switch:checked) { background:var(--brand, #2a2c9b); color:var(--on-brand, #ffffff); } .ds-bump-rail svg { display:block; width:100%; height:12px; } .ds-bump-row { display:flex; align-items:center; gap:12px; padding:14px; } .ds-bump-row img { width:60px; height:60px; border-radius:14px; object-fit:cover; background:var(--muted, #efe9df); } .ds-bump-copy { flex:1; min-width:0; font-size:15px; line-height:1.375; } .ds-bump-price { display:block; margin-top:4px; font-family:'Geologica Variable', system-ui, sans-serif; font-variant-numeric:tabular-nums; font-size:13px; } .ds-bump-price s { color:var(--ink-2, #5d5870); } .ds-bump-price em { font-style:normal; font-weight:700; color:var(--sale, #e0182d); } .ds-bump:has(.ds-switch:checked) s { color:color-mix(in srgb, var(--on-brand, #ffffff) 70%, transparent); } .ds-bump:has(.ds-switch:checked) em { color:var(--silk-3, #ffb31a); } .ds-switch { appearance:none; position:relative; flex-shrink:0; width:52px; height:30px; margin:0; border-radius:9999px; background:color-mix(in srgb, var(--ink-2, #5d5870) 30%, transparent); cursor:pointer; transition:background-color .3s cubic-bezier(0.16,1,0.3,1); } .ds-switch::after { content:''; position:absolute; top:2px; left:2px; width:26px; height:26px; border-radius:9999px; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.22); transition:transform .3s cubic-bezier(0.16,1,0.3,1); } .ds-switch:checked { background:var(--on-brand, #ffffff); } .ds-switch:checked::after { transform:translateX(22px); background:var(--brand, #2a2c9b); } .ds-switch:focus-visible { outline:2px solid var(--silk-3, #ffb31a); outline-offset:2px; }"
+    },
+    {
+      "name": "Payment Methods",
+      "kind": "custom",
+      "refersTo": "payment-option",
+      "description": "Radio group in one flat card: icon well turns brand when selected, ring fills with a brand dot.",
+      "html": "<div class=\"ds-pay\" role=\"radiogroup\"><button class=\"ds-pay-opt\" role=\"radio\" aria-checked=\"true\"><span class=\"ds-pay-icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"12\" x=\"2\" y=\"6\" rx=\"2\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/><path d=\"M6 12h.01M18 12h.01\"/></svg></span><span class=\"ds-pay-copy\"><b>Naqd pul</b><small>Kuryerga to'lash</small></span><span class=\"ds-pay-ring\"></span></button><button class=\"ds-pay-opt\" role=\"radio\" aria-checked=\"false\"><span class=\"ds-pay-icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"14\" x=\"2\" y=\"5\" rx=\"2\"/><line x1=\"2\" x2=\"22\" y1=\"10\" y2=\"10\"/></svg></span><span class=\"ds-pay-copy\"><b>Payme / Click</b><small>Telegram orqali</small></span><span class=\"ds-pay-ring\"></span></button></div>",
+      "css": ".ds-pay { overflow:hidden; border-radius:20px; background:var(--surface, #ffffff); font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; } .ds-pay-opt { display:flex; align-items:center; gap:12px; width:100%; padding:14px 16px; border:0; border-top:1px solid var(--line, #e7e0d4); background:transparent; color:var(--ink, #17142a); text-align:left; font:inherit; cursor:pointer; transition:background-color .2s; } .ds-pay-opt:first-child { border-top:0; } .ds-pay-opt:hover { background:color-mix(in srgb, var(--muted, #efe9df) 60%, transparent); } .ds-pay-opt:focus-visible { outline:2px solid var(--brand, #2a2c9b); outline-offset:-2px; } .ds-pay-icon { display:flex; align-items:center; justify-content:center; width:40px; height:40px; flex-shrink:0; border-radius:12px; background:var(--muted, #efe9df); color:var(--ink, #17142a); transition:background-color .2s; } .ds-pay-opt[aria-checked=true] .ds-pay-icon { background:var(--brand, #2a2c9b); color:var(--on-brand, #ffffff); } .ds-pay-copy { flex:1; min-width:0; } .ds-pay-copy b { display:block; font-size:15px; font-weight:600; } .ds-pay-copy small { display:block; font-size:13px; color:var(--ink-2, #5d5870); } .ds-pay-ring { display:flex; align-items:center; justify-content:center; width:22px; height:22px; box-sizing:border-box; border:2px solid color-mix(in srgb, var(--ink-2, #5d5870) 40%, transparent); border-radius:9999px; } .ds-pay-opt[aria-checked=true] .ds-pay-ring { border-color:var(--brand, #2a2c9b); } .ds-pay-opt[aria-checked=true] .ds-pay-ring::after { content:''; width:10px; height:10px; border-radius:9999px; background:var(--brand, #2a2c9b); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Dressed in Abr Silk",
+    "overview": "**Creative North Star: \"Dressed in Abr Silk\"**\n\nThe menu is dressed in abr (ikat) atlas silk. The restaurant's colour never shows up as a lone accent on grey: it arrives as full-width silk fields (the Home header, onboarding slides, the story viewer, the order-success sheet) that end in a feathered, dye-bled band edge, and as thin ikat rails under the category tabs, product photos and the order bump. Below the silk, the food sits on warm cotton (`ground`) in calm, photo-first white cards. The silk carries identity; the cards carry appetite and price.\n\nThe system is dense and one-handed: a single column no wider than 512px, 16px gutters, primary actions stacked at thumb height, sticky CTAs above the bottom navigation. It lives inside Telegram's WebView, so it follows Telegram's light or dark scheme (`<html class=\"dark\">`), safe areas and native Back button, and it never reads as a website in a frame. Because this is a universal template, all identity colour flows from four tokens written from `config/brand.ts` (`--brand`, `--on-brand`, `--silk-2`, `--silk-3`); the indigo, pomegranate and saffron values recorded here are the default restaurant, not a constant.\n\nConfirmed rejection: the category default of a grey ground with one orange accent and emoji icons.",
+    "keyCharacteristics": [
+      "Full-width brand silk fields with a low-contrast satin sheen, always bounded by a seeded, stepped abr edge.",
+      "Warm cotton ground, white photo-first cards, ink-tinted soft shadows.",
+      "Geologica Variable for headings, buttons and every price (tabular numerals); system UI for body and product names.",
+      "Honest pricing: struck grey old price, red new price, saffron discount tag.",
+      "Lucide line icons at 1.75 stroke; heavier 2.25 only for action glyphs in filled controls.",
+      "Expo ease-out motion; sheets rise, the rail ripples on category change, nothing bounces."
+    ],
+    "rules": [
+      {
+        "name": "The Four-Token Rebrand Rule",
+        "body": "All identity colour flows from `--brand`, `--on-brand`, `--silk-2` and `--silk-3`, set in `config/brand.ts`. `brand-ink` and `brand-soft` are derived with `color-mix`, never typed. A component that hard-codes the default indigo breaks every other restaurant.",
+        "section": "colors"
+      },
+      {
+        "name": "The Silk Field Rule",
+        "body": "Brand colour arrives as a full-width field or band, not as a tinted chip on grey. Small brand fills (buttons, quick-add, the active tab) are the field's threads, not substitutes for it.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Red Rule",
+        "body": "`sale` marks the new price and errors only. Old prices are `ink-2` struck through (1.5px decoration); discounts are saffron tags, never red.",
+        "section": "colors"
+      },
+      {
+        "name": "The Saffron Carries Ink Rule",
+        "body": "Saffron surfaces (discount tag, avatar disc) always carry fixed ink `#17142A`, in dark mode too, because saffron stays light in both schemes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Price Rule",
+        "body": "Every number a customer pays, counts or compares (prices, quantities, badges, step numerals) uses the `price` treatment: Geologica, `tabular-nums`, -0.01em. Prices are formatted with spaces (`32 000 so'm`) and the currency word drops to 12px semibold.",
+        "section": "typography"
+      },
+      {
+        "name": "The Plain Dish Rule",
+        "body": "Headings h1-h3 are Geologica by default with -0.02em tracking and balanced wrapping, but dish names on cards are set back to the system face at normal tracking. The menu reads like food, not a poster.",
+        "section": "typography"
+      },
+      {
+        "name": "The Thumb Column Rule",
+        "body": "One column, 512px maximum, and the next action is always a full-width button within reach of the thumb.",
+        "section": "layout"
+      },
+      {
+        "name": "The Silk Over Shadow Rule",
+        "body": "Brand surfaces are flat and never get a drop shadow; only cotton objects (cards, sheets, the toast) and brand buttons lift. Depth on silk comes from sheen, not elevation.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Stepped Edge Rule",
+        "body": "A brand field never ends in a straight line, a CSS wave or a curve. It ends in a full-width AtlasBand edge (32px tall at standard size), and the field above it carries the `silk-field` sheen.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Silk Ease Rule",
+        "body": "Everything decelerates on the expo curve and comes to rest; nothing bounces or overshoots.",
+        "section": "components"
+      },
+      {
+        "name": "The Two Strokes Rule",
+        "body": "Lucide line icons render at 1.75 stroke everywhere (nav, tabs, fields, facts, payment, empty states). Only action glyphs inside filled controls (stepper −/+, quick-add +, story close and arrow, success check) step up to 2.25.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do reference colour through the tokens (`var(--brand)`, `--silk-2`, `--silk-3`, `--on-brand`, `--brand-ink`, `--brand-soft`) so a restaurant can rebrand from `config/brand.ts` alone.",
+      "Do end every full-width brand field with an AtlasBand edge (32px, 520px seeded tile) and give the field the `silk-field` sheen.",
+      "Do show price as struck `ink-2` old price above a red tabular new price, with a saffron `−N%` tag on the photo.",
+      "Do set every price, quantity and badge in Geologica with tabular numerals.",
+      "Do keep the primary action full-width at thumb height and pad fixed bottom elements by the safe-area inset.",
+      "Do use Lucide line icons at 1.75 stroke, and 2.25 only for action glyphs inside filled controls.",
+      "Do animate on `cubic-bezier(0.16, 1, 0.3, 1)`: sheets 360ms, the rail ripple 320ms.",
+      "Do verify both Telegram light and dark schemes; body text holds at least 4.5:1 in each."
+    ],
+    "donts": [
+      "Don't fall back to the category default: a grey ground with one orange accent and emoji icons.",
+      "Don't hard-code the default indigo, pomegranate or saffron hex in a component.",
+      "Don't use `sale` red for anything but the new price and errors.",
+      "Don't end a brand field with a straight edge, a CSS wave or a rounded bottom.",
+      "Don't animate the atlas band continuously or on scroll; it moves only when the category changes.",
+      "Don't use bounce, spring overshoot or elastic easing.",
+      "Don't put drop shadows on silk fields or bands.",
+      "Don't add uppercase kickers or eyebrow labels above headings, or emoji and text-glyph icons."
+    ]
+  }
+}
