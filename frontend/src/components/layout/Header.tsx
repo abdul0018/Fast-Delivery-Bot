@@ -23,32 +23,27 @@ function Avatar({ name, photo, size = 44 }: { name: string; photo?: string; size
 }
 
 /**
- * Bosh sahifa sarlavhasi — brend rangidagi "atlas" maydoni:
- * restoran nomi, foydalanuvchi ismi bilan salomlashish va (children) stories.
- * Maydonning pastki cheti — zinapoyasimon abr lentasi.
+ * Bosh sahifa sarlavhasi — brend rangidagi "atlas" maydoni (ekran balandligining ~40%):
+ * "Xush kelibsiz, {ism}!", restoran nomi (o'ng tomonda, sokin) va stories.
+ * Maydonning pastki cheti — abr lentasi; asosiy vidjet uning ustiga chiqib turadi (overlap).
  */
-export function HomeHeader({ children, action }: { children?: ReactNode; action?: ReactNode }) {
+export function HomeHeader({ children }: { children?: ReactNode }) {
   const { user } = useTelegram();
   const me = useUserStore((state) => state.me);
   const { t } = useI18n();
   const name = user?.first_name || me?.firstName || t('home.guest');
 
   return (
-    <header className="relative text-on-brand">
-      <div className="bg-brand px-4 pt-4 pb-3">
+    <header className="relative">
+      <div className="silk-field px-4 pt-4 pb-16">
         <div className="flex items-center gap-3">
           <Avatar name={name} photo={user?.photo_url} />
-          <div className="min-w-0 flex-1">
-            <p className="text-[13px] text-on-brand/75">
-              {t('home.welcome')} · {brand.name}
-            </p>
-            <h1 className="truncate text-[22px] leading-tight font-bold">{t('home.greeting', { name })}</h1>
-          </div>
-          {action}
+          <h1 className="min-w-0 flex-1 text-[22px] leading-[1.15] font-bold">{t('home.greeting', { name })}</h1>
+          <span className="shrink-0 self-start pt-1 font-display text-[13px] font-semibold text-on-brand/70">{brand.name}</span>
         </div>
         {children}
       </div>
-      <AtlasBand variant="edge" height={26} tile={78} seed={11} />
+      <AtlasBand variant="edge" height={32} seed={11} />
     </header>
   );
 }

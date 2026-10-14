@@ -31,7 +31,7 @@ export function OrderBump() {
         bump ? 'bg-brand text-on-brand' : 'bg-surface',
       )}
     >
-      <AtlasBand variant="rail" height={8} tile={40} seed={9} />
+      <AtlasBand variant="rail" height={12} tile={48} seed={9} />
       <label className="flex cursor-pointer items-center gap-3 p-3.5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={product.image} alt="" className="size-[60px] shrink-0 rounded-[14px] bg-muted object-cover" />

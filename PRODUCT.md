@@ -33,7 +33,7 @@ Ordering lives entirely inside Telegram, the messenger Uzbek customers already u
 
 ## Evidence on Hand
 - Seed menu of 12 products with UZ/RU names, ingredients and prices in `backend/src/database/seed.js`.
-- No real restaurant photos, logo, reviews or ratings exist. Product imagery is AI-generated placeholder and must be labelled as such for restaurants to replace. The "10,000+" and "4.9" figures are template copy from the brief, to be replaced by each restaurant's real numbers.
+- No real restaurant photos, logo, reviews or ratings exist. Product imagery is AI-generated placeholder and must be labelled as such for restaurants to replace. The "10,000+" and "4.9" figures are template copy from the brief, to be replaced by each restaurant's real numbers. Service promises ("30 daqiqa" delivery time, "100% halol", free delivery, fresh ingredients daily) are per-restaurant placeholders set in `frontend/src/config/brand.ts` (`promises`), where a restaurant turns off any it cannot keep; story copy (e.g. "faqat shu hafta") is demonstration promo content to replace.
 
 ## Product Principles
 1. Speed to order beats browsing: every screen keeps the next action one tap away.

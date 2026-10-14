@@ -22,7 +22,7 @@ const CATEGORIES: { id: CategoryFilter; icon: LucideIcon }[] = [
   { id: 'premium', icon: Crown },
 ];
 
-const RAIL_TILE = 48;
+const RAIL_TILE = 64;
 
 export function CategoryTabs({ value, onChange }: { value: CategoryFilter; onChange: (value: CategoryFilter) => void }) {
   const { t } = useI18n();
@@ -56,7 +56,7 @@ export function CategoryTabs({ value, onChange }: { value: CategoryFilter; onCha
                 active ? 'border-brand bg-brand text-on-brand' : 'border-line bg-surface text-ink hover:bg-muted',
               )}
             >
-              <Icon size={17} strokeWidth={1.9} />
+              <Icon size={17} strokeWidth={1.75} />
               {t(`catalog.categories.${id}`)}
             </button>
           );
@@ -66,14 +66,14 @@ export function CategoryTabs({ value, onChange }: { value: CategoryFilter; onCha
       {/* Atlas lentasi — faol kategoriya indeksi bo'yicha siljiydi */}
       <div className="overflow-hidden" aria-hidden="true">
         <div
-          className="transition-transform duration-500 ease-silk"
+          className="transition-transform duration-[320ms] ease-silk"
           style={{
             width: `calc(100% + ${RAIL_TILE * CATEGORIES.length}px)`,
             transform: `translateX(-${index * (RAIL_TILE / 2)}px)`,
           }}
         >
-          <div key={value} className="animate-silk-ripple">
-            <AtlasBand variant="rail" height={10} tile={RAIL_TILE} seed={3} />
+          <div key={value} className="origin-bottom animate-silk-ripple">
+            <AtlasBand variant="rail" height={16} tile={RAIL_TILE} seed={3} />
           </div>
         </div>
       </div>

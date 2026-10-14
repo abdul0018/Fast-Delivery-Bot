@@ -27,16 +27,15 @@
     "rating": "4.9 reyting"
   },
   "home": {
-    "welcome": "Xush kelibsiz",
-    "greeting": "Salom, {name}!",
+    "greeting": "Xush kelibsiz, {name}!",
     "guest": "mehmon",
-    "heroTitle": "Issiq va mazali — 30 daqiqada",
+    "heroTitle": "Issiq va mazali — bir necha bosishda",
     "heroText": "Burger, pitsa va ichimliklar to'g'ridan-to'g'ri eshigingizgacha.",
     "viewCatalog": "Katalogni ko'rish",
     "newOrder": "Yangi buyurtma berish",
     "popular": "Ommabop",
     "seeAll": "Barchasi",
-    "featureFast": "30 daqiqa",
+    "featureFast": "{minutes} daqiqa",
     "featureHalal": "100% halol",
     "featureFree": "Bepul yetkazish",
     "storiesTitle": "Chegirmalar",
@@ -69,7 +68,7 @@
   "product": {
     "ingredients": "Tarkibi",
     "trustHalal": "100% halol mahsulotlar",
-    "trustFast": "Tezkor yetkazib berish — 30 daqiqa",
+    "trustFast": "Tezkor yetkazib berish — {minutes} daqiqa",
     "trustFresh": "Har kuni yangi masalliqlar",
     "addToCart": "Savatchaga qo'shish — {price}",
     "added": "Savatchaga qo'shildi",

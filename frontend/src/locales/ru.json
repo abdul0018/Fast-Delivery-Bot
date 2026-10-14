@@ -27,16 +27,15 @@
     "rating": "Рейтинг 4.9"
   },
   "home": {
-    "welcome": "Добро пожаловать",
-    "greeting": "Привет, {name}!",
+    "greeting": "Добро пожаловать, {name}!",
     "guest": "гость",
-    "heroTitle": "Горячо и вкусно — за 30 минут",
+    "heroTitle": "Горячо и вкусно — в пару касаний",
     "heroText": "Бургеры, пицца и напитки прямо к вашей двери.",
     "viewCatalog": "Смотреть каталог",
     "newOrder": "Сделать новый заказ",
     "popular": "Популярное",
     "seeAll": "Все",
-    "featureFast": "30 минут",
+    "featureFast": "{minutes} минут",
     "featureHalal": "100% халяль",
     "featureFree": "Бесплатная доставка",
     "storiesTitle": "Скидки",
@@ -69,7 +68,7 @@
   "product": {
     "ingredients": "Состав",
     "trustHalal": "100% халяльные продукты",
-    "trustFast": "Быстрая доставка — 30 минут",
+    "trustFast": "Быстрая доставка — {minutes} минут",
     "trustFresh": "Свежие ингредиенты каждый день",
     "addToCart": "В корзину — {price}",
     "added": "Добавлено в корзину",

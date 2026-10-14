@@ -76,7 +76,7 @@ function StoryViewer({ startIndex, onClose }: { startIndex: number; onClose: () 
         aria-label={t('common.close')}
         className="absolute top-6 right-3 z-30 flex size-10 items-center justify-center rounded-full bg-black/30 text-white"
       >
-        <X size={22} strokeWidth={2} />
+        <X size={22} strokeWidth={2.25} />
       </button>
 
       <div className="relative flex-1 overflow-hidden">
@@ -86,9 +86,9 @@ function StoryViewer({ startIndex, onClose }: { startIndex: number; onClose: () 
         <button type="button" aria-label="prev" className="absolute inset-y-0 left-0 z-10 w-1/3" onClick={prev} />
         <button type="button" aria-label="next" className="absolute inset-y-0 right-0 z-10 w-2/3" onClick={next} />
         {/* Rasm va brend maydoni chegarasi — teskari abr lentasi */}
-        <AtlasBand variant="edge" height={26} tile={78} seed={11} className="absolute inset-x-0 -bottom-px rotate-180" />
+        <AtlasBand variant="edge" height={32} seed={11} className="absolute inset-x-0 -bottom-px rotate-180" />
       </div>
-      <div className="relative z-20 -mt-px bg-brand px-6 pt-2 pb-safe">
+      <div className="relative z-20 -mt-px silk-field px-6 pt-2 pb-safe">
         <h3 className="text-[44px] leading-none font-bold">{t(story.title)}</h3>
         <p className="mt-3 text-lg text-on-brand/85">{t(story.text)}</p>
         <Button
@@ -102,7 +102,7 @@ function StoryViewer({ startIndex, onClose }: { startIndex: number; onClose: () 
           }}
         >
           {t('home.viewCatalog')}
-          <ArrowRight size={18} strokeWidth={2} />
+          <ArrowRight size={18} strokeWidth={2.25} />
         </Button>
       </div>
     </div>,

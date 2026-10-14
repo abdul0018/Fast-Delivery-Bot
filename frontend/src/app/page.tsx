@@ -27,7 +27,8 @@ export default function HomePage() {
         <Stories />
       </HomeHeader>
 
-      <div className="mt-1 space-y-6">
+      {/* Asosiy vidjet atlas maydoni va lentasi ustiga chiqib turadi */}
+      <div className="relative z-10 -mt-[84px] space-y-6">
         <HeroWidget />
 
         <section>
@@ -35,7 +36,7 @@ export default function HomePage() {
             <h2 className="text-[20px] font-bold">{t('home.popular')}</h2>
             <Link href="/catalog" className="flex items-center gap-0.5 text-sm font-semibold text-brand-ink">
               {t('home.seeAll')}
-              <ChevronRight size={16} strokeWidth={2} />
+              <ChevronRight size={16} strokeWidth={1.75} />
             </Link>
           </div>
           <div className="no-scrollbar flex snap-x gap-3 overflow-x-auto scroll-px-4 px-4 pb-3">

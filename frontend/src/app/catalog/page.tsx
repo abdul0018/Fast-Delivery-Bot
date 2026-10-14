@@ -35,7 +35,7 @@ function CatalogContent() {
         {status === 'error' ? (
           <div className="flex flex-col items-center gap-3 py-16 text-center">
             <span className="flex size-14 items-center justify-center rounded-full bg-brand-soft text-brand-ink">
-              <WifiOff size={26} strokeWidth={1.8} />
+              <WifiOff size={26} strokeWidth={1.75} />
             </span>
             <p className="text-ink-2">{t(error === 'NETWORK' ? 'errors.NETWORK' : 'common.loadError')}</p>
             <Button variant="secondary" onClick={reload}>

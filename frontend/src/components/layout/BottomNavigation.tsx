@@ -24,8 +24,8 @@ export function BottomNavigation() {
   const { haptic } = useTelegram();
 
   return (
-    <nav aria-label="Navigation" className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface">
-      <ul className="mx-auto grid max-w-lg grid-cols-4 px-2 pt-1 pb-safe">
+    <nav aria-label="Navigation" className="fixed inset-x-0 bottom-0 z-40">
+      <ul className="mx-auto grid max-w-lg grid-cols-4 border-t border-line bg-surface px-2 pt-1 pb-safe">
         {TABS.map(({ href, icon: Icon, label }) => {
           const active = href === '/' ? pathname === '/' : pathname.startsWith(href);
           return (
@@ -51,7 +51,7 @@ export function BottomNavigation() {
                   <span className="flex-1 bg-silk-2" />
                   <span className="flex-1 bg-silk-3" />
                 </span>
-                <Icon size={23} strokeWidth={active ? 2.1 : 1.75} />
+                <Icon size={23} strokeWidth={1.75} />
                 {t(label)}
                 {href === '/cart' && count > 0 && (
                   <span

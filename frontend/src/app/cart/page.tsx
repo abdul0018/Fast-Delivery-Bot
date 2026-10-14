@@ -122,13 +122,23 @@ export default function CartPage() {
     router.push('/');
   };
 
+  // Buyurtma qabul qilingach: savatcha tozalangan, lekin "bo'sh savatcha" holatini panel ortida ko'rsatmaymiz
+  if (successOrder) {
+    return (
+      <>
+        <PageHeader title={t('cart.title')} />
+        <OrderSuccess order={successOrder} onClose={closeSuccess} />
+      </>
+    );
+  }
+
   if (cart.isEmpty) {
     return (
       <>
         <PageHeader title={t('cart.title')} />
         <div className="flex flex-col items-center px-8 pt-16 text-center">
           <div className="flex size-24 items-center justify-center rounded-full bg-brand-soft text-brand-ink">
-            <ShoppingBag size={42} strokeWidth={1.6} />
+            <ShoppingBag size={42} strokeWidth={1.75} />
           </div>
           <h2 className="mt-6 text-[22px] font-bold">{t('cart.empty')}</h2>
           <p className="mt-2 text-ink-2">{t('cart.emptyText')}</p>
@@ -138,7 +148,6 @@ export default function CartPage() {
             </Button>
           </Link>
         </div>
-        <OrderSuccess order={successOrder} onClose={closeSuccess} />
       </>
     );
   }
@@ -169,7 +178,7 @@ export default function CartPage() {
           <h2 className="text-[20px] font-bold">{t('cart.delivery')}</h2>
           <Textarea
             id="address"
-            icon={<MapPin size={15} strokeWidth={1.9} />}
+            icon={<MapPin size={15} strokeWidth={1.75} />}
             label={t('cart.address')}
             placeholder={t('cart.addressPlaceholder')}
             value={address}
@@ -181,7 +190,7 @@ export default function CartPage() {
           />
           <Input
             id="phone"
-            icon={<Phone size={15} strokeWidth={1.9} />}
+            icon={<Phone size={15} strokeWidth={1.75} />}
             label={t('cart.phone')}
             type="tel"
             inputMode="tel"
@@ -191,7 +200,7 @@ export default function CartPage() {
           />
           <Input
             id="comment"
-            icon={<MessageSquareText size={15} strokeWidth={1.9} />}
+            icon={<MessageSquareText size={15} strokeWidth={1.75} />}
             label={t('cart.comment')}
             placeholder={t('cart.commentPlaceholder')}
             value={comment}
@@ -232,16 +241,15 @@ export default function CartPage() {
 
       {/* Sticky CTA — pastki navigatsiya ustida */}
       <div
-        className="fixed inset-x-0 z-30 mx-auto max-w-lg px-4 pb-2"
+        className="fixed inset-x-0 z-30 mx-auto max-w-lg bg-ground px-4 pt-2 pb-2 before:pointer-events-none before:absolute before:inset-x-0 before:-top-5 before:h-5 before:bg-gradient-to-t before:from-ground before:to-transparent"
         style={{ bottom: 'calc(60px + max(env(safe-area-inset-bottom), 0.5rem))' }}
       >
         <Button size="lg" fullWidth loading={submitting} onClick={submit}>
           {submitting ? t('cart.processing') : t(ctaLabel, { price: price(cart.total) })}
         </Button>
       </div>
-      <div className="h-20" />
+      <div className="h-24" />
 
-      <OrderSuccess order={successOrder} onClose={closeSuccess} />
     </>
   );
 }

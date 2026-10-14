@@ -54,7 +54,7 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
                 selected ? 'bg-brand text-on-brand' : 'bg-muted text-ink',
               )}
             >
-              <Icon size={20} strokeWidth={1.8} />
+              <Icon size={20} strokeWidth={1.75} />
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-[15px] font-semibold">{t(`cart.methods.${id}`)}</span>

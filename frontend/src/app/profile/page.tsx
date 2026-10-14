@@ -26,7 +26,7 @@ export default function ProfilePage() {
   return (
     <div>
       <header className="text-on-brand">
-        <div className="flex items-center gap-4 bg-brand px-4 pt-6 pb-4">
+        <div className="silk-field flex items-center gap-4 px-4 pt-6 pb-4">
           {user?.photo_url ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={user.photo_url} alt="" className="size-16 rounded-full object-cover ring-2 ring-on-brand/40" />
@@ -40,7 +40,7 @@ export default function ProfilePage() {
             {username && <p className="text-sm text-on-brand/75">@{username}</p>}
           </div>
         </div>
-        <AtlasBand variant="edge" height={26} tile={78} seed={11} />
+        <AtlasBand variant="edge" height={32} seed={11} />
       </header>
 
       <div className="space-y-7 px-4 pt-2">
@@ -54,7 +54,7 @@ export default function ProfilePage() {
           <dl className="divide-y divide-line rounded-[20px] bg-surface">
             {rows.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-center gap-3 px-4 py-3.5">
-                <Icon size={18} strokeWidth={1.8} className="shrink-0 text-brand-ink" />
+                <Icon size={18} strokeWidth={1.75} className="shrink-0 text-brand-ink" />
                 <dt className="shrink-0 text-ink-2">{label}</dt>
                 <dd className={value ? 'min-w-0 flex-1 truncate text-right font-medium' : 'flex-1 text-right text-ink-2'}>
                   {value || t('profile.notSet')}

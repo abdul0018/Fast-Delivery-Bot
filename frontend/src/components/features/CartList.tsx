@@ -34,7 +34,7 @@ export function CartList() {
                   }}
                   className="-mt-1.5 -mr-1.5 flex size-8 shrink-0 items-center justify-center rounded-full text-ink-2 hover:bg-muted"
                 >
-                  <X size={18} strokeWidth={1.9} />
+                  <X size={18} strokeWidth={1.75} />
                 </button>
               </div>
 

@@ -21,12 +21,12 @@ import { BottomNavigation } from './BottomNavigation';
 
 function Splash() {
   return (
-    <div className="flex min-h-dvh flex-col bg-brand text-on-brand">
+    <div className="silk-field flex min-h-dvh flex-col">
       <div className="flex flex-1 items-end px-6 pb-6">
         <p className="font-display text-3xl font-bold">{brand.name}</p>
       </div>
       <div className="flex-1 bg-ground">
-        <AtlasBand variant="edge" height={30} tile={78} seed={11} />
+        <AtlasBand variant="edge" height={32} seed={11} />
       </div>
     </div>
   );

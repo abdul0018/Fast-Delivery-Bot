@@ -6,7 +6,7 @@
  * Har bir slaydning yuqori qismi — brend rangidagi atlas maydoni, pastki cheti abr lentasi.
  */
 import { useRef, useState, type ReactNode } from 'react';
-import { ClipboardCheck, DoorOpen, Hand, Star } from 'lucide-react';
+import { ClipboardCheck, DoorOpen, Hand } from 'lucide-react';
 import { AtlasBand } from '@/components/ui/AtlasBand';
 import { Button } from '@/components/ui/Button';
 import { brand } from '@/config/brand';
@@ -19,31 +19,18 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 function Slide({ image, seed, children }: { image: string; seed: number; children: ReactNode }) {
   return (
     <section className="flex w-full shrink-0 snap-center snap-always flex-col">
-      <div className="bg-brand px-6 pt-16 pb-2">
+      <div className="silk-field flex basis-[66%] items-end justify-center px-6 pt-16 pb-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}
           alt=""
-          className="mx-auto aspect-square w-full max-w-[320px] rounded-[28px] object-cover shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]"
+          className="aspect-square h-full max-h-[420px] w-auto max-w-full rounded-[28px] object-cover shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]"
         />
       </div>
-      <AtlasBand variant="edge" height={30} tile={84} seed={seed} />
-      <div className="flex flex-1 flex-col px-6 pt-4">{children}</div>
+      <AtlasBand variant="edge" height={32} seed={seed} />
+      {/* Matn pastga — pager va tugma ustiga yopishadi */}
+      <div className="flex flex-1 flex-col justify-end px-6 pb-2">{children}</div>
     </section>
-  );
-}
-
-/** Sarlavhadagi "10,000+" / "10 000+" raqamini brend rangida, kattaroq ajratib ko'rsatish */
-function Highlighted({ text }: { text: string }) {
-  const match = /\d[\d\s,.\u00A0]*\+/.exec(text);
-  if (!match) return <>{text}</>;
-  const [number] = match;
-  return (
-    <>
-      {text.slice(0, match.index)}
-      <span className="price block text-[48px] leading-[1.05] font-extrabold text-brand-ink">{number.trim()}</span>
-      {text.slice(match.index + number.length).trim()}
-    </>
   );
 }
 
@@ -117,7 +104,7 @@ export function Onboarding() {
                   {i + 1}
                 </span>
                 <span className="flex-1 text-[17px] font-semibold">{t(key)}</span>
-                <Icon size={20} strokeWidth={1.8} className="text-ink-2" />
+                <Icon size={20} strokeWidth={1.75} className="text-ink-2" />
               </li>
             ))}
           </ol>
@@ -125,13 +112,8 @@ export function Onboarding() {
 
         {/* 3. Ijtimoiy isbot (raqamlar har bir restoran uchun almashtiriladi) */}
         <Slide image="/images/products/hero-spread.jpg" seed={27}>
-          <h2 className="text-[30px] leading-[1.05] font-bold">
-            <Highlighted text={t('onboarding.slide3Title')} />
-          </h2>
-          <p className="mt-2 flex items-center gap-1.5 text-[15px] font-medium text-ink-2">
-            <Star size={16} strokeWidth={0} className="fill-silk-3" />
-            {t('onboarding.rating')}
-          </p>
+          <h2 className="text-[30px] leading-[1.05] font-bold">{t('onboarding.slide3Title')}</h2>
+          <p className="mt-3 text-[17px] text-ink-2">{t('onboarding.slide3Text')}</p>
         </Slide>
       </div>
 

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { Leaf, ShieldCheck, Timer } from 'lucide-react';
 import { AtlasBand } from '@/components/ui/AtlasBand';
 import { BottomSheet } from '@/components/ui/BottomSheet';
+import { brand } from '@/config/brand';
 import { Button } from '@/components/ui/Button';
 import { QuantityStepper } from '@/components/ui/QuantityStepper';
 import { useCart } from '@/hooks/useCart';
@@ -17,11 +18,13 @@ import { discountPercent, formatPrice } from '@/lib/utils';
 import { useUiStore } from '@/store/uiStore';
 import type { Product } from '@/types';
 
+// Faqat restoran brand.ts da tasdiqlagan va'dalar (xavfni yopuvchi blok)
+const { deliveryMinutes, halal, freshDaily } = brand.promises;
 const TRUST_ITEMS = [
-  { icon: ShieldCheck, key: 'product.trustHalal' },
-  { icon: Timer, key: 'product.trustFast' },
-  { icon: Leaf, key: 'product.trustFresh' },
-] as const;
+  halal ? { icon: ShieldCheck, key: 'product.trustHalal' as const } : null,
+  deliveryMinutes ? { icon: Timer, key: 'product.trustFast' as const } : null,
+  freshDaily ? { icon: Leaf, key: 'product.trustFresh' as const } : null,
+].filter((item) => item !== null);
 
 export function ProductSheet() {
   const activeProduct = useUiStore((state) => state.activeProduct);
@@ -73,7 +76,7 @@ function ProductDetails({
           </span>
         )}
       </div>
-      <AtlasBand variant="rail" height={8} tile={40} seed={5} />
+      <AtlasBand variant="rail" height={12} tile={48} seed={5} />
 
       <div className="space-y-6 px-5 pt-5 pb-6">
         <div className="flex items-start justify-between gap-4">
@@ -108,14 +111,16 @@ function ProductDetails({
         )}
 
         {/* Xavfni yopuvchi blok */}
-        <section className="grid gap-2.5 rounded-[18px] bg-brand-soft px-4 py-3.5">
-          {TRUST_ITEMS.map(({ icon: Icon, key }) => (
-            <div key={key} className="flex items-center gap-3 text-sm font-medium">
-              <Icon size={18} strokeWidth={1.9} className="shrink-0 text-brand-ink" />
-              {t(key)}
-            </div>
-          ))}
-        </section>
+        {TRUST_ITEMS.length > 0 && (
+          <section className="grid gap-2.5 rounded-[18px] bg-brand-soft px-4 py-3.5">
+            {TRUST_ITEMS.map(({ icon: Icon, key }) => (
+              <div key={key} className="flex items-center gap-3 text-sm font-medium">
+                <Icon size={18} strokeWidth={1.75} className="shrink-0 text-brand-ink" />
+                {t(key, { minutes: deliveryMinutes ?? '' })}
+              </div>
+            ))}
+          </section>
+        )}
 
         <div className="flex items-center justify-between">
           <span className="text-[15px] font-medium text-ink-2">{t('product.quantity')}</span>

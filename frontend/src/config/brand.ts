@@ -5,6 +5,9 @@
  *  brand    — asosiy rang (sarlavha maydoni, asosiy tugmalar, faol holatlar)
  *  onBrand  — brand rang ustidagi matn rangi (och brand rang tanlansa, qora qiling)
  *  silk2/3  — atlas naqshining ikki yordamchi rangi
+ *
+ * promises — restoran haqiqatda bajaradigan va'dalar. Bajarilmaydiganini false/null qiling —
+ * ilovada (bosh sahifa, mahsulot oynasi) ko'rinmay qoladi. Hozirgi qiymatlar NAMUNA.
  */
 export const brand = {
   name: 'Fast Delivery',
@@ -13,6 +16,13 @@ export const brand = {
     onBrand: '#FFFFFF',
     silk2: '#D11D6B',
     silk3: '#FFB31A',
+  },
+  promises: {
+    /** O'rtacha yetkazib berish vaqti, daqiqa (null — ko'rsatilmaydi) */
+    deliveryMinutes: 30 as number | null,
+    halal: true,
+    freeDelivery: true,
+    freshDaily: true,
   },
 } as const;
 
