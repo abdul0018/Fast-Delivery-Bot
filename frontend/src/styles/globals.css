@@ -47,6 +47,8 @@
   --color-on-brand: var(--on-brand, #ffffff);
   --color-silk-2: var(--silk-2, #d11d6b);
   --color-silk-3: var(--silk-3, #ffb31a);
+  /* Za'faron ustidagi matn har doim to'q siyoh (Saffron Carries Ink) — ikkala mavzuda ham */
+  --color-on-silk-3: #17142a;
   --color-brand-ink: var(--brand-ink);
   --color-brand-soft: var(--brand-soft);
 

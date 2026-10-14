@@ -15,7 +15,7 @@ function Avatar({ name, photo, size = 44 }: { name: string; photo?: string; size
   return (
     <span
       style={{ width: size, height: size }}
-      className="flex shrink-0 items-center justify-center rounded-full bg-silk-3 font-display text-lg font-bold text-[#17142a]"
+      className="flex shrink-0 items-center justify-center rounded-full bg-silk-3 font-display text-lg font-bold text-on-silk-3"
     >
       {name.charAt(0).toUpperCase()}
     </span>

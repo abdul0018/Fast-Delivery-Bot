@@ -24,7 +24,7 @@ export function QuantityStepper({ value, onIncrement, onDecrement, size = 'md', 
     <div
       role="group"
       aria-label={label}
-      className={cn('inline-flex items-center gap-0.5 rounded-[13px] border border-line bg-surface p-0.5', className)}
+      className={cn('inline-flex items-center gap-0.5 rounded-[14px] border border-line bg-surface p-0.5', className)}
     >
       <button type="button" aria-label="−" className={cn(button, 'text-ink hover:bg-muted')} onClick={onDecrement}>
         <Minus size={icon} strokeWidth={2.25} />

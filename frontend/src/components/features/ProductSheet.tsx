@@ -71,7 +71,7 @@ function ProductDetails({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={product.image} alt={pick(product.name)} className="size-full object-cover" />
         {discount > 0 && (
-          <span className="price absolute bottom-3 left-4 rounded-[9px] bg-silk-3 px-2 py-1 text-sm font-bold text-[#17142a]">
+          <span className="price absolute bottom-3 left-4 rounded-[8px] bg-silk-3 px-2 py-1 text-sm font-bold text-on-silk-3">
             −{discount}%
           </span>
         )}

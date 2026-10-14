@@ -26,6 +26,24 @@ const sizes: Record<Size, string> = {
   lg: 'h-[54px] px-6 text-base rounded-[16px]',
 };
 
+/** Tugma klasslari — <Link> kabi boshqa elementlarni ham bir xil ko'rinishda qilish uchun */
+export function buttonClasses({
+  variant = 'primary',
+  size = 'md',
+  fullWidth,
+  className,
+}: { variant?: Variant; size?: Size; fullWidth?: boolean; className?: string } = {}) {
+  return cn(
+    'inline-flex select-none items-center justify-center gap-2 font-display font-semibold tracking-[-0.01em]',
+    'transition-[transform,filter,background-color] duration-200 ease-silk active:scale-[0.98]',
+    'disabled:pointer-events-none disabled:opacity-45',
+    variants[variant],
+    sizes[size],
+    fullWidth && 'w-full',
+    className,
+  );
+}
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   { variant = 'primary', size = 'md', fullWidth, loading, disabled, className, children, ...props },
   ref,
@@ -35,15 +53,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       ref={ref}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
-      className={cn(
-        'inline-flex select-none items-center justify-center gap-2 font-display font-semibold tracking-[-0.01em]',
-        'transition-[transform,filter,background-color] duration-200 ease-silk active:scale-[0.98]',
-        'disabled:pointer-events-none disabled:opacity-45',
-        variants[variant],
-        sizes[size],
-        fullWidth && 'w-full',
-        className,
-      )}
+      className={buttonClasses({ variant, size, fullWidth, className })}
       {...props}
     >
       {loading && <span className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />}

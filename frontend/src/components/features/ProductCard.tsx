@@ -54,7 +54,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
             className="size-full object-cover transition-transform duration-500 ease-silk group-active:scale-[1.03]"
           />
           {discount > 0 && (
-            <span className="price absolute top-2.5 left-2.5 rounded-[8px] bg-silk-3 px-1.5 py-0.5 text-[12px] font-bold text-[#17142a]">
+            <span className="price absolute top-2.5 left-2.5 rounded-[8px] bg-silk-3 px-1.5 py-0.5 text-[12px] font-bold text-on-silk-3">
               −{discount}%
             </span>
           )}

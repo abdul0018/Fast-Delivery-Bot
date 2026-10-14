@@ -23,7 +23,7 @@ export function Toast() {
         key={toast.id}
         className="flex animate-rise items-center gap-2 rounded-[14px] bg-ink px-4 py-2.5 text-sm font-medium text-ground shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]"
       >
-        <Check size={16} strokeWidth={2.25} className="text-silk-3" />
+        <Check size={16} strokeWidth={1.75} className="text-silk-3" />
         {toast.message}
       </div>
     </div>

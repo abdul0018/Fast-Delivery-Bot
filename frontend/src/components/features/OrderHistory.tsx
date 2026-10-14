@@ -10,7 +10,7 @@ import type { Order, OrderStatus } from '@/types';
 
 const STATUS_STYLES: Record<OrderStatus, string> = {
   new: 'bg-brand-soft text-brand-ink',
-  confirmed: 'bg-silk-3/20 text-[#8a5a00] dark:text-silk-3',
+  confirmed: 'bg-silk-3 text-on-silk-3',
   delivering: 'bg-silk-2/12 text-silk-2',
   completed: 'bg-ok/12 text-ok',
   cancelled: 'bg-muted text-ink-2',
@@ -54,7 +54,7 @@ export function OrderHistory() {
               <span className="price font-bold">{price(order.total)}</span>
             </div>
             {order.paymentMethod !== 'cash' && order.paymentStatus !== 'paid' && order.status !== 'cancelled' && (
-              <p className="mt-1 text-xs font-medium text-[#8a5a00] dark:text-silk-3">{t(`paymentStatus.${order.paymentStatus}`)}</p>
+              <p className="mt-1 text-xs font-medium text-ink-2">{t(`paymentStatus.${order.paymentStatus}`)}</p>
             )}
           </li>
         );

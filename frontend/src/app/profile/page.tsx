@@ -31,7 +31,7 @@ export default function ProfilePage() {
             // eslint-disable-next-line @next/next/no-img-element
             <img src={user.photo_url} alt="" className="size-16 rounded-full object-cover ring-2 ring-on-brand/40" />
           ) : (
-            <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-silk-3 font-display text-2xl font-bold text-[#17142a]">
+            <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-silk-3 font-display text-2xl font-bold text-on-silk-3">
               {name.charAt(0).toUpperCase()}
             </span>
           )}
