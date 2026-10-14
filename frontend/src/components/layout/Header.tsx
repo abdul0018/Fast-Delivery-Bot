@@ -24,8 +24,8 @@ function Avatar({ name, photo, size = 44 }: { name: string; photo?: string; size
 
 /**
  * Bosh sahifa sarlavhasi — brend rangidagi "atlas" maydoni (ekran balandligining ~40%):
- * "Xush kelibsiz, {ism}!", restoran nomi (o'ng tomonda, sokin) va stories.
- * Maydonning pastki cheti — abr lentasi; asosiy vidjet uning ustiga chiqib turadi (overlap).
+ * "Xush kelibsiz, {ism}!", restoran nomi (o'ng tomonda, sokin), stories va (children) asosiy taklif.
+ * Maydonning pastki cheti — butun kenglikdagi abr lentasi.
  */
 export function HomeHeader({ children }: { children?: ReactNode }) {
   const { user } = useTelegram();
@@ -35,7 +35,7 @@ export function HomeHeader({ children }: { children?: ReactNode }) {
 
   return (
     <header className="relative">
-      <div className="silk-field px-4 pt-4 pb-16">
+      <div className="silk-field px-4 pt-4 pb-5">
         <div className="flex items-center gap-3">
           <Avatar name={name} photo={user?.photo_url} />
           <h1 className="min-w-0 flex-1 text-[22px] leading-[1.15] font-bold">{t('home.greeting', { name })}</h1>

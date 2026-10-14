@@ -5,7 +5,7 @@ import { Bike, ShieldCheck, Timer, type LucideIcon } from 'lucide-react';
 import { brand } from '@/config/brand';
 import { useI18n } from '@/hooks/useI18n';
 
-/** Asosiy vidjet: "Katalogni ko'rish" / "Yangi buyurtma berish" */
+/** Asosiy vidjet (sarlavhasi atlas maydonida): rasm, va'dalar, "Katalogni ko'rish" / "Yangi buyurtma berish" */
 export function HeroWidget() {
   const { t } = useI18n();
   const { deliveryMinutes, halal, freeDelivery } = brand.promises;
@@ -23,12 +23,9 @@ export function HeroWidget() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/products/hero-spread.jpg" alt="" className="size-full object-cover" />
       </div>
-      <div className="px-4 pt-4 pb-4">
-        <h2 className="text-[22px] leading-tight font-bold">{t('home.heroTitle')}</h2>
-        <p className="mt-1.5 text-[14px] text-ink-2">{t('home.heroText')}</p>
-
+      <div className="px-4 pt-3.5 pb-4">
         {facts.length > 0 && (
-          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] font-medium">
+          <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] font-medium">
             {facts.map(({ icon: Icon, label }) => (
               <li key={label} className="flex items-center gap-1.5">
                 <Icon size={16} strokeWidth={1.75} className="text-brand-ink" />

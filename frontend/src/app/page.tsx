@@ -25,10 +25,14 @@ export default function HomePage() {
     <div className="pb-2">
       <HomeHeader>
         <Stories />
+        {/* Asosiy taklif — atlas maydonining o'zida */}
+        <div className="mt-6">
+          <h2 className="text-[26px] leading-[1.1] font-bold">{t('home.heroTitle')}</h2>
+          <p className="mt-2 text-[15px] text-on-brand/80">{t('home.heroText')}</p>
+        </div>
       </HomeHeader>
 
-      {/* Asosiy vidjet atlas maydoni va lentasi ustiga chiqib turadi */}
-      <div className="relative z-10 -mt-[84px] space-y-6">
+      <div className="mt-2 space-y-6">
         <HeroWidget />
 
         <section>

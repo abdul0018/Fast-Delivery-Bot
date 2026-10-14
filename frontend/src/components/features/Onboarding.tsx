@@ -19,17 +19,17 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 function Slide({ image, seed, children }: { image: string; seed: number; children: ReactNode }) {
   return (
     <section className="flex w-full shrink-0 snap-center snap-always flex-col">
-      <div className="silk-field flex basis-[66%] items-end justify-center px-6 pt-16 pb-2">
+      {/* Maydon qolgan joyni to'liq egallaydi — matn lentaning tagida, bo'sh joy qolmaydi */}
+      <div className="silk-field flex min-h-0 flex-1 items-center justify-center px-6 pt-14 pb-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}
           alt=""
-          className="aspect-square h-full max-h-[420px] w-auto max-w-full rounded-[28px] object-cover shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]"
+          className="aspect-square max-h-full w-full max-w-[420px] rounded-[28px] object-cover shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]"
         />
       </div>
       <AtlasBand variant="edge" height={32} seed={seed} />
-      {/* Matn pastga — pager va tugma ustiga yopishadi */}
-      <div className="flex flex-1 flex-col justify-end px-6 pb-2">{children}</div>
+      <div className="flex shrink-0 flex-col px-6 pt-3 pb-2">{children}</div>
     </section>
   );
 }
@@ -113,7 +113,7 @@ export function Onboarding() {
         {/* 3. Ijtimoiy isbot (raqamlar har bir restoran uchun almashtiriladi) */}
         <Slide image="/images/products/hero-spread.jpg" seed={27}>
           <h2 className="text-[30px] leading-[1.05] font-bold">{t('onboarding.slide3Title')}</h2>
-          <p className="mt-3 text-[17px] text-ink-2">{t('onboarding.slide3Text')}</p>
+          <p className="mt-3 text-[17px] text-ink-2">{t('onboarding.rating')}</p>
         </Slide>
       </div>
 
