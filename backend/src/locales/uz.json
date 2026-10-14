@@ -1,0 +1,83 @@
+{
+  "currency": "so'm",
+  "language": {
+    "choose": "🌐 Tilni tanlang\n🌐 Выберите язык",
+    "changed": "✅ Til o'zgartirildi: O'zbekcha 🇺🇿"
+  },
+  "start": {
+    "welcome": "Assalomu alaykum, <b>{name}</b>! 👋\n\n🍔 <b>Fast Delivery</b> — shahardagi eng mazali burger, pitsa va ichimliklar bir necha daqiqada eshigingizgacha.\n\nMenyuni ochish uchun quyidagi tugmani bosing 👇",
+    "openMenu": "Menyuni ochish uchun tugmani bosing 👇"
+  },
+  "buttons": {
+    "menu": "🍔 Menyu",
+    "openApp": "🍔 Menyuni ochish",
+    "orders": "🛒 Buyurtmalarim",
+    "language": "🌐 Tilni o'zgartirish",
+    "contact": "📞 Aloqa",
+    "sharePhone": "📱 Raqamni yuborish"
+  },
+  "menuButton": "Menyu",
+  "contact": {
+    "info": "📞 Biz bilan bog'lanish: <b>{phone}</b>\n🕙 Har kuni 10:00 dan 02:00 gacha"
+  },
+  "phone": {
+    "saved": "✅ Telefon raqamingiz saqlandi: {phone}"
+  },
+  "orders": {
+    "title": "🧾 <b>So'nggi buyurtmalaringiz:</b>",
+    "empty": "Sizda hali buyurtmalar yo'q. Menyudan tanlab ko'ring! 🍟",
+    "item": "#{id} • {date}\n{total} so'm • {status}"
+  },
+  "status": {
+    "new": "🆕 Yangi",
+    "confirmed": "👨‍🍳 Tayyorlanmoqda",
+    "delivering": "🚴 Yo'lda",
+    "completed": "✅ Yetkazildi",
+    "cancelled": "❌ Bekor qilindi"
+  },
+  "paymentStatus": {
+    "pending": "⏳ Kutilmoqda",
+    "paid": "✅ To'langan",
+    "failed": "❌ Xatolik"
+  },
+  "payment": {
+    "cash": "💵 Naqd pul",
+    "payme_click": "💳 Payme / Click",
+    "stars": "⭐ Telegram Stars"
+  },
+  "order": {
+    "created": "✅ Buyurtmangiz <b>#{id}</b> qabul qilindi!\n\n💰 Jami: <b>{total} so'm</b>\n💳 To'lov: {payment}\n📍 Manzil: {address}\n\nTez orada operatorimiz siz bilan bog'lanadi.",
+    "awaitingPayment": "🧾 Buyurtma <b>#{id}</b> yaratildi. To'lovni yakunlang — so'ng buyurtma tayyorlashga yuboriladi.",
+    "paid": "💳 To'lov qabul qilindi! Buyurtma <b>#{id}</b> tayyorlashga yuborildi.",
+    "statusChanged": "📦 Buyurtma <b>#{id}</b> holati: {status}"
+  },
+  "invoice": {
+    "title": "Buyurtma #{id}",
+    "description": "Fast Delivery: {count} ta mahsulot",
+    "label": "Buyurtma uchun to'lov"
+  },
+  "admin": {
+    "newOrder": "🔔 <b>Yangi buyurtma #{id}</b>",
+    "customer": "👤 Mijoz",
+    "phone": "📱 Telefon",
+    "address": "📍 Manzil",
+    "comment": "💬 Izoh",
+    "items": "🍔 Buyurtma",
+    "bump": "Qo'shimcha taklif",
+    "total": "💰 Jami",
+    "payment": "💳 To'lov",
+    "status": "📦 Holat",
+    "confirm": "✅ Qabul qilish",
+    "deliver": "🚴 Yo'lga chiqdi",
+    "complete": "🏁 Yetkazildi",
+    "cancel": "❌ Bekor qilish",
+    "notAllowed": "Bu amal faqat adminlar uchun",
+    "updated": "Holat yangilandi"
+  },
+  "errors": {
+    "generic": "😔 Xatolik yuz berdi. Iltimos, keyinroq urinib ko'ring.",
+    "orderNotFound": "Buyurtma topilmadi",
+    "alreadyPaid": "Bu buyurtma allaqachon to'langan"
+  },
+  "unknown": "Buyurtma berish uchun «🍔 Menyu» tugmasini bosing 👇"
+}

@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.log
+.DS_Store
+
+# Maxfiy ma'lumotlar / Секреты — hech qachon commit qilinmaydi
+.env
+.env.local
+.env.*.local
