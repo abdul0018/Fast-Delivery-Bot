@@ -1,0 +1,153 @@
+{
+  "common": {
+    "currency": "so'm",
+    "loading": "Yuklanmoqda...",
+    "retry": "Qayta urinish",
+    "close": "Yopish",
+    "loadError": "Ma'lumotlarni yuklab bo'lmadi"
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "catalog": "Katalog",
+    "cart": "Savatcha",
+    "profile": "Profil"
+  },
+  "onboarding": {
+    "skip": "O'tkazib yuborish",
+    "next": "Keyingi",
+    "start": "Boshlash",
+    "slide1Title": "Och qoldingizmi?",
+    "slide1Text": "Biz eng mazali fast-foodlarni yetkazib beramiz.",
+    "slide2Title": "Qanday ishlaydi?",
+    "slide2Step1": "Tanlang",
+    "slide2Step2": "Buyurtma bering",
+    "slide2Step3": "Kutib oling",
+    "slide3Title": "10,000+ mijozlarimiz safiga qo'shiling!",
+    "slide3Text": "Har kuni minglab issiq va mazali buyurtmalar — o'z vaqtida.",
+    "rating": "4.9 ★ reyting"
+  },
+  "home": {
+    "welcome": "Xush kelibsiz 👋",
+    "greeting": "Salom, {name}!",
+    "guest": "mehmon",
+    "heroBadge": "🔥 Bugun -20% gacha",
+    "heroTitle": "Issiq va mazali — 30 daqiqada",
+    "heroText": "Burger, pitsa va ichimliklar to'g'ridan-to'g'ri eshigingizgacha.",
+    "viewCatalog": "Katalogni ko'rish",
+    "newOrder": "Yangi buyurtma berish",
+    "popular": "🔥 Ommabop",
+    "seeAll": "Barchasi",
+    "featureFast": "30 daqiqa",
+    "featureHalal": "100% halol",
+    "featureFree": "Bepul yetkazish"
+  },
+  "stories": {
+    "s1Title": "-20%",
+    "s1Text": "Barcha burgerlarga 20% chegirma — faqat shu hafta!",
+    "s2Title": "Kombo",
+    "s2Text": "Oilaviy kombo: 4 kishilik to'plam atigi 159 000 so'm.",
+    "s3Title": "Yangi",
+    "s3Text": "Yangi Black Angus burger — trufel sousi bilan.",
+    "s4Title": "Bepul",
+    "s4Text": "Har bir buyurtmada yetkazib berish bepul.",
+    "s5Title": "Kola",
+    "s5Text": "Savatchada Coca-Cola atigi 5 000 so'm!"
+  },
+  "catalog": {
+    "title": "Katalog",
+    "subtitle": "Sevimli taomingizni tanlang",
+    "empty": "Bu bo'limda hozircha mahsulot yo'q",
+    "categories": {
+      "all": "Barchasi",
+      "burgers": "Burgerlar",
+      "pizza": "Pitsalar",
+      "drinks": "Ichimliklar",
+      "premium": "Premium"
+    }
+  },
+  "product": {
+    "ingredients": "Tarkibi",
+    "trustHalal": "100% halol mahsulotlar",
+    "trustFast": "Tezkor yetkazib berish — 30 daqiqa",
+    "trustFresh": "Har kuni yangi masalliqlar",
+    "addToCart": "Savatchaga qo'shish — {price}",
+    "added": "Savatchaga qo'shildi ✅"
+  },
+  "cart": {
+    "title": "Savatcha",
+    "clear": "Tozalash",
+    "empty": "Savatchangiz bo'sh",
+    "emptyText": "Katalogdan sevimli taomlaringizni tanlang",
+    "goCatalog": "Katalogga o'tish",
+    "bumpTitle": "Maxsus taklif!",
+    "bumpText": "Bunga qo'shimcha ravishda {name} ni atigi {price} so'mga qo'shasizmi?",
+    "delivery": "Yetkazib berish",
+    "address": "Manzil",
+    "addressPlaceholder": "Ko'cha, uy, xonadon, mo'ljal",
+    "phone": "Telefon",
+    "phonePlaceholder": "+998 90 123 45 67",
+    "comment": "Izoh",
+    "commentPlaceholder": "Masalan: eshik oldida qo'ng'iroq qiling",
+    "payment": "To'lov usuli",
+    "methods": {
+      "cash": "Naqd pul",
+      "cashHint": "Kuryerga yetkazilganda",
+      "payme_click": "Payme / Click",
+      "payme_clickHint": "Karta orqali onlayn",
+      "stars": "Telegram Stars",
+      "starsHint": "≈ {stars} ⭐"
+    },
+    "soon": "Tez orada",
+    "subtotal": "Mahsulotlar",
+    "bump": "Qo'shimcha taklif",
+    "deliveryFee": "Yetkazib berish",
+    "free": "Bepul",
+    "total": "Jami",
+    "confirm": "Tasdiqlash — {price}",
+    "pay": "To'lash — {price}",
+    "processing": "Yuborilmoqda...",
+    "successTitle": "Buyurtma qabul qilindi! 🎉",
+    "successText": "Buyurtma #{id}. Operatorimiz tez orada siz bilan bog'lanadi.",
+    "paidText": "Buyurtma #{id} to'landi va tayyorlashga yuborildi.",
+    "backHome": "Bosh sahifaga",
+    "paymentCancelled": "To'lov bekor qilindi. Buyurtmani qayta tasdiqlashingiz mumkin."
+  },
+  "errors": {
+    "CART_EMPTY": "Savatcha bo'sh",
+    "INVALID_ITEM": "Savatchada xatolik bor",
+    "PRODUCT_UNAVAILABLE": "Ba'zi mahsulotlar hozir mavjud emas",
+    "INVALID_ADDRESS": "Iltimos, manzilni to'liq kiriting",
+    "PAYMENT_UNAVAILABLE": "Bu to'lov usuli hozircha mavjud emas",
+    "PAYMENT_FAILED": "To'lov havolasini yaratib bo'lmadi",
+    "MIN_TOTAL": "Buyurtma summasi juda kam",
+    "UNAUTHORIZED": "Buyurtma berish uchun ilovani Telegram orqali oching",
+    "INVALID_INIT_DATA": "Sessiya eskirgan. Ilovani qayta oching",
+    "NETWORK": "Internet bilan aloqa yo'q",
+    "generic": "Xatolik yuz berdi. Qayta urinib ko'ring"
+  },
+  "profile": {
+    "title": "Profil",
+    "guest": "Mehmon",
+    "language": "Til",
+    "contacts": "Ma'lumotlarim",
+    "phone": "Telefon",
+    "address": "Manzil",
+    "notSet": "Kiritilmagan",
+    "orders": "Buyurtmalar tarixi",
+    "noOrders": "Hali buyurtmalar yo'q",
+    "openInTelegram": "Buyurtmalar tarixini ko'rish uchun ilovani Telegram orqali oching",
+    "items": "{count} ta mahsulot"
+  },
+  "status": {
+    "new": "Yangi",
+    "confirmed": "Tayyorlanmoqda",
+    "delivering": "Yo'lda",
+    "completed": "Yetkazildi",
+    "cancelled": "Bekor qilindi"
+  },
+  "paymentStatus": {
+    "pending": "To'lov kutilmoqda",
+    "paid": "To'langan",
+    "failed": "To'lov xatosi"
+  }
+}

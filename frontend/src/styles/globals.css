@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+/* Qo'lda "dark" klassi (Telegram colorScheme) bilan dark: variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Ranglar Telegram mavzusidan olinadi (telegram-web-app.js --tg-theme-* o'zgaruvchilarini o'rnatadi),
+ * brauzerda esa standart qiymatlar ishlaydi.
+ */
+@theme inline {
+  --color-bg: var(--tg-theme-secondary-bg-color, #f2f2f7);
+  --color-surface: var(--tg-theme-bg-color, #ffffff);
+  --color-ink: var(--tg-theme-text-color, #111111);
+  --color-hint: var(--tg-theme-hint-color, #8e8e93);
+  --color-line: color-mix(in srgb, var(--tg-theme-text-color, #111111) 9%, transparent);
+  --color-muted: color-mix(in srgb, var(--tg-theme-text-color, #111111) 5%, transparent);
+
+  --color-brand: #ff6b00;
+  --color-brand-600: #e85f00;
+  --color-brand-soft: color-mix(in srgb, #ff6b00 12%, transparent);
+  --color-sale: #ef233c;
+  --color-success: #16a34a;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+@theme {
+  --animate-sheet-up: sheet-up 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-pop: pop 0.25s ease-out;
+  --animate-story: story-progress linear forwards;
+
+  @keyframes sheet-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pop {
+    0% { transform: scale(0.85); }
+    60% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+  @keyframes story-progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  input,
+  textarea {
+    font-size: 16px; /* iOS zoom bo'lmasligi uchun */
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* iPhone pastki "home indicator" uchun xavfsiz joy */
+@utility pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+}

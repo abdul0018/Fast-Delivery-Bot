@@ -1,0 +1,63 @@
+'use client';
+
+/** Order Stack: savatchadagi mahsulotlar ro'yxati */
+import { QuantityStepper } from '@/components/ui/QuantityStepper';
+import { useCart } from '@/hooks/useCart';
+import { useI18n } from '@/hooks/useI18n';
+import { useTelegram } from '@/hooks/useTelegram';
+import { formatPrice } from '@/lib/utils';
+
+export function CartList() {
+  const { items, increment, decrement, remove } = useCart();
+  const { pick, price } = useI18n();
+  const { haptic } = useTelegram();
+
+  return (
+    <ul className="divide-y divide-line overflow-hidden rounded-3xl bg-surface">
+      {items.map(({ product, quantity }) => (
+        <li key={product.id} className="flex gap-3 p-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={product.image} alt="" className="size-20 shrink-0 rounded-2xl bg-muted object-cover" />
+
+          <div className="flex min-w-0 flex-1 flex-col justify-between">
+            <div className="flex items-start justify-between gap-2">
+              <h3 className="line-clamp-2 text-[15px] leading-tight font-semibold">{pick(product.name)}</h3>
+              <button
+                type="button"
+                aria-label="remove"
+                onClick={() => {
+                  haptic.impact('rigid');
+                  remove(product.id);
+                }}
+                className="-mt-1 -mr-1 flex size-7 shrink-0 items-center justify-center rounded-full text-lg text-hint active:bg-muted"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="flex items-end justify-between gap-2">
+              <div>
+                {product.oldPrice && (
+                  <p className="text-xs text-hint line-through">{formatPrice(product.oldPrice * quantity)}</p>
+                )}
+                <p className="text-[15px] font-bold text-sale">{price(product.price * quantity)}</p>
+              </div>
+              <QuantityStepper
+                size="sm"
+                value={quantity}
+                onIncrement={() => {
+                  haptic.impact('light');
+                  increment(product.id);
+                }}
+                onDecrement={() => {
+                  haptic.impact('light');
+                  decrement(product.id);
+                }}
+              />
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
