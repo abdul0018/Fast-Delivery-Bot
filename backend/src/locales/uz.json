@@ -71,7 +71,8 @@
     "complete": "🏁 Yetkazildi",
     "cancel": "❌ Bekor qilish",
     "notAllowed": "Bu amal faqat adminlar uchun",
-    "updated": "Holat yangilandi"
+    "updated": "Holat yangilandi",
+    "chatId": "🆔 Bu chat ID si: <code>{id}</code>\nBuyurtmalar shu yerga tushishi uchun uni serverdagi <b>ADMIN_CHAT_ID</b> ga yozing."
   },
   "errors": {
     "generic": "😔 Xatolik yuz berdi. Iltimos, keyinroq urinib ko'ring.",

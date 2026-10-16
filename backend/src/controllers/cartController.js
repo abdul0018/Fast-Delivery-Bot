@@ -21,6 +21,27 @@ class OrderError extends Error {
   }
 }
 
+// ------------------------------------------------------------------ Himoya
+
+/** Telefon: kamida 9 ta raqam, "+998 90 123 45 67" ko'rinishida saqlanadi */
+function normalizePhone(value) {
+  const digits = String(value || '').replace(/\D/g, '');
+  if (digits.length < 9 || digits.length > 15) return null;
+  if (digits.length === 9) return `+998${digits}`; // mahalliy format: 90 123 45 67
+  return `+${digits}`;
+}
+
+/** Bitta foydalanuvchi qisqa vaqtda juda ko'p buyurtma bermasligi uchun (xotirada, bitta server nusxasi uchun) */
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const recentOrders = new Map();
+function checkRateLimit(userId) {
+  const now = Date.now();
+  const times = (recentOrders.get(userId) || []).filter((time) => now - time < RATE_WINDOW_MS);
+  if (times.length >= config.order.maxOrdersPer10Min) throw new OrderError('TOO_MANY_ORDERS', 429);
+  times.push(now);
+  recentOrders.set(userId, times);
+}
+
 /** Hozir faol bo'lgan to'lov usullari */
 function availablePaymentMethods() {
   const methods = ['cash'];
@@ -125,7 +146,7 @@ const loadOrder = (orderId) =>
   });
 
 /** Admin chatiga yangi buyurtma haqida xabar */
-async function notifyAdmin(order) {
+async function notifyAdmin(order, attempt = 1) {
   if (!config.bot.adminChatId) {
     logger.warn(`ADMIN_CHAT_ID ko'rsatilmagan — buyurtma #${order.id} haqida xabar yuborilmadi`);
     return;
@@ -136,7 +157,12 @@ async function notifyAdmin(order) {
       ...adminOrderKeyboard(order),
     });
   } catch (error) {
-    logger.error(`Admin'ga xabar yuborilmadi (#${order.id}):`, error.message);
+    // Tarmoq uzilishi bo'lsa bir necha marta qayta urinamiz — buyurtma operatorga albatta yetib borsin
+    if (attempt < 3) {
+      setTimeout(() => void notifyAdmin(order, attempt + 1), attempt * 3000);
+      return;
+    }
+    logger.error(`❗ Admin'ga xabar yuborilmadi (#${order.id}) — botni guruhga qo'shganingizni tekshiring:`, error.message);
   }
 }
 
@@ -179,15 +205,20 @@ async function createInvoiceLink(order, lang) {
 async function createOrder(user, lang, payload) {
   const { items, bump = false, paymentMethod, address, phone, comment } = payload || {};
 
+  // Production'da buyurtmalar qabul qiluvchi (admin guruh) sozlanmagan bo'lsa, buyurtma yo'qolib ketmasligi uchun qabul qilmaymiz
+  if (config.isProduction && !config.bot.adminChatId) throw new OrderError('ORDER_DESK_OFFLINE', 503);
   if (!availablePaymentMethods().includes(paymentMethod)) throw new OrderError('PAYMENT_UNAVAILABLE');
 
   const cleanAddress = String(address || '').trim();
   if (cleanAddress.length < 5 || cleanAddress.length > 500) throw new OrderError('INVALID_ADDRESS');
-  const cleanPhone = phone ? String(phone).trim().slice(0, 32) : user.phone;
+  // Kuryer bog'lanishi uchun telefon majburiy (naqd to'lovda ayniqsa)
+  const cleanPhone = normalizePhone(phone || user.phone);
+  if (!cleanPhone) throw new OrderError('INVALID_PHONE');
   const cleanComment = comment ? String(comment).trim().slice(0, 500) : null;
 
   const cart = await calculateCart(items, Boolean(bump));
   if (cart.total < config.order.minTotal) throw new OrderError('MIN_TOTAL');
+  checkRateLimit(user.id);
 
   const isOnline = paymentMethod !== 'cash';
 
@@ -210,7 +241,7 @@ async function createOrder(user, lang, payload) {
       { transaction },
     );
     // Keyingi buyurtmalar uchun manzil va telefonni eslab qolamiz
-    await user.update({ address: cleanAddress, phone: cleanPhone || user.phone }, { transaction });
+    await user.update({ address: cleanAddress, phone: cleanPhone }, { transaction });
     return created;
   });
 

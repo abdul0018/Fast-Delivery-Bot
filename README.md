@@ -15,7 +15,7 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 - Buyurtmalarim, aloqa, telefon raqamni yuborish, tilni o'zgartirish
 - Har bir yangi buyurtma admin/guruhga yuboriladi: mijoz ismi, telefon, manzil, mahsulotlar, jami summa
 - Admin tugmalari: ✅ Qabul qilish → 🚴 Yo'lga chiqdi → 🏁 Yetkazildi / ❌ Bekor qilish (mijozga uning tilida xabar boradi)
-- To'lovlar: naqd pul, Payme/Click (Telegram Payments provider token orqali)
+- To'lovlar: hozircha faqat naqd pul; Payme/Click provider token qo'shilganda yoqiladi
 
 **Mini App**
 1. **Onboarding** — 3 ta swipe slayd, faqat birinchi kirishda
@@ -70,18 +70,48 @@ npm run dev                  # http://localhost:3000
 Brauzerda (Telegramsiz) buyurtma berishni sinash uchun: backend `.env` da `ALLOW_DEV_AUTH=true`,
 frontend `.env.local` da `NEXT_PUBLIC_DEV_AUTH=true` qiling (faqat lokal; production'da o'chiq bo'lishi shart).
 
-### 3. Telegram sozlamalari
+### 3. Production'ga chiqarish (hozircha faqat naqd pul)
 
-1. **WEBAPP_URL** — Mini App HTTPS manzili (masalan, Vercel). Bot ishga tushganda Menu Button'ni shu manzilga o'zi bog'laydi.
-2. **ADMIN_CHAT_ID** — botni admin guruhiga qo'shing, guruh ID sini oling (`-100...` ko'rinishida) va `.env` ga yozing.
-3. **Payme / Click** — BotFather → `/mybots` → Payments → provider tanlang, tokenni `PAYMENT_PROVIDER_TOKEN` ga yozing.
-   Token bo'lmasa Mini App'da bu usul "Tez orada" deb ko'rsatiladi.
+Tavsiya etilgan sxema: **Neon** (baza, allaqachon bor) + **Render** (bot + API, `render.yaml`) + **Vercel** (Mini App).
 
-### 4. Deploy
+**0. Xavfsizlik.** Bot tokeni va baza paroli ochiq yozilgan bo'lsa, avval almashtiring:
+BotFather → `/mybots` → bot → *API Token* → *Revoke*; Neon → *Roles* → parolni yangilang.
 
-- **Frontend** → Vercel (Root Directory: `frontend`), `NEXT_PUBLIC_API_URL` ni sozlang.
-- **Backend** → Render / Railway / VPS (`npm start`), `CORS_ORIGINS` ga frontend domenini yozing.
-  Bot long polling ishlatadi — bir vaqtda faqat bitta nusxa ishga tushirilsin.
+**1. Mini App (Vercel).** vercel.com → *Add New Project* → shu repozitoriy → *Root Directory*: `frontend`.
+Environment: `NEXT_PUBLIC_API_URL=https://<render-manzil>/api`, `NEXT_PUBLIC_DEV_AUTH=false`. Deploy →
+`https://<loyiha>.vercel.app` manzilini oling (bu **WEBAPP_URL**).
+
+**2. Bot + API (Render).** render.com → *New* → *Blueprint* → shu repozitoriy (`render.yaml` o'qiladi). O'zgaruvchilar:
+
+| Kalit | Qiymat |
+|---|---|
+| `BOT_TOKEN` | BotFather tokeni |
+| `DATABASE_URL` | Neon ulanish satri (`?sslmode=verify-full`) |
+| `WEBAPP_URL` | `https://<loyiha>.vercel.app` |
+| `CORS_ORIGINS` | `https://<loyiha>.vercel.app` |
+| `WEBHOOK_DOMAIN` | `https://fast-delivery-api.onrender.com` (Render bergan manzil) |
+| `ADMIN_CHAT_ID` | hozircha bo'sh — 3-qadamda to'ldiriladi |
+
+Birinchi ishga tushishda jadvallar yaratiladi va menyu bo'sh bo'lsa 12 ta namuna mahsulot qo'shiladi.
+Vercel'dagi `NEXT_PUBLIC_API_URL` ni Render manziliga moslab, frontend'ni qayta deploy qiling.
+
+**3. Admin guruh.** Telegram'da guruh yarating, botni qo'shing, guruhda `/id` yuboring — bot chat ID ni yozadi
+(`-100...`). Uni Render'da `ADMIN_CHAT_ID` ga yozing (servis qayta ishga tushadi). Shu paytgacha bot
+buyurtma qabul qilmaydi — mijozga "vaqtincha to'xtatilgan" deb ko'rsatiladi, hech bir buyurtma yo'qolmaydi.
+
+**4. Tekshirish.** Botga `/start` → til → "🍔 Menyu" → mahsulot → savatcha → manzil va telefon → *Tasdiqlash*.
+Guruhga buyurtma tushadi; "✅ Qabul qilish → 🚴 Yo'lga chiqdi → 🏁 Yetkazildi" tugmalari mijozga xabar yuboradi.
+`https://<render-manzil>/api/health` → `{"ok":true}` (baza bilan aloqa ham tekshiriladi).
+
+**Muhim:**
+- Render bepul tarifida servis 15 daqiqa ishlatilmasa "uxlaydi"; webhook uni uyg'otadi, lekin birinchi javob ~30–50 soniya
+  kechikadi. Haqiqiy restoran uchun pullik (Starter) tarif tavsiya etiladi.
+- VPS'da Docker bilan: `docker build -t fast-delivery backend && docker run -d --env-file backend/.env -p 4000:4000 fast-delivery`
+  (`WEBHOOK_DOMAIN` bo'sh — long polling). Bitta token bilan faqat **bitta** nusxa ishlasin.
+- Production himoyasi: `ALLOW_DEV_AUTH` o'chiq, `WEBAPP_URL`/`CORS_ORIGINS` noto'g'ri bo'lsa server ishga tushmaydi,
+  telefon majburiy, bitta foydalanuvchi 10 daqiqada 5 tadan ortiq buyurtma bera olmaydi, admin xabari 3 marta qayta yuboriladi.
+- **Payme / Click** keyinroq: BotFather → *Payments* → provider token → `PAYMENT_PROVIDER_TOKEN`. Token qo'shilishi bilan
+  savatchada avtomatik paydo bo'ladi.
 
 ## Struktura
 
@@ -110,7 +140,7 @@ frontend/src/
 ├── providers/TelegramProvider.tsx
 ├── store/                       # cartStore, settingsStore, catalogStore, userStore, uiStore (Zustand)
 ├── locales/                     # uz.json, ru.json
-└── styles/globals.css           # Tailwind + dizayn tokenlari (yorug' / tungi)
+└── styles/globals.css           # Tailwind + dizayn tokenlari (doim yorug')
 ```
 
 > ⚠️ `.env` va `.env.local` fayllari `.gitignore` da — maxfiy kalitlar repozitoriyga yuklanmaydi.

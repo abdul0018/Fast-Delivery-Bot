@@ -19,13 +19,13 @@ Ordering lives entirely inside Telegram, the messenger Uzbek customers already u
 - Opened from the bot's Menu Button or an inline "open menu" button; rendered in Telegram's WebView on iOS/Android/desktop, which supplies a native Back button and light or dark theme colours (the app deliberately ignores the dark theme; see Brand Commitments).
 - Bilingual UI (Uzbek Latin default, Russian), every string from `frontend/src/locales/*.json`.
 - Prices in so'm (UZS), formatted with spaces (32 000 so'm).
-- Flow: onboarding (first run only) → home → catalog → product bottom sheet → cart with order bump → payment (cash, Payme/Click via Telegram Payments; Telegram Stars removed at the user's request) → admin group notification.
+- Flow: onboarding (first run only) → home → catalog → product bottom sheet → cart with order bump → payment (cash only for launch; Payme/Click via Telegram Payments switches on when a provider token is set; Telegram Stars removed at the user's request) → admin group notification.
 
 ## Capabilities and Constraints
 - Next.js App Router + Tailwind v4 + Zustand frontend; Node.js/Telegraf/Express/PostgreSQL backend. Existing codebase answers the stack.
 - Universal template: restaurant name, logo, brand colour and imagery must be swappable per restaurant; the design must hold up with any brand colour and stay light when Telegram is in dark mode.
 - Required surfaces (from the brief): Onboarding (3 swipe slides + Start), Home (greeting header, stories, hero widget, bottom navigation Home/Catalog/Cart/Profile), Catalog (horizontal categories All/Burgers/Pizza/Drinks/Premium, card with image, name, struck old price, red new price, quick "+"), Product bottom sheet (large image, ingredient bullets, risk-reversal block, sticky "Add to cart – price"), Cart (order stack, order-bump switch "+Cola for 5 000 so'm", total, payment methods, one-tap confirm).
-- Payme/Click is only available when a provider token is configured; otherwise shown as unavailable.
+- Launch is cash-on-delivery only. Payme/Click appears only when a provider token is configured; unavailable methods are hidden, not shown as "soon".
 
 ## Brand Commitments
 - Working name "Fast Delivery" is a placeholder; each restaurant rebrands.

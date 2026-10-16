@@ -17,6 +17,8 @@ function registerBotRoutes(bot) {
   bot.command('menu', startController.openMenu);
   bot.command('lang', startController.askLanguage);
   bot.command('orders', startController.myOrders);
+  // Admin sozlash uchun: guruhda /id — shu chat ID sini ko'rsatadi (ADMIN_CHAT_ID ga yoziladi)
+  bot.command('id', startController.chatId);
 
   // Inline tugmalar
   bot.action(/^lang:(uz|ru)$/, startController.chooseLanguage);

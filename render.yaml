@@ -1,0 +1,29 @@
+# Render Blueprint — backend (bot + API). Render Dashboard → New → Blueprint → shu repozitoriy.
+# Frontend (Mini App) Vercel'ga alohida joylanadi (README → "Production'ga chiqarish").
+services:
+  - type: web
+    name: fast-delivery-api
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: BOT_TOKEN
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: WEBAPP_URL          # https://<loyiha>.vercel.app
+        sync: false
+      - key: CORS_ORIGINS        # WEBAPP_URL bilan bir xil domen
+        sync: false
+      - key: WEBHOOK_DOMAIN      # https://fast-delivery-api.onrender.com (Render bergan manzil)
+        sync: false
+      - key: ADMIN_CHAT_ID       # botni guruhga qo'shing, guruhda /id yuboring
+        sync: false
+      - key: ADMIN_LANGUAGE
+        value: uz
+      - key: SUPPORT_PHONE
+        sync: false

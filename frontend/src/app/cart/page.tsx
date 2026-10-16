@@ -26,6 +26,7 @@ import { useUserStore } from '@/store/userStore';
 import type { Order } from '@/types';
 
 const MIN_ADDRESS_LENGTH = 5;
+const MIN_PHONE_DIGITS = 9;
 
 export default function CartPage() {
   const router = useRouter();
@@ -40,6 +41,7 @@ export default function CartPage() {
   const [phone, setPhone] = useState('');
   const [comment, setComment] = useState('');
   const [addressError, setAddressError] = useState<string>();
+  const [phoneError, setPhoneError] = useState<string>();
   const [submitting, setSubmitting] = useState(false);
   const [successOrder, setSuccessOrder] = useState<Order | null>(null);
 
@@ -95,6 +97,13 @@ export default function CartPage() {
       document.getElementById('address')?.focus();
       return;
     }
+    // Kuryer bog'lanishi uchun telefon majburiy (kamida 9 ta raqam)
+    if (phone.replace(/\D/g, '').length < MIN_PHONE_DIGITS) {
+      haptic.notify('error');
+      setPhoneError(t('errors.INVALID_PHONE'));
+      document.getElementById('phone')?.focus();
+      return;
+    }
 
     setSubmitting(true);
     haptic.impact('heavy');
@@ -111,7 +120,10 @@ export default function CartPage() {
       else onSuccess(order);
     } catch (error) {
       haptic.notify('error');
-      showToast(errorText(error instanceof ApiError ? error.code : 'generic'));
+      const code = error instanceof ApiError ? error.code : 'generic';
+      if (code === 'INVALID_PHONE') setPhoneError(t('errors.INVALID_PHONE'));
+      if (code === 'INVALID_ADDRESS') setAddressError(t('errors.INVALID_ADDRESS'));
+      showToast(errorText(code));
     } finally {
       setSubmitting(false);
     }
@@ -205,7 +217,11 @@ export default function CartPage() {
               autoComplete="tel"
               placeholder={t('cart.phonePlaceholder')}
               value={phone}
-              onChange={(event) => setPhone(event.target.value)}
+              error={phoneError}
+              onChange={(event) => {
+                setPhone(event.target.value);
+                setPhoneError(undefined);
+              }}
             />
             <Input
               id="comment"

@@ -106,6 +106,11 @@ async function myOrders(ctx) {
   await ctx.reply(`${t(lang, 'orders.title')}\n\n${lines.join('\n\n')}`, { parse_mode: 'HTML' });
 }
 
+/** /id — joriy chat ID si (admin guruhni sozlash uchun) */
+async function chatId(ctx) {
+  await ctx.reply(ctx.t('admin.chatId', { id: ctx.chat.id }), { parse_mode: 'HTML' });
+}
+
 /** Tushunarsiz xabar */
 async function fallback(ctx) {
   if (ctx.chat?.type !== 'private') return;
@@ -120,6 +125,7 @@ module.exports = {
   contactInfo,
   savePhone,
   myOrders,
+  chatId,
   fallback,
   setMenuButton,
 };

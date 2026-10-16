@@ -147,7 +147,10 @@
     "UNAUTHORIZED": "Buyurtma berish uchun ilovani Telegram orqali oching",
     "INVALID_INIT_DATA": "Sessiya eskirgan. Ilovani qayta oching",
     "NETWORK": "Internet bilan aloqa yo'q",
-    "generic": "Xatolik yuz berdi. Qayta urinib ko'ring"
+    "generic": "Xatolik yuz berdi. Qayta urinib ko'ring",
+    "INVALID_PHONE": "Kuryer bog'lanishi uchun telefon raqamini kiriting",
+    "TOO_MANY_ORDERS": "Juda ko'p buyurtma. Birozdan keyin qayta urinib ko'ring",
+    "ORDER_DESK_OFFLINE": "Buyurtma qabul qilish vaqtincha to'xtatilgan. Keyinroq urinib ko'ring"
   },
   "profile": {
     "title": "Profil",

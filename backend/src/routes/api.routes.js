@@ -12,6 +12,7 @@
 const express = require('express');
 const config = require('../config/default');
 const { Product, Order } = require('../models');
+const { sequelize } = require('../database/connection');
 const { webAppAuth } = require('../middlewares/auth.middleware');
 const { SUPPORTED_LANGUAGES } = require('../utils/i18n');
 const cartController = require('../controllers/cartController');
@@ -33,7 +34,15 @@ const handle = (fn) => async (req, res) => {
   }
 };
 
-router.get('/health', (req, res) => res.json({ ok: true }));
+// Hosting "health check" uchun: baza ham javob berayotganini tekshiradi
+router.get('/health', async (req, res) => {
+  try {
+    await sequelize.query('SELECT 1');
+    res.json({ ok: true });
+  } catch {
+    res.status(503).json({ ok: false });
+  }
+});
 
 router.get(
   '/config',
