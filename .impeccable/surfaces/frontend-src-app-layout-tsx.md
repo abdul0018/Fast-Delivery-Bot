@@ -27,6 +27,6 @@ STORY: The visitor sees their name and address, a promo banner and stories, find
 
 FIRST VIEWPORT: Home: top row address pill + avatar; greeting; search field; rounded-square stories row; full-width photo promo banner with "Katalogni ko'rish" and "Yangi buyurtma berish"; category tiles; "Ommabop" product row. Sticky saffron cart bar above the labelled bottom nav when the cart is non-empty.
 
-FORM: the category standard (canon exit, user-chosen), benchmarks Yandex Eda + Uzum Tezkor/Express24; seed: 5a02550d. Signature interaction: "+" morphs into an in-place stepper and the cart bar's total ticks. Motion grammar: expo ease-out, sheets rise, nothing bounces.
+FORM: the category standard (canon exit, user-chosen), benchmarks Yandex Eda + Uzum Tezkor/Express24; seed: none (unavailable) — the roll printed no SEED REFERENCE line, only its key. Signature interaction: "+" morphs into an in-place stepper and the cart bar's total ticks. Motion grammar: expo ease-out, sheets rise, nothing bounces.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

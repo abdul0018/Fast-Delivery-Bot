@@ -27,7 +27,7 @@ export function OrderBump() {
     <section
       className={cn(
         'rounded-[20px] border transition-colors duration-300 ease-out-expo',
-        bump ? 'border-ok/35 bg-surface' : 'border-transparent bg-brand-soft',
+        bump ? 'border-brand bg-surface' : 'border-transparent bg-brand-soft',
       )}
     >
       <label className="flex cursor-pointer items-center gap-3 p-3">

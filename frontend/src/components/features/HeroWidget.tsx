@@ -32,7 +32,7 @@ export function HeroWidget() {
                 key={label}
                 className="flex items-center gap-1.5 rounded-full bg-white/92 px-2.5 py-1 text-[12px] font-medium text-ink backdrop-blur-sm"
               >
-                <Icon size={14} strokeWidth={2} className="shrink-0 text-ok" />
+                <Icon size={14} strokeWidth={2} className="shrink-0" />
                 {label}
               </li>
             ))}

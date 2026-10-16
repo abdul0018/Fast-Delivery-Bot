@@ -102,7 +102,7 @@ export function BottomSheet({ open, onClose, children, footer, ariaLabel, classN
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
         >
-          <span className="h-1 w-9 rounded-full bg-white/95 shadow-(--shadow-thumb)" />
+          <span className="h-1 w-9 rounded-full bg-white/95 shadow-(--shadow-thumb) ring-1 ring-ink/15" />
         </div>
 
         <div className="no-scrollbar flex-1 overflow-y-auto overscroll-contain">{children}</div>

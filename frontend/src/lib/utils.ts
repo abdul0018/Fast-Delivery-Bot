@@ -15,10 +15,16 @@ export const discountPercent = (price: number, oldPrice: number | null) =>
 /** { uz, ru } dan joriy tildagi qiymatni olish */
 export const pick = <T>(value: Localized<T>, lang: Lang): T => value[lang] ?? value.uz;
 
-export const formatDate = (iso: string, lang: Lang) =>
-  new Date(iso).toLocaleString(lang === 'ru' ? 'ru-RU' : 'uz-UZ', {
-    day: '2-digit',
-    month: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+// Brauzerlarda o'zbekcha sana ma'lumotlari to'liq emas, shuning uchun oy nomlari qo'lda
+const MONTHS: Record<Lang, string[]> = {
+  uz: ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr'],
+  ru: ['янв.', 'февр.', 'марта', 'апр.', 'мая', 'июня', 'июля', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
+};
+
+/** "16-oktabr, 02:46" | "16 окт., 02:46" */
+export const formatDate = (iso: string, lang: Lang) => {
+  const date = new Date(iso);
+  const time = `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+  const month = MONTHS[lang][date.getMonth()];
+  return lang === 'ru' ? `${date.getDate()} ${month}, ${time}` : `${date.getDate()}-${month}, ${time}`;
+};

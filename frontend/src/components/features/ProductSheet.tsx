@@ -81,11 +81,6 @@ function ProductDetails({
       <div className="relative aspect-[4/3] w-full bg-tile">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={product.image} alt={pick(product.name)} className="size-full object-cover" />
-        {discount > 0 && (
-          <span className="price absolute bottom-3 left-4 rounded-[8px] bg-sale px-2 py-0.5 text-[13px] font-semibold text-white">
-            −{discount}%
-          </span>
-        )}
         <button
           type="button"
           onClick={onClose}
@@ -171,7 +166,7 @@ function ProductDetails({
           <section className="grid gap-3 rounded-[16px] border border-line px-4 py-3.5">
             {TRUST_ITEMS.map(({ icon: Icon, key }) => (
               <div key={key} className="flex items-center gap-3 text-[14px]">
-                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ok/10 text-ok">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-tile text-ink">
                   <Icon size={17} strokeWidth={2} />
                 </span>
                 {t(key, { minutes: deliveryMinutes ?? '' })}

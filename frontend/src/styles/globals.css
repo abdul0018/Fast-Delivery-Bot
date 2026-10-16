@@ -133,8 +133,8 @@
   padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
 }
 
-/* Narxlar va raqamlar: bir xil kenglikdagi raqamlar */
+/* Narxlar va raqamlar. Onest'ning tabular "1" raqami keng bo'sh joy qoldiradi ("1 79 000"), shuning uchun proporsional raqamlar */
 @utility price {
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: proportional-nums;
   letter-spacing: -0.01em;
 }

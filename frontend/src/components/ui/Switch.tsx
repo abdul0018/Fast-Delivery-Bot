@@ -9,7 +9,7 @@ interface SwitchProps {
   disabled?: boolean;
 }
 
-/** iOS uslubidagi yoqish/o'chirish tugmasi — yoqilganda yashil */
+/** iOS uslubidagi yoqish/o'chirish tugmasi — yoqilganda brend rangida (tanlov holati bilan bir xil) */
 export function Switch({ checked, onChange, label, disabled }: SwitchProps) {
   return (
     <button
@@ -21,7 +21,7 @@ export function Switch({ checked, onChange, label, disabled }: SwitchProps) {
       onClick={() => onChange(!checked)}
       className={cn(
         'relative inline-flex h-[30px] w-[50px] shrink-0 items-center rounded-full transition-colors duration-300 ease-out-expo disabled:opacity-45',
-        checked ? 'bg-ok' : 'bg-[#cfcec9]',
+        checked ? 'bg-brand' : 'bg-[#cfcec9]',
       )}
     >
       <span

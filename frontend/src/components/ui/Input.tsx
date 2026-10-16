@@ -39,7 +39,7 @@ export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
         ref={ref}
         id={id}
         aria-invalid={Boolean(error) || undefined}
-        className={cn(fieldClass, error && 'border-sale bg-surface', className)}
+        className={cn(fieldClass, error && 'border-sale bg-surface focus:border-sale', className)}
         {...props}
       />
     </FieldWrapper>
@@ -55,7 +55,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaHTMLAttributes<H
           id={id}
           rows={2}
           aria-invalid={Boolean(error) || undefined}
-          className={cn(fieldClass, 'resize-none', error && 'border-sale bg-surface', className)}
+          className={cn(fieldClass, 'resize-none', error && 'border-sale bg-surface focus:border-sale', className)}
           {...props}
         />
       </FieldWrapper>

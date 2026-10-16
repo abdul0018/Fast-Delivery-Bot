@@ -23,7 +23,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
   const name = pick(product.name);
 
   return (
-    <article className={cn('relative flex flex-col rounded-[20px] bg-surface p-1.5 pb-3', className)}>
+    <article className={cn('relative flex flex-col rounded-[20px] bg-surface p-1.5 pb-2.5', className)}>
       <button
         type="button"
         onClick={() => {
@@ -36,18 +36,14 @@ export function ProductCard({ product, className }: { product: Product; classNam
         <div className="relative aspect-square overflow-hidden rounded-[16px] bg-tile">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={product.image} alt="" loading="lazy" className="size-full object-cover" />
-          {discount > 0 && (
-            <span className="price absolute top-2 left-2 rounded-[8px] bg-sale px-1.5 py-0.5 text-[12px] font-semibold text-white">
-              −{discount}%
-            </span>
-          )}
         </div>
         <div className="flex flex-1 flex-col px-1.5 pt-2.5">
-          <p className="price flex flex-wrap items-baseline gap-x-1.5 leading-tight">
-            <span className={cn('text-[17px] font-semibold whitespace-nowrap', discount > 0 ? 'text-sale' : 'text-ink')}>
-              {formatPrice(product.price)} <span className="text-[13px] font-medium">{t('common.currency')}</span>
-            </span>
-            {product.oldPrice && <span className="text-[13px] text-ink-2 line-through">{formatPrice(product.oldPrice)}</span>}
+          {/* Narx — birinchi qator, eski narx — doim ikkinchi qator: nomlar bir qatorda tekislanadi */}
+          <p className={cn('price text-[17px] leading-tight font-semibold whitespace-nowrap', discount > 0 ? 'text-sale' : 'text-ink')}>
+            {formatPrice(product.price)} <span className="text-[13px] font-medium">{t('common.currency')}</span>
+          </p>
+          <p className="price h-[18px] text-[13px] leading-[18px] text-ink-2 line-through">
+            {product.oldPrice ? formatPrice(product.oldPrice) : null}
           </p>
           <h3 className="mt-1 line-clamp-2 min-h-[2.6em] text-[14px] leading-[1.3] text-ink">{name}</h3>
         </div>
