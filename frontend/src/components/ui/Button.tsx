@@ -1,7 +1,7 @@
 import { forwardRef, type ButtonHTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
-type Variant = 'primary' | 'secondary' | 'ghost' | 'outline' | 'inverse';
+type Variant = 'primary' | 'accent' | 'secondary' | 'ghost' | 'outline' | 'inverse';
 type Size = 'sm' | 'md' | 'lg';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,18 +12,18 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<Variant, string> = {
-  primary:
-    'bg-brand text-on-brand shadow-[0_8px_18px_-10px_var(--brand)] hover:brightness-110 active:brightness-95',
+  primary: 'bg-brand text-on-brand hover:brightness-105 active:brightness-95',
+  accent: 'border-2 border-outline bg-accent text-on-accent hover:brightness-105',
   secondary: 'bg-brand-soft text-brand-ink hover:brightness-[0.98]',
   ghost: 'bg-transparent text-ink hover:bg-muted',
-  outline: 'border border-line bg-surface text-ink hover:bg-muted',
+  outline: 'border-2 border-outline bg-transparent text-ink hover:bg-muted',
   inverse: 'bg-on-brand text-brand hover:brightness-95',
 };
 
 const sizes: Record<Size, string> = {
-  sm: 'h-9 px-3.5 text-sm rounded-[12px]',
-  md: 'h-11 px-4 text-[15px] rounded-[14px]',
-  lg: 'h-[54px] px-6 text-base rounded-[16px]',
+  sm: 'h-9 px-4 text-[13px]',
+  md: 'h-11 px-5 text-[14px]',
+  lg: 'h-[54px] px-6 text-[15px]',
 };
 
 /** Tugma klasslari — <Link> kabi boshqa elementlarni ham bir xil ko'rinishda qilish uchun */
@@ -34,8 +34,8 @@ export function buttonClasses({
   className,
 }: { variant?: Variant; size?: Size; fullWidth?: boolean; className?: string } = {}) {
   return cn(
-    'inline-flex select-none items-center justify-center gap-2 font-display font-semibold tracking-[-0.01em]',
-    'transition-[transform,filter,background-color] duration-200 ease-silk active:scale-[0.98]',
+    'inline-flex select-none items-center justify-center gap-2 rounded-full font-display font-extrabold uppercase tracking-[0.01em]',
+    'transition-[transform,filter,background-color] duration-200 ease-pop active:scale-[0.97]',
     'disabled:pointer-events-none disabled:opacity-45',
     variants[variant],
     sizes[size],

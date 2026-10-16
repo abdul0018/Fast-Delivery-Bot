@@ -1,37 +1,42 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/geologica/wght.css';
+@import '@fontsource-variable/rubik/wght.css';
 
 /* Telegram colorScheme "dark" bo'lsa <html class="dark"> qo'yiladi */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Atlas Silk dizayn tizimi.
- * Brend ranglari (--brand, --silk-2, --silk-3, --on-brand) src/config/brand.ts dan <html> ga yoziladi.
+ * "Pop" dizayn tizimi: krem fon, pomidor qizil, xantal sariq, jigarrang siyoh, 2px kontur.
+ * Brend ranglari (--brand, --on-brand, --accent, --on-accent) src/config/brand.ts dan <html> ga yoziladi.
  */
 :root {
-  --ground: #f7f3ec;
+  --ground: #fff3e2;
   --surface: #ffffff;
-  --ink: #17142a;
-  --ink-2: #5d5870;
-  --line: #e7e0d4;
-  --muted: #efe9df;
-  --sale: #e0182d;
-  --ok: #138a4b;
-  /* Brend rangidagi matn/ikonka (sirt ustida) va yumshoq brend foni */
+  --ink: #3a1d0f;
+  --ink-2: #86664f;
+  --outline: #3a1d0f;
+  --hair: rgb(58 29 15 / 0.14);
+  --muted: #f8e7cf;
+  --sale: #e8392b;
+  --ok: #2b8a50;
   --brand-ink: var(--brand);
-  --brand-soft: color-mix(in srgb, var(--brand) 10%, var(--surface));
+  --brand-soft: color-mix(in srgb, var(--brand) 12%, var(--ground));
+  --bar: #3a1d0f;
+  --bar-ink: #d8c1ad;
 }
 .dark {
-  --brand-ink: color-mix(in srgb, var(--brand) 38%, #ffffff);
-  --brand-soft: color-mix(in srgb, var(--brand) 32%, var(--surface));
-  --ground: #13111c;
-  --surface: #1e1b2a;
-  --ink: #f4f1fa;
-  --ink-2: #aaa4bd;
-  --line: #2f2b3f;
-  --muted: #2a2638;
-  --sale: #ff4d5e;
-  --ok: #3ccf7f;
+  --ground: #1c110a;
+  --surface: #2a1b11;
+  --ink: #fff3e2;
+  --ink-2: #c9ad95;
+  --outline: rgb(255 243 226 / 0.82);
+  --hair: rgb(255 243 226 / 0.14);
+  --muted: #3a271a;
+  --sale: #ff6a5a;
+  --ok: #4cc27e;
+  --brand-ink: color-mix(in srgb, var(--brand) 72%, #ffffff);
+  --brand-soft: color-mix(in srgb, var(--brand) 26%, var(--ground));
+  --bar: #0f0905;
+  --bar-ink: #b89c86;
 }
 
 @theme inline {
@@ -39,31 +44,31 @@
   --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
-  --color-line: var(--line);
+  --color-outline: var(--outline);
+  --color-hair: var(--hair);
   --color-muted: var(--muted);
   --color-sale: var(--sale);
   --color-ok: var(--ok);
-  --color-brand: var(--brand, #2a2c9b);
-  --color-on-brand: var(--on-brand, #ffffff);
-  --color-silk-2: var(--silk-2, #d11d6b);
-  --color-silk-3: var(--silk-3, #ffb31a);
-  /* Za'faron ustidagi matn har doim to'q siyoh (Saffron Carries Ink) — ikkala mavzuda ham */
-  --color-on-silk-3: #17142a;
+  --color-brand: var(--brand, #e8392b);
+  --color-on-brand: var(--on-brand, #fff3e2);
+  --color-accent: var(--accent, #ffbf2e);
+  --color-on-accent: var(--on-accent, #3a1d0f);
   --color-brand-ink: var(--brand-ink);
   --color-brand-soft: var(--brand-soft);
+  --color-bar: var(--bar);
+  --color-bar-ink: var(--bar-ink);
 
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-display: 'Geologica Variable', system-ui, sans-serif;
+  --font-sans: 'Rubik Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-display: 'Rubik Variable', system-ui, sans-serif;
 
-  --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-pop: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme {
   --animate-sheet-up: sheet-up 0.36s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-fade-in: fade-in 0.2s ease-out;
-  --animate-badge: badge 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-stamp: stamp 0.34s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-story: story-progress linear forwards;
-  --animate-silk-ripple: silk-ripple 0.32s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-rise: rise 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 
   @keyframes sheet-up {
@@ -74,19 +79,14 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  @keyframes badge {
-    0% { transform: scale(0.6); }
-    100% { transform: scale(1); }
+  /* "Muhr" — savatchaga qo'shilganda son doirasi bosilgandek paydo bo'ladi */
+  @keyframes stamp {
+    0% { transform: scale(1.6) rotate(-12deg); opacity: 0; }
+    100% { transform: none; opacity: 1; }
   }
   @keyframes story-progress {
     from { transform: scaleX(0); }
     to { transform: scaleX(1); }
-  }
-  /* Kategoriya almashganda atlas lentasining "silkinishi" */
-  /* Naqsh bir romb qadamiga "oqib" keladi: --ripple-from (±px) va kuchli skew'dan tinch holatga */
-  @keyframes silk-ripple {
-    0% { transform: translateX(var(--ripple-from, 32px)) skewX(var(--ripple-skew, -22deg)); filter: blur(0.6px); }
-    100% { transform: none; filter: blur(0); }
   }
   @keyframes rise {
     from { opacity: 0; transform: translateY(10px); }
@@ -101,6 +101,7 @@
     color: var(--ink);
     -webkit-tap-highlight-color: transparent;
     overscroll-behavior-y: none;
+    font-family: var(--font-sans);
     font-size: 15px;
     line-height: 1.45;
   }
@@ -118,13 +119,13 @@
     caret-color: var(--brand);
   }
   ::selection {
-    background: color-mix(in srgb, var(--silk-3) 55%, transparent);
-    color: var(--ink);
+    background: var(--accent);
+    color: var(--on-accent);
   }
   :focus-visible {
-    outline: 2px solid var(--brand);
+    outline: 3px solid var(--accent);
     outline-offset: 2px;
-    border-radius: 10px;
+    border-radius: 12px;
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -146,28 +147,16 @@
   padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
 }
 
-/*
- * Atlas maydoni: brend rangi + atlas ipak "jilosi" — tanda (warp) yo'nalishidagi juda past kontrastli
- * yorug'/soya to'lqini va ingichka ip chiziqlari (yorqinlik farqi ~6% dan oshmaydi).
- */
-@utility silk-field {
-  background-color: var(--brand);
-  background-image:
-    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.028) 0 1px, transparent 1px 4px),
-    linear-gradient(
-      100deg,
-      transparent 0%,
-      rgb(255 255 255 / 0.07) 22%,
-      transparent 40%,
-      rgb(0 0 0 / 0.07) 62%,
-      transparent 78%,
-      rgb(255 255 255 / 0.05) 92%,
-      transparent 100%
-    );
-  color: var(--on-brand);
+/* Katta, qalin, bosh harfli sarlavha — Pop uslubining ovozi */
+@utility shout {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
 }
 
-/* Narxlar: displey shrift, raqamlar bir xil kenglikda */
+/* Narxlar: qalin, raqamlar bir xil kenglikda */
 @utility price {
   font-family: var(--font-display);
   font-variant-numeric: tabular-nums;

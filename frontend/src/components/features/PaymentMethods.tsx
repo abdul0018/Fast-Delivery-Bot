@@ -31,7 +31,7 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
       : t(`cart.methods.${id}Hint`);
 
   return (
-    <div className="divide-y divide-line overflow-hidden rounded-[20px] bg-surface" role="radiogroup" aria-label={t('cart.payment')}>
+    <div className="divide-y-2 divide-hair overflow-hidden rounded-[26px] border-2 border-outline bg-surface" role="radiogroup" aria-label={t('cart.payment')}>
       {METHODS.map(({ id, icon: Icon }) => {
         const enabled = available.includes(id);
         const selected = paymentMethod === id;
@@ -50,24 +50,24 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
           >
             <span
               className={cn(
-                'flex size-10 shrink-0 items-center justify-center rounded-[12px] transition-colors',
-                selected ? 'bg-brand text-on-brand' : 'bg-muted text-ink',
+                'flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-outline transition-colors',
+                selected ? 'bg-accent text-on-accent' : 'bg-surface text-ink',
               )}
             >
-              <Icon size={20} strokeWidth={1.75} />
+              <Icon size={20} strokeWidth={2.25} />
             </span>
             <span className="min-w-0 flex-1">
-              <span className="block text-[15px] font-semibold">{t(`cart.methods.${id}`)}</span>
-              <span className="block text-[13px] text-ink-2">{enabled ? hint(id) : t('cart.soon')}</span>
+              <span className="block text-[15px] font-extrabold">{t(`cart.methods.${id}`)}</span>
+              <span className="block text-[13px] font-medium text-ink-2">{enabled ? hint(id) : t('cart.soon')}</span>
             </span>
             <span
               aria-hidden="true"
               className={cn(
-                'flex size-[22px] items-center justify-center rounded-full border-2 transition-colors',
-                selected ? 'border-brand' : 'border-ink-2/40',
+                'flex size-6 items-center justify-center rounded-full border-2 border-outline transition-colors',
+                selected ? 'bg-brand' : 'bg-surface',
               )}
             >
-              {selected && <span className="size-2.5 rounded-full bg-brand" />}
+              {selected && <span className="size-2 rounded-full bg-on-brand" />}
             </span>
           </button>
         );

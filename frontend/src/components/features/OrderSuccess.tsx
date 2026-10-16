@@ -1,7 +1,6 @@
 'use client';
 
 import { Check } from 'lucide-react';
-import { AtlasBand } from '@/components/ui/AtlasBand';
 import { BottomSheet } from '@/components/ui/BottomSheet';
 import { Button } from '@/components/ui/Button';
 import { useI18n } from '@/hooks/useI18n';
@@ -22,19 +21,18 @@ export function OrderSuccess({ order, onClose }: { order: Order | null; onClose:
       }
     >
       {order && (
-        <div>
-          <div className="silk-field flex flex-col items-center px-6 pt-10 pb-4 text-center">
-            <span className="flex size-16 animate-badge items-center justify-center rounded-full bg-on-brand text-brand">
-              <Check size={34} strokeWidth={2.25} />
+        <div className="px-4 pt-6 pb-6">
+          <div className="flex flex-col items-center rounded-[28px] bg-brand px-6 pt-8 pb-6 text-center text-on-brand">
+            <span className="flex size-[72px] animate-stamp items-center justify-center rounded-full border-[3px] border-on-brand bg-accent text-on-accent">
+              <Check size={38} strokeWidth={3} />
             </span>
-            <h2 className="mt-4 text-[26px] leading-tight font-bold">{t('cart.successTitle')}</h2>
+            <h2 className="shout mt-4 text-[30px]">{t('cart.successTitle')}</h2>
           </div>
-          <AtlasBand variant="edge" height={32} seed={11} />
-          <div className="px-6 pt-2 pb-6 text-center">
-            <p className="text-[15px] text-ink-2">
+          <div className="px-2 pt-5 text-center">
+            <p className="text-[15px] font-medium text-ink-2">
               {order.paymentStatus === 'paid' ? t('cart.paidText', { id: order.id }) : t('cart.successText', { id: order.id })}
             </p>
-            <p className="price mt-4 text-[28px] font-bold">{price(order.total)}</p>
+            <p className="price mt-3 text-[32px] font-black">{price(order.total)}</p>
           </div>
         </div>
       )}

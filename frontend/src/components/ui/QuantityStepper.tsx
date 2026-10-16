@@ -12,10 +12,10 @@ interface QuantityStepperProps {
   label?: string;
 }
 
-/** − 2 + boshqaruvi */
+/** − 2 + boshqaruvi: konturli kapsula, "+" xantal doira */
 export function QuantityStepper({ value, onIncrement, onDecrement, size = 'md', className, label }: QuantityStepperProps) {
   const button = cn(
-    'flex items-center justify-center rounded-[10px] transition-[transform,background-color] duration-150 active:scale-90',
+    'flex items-center justify-center rounded-full transition-transform duration-150 active:scale-90',
     size === 'sm' ? 'size-8' : 'size-10',
   );
   const icon = size === 'sm' ? 16 : 18;
@@ -24,19 +24,16 @@ export function QuantityStepper({ value, onIncrement, onDecrement, size = 'md', 
     <div
       role="group"
       aria-label={label}
-      className={cn('inline-flex items-center gap-0.5 rounded-[14px] border border-line bg-surface p-0.5', className)}
+      className={cn('inline-flex items-center gap-1 rounded-full border-2 border-outline bg-surface p-0.5', className)}
     >
       <button type="button" aria-label="−" className={cn(button, 'text-ink hover:bg-muted')} onClick={onDecrement}>
-        <Minus size={icon} strokeWidth={2.25} />
+        <Minus size={icon} strokeWidth={2.5} />
       </button>
-      <span
-        aria-live="polite"
-        className={cn('price min-w-7 text-center font-semibold', size === 'sm' ? 'text-sm' : 'text-base')}
-      >
+      <span aria-live="polite" className={cn('price min-w-6 text-center font-black', size === 'sm' ? 'text-sm' : 'text-base')}>
         {value}
       </span>
-      <button type="button" aria-label="+" className={cn(button, 'bg-brand text-on-brand')} onClick={onIncrement}>
-        <Plus size={icon} strokeWidth={2.25} />
+      <button type="button" aria-label="+" className={cn(button, 'bg-accent text-on-accent')} onClick={onIncrement}>
+        <Plus size={icon} strokeWidth={2.5} />
       </button>
     </div>
   );

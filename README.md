@@ -5,7 +5,7 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 | Qism | Texnologiyalar | Papka |
 |---|---|---|
 | Bot + REST API | Node.js, Telegraf, Express, Sequelize, PostgreSQL (Neon) | [`backend/`](backend) |
-| Mini App | Next.js (App Router), TypeScript, Tailwind CSS v4, Zustand, Lucide, Geologica | [`frontend/`](frontend) |
+| Mini App | Next.js (App Router), TypeScript, Tailwind CSS v4, Zustand, Lucide, Rubik | [`frontend/`](frontend) |
 
 ## Imkoniyatlar
 
@@ -24,16 +24,17 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 4. **Mahsulot** — Bottom Sheet: katta rasm, tarkibi, ishonch bloki, sticky "Savatchaga qo'shish — narx"
 5. **Savatcha** — Order Stack, Order Bump (Switch), manzil, to'lov usullari, jami summa, bitta bosishda tasdiqlash
 
-### Dizayn: "Atlas Silk"
+### Dizayn: "Pop"
 
-UI [Impeccable](https://impeccable.style) (`.claude/skills/impeccable`) yordamida qayta loyihalangan: restoran rangi
-o'zbek **abr (ikat) atlas** matosidek zinapoyasimon chetli lentalar bilan sarlavha, kategoriyalar va panellarda keladi,
-taomlar esa toza, rasmga yo'naltirilgan kartochkalarda. Imzo harakati — kategoriya almashganda tagidagi atlas lentasi siljiydi.
-Mahsulot konteksti: [`PRODUCT.md`](PRODUCT.md), yo'nalish shartnomasi: `.impeccable/surfaces/`.
+UI [Impeccable](https://impeccable.style) (`.claude/skills/impeccable`) yordamida loyihalangan: krem fon, pomidor qizil va
+xantal sariq, jigarrang siyoh, 2px konturli kartochkalar, qalin bosh harfli Rubik shrifti, dumaloq xantal "+" tugmalari —
+zamonaviy fast-food brendi energiyasi. Savatchaga qo'shilganda son "muhr" bo'lib kartochkaga bosiladi.
+Mahsulot konteksti: [`PRODUCT.md`](PRODUCT.md), yo'nalish shartnomasi: `.impeccable/surfaces/`, dizayn tizimi: [`DESIGN.md`](DESIGN.md).
 
 **Boshqa restoranga moslashtirish:** faqat [`frontend/src/config/brand.ts`](frontend/src/config/brand.ts) ni o'zgartiring —
-`name`, `brand` (asosiy rang), `onBrand` (uning ustidagi matn), `silk2`/`silk3` (atlas naqshining yordamchi ranglari).
-Butun interfeys, Telegram sarlavha rangi va atlas lentalari shu tokenlardan olinadi; tungi (dark) mavzu avtomatik.
+`name`, `brand` (asosiy rang), `onBrand` (uning ustidagi matn), `accent` / `onAccent` (ikkinchi rang va uning ustidagi matn),
+hamda `promises` (30 daqiqa, halol, bepul yetkazish — bajarilmaydiganini o'chiring).
+Butun interfeys va Telegram sarlavha rangi shu tokenlardan olinadi; tungi (dark) mavzu avtomatik.
 
 **Rasmlar:** `frontend/public/images/products/*.jpg` — Pollinations.ai (bepul) orqali yaratilgan **namuna** rasmlar
 (har bir faylga prompt va manba JPEG izohi sifatida yozilgan). Restoranning haqiqiy fotosuratlari bilan shu nomlarda almashtiring.
@@ -100,7 +101,7 @@ backend/src/
 frontend/src/
 ├── app/                         # layout.tsx, page.tsx, catalog/, cart/, profile/
 ├── config/brand.ts              # restoran nomi va brend ranglari (rebrend shu yerda)
-├── components/ui/               # AtlasBand, Button, Input, BottomSheet, Switch, QuantityStepper, Toast, Skeleton
+├── components/ui/               # Button, Input, BottomSheet, Switch, QuantityStepper, Toast, Skeleton
 ├── components/features/         # Onboarding, Stories, HeroWidget, ProductCard, ProductSheet, CartList, OrderBump ...
 ├── components/layout/           # Header, BottomNavigation, AppShell
 ├── hooks/                       # useTelegram, useCart, useI18n, useCatalog
@@ -108,7 +109,7 @@ frontend/src/
 ├── providers/TelegramProvider.tsx
 ├── store/                       # cartStore, settingsStore, catalogStore, userStore, uiStore (Zustand)
 ├── locales/                     # uz.json, ru.json
-└── styles/globals.css           # Tailwind + Telegram mavzu ranglari
+└── styles/globals.css           # Tailwind + Pop dizayn tokenlari (yorug' / tungi)
 ```
 
 > ⚠️ `.env` va `.env.local` fayllari `.gitignore` da — maxfiy kalitlar repozitoriyga yuklanmaydi.

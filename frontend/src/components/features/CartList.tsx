@@ -14,17 +14,17 @@ export function CartList() {
   const { haptic } = useTelegram();
 
   return (
-    <ul className="divide-y divide-line overflow-hidden rounded-[20px] bg-surface">
+    <ul className="divide-y-2 divide-hair overflow-hidden rounded-[26px] border-2 border-outline bg-surface">
       {items.map(({ product, quantity }) => {
         const name = pick(product.name);
         return (
           <li key={product.id} className="flex gap-3 p-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={product.image} alt="" className="size-[76px] shrink-0 rounded-[14px] bg-muted object-cover" />
+            <img src={product.image} alt="" className="size-[76px] shrink-0 rounded-[18px] border-2 border-outline bg-muted object-cover" />
 
             <div className="flex min-w-0 flex-1 flex-col justify-between">
               <div className="flex items-start justify-between gap-2">
-                <h3 className="line-clamp-2 font-sans text-[15px] leading-tight font-semibold tracking-normal">{name}</h3>
+                <h3 className="line-clamp-2 text-[15px] leading-tight font-extrabold tracking-normal">{name}</h3>
                 <button
                   type="button"
                   aria-label={`${name} ×`}
@@ -34,16 +34,16 @@ export function CartList() {
                   }}
                   className="-mt-1.5 -mr-1.5 flex size-8 shrink-0 items-center justify-center rounded-full text-ink-2 hover:bg-muted"
                 >
-                  <X size={18} strokeWidth={1.75} />
+                  <X size={18} strokeWidth={2.5} />
                 </button>
               </div>
 
               <div className="flex items-end justify-between gap-2">
                 <div>
                   {product.oldPrice && (
-                    <p className="price text-xs text-ink-2 line-through">{formatPrice(product.oldPrice * quantity)}</p>
+                    <p className="price text-xs font-medium text-ink-2 line-through">{formatPrice(product.oldPrice * quantity)}</p>
                   )}
-                  <p className="price text-[16px] font-bold text-sale">{price(product.price * quantity)}</p>
+                  <p className="price text-[17px] font-black text-sale">{price(product.price * quantity)}</p>
                 </div>
                 <QuantityStepper
                   size="sm"

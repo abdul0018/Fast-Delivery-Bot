@@ -4,7 +4,6 @@
 import { MapPin, Phone } from 'lucide-react';
 import { LanguageSwitcher } from '@/components/features/LanguageSwitcher';
 import { OrderHistory } from '@/components/features/OrderHistory';
-import { AtlasBand } from '@/components/ui/AtlasBand';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import { useUserStore } from '@/store/userStore';
@@ -25,38 +24,37 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <header className="text-on-brand">
-        <div className="silk-field flex items-center gap-4 px-4 pt-6 pb-4">
+      <header className="px-4 pt-5">
+        <div className="flex items-center gap-4 rounded-[30px] bg-brand p-4 text-on-brand">
           {user?.photo_url ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={user.photo_url} alt="" className="size-16 rounded-full object-cover ring-2 ring-on-brand/40" />
+            <img src={user.photo_url} alt="" className="size-16 rounded-full border-[3px] border-on-brand object-cover" />
           ) : (
-            <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-silk-3 font-display text-2xl font-bold text-on-silk-3">
+            <span className="shout flex size-16 shrink-0 items-center justify-center rounded-full border-[3px] border-on-brand bg-accent text-[28px] text-on-accent">
               {name.charAt(0).toUpperCase()}
             </span>
           )}
           <div className="min-w-0">
-            <h1 className="truncate text-[24px] leading-tight font-bold">{name}</h1>
-            {username && <p className="text-sm text-on-brand/75">@{username}</p>}
+            <h1 className="shout truncate text-[26px]">{name}</h1>
+            {username && <p className="text-sm font-bold opacity-85">@{username}</p>}
           </div>
         </div>
-        <AtlasBand variant="edge" height={32} seed={11} />
       </header>
 
-      <div className="space-y-7 px-4 pt-2">
+      <div className="space-y-7 px-4 pt-6">
         <section className="space-y-2.5">
-          <h2 className="text-[17px] font-semibold">{t('profile.language')}</h2>
+          <h2 className="shout text-[20px]">{t('profile.language')}</h2>
           <LanguageSwitcher />
         </section>
 
         <section className="space-y-2.5">
-          <h2 className="text-[17px] font-semibold">{t('profile.contacts')}</h2>
-          <dl className="divide-y divide-line rounded-[20px] bg-surface">
+          <h2 className="shout text-[20px]">{t('profile.contacts')}</h2>
+          <dl className="divide-y-2 divide-hair rounded-[24px] border-2 border-outline bg-surface">
             {rows.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-center gap-3 px-4 py-3.5">
-                <Icon size={18} strokeWidth={1.75} className="shrink-0 text-brand-ink" />
-                <dt className="shrink-0 text-ink-2">{label}</dt>
-                <dd className={value ? 'min-w-0 flex-1 truncate text-right font-medium' : 'flex-1 text-right text-ink-2'}>
+                <Icon size={19} strokeWidth={2.25} className="shrink-0 text-brand-ink" />
+                <dt className="shrink-0 font-bold text-ink-2">{label}</dt>
+                <dd className={value ? 'min-w-0 flex-1 truncate text-right font-extrabold' : 'flex-1 text-right font-medium text-ink-2'}>
                   {value || t('profile.notSet')}
                 </dd>
               </div>
@@ -65,7 +63,7 @@ export default function ProfilePage() {
         </section>
 
         <section className="space-y-2.5">
-          <h2 className="text-[17px] font-semibold">{t('profile.orders')}</h2>
+          <h2 className="shout text-[20px]">{t('profile.orders')}</h2>
           <OrderHistory />
         </section>
       </div>

@@ -10,24 +10,18 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Onboarding } from '@/components/features/Onboarding';
 import { ProductSheet } from '@/components/features/ProductSheet';
-import { AtlasBand } from '@/components/ui/AtlasBand';
 import { Toast } from '@/components/ui/Toast';
-import { brand } from '@/config/brand';
 import { useBackButton, useTelegram } from '@/hooks/useTelegram';
 import { useI18n } from '@/hooks/useI18n';
 import { useSettingsStore } from '@/store/settingsStore';
 import { useUiStore } from '@/store/uiStore';
 import { BottomNavigation } from './BottomNavigation';
+import { Wordmark } from './Header';
 
 function Splash() {
   return (
-    <div className="silk-field flex min-h-dvh flex-col">
-      <div className="flex flex-1 items-end px-6 pb-6">
-        <p className="font-display text-3xl font-bold">{brand.name}</p>
-      </div>
-      <div className="flex-1 bg-ground">
-        <AtlasBand variant="edge" height={32} seed={11} />
-      </div>
+    <div className="flex min-h-dvh flex-col items-center justify-center gap-5 bg-ground">
+      <Wordmark className="animate-pulse text-center text-[40px]" />
     </div>
   );
 }

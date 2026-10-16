@@ -47,10 +47,10 @@ export function TelegramProvider({ children }: { children: ReactNode }) {
       tg.expand();
       // Bottom Sheet'ni pastga tortganda ilova yopilib qolmasligi uchun (Bot API 7.7+)
       if (tg.isVersionAtLeast('7.7')) tg.disableVerticalSwipes?.();
-      // Telegram sarlavhasi brend rangida — atlas maydoni ilova tepasidan boshlanadi
+      // Telegram sarlavhasi brend rangida, fon — krem
       if (tg.isVersionAtLeast('6.9')) {
         tg.setHeaderColor(brand.colors.brand);
-        tg.setBackgroundColor(tg.colorScheme === 'dark' ? '#13111c' : '#f7f3ec');
+        tg.setBackgroundColor(tg.colorScheme === 'dark' ? '#1c110a' : '#fff3e2');
       }
 
       applyTheme();

@@ -6,7 +6,6 @@
  */
 import { useEffect, useState } from 'react';
 import { Leaf, ShieldCheck, Timer } from 'lucide-react';
-import { AtlasBand } from '@/components/ui/AtlasBand';
 import { BottomSheet } from '@/components/ui/BottomSheet';
 import { brand } from '@/config/brand';
 import { Button } from '@/components/ui/Button';
@@ -66,43 +65,39 @@ function ProductDetails({
   const discount = discountPercent(product.price, product.oldPrice);
 
   return (
-    <div>
-      <div className="relative aspect-[5/4] w-full bg-muted">
+    <div className="px-4 pt-4 pb-6">
+      <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[26px] border-2 border-outline bg-muted">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={product.image} alt={pick(product.name)} className="size-full object-cover" />
         {discount > 0 && (
-          <span className="price absolute bottom-3 left-4 rounded-[8px] bg-silk-3 px-2 py-1 text-sm font-bold text-on-silk-3">
+          <span className="price absolute bottom-3 left-3 rounded-full border-2 border-outline bg-accent px-3 py-1 text-sm font-black text-on-accent">
             −{discount}%
           </span>
         )}
       </div>
-      <AtlasBand variant="rail" height={12} tile={48} seed={5} />
 
-      <div className="space-y-6 px-5 pt-5 pb-6">
+      <div className="space-y-6 px-1 pt-5">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <h2 className="text-[24px] leading-tight font-bold">{pick(product.name)}</h2>
-            <p className="mt-1.5 text-[15px] text-ink-2">{pick(product.description)}</p>
+            <h2 className="shout text-[28px]">{pick(product.name)}</h2>
+            <p className="mt-2 text-[15px] font-medium text-ink-2">{pick(product.description)}</p>
           </div>
           <div className="shrink-0 text-right">
             {product.oldPrice && (
-              <p className="price text-sm text-ink-2 line-through decoration-[1.5px]">{formatPrice(product.oldPrice)}</p>
+              <p className="price text-sm font-medium text-ink-2 line-through decoration-[1.5px]">{formatPrice(product.oldPrice)}</p>
             )}
-            <p className="price text-[22px] leading-tight font-bold whitespace-nowrap text-sale">{formatPrice(product.price)}</p>
-            <p className="text-xs text-ink-2">{t('common.currency')}</p>
+            <p className="price text-[26px] leading-tight font-black whitespace-nowrap text-sale">{formatPrice(product.price)}</p>
+            <p className="text-xs font-bold text-ink-2">{t('common.currency')}</p>
           </div>
         </div>
 
         {pick(product.ingredients).length > 0 && (
           <section>
-            <h3 className="mb-2.5 text-base font-semibold">{t('product.ingredients')}</h3>
+            <h3 className="shout mb-3 text-[17px]">{t('product.ingredients')}</h3>
             <ul className="space-y-2">
               {pick(product.ingredients).map((ingredient) => (
-                <li key={ingredient} className="flex items-center gap-3 text-[15px]">
-                  {/* Atlas rombi — ro'yxat belgisi */}
-                  <svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" className="shrink-0">
-                    <path d="M5 0 6 2H7L8 4H9L10 5 9 6H8L7 8H6L5 10 4 8H3L2 6H1L0 5 1 4H2L3 2H4Z" style={{ fill: 'var(--brand-ink)' }} />
-                  </svg>
+                <li key={ingredient} className="flex items-center gap-3 text-[15px] font-medium">
+                  <span aria-hidden="true" className="size-3 shrink-0 rounded-full border-2 border-outline bg-accent" />
                   {ingredient}
                 </li>
               ))}
@@ -110,12 +105,11 @@ function ProductDetails({
           </section>
         )}
 
-        {/* Xavfni yopuvchi blok */}
         {TRUST_ITEMS.length > 0 && (
-          <section className="grid gap-2.5 rounded-[18px] bg-brand-soft px-4 py-3.5">
+          <section className="grid gap-2.5 rounded-[22px] border-2 border-outline bg-surface px-4 py-3.5">
             {TRUST_ITEMS.map(({ icon: Icon, key }) => (
-              <div key={key} className="flex items-center gap-3 text-sm font-medium">
-                <Icon size={18} strokeWidth={1.75} className="shrink-0 text-brand-ink" />
+              <div key={key} className="flex items-center gap-3 text-sm font-bold">
+                <Icon size={19} strokeWidth={2.25} className="shrink-0 text-ok" />
                 {t(key, { minutes: deliveryMinutes ?? '' })}
               </div>
             ))}
@@ -123,7 +117,7 @@ function ProductDetails({
         )}
 
         <div className="flex items-center justify-between">
-          <span className="text-[15px] font-medium text-ink-2">{t('product.quantity')}</span>
+          <span className="text-[15px] font-bold text-ink-2 uppercase">{t('product.quantity')}</span>
           <QuantityStepper
             value={quantity}
             onIncrement={() => {

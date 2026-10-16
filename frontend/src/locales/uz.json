@@ -29,7 +29,7 @@
   "home": {
     "greeting": "Xush kelibsiz, {name}!",
     "guest": "mehmon",
-    "heroTitle": "Issiq va mazali — bir necha bosishda",
+    "heroTitle": "Och qoldingizmi?",
     "heroText": "Burger, pitsa va ichimliklar to'g'ridan-to'g'ri eshigingizgacha.",
     "viewCatalog": "Katalogni ko'rish",
     "newOrder": "Yangi buyurtma berish",
@@ -39,7 +39,10 @@
     "featureHalal": "100% halol",
     "featureFree": "Bepul yetkazish",
     "storiesTitle": "Chegirmalar",
-    "menuTitle": "Menyu"
+    "menuTitle": "Menyu",
+    "heroTitleAccent": "Biz yetkazamiz!",
+    "promoValue": "−20%",
+    "promoText": "Barcha burgerlarga"
   },
   "stories": {
     "s1Title": "-20%",

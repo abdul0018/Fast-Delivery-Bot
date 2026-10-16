@@ -1,8 +1,8 @@
 'use client';
 
-/** Bosh sahifa: atlas maydonidagi sarlavha va stories, asosiy vidjet, ommabop mahsulotlar */
+/** Bosh sahifa: logotip va shior, stories, qizil aksiya vidjeti, ommabop taomlar */
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { HeroWidget } from '@/components/features/HeroWidget';
 import { ProductCard } from '@/components/features/ProductCard';
 import { Stories } from '@/components/features/Stories';
@@ -19,39 +19,30 @@ export default function HomePage() {
   // Eng katta chegirmali mahsulotlar — "Ommabop"
   const popular = [...products]
     .sort((a, b) => discountPercent(b.price, b.oldPrice) - discountPercent(a.price, a.oldPrice))
-    .slice(0, 6);
+    .slice(0, 4);
 
   return (
-    <div className="pb-2">
+    <div className="space-y-6 pb-2">
       <HomeHeader>
         <Stories />
-        {/* Asosiy taklif — atlas maydonining o'zida */}
-        <div className="mt-6">
-          <h2 className="text-[26px] leading-[1.1] font-bold">{t('home.heroTitle')}</h2>
-          <p className="mt-2 text-[15px] text-on-brand/80">{t('home.heroText')}</p>
-        </div>
       </HomeHeader>
 
-      <div className="mt-2 space-y-6">
-        <HeroWidget />
+      <HeroWidget />
 
-        <section>
-          <div className="flex items-baseline justify-between px-4 pb-3">
-            <h2 className="text-[20px] font-bold">{t('home.popular')}</h2>
-            <Link href="/catalog" className="flex items-center gap-0.5 text-sm font-semibold text-brand-ink">
-              {t('home.seeAll')}
-              <ChevronRight size={16} strokeWidth={1.75} />
-            </Link>
-          </div>
-          <div className="no-scrollbar flex snap-x gap-3 overflow-x-auto scroll-px-4 px-4 pb-3">
-            {status !== 'ready' && products.length === 0
-              ? Array.from({ length: 3 }, (_, i) => <Skeleton key={i} className="h-[262px] w-[158px] shrink-0" />)
-              : popular.map((product) => (
-                  <ProductCard key={product.id} product={product} className="w-[158px] shrink-0 snap-start" />
-                ))}
-          </div>
-        </section>
-      </div>
+      <section>
+        <div className="flex items-end justify-between px-4 pb-3">
+          <h2 className="shout text-[24px]">{t('home.popular')}</h2>
+          <Link href="/catalog" className="flex items-center gap-1 text-sm font-extrabold text-brand-ink uppercase">
+            {t('home.seeAll')}
+            <ArrowRight size={16} strokeWidth={2.5} />
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 gap-3 px-4">
+          {status !== 'ready' && products.length === 0
+            ? Array.from({ length: 4 }, (_, i) => <Skeleton key={i} className="h-[270px]" />)
+            : popular.map((product) => <ProductCard key={product.id} product={product} />)}
+        </div>
+      </section>
     </div>
   );
 }

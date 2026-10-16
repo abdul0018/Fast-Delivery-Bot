@@ -8,7 +8,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { ArrowRight, X } from 'lucide-react';
-import { AtlasBand } from '@/components/ui/AtlasBand';
 import { Button } from '@/components/ui/Button';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
@@ -85,12 +84,10 @@ function StoryViewer({ startIndex, onClose }: { startIndex: number; onClose: () 
         {/* Chap / o'ng tegish zonalari */}
         <button type="button" aria-label="prev" className="absolute inset-y-0 left-0 z-10 w-1/3" onClick={prev} />
         <button type="button" aria-label="next" className="absolute inset-y-0 right-0 z-10 w-2/3" onClick={next} />
-        {/* Rasm va brend maydoni chegarasi — teskari abr lentasi */}
-        <AtlasBand variant="edge" height={32} seed={11} className="absolute inset-x-0 -bottom-px rotate-180" />
       </div>
-      <div className="relative z-20 -mt-px silk-field px-6 pt-2 pb-safe">
-        <h3 className="text-[44px] leading-none font-bold">{t(story.title)}</h3>
-        <p className="mt-3 text-lg text-on-brand/85">{t(story.text)}</p>
+      <div className="relative z-20 -mt-8 rounded-t-[32px] bg-brand px-6 pt-6 pb-safe">
+        <h3 className="shout text-[52px] text-accent">{t(story.title)}</h3>
+        <p className="mt-3 text-lg font-medium text-on-brand">{t(story.text)}</p>
         <Button
           variant="inverse"
           size="lg"
@@ -119,7 +116,7 @@ export function Stories() {
 
   return (
     <>
-      <div className="no-scrollbar -mx-4 mt-4 flex gap-3.5 overflow-x-auto px-4" aria-label={t('home.storiesTitle')}>
+      <div className="no-scrollbar -mx-4 mt-5 flex gap-3 overflow-x-auto px-4" aria-label={t('home.storiesTitle')}>
         {STORIES.map((story, i) => {
           const isSeen = seen.includes(story.id);
           return (
@@ -130,22 +127,13 @@ export function Stories() {
                 haptic.impact('light');
                 setOpenIndex(i);
               }}
-              className="flex w-[68px] shrink-0 flex-col items-center gap-1.5"
+              className="flex w-[70px] shrink-0 flex-col items-center gap-1.5"
             >
-              <span
-                className="rounded-full p-[2.5px]"
-                style={{
-                  background: isSeen
-                    ? 'color-mix(in srgb, var(--on-brand) 30%, transparent)'
-                    : 'conic-gradient(var(--silk-3) 0 40%, var(--silk-2) 40% 70%, var(--on-brand) 70% 100%)',
-                }}
-              >
-                <span className="block rounded-full bg-brand p-[2.5px]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={story.image} alt="" className="size-[58px] rounded-full object-cover" />
-                </span>
+              <span className={isSeen ? 'rounded-full border-2 border-hair p-[3px]' : 'rounded-full border-[3px] border-brand p-[2px]'}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={story.image} alt="" className="size-[58px] rounded-full border-2 border-outline object-cover" />
               </span>
-              <span className="w-full truncate text-center text-[12px] font-medium text-on-brand">{t(story.title)}</span>
+              <span className="w-full truncate text-center text-[12px] font-bold">{t(story.title)}</span>
             </button>
           );
         })}

@@ -29,7 +29,7 @@
   "home": {
     "greeting": "Добро пожаловать, {name}!",
     "guest": "гость",
-    "heroTitle": "Горячо и вкусно — в пару касаний",
+    "heroTitle": "Проголодались?",
     "heroText": "Бургеры, пицца и напитки прямо к вашей двери.",
     "viewCatalog": "Смотреть каталог",
     "newOrder": "Сделать новый заказ",
@@ -39,7 +39,10 @@
     "featureHalal": "100% халяль",
     "featureFree": "Бесплатная доставка",
     "storiesTitle": "Скидки",
-    "menuTitle": "Меню"
+    "menuTitle": "Меню",
+    "heroTitleAccent": "Мы привезём!",
+    "promoValue": "−20%",
+    "promoText": "На все бургеры"
   },
   "stories": {
     "s1Title": "-20%",

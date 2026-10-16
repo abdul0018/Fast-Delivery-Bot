@@ -34,10 +34,10 @@ function CatalogContent() {
       <div className="px-4 pt-4">
         {status === 'error' ? (
           <div className="flex flex-col items-center gap-3 py-16 text-center">
-            <span className="flex size-14 items-center justify-center rounded-full bg-brand-soft text-brand-ink">
-              <WifiOff size={26} strokeWidth={1.75} />
+            <span className="flex size-16 items-center justify-center rounded-full border-2 border-outline bg-accent text-on-accent">
+              <WifiOff size={28} strokeWidth={2.25} />
             </span>
-            <p className="text-ink-2">{t(error === 'NETWORK' ? 'errors.NETWORK' : 'common.loadError')}</p>
+            <p className="font-medium text-ink-2">{t(error === 'NETWORK' ? 'errors.NETWORK' : 'common.loadError')}</p>
             <Button variant="secondary" onClick={reload}>
               {t('common.retry')}
             </Button>
@@ -45,7 +45,7 @@ function CatalogContent() {
         ) : status !== 'ready' && products.length === 0 ? (
           <div className="grid grid-cols-2 gap-3">
             {Array.from({ length: 6 }, (_, i) => (
-              <Skeleton key={i} className="h-[262px]" />
+              <Skeleton key={i} className="h-[270px]" />
             ))}
           </div>
         ) : visible.length === 0 ? (

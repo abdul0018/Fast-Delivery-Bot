@@ -3,33 +3,30 @@
 /**
  * Onboarding — faqat birinchi kirishda ko'rsatiladi.
  * 3 ta slayd: barmoq bilan surish (CSS scroll-snap) yoki "Keyingi" tugmasi.
- * Har bir slaydning yuqori qismi — brend rangidagi atlas maydoni, pastki cheti abr lentasi.
+ * Har bir slayd: katta dumaloq taom rasmi (rangli halqa bilan) va qalin bosh harfli sarlavha.
  */
 import { useRef, useState, type ReactNode } from 'react';
 import { ClipboardCheck, DoorOpen, Hand } from 'lucide-react';
-import { AtlasBand } from '@/components/ui/AtlasBand';
 import { Button } from '@/components/ui/Button';
-import { brand } from '@/config/brand';
+import { Wordmark } from '@/components/layout/Header';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import { cn } from '@/lib/utils';
 import { useSettingsStore } from '@/store/settingsStore';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-function Slide({ image, seed, children }: { image: string; seed: number; children: ReactNode }) {
+const RINGS = ['bg-brand', 'bg-accent', 'bg-ok'] as const;
+
+function Slide({ image, ring, children }: { image: string; ring: (typeof RINGS)[number]; children: ReactNode }) {
   return (
-    <section className="flex w-full shrink-0 snap-center snap-always flex-col">
-      {/* Maydon qolgan joyni to'liq egallaydi — matn lentaning tagida, bo'sh joy qolmaydi */}
-      <div className="silk-field flex min-h-0 flex-1 items-center justify-center px-6 pt-14 pb-2">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={image}
-          alt=""
-          className="aspect-square max-h-full w-full max-w-[420px] rounded-[28px] object-cover shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]"
-        />
+    <section className="flex w-full shrink-0 snap-center snap-always flex-col px-6">
+      <div className="flex min-h-0 flex-1 items-center justify-center py-4">
+        <div className={cn('relative aspect-square h-full max-h-[330px] max-w-full rounded-full border-2 border-outline p-3', ring)}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={image} alt="" className="size-full rounded-full border-2 border-outline object-cover" />
+        </div>
       </div>
-      <AtlasBand variant="edge" height={32} seed={seed} />
-      <div className="flex shrink-0 flex-col px-6 pt-3 pb-2">{children}</div>
+      <div className="shrink-0 pb-2">{children}</div>
     </section>
   );
 }
@@ -71,12 +68,12 @@ export function Onboarding() {
 
   return (
     <div className="fixed inset-0 z-50 mx-auto flex max-w-lg flex-col bg-ground">
-      <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-4 pt-4 text-on-brand">
-        <span className="font-display text-[15px] font-semibold">{brand.name}</span>
+      <div className="flex items-start justify-between px-5 pt-4">
+        <Wordmark className="text-[18px]" />
         <div className="flex items-center gap-3">
-          <LanguageSwitcher compact onBrand />
+          <LanguageSwitcher compact />
           {!isLast && (
-            <button type="button" onClick={finish} className="text-sm font-medium text-on-brand/80">
+            <button type="button" onClick={finish} className="text-sm font-bold text-ink-2">
               {t('onboarding.skip')}
             </button>
           )}
@@ -86,39 +83,39 @@ export function Onboarding() {
       <div
         ref={scroller}
         onScroll={onScroll}
-        className="no-scrollbar flex flex-1 snap-x snap-mandatory overflow-x-auto overflow-y-hidden"
+        className="no-scrollbar flex min-h-0 flex-1 snap-x snap-mandatory overflow-x-auto overflow-y-hidden"
       >
         {/* 1. Muammo / Yechim */}
-        <Slide image="/images/products/classic-burger.jpg" seed={11}>
-          <h2 className="text-[30px] leading-[1.05] font-bold">{t('onboarding.slide1Title')}</h2>
-          <p className="mt-3 text-[17px] text-ink-2">{t('onboarding.slide1Text')}</p>
+        <Slide image="/images/products/classic-burger.jpg" ring="bg-brand">
+          <h2 className="shout text-[36px]">{t('onboarding.slide1Title')}</h2>
+          <p className="mt-3 text-[17px] font-medium text-ink-2">{t('onboarding.slide1Text')}</p>
         </Slide>
 
         {/* 2. Qanday ishlaydi */}
-        <Slide image="/images/products/bag-delivery.jpg" seed={19}>
-          <h2 className="text-[30px] leading-[1.05] font-bold">{t('onboarding.slide2Title')}</h2>
+        <Slide image="/images/products/bag-delivery.jpg" ring="bg-accent">
+          <h2 className="shout text-[36px]">{t('onboarding.slide2Title')}</h2>
           <ol className="mt-4 space-y-2">
             {steps.map(({ icon: Icon, key }, i) => (
               <li key={key} className="flex items-center gap-3">
-                <span className="price flex size-8 shrink-0 items-center justify-center rounded-[10px] bg-brand text-sm font-bold text-on-brand">
+                <span className="price flex size-9 shrink-0 items-center justify-center rounded-full border-2 border-outline bg-accent text-[15px] font-black text-on-accent">
                   {i + 1}
                 </span>
-                <span className="flex-1 text-[17px] font-semibold">{t(key)}</span>
-                <Icon size={20} strokeWidth={1.75} className="text-ink-2" />
+                <span className="flex-1 text-[17px] font-extrabold">{t(key)}</span>
+                <Icon size={21} strokeWidth={2.25} className="text-ink-2" />
               </li>
             ))}
           </ol>
         </Slide>
 
         {/* 3. Ijtimoiy isbot (raqamlar har bir restoran uchun almashtiriladi) */}
-        <Slide image="/images/products/hero-spread.jpg" seed={27}>
-          <h2 className="text-[30px] leading-[1.05] font-bold">{t('onboarding.slide3Title')}</h2>
-          <p className="mt-3 text-[17px] text-ink-2">{t('onboarding.rating')}</p>
+        <Slide image="/images/products/hero-spread.jpg" ring="bg-ok">
+          <h2 className="shout text-[34px]">{t('onboarding.slide3Title')}</h2>
+          <p className="mt-3 text-[17px] font-medium text-ink-2">{t('onboarding.rating')}</p>
         </Slide>
       </div>
 
       <div className="space-y-4 px-6 pt-3 pb-safe">
-        <div className="flex justify-center gap-1.5" role="tablist">
+        <div className="flex justify-center gap-2" role="tablist">
           {Array.from({ length: total }, (_, i) => (
             <button
               key={i}
@@ -128,8 +125,8 @@ export function Onboarding() {
               aria-label={`${i + 1} / ${total}`}
               onClick={() => goTo(i)}
               className={cn(
-                'h-1.5 rounded-full transition-all duration-300 ease-silk',
-                i === index ? 'w-7 bg-brand' : 'w-1.5 bg-ink-2/30',
+                'h-2.5 rounded-full border-2 border-outline transition-all duration-300 ease-pop',
+                i === index ? 'w-8 bg-brand' : 'w-2.5 bg-transparent',
               )}
             />
           ))}
