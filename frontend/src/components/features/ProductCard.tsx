@@ -65,7 +65,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
 
       <button
         type="button"
-        aria-label={`${t('nav.cart')}: ${name}`}
+        aria-label={t('common.addToCartItem', { name })}
         onClick={quickAdd}
         className="absolute right-2.5 bottom-2.5 flex size-8 items-center justify-center rounded-full bg-accent text-on-accent transition-transform duration-150 active:scale-90"
       >

@@ -25,7 +25,7 @@ export function BottomNavigation() {
   const { haptic } = useTelegram();
 
   return (
-    <nav aria-label="Navigation" className="fixed inset-x-0 bottom-0 z-40">
+    <nav aria-label={t('nav.label')} className="fixed inset-x-0 bottom-0 z-40">
       <ul className="mx-auto grid max-w-lg grid-cols-4 border-t border-line bg-ground px-2 pt-2.5 pb-safe">
         {TABS.map(({ href, icon: Icon, label }) => {
           const active = href === '/' ? pathname === '/' : pathname.startsWith(href);

@@ -4,13 +4,19 @@
     "loading": "Yuklanmoqda...",
     "retry": "Qayta urinish",
     "close": "Yopish",
-    "loadError": "Ma'lumotlarni yuklab bo'lmadi"
+    "loadError": "Ma'lumotlarni yuklab bo'lmadi",
+    "addToCartItem": "Savatchaga qo'shish: {name}",
+    "decrease": "Kamaytirish",
+    "increase": "Ko'paytirish",
+    "prev": "Oldingi",
+    "next": "Keyingi"
   },
   "nav": {
     "home": "Bosh sahifa",
     "catalog": "Katalog",
     "cart": "Savatcha",
-    "profile": "Profil"
+    "profile": "Profil",
+    "label": "Asosiy menyu"
   },
   "onboarding": {
     "skip": "O'tkazib yuborish",

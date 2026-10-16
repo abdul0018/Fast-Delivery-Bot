@@ -43,7 +43,7 @@ export function LanguageSwitcher({ compact = false, onBrand = false }: { compact
               compact ? 'px-3 py-1 text-xs' : 'px-4 py-2.5 text-sm',
               active
                 ? onBrand
-                  ? 'bg-white text-[#e00000]'
+                  ? 'bg-white text-brand-fill'
                   : 'bg-brand-fill text-on-brand'
                 : onBrand
                   ? 'text-white'

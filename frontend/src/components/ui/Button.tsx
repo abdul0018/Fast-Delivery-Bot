@@ -17,7 +17,7 @@ const variants: Record<Variant, string> = {
   ghost: 'bg-transparent text-ink hover:bg-muted',
   outline: 'border-[1.5px] border-ink bg-transparent text-ink hover:bg-muted',
   // Oq tugma — qizil fon ustida (splash, aksiya kartasi)
-  inverse: 'bg-white text-[#e00000] hover:brightness-95',
+  inverse: 'bg-white text-brand-fill hover:brightness-95',
 };
 
 const sizes: Record<Size, string> = {

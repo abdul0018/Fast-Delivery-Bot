@@ -96,7 +96,7 @@ export function Onboarding() {
           <ol className="mx-auto mt-3 w-fit space-y-2 text-left">
             {steps.map(({ icon: Icon, key }, i) => (
               <li key={key} className="flex items-center gap-3">
-                <span className="price flex size-8 shrink-0 items-center justify-center rounded-full bg-white text-[14px] font-bold text-[#e00000]">
+                <span className="price flex size-8 shrink-0 items-center justify-center rounded-full bg-white text-[14px] font-bold text-brand-fill">
                   {i + 1}
                 </span>
                 <span className="text-[17px] font-bold">{t(key)}</span>

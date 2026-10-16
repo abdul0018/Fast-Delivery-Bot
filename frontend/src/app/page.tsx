@@ -51,7 +51,7 @@ export default function HomePage() {
         </Link>
       </HomeHeader>
 
-      <CategoryTabs value={null} onChange={(id) => router.push(id === 'all' ? '/catalog' : `/catalog?category=${id}`)} />
+      <CategoryTabs value="all" onChange={(id) => router.push(id === 'all' ? '/catalog' : `/catalog?category=${id}`)} />
 
       <section>
         <SectionTitle title={t('home.promotions')} />

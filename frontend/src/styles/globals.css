@@ -35,7 +35,7 @@
   --muted: #2a2a2a;
   --sale: #ff4a3d;
   --ok: #2fb350;
-  --brand-ink: #ff4a3d;
+  --brand-ink: color-mix(in srgb, var(--brand) 72%, #ffffff);
   --brand-fill: color-mix(in srgb, var(--brand) 93%, #000000);
   --soft-bg: #3a1f1a;
 }

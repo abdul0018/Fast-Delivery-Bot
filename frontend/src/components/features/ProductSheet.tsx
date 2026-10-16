@@ -73,11 +73,13 @@ function ProductDetails({
 
   return (
     <div className="pb-6">
-      <div className="relative flex aspect-[5/4] w-full items-center justify-center bg-soft">
+      <div className="relative flex aspect-[5/4] w-full items-center justify-center bg-brand-fill">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={product.image} alt={pick(product.name)} className="size-[78%] rounded-full object-cover shadow-[0_18px_40px_-18px_rgba(0,0,0,0.45)]" />
+        <span className="flex aspect-square h-[82%] items-center justify-center rounded-full bg-white shadow-[0_18px_40px_-18px_rgba(0,0,0,0.5)]">
+          <img src={product.image} alt={pick(product.name)} className="aspect-square h-[86%] rounded-full object-cover" />
+        </span>
         {discount > 0 && (
-          <span className="price absolute bottom-4 left-4 rounded-full bg-brand-fill px-3 py-1 text-sm font-bold text-on-brand">
+          <span className="price absolute bottom-4 left-4 rounded-full bg-white px-3 py-1 text-sm font-bold text-brand-fill">
             −{discount}%
           </span>
         )}

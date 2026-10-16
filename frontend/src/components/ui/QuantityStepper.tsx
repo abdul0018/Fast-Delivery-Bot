@@ -1,6 +1,7 @@
 'use client';
 
 import { Minus, Plus } from 'lucide-react';
+import { useI18n } from '@/hooks/useI18n';
 import { cn } from '@/lib/utils';
 
 interface QuantityStepperProps {
@@ -24,6 +25,7 @@ export function QuantityStepper({
   className,
   label,
 }: QuantityStepperProps) {
+  const { t } = useI18n();
   const button = cn(
     'flex items-center justify-center rounded-[9px] bg-brand-fill text-on-brand transition-transform duration-150 active:scale-90',
     size === 'sm' ? 'size-7' : 'size-9',
@@ -37,13 +39,13 @@ export function QuantityStepper({
       aria-label={label}
       className={cn('inline-flex items-center gap-2', vertical && 'flex-col-reverse gap-1.5', className)}
     >
-      <button type="button" aria-label="−" className={button} onClick={onDecrement}>
+      <button type="button" aria-label={t('common.decrease')} className={button} onClick={onDecrement}>
         <Minus size={icon} strokeWidth={2.5} />
       </button>
       <span aria-live="polite" className={cn('price min-w-5 text-center font-bold', size === 'sm' ? 'text-sm' : 'text-base')}>
         {value}
       </span>
-      <button type="button" aria-label="+" className={button} onClick={onIncrement}>
+      <button type="button" aria-label={t('common.increase')} className={button} onClick={onIncrement}>
         <Plus size={icon} strokeWidth={2.5} />
       </button>
     </div>

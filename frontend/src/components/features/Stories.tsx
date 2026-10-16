@@ -82,8 +82,8 @@ function StoryViewer({ startIndex, onClose }: { startIndex: number; onClose: () 
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img key={story.id} src={story.image} alt="" className="size-full animate-fade-in object-cover" />
         {/* Chap / o'ng tegish zonalari */}
-        <button type="button" aria-label="prev" className="absolute inset-y-0 left-0 z-10 w-1/3" onClick={prev} />
-        <button type="button" aria-label="next" className="absolute inset-y-0 right-0 z-10 w-2/3" onClick={next} />
+        <button type="button" aria-label={t('common.prev')} className="absolute inset-y-0 left-0 z-10 w-1/3" onClick={prev} />
+        <button type="button" aria-label={t('common.next')} className="absolute inset-y-0 right-0 z-10 w-2/3" onClick={next} />
       </div>
       <div className="relative z-20 -mt-8 rounded-t-[28px] bg-brand-fill px-6 pt-6 pb-safe">
         <h3 className="text-[44px] leading-none font-black">{t(story.title)}</h3>
@@ -130,7 +130,7 @@ export function Stories() {
               }}
               className="flex w-[210px] shrink-0 items-center gap-3 rounded-[18px] bg-surface p-2.5 pr-3 text-left"
             >
-              <span className={isSeen ? 'rounded-full p-[2px] ring-2 ring-line' : 'rounded-full p-[2px] ring-2 ring-brand'}>
+              <span className={isSeen ? 'inline-flex shrink-0 rounded-full p-[2px] ring-2 ring-line' : 'inline-flex shrink-0 rounded-full p-[2px] ring-2 ring-brand'}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={story.image} alt="" className="size-12 rounded-full object-cover" />
               </span>
