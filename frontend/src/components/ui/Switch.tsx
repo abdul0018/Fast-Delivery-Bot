@@ -9,7 +9,7 @@ interface SwitchProps {
   disabled?: boolean;
 }
 
-/** Yoqish/o'chirish tugmasi — konturli, yoqilganda yashil */
+/** Yoqish/o'chirish tugmasi — yoqilganda yashil */
 export function Switch({ checked, onChange, label, disabled }: SwitchProps) {
   return (
     <button
@@ -20,14 +20,14 @@ export function Switch({ checked, onChange, label, disabled }: SwitchProps) {
       disabled={disabled}
       onClick={() => onChange(!checked)}
       className={cn(
-        'relative inline-flex h-[32px] w-[56px] shrink-0 items-center rounded-full border-2 border-outline transition-colors duration-300 ease-pop disabled:opacity-45',
-        checked ? 'bg-ok' : 'bg-surface',
+        'relative inline-flex h-[30px] w-[52px] shrink-0 items-center rounded-full transition-colors duration-300 ease-out-expo disabled:opacity-45',
+        checked ? 'bg-accent' : 'bg-[#c1c1c1] dark:bg-[#4a4a4a]',
       )}
     >
       <span
         className={cn(
-          'inline-block size-[22px] rounded-full border-2 border-outline transition-transform duration-300 ease-pop',
-          checked ? 'translate-x-[27px] bg-surface' : 'translate-x-[3px] bg-accent',
+          'inline-block size-[24px] rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.25)] transition-transform duration-300 ease-out-expo',
+          checked ? 'translate-x-[25px]' : 'translate-x-[3px]',
         )}
       />
     </button>

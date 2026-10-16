@@ -1,77 +1,74 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/rubik/wght.css';
+@import '@fontsource-variable/red-hat-display/wght.css';
+@import '@fontsource-variable/manrope/wght.css';
 
 /* Telegram colorScheme "dark" bo'lsa <html class="dark"> qo'yiladi */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * "Pop" dizayn tizimi: krem fon, pomidor qizil, xantal sariq, jigarrang siyoh, 2px kontur.
- * Brend ranglari (--brand, --on-brand, --accent, --on-accent) src/config/brand.ts dan <html> ga yoziladi.
+ * "Red" dizayn tizimi (foydalanuvchi bergan namuna asosida): oq fon, yorqin qizil, och kulrang kartochkalar,
+ * yashil "+" tugmalar, pushti yumshoq fon, oddiy chiziqli ikonkalar, Red Hat Display shrifti.
+ * Brend ranglari src/config/brand.ts dan <html> ga yoziladi.
  */
 :root {
-  --ground: #fff3e2;
-  --surface: #ffffff;
-  --ink: #3a1d0f;
-  --ink-2: #86664f;
-  --outline: #3a1d0f;
-  --hair: rgb(58 29 15 / 0.14);
-  --muted: #f8e7cf;
-  --sale: #d62d20;
-  --ok: #2b8a50;
-  --brand-ink: color-mix(in srgb, var(--brand) 80%, #3a1d0f);
-  /* Matn tushadigan qizil maydonlar uchun: brand rang siyoh tomon 20% to'qlashtiriladi (krem matn >= 4.5:1) */
-  --brand-fill: color-mix(in srgb, var(--brand) 80%, #3a1d0f);
-  --brand-soft: color-mix(in srgb, var(--brand) 12%, var(--ground));
-  --bar: #3a1d0f;
-  --bar-ink: #d8c1ad;
+  --ground: #ffffff;
+  --surface: #f5f5f5;
+  --raised: #ffffff;
+  --ink: #1a1a1a;
+  --ink-2: #756b66;
+  --line: #e7e3e1;
+  --muted: #efefef;
+  --sale: #e00000;
+  --ok: #006d1a;
+  --brand-ink: color-mix(in srgb, var(--brand) 93%, #000000);
+  /* Matn tushadigan qizil maydonlar: oq matn >= 4.5:1 */
+  --brand-fill: color-mix(in srgb, var(--brand) 93%, #000000);
+  --soft-bg: var(--soft);
 }
 .dark {
-  --ground: #1c110a;
-  --surface: #2a1b11;
-  --ink: #fff3e2;
-  --ink-2: #c9ad95;
-  --outline: rgb(255 243 226 / 0.82);
-  --hair: rgb(255 243 226 / 0.14);
-  --muted: #3a271a;
-  --sale: #ff6a5a;
-  --ok: #4cc27e;
-  --brand-ink: color-mix(in srgb, var(--brand) 72%, #ffffff);
-  --brand-fill: color-mix(in srgb, var(--brand) 80%, #3a1d0f);
-  --brand-soft: color-mix(in srgb, var(--brand) 26%, var(--ground));
-  --bar: #2a1b11;
-  --bar-ink: #b89c86;
+  --ground: #121212;
+  --surface: #1f1f1f;
+  --raised: #262626;
+  --ink: #f5f5f5;
+  --ink-2: #b3a9a4;
+  --line: #2f2f2f;
+  --muted: #2a2a2a;
+  --sale: #ff4a3d;
+  --ok: #2fb350;
+  --brand-ink: #ff4a3d;
+  --brand-fill: color-mix(in srgb, var(--brand) 93%, #000000);
+  --soft-bg: #3a1f1a;
 }
 
 @theme inline {
   --color-ground: var(--ground);
   --color-surface: var(--surface);
+  --color-raised: var(--raised);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
-  --color-outline: var(--outline);
-  --color-hair: var(--hair);
+  --color-line: var(--line);
   --color-muted: var(--muted);
   --color-sale: var(--sale);
   --color-ok: var(--ok);
-  --color-brand: var(--brand, #e8392b);
-  --color-on-brand: var(--on-brand, #fff3e2);
-  --color-accent: var(--accent, #ffbf2e);
-  --color-on-accent: var(--on-accent, #3a1d0f);
+  --color-brand: var(--brand, #f00000);
+  --color-on-brand: var(--on-brand, #ffffff);
+  --color-accent: var(--accent, #006d1a);
+  --color-on-accent: var(--on-accent, #ffffff);
+  --color-soft: var(--soft-bg);
   --color-brand-ink: var(--brand-ink);
-  --color-brand-soft: var(--brand-soft);
   --color-brand-fill: var(--brand-fill);
-  --color-bar: var(--bar);
-  --color-bar-ink: var(--bar-ink);
 
-  --font-sans: 'Rubik Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-  --font-display: 'Rubik Variable', system-ui, sans-serif;
+  /* Lotin — Red Hat Display, kirill — Manrope (Red Hat Display'da kirill harflari yo'q) */
+  --font-sans: 'Red Hat Display Variable', 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-display: 'Red Hat Display Variable', 'Manrope Variable', system-ui, sans-serif;
 
-  --ease-pop: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme {
   --animate-sheet-up: sheet-up 0.36s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-fade-in: fade-in 0.2s ease-out;
-  --animate-stamp: stamp 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-pop-in: pop-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-story: story-progress linear forwards;
   --animate-rise: rise 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 
@@ -83,10 +80,9 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  /* "Muhr" — savatchaga qo'shilganda son doirasi bosilgandek paydo bo'ladi */
-  @keyframes stamp {
-    0% { transform: scale(1.6) rotate(-12deg); opacity: 0; }
-    100% { transform: none; opacity: 1; }
+  @keyframes pop-in {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: none; opacity: 1; }
   }
   @keyframes story-progress {
     from { transform: scaleX(0); }
@@ -111,7 +107,7 @@
   }
   h1, h2, h3 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
   button {
@@ -123,11 +119,11 @@
     caret-color: var(--brand);
   }
   ::selection {
-    background: var(--accent);
-    color: var(--on-accent);
+    background: var(--soft-bg);
+    color: var(--ink);
   }
   :focus-visible {
-    outline: 3px solid var(--accent);
+    outline: 2px solid var(--brand);
     outline-offset: 2px;
     border-radius: 12px;
   }
@@ -151,24 +147,8 @@
   padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
 }
 
-/* Katta, qalin, bosh harfli sarlavha — Pop uslubining ovozi */
-@utility shout {
-  font-family: var(--font-display);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.025em;
-  line-height: 0.98;
-}
-
-/* Qizil maydondagi xantal raqamlar: siyoh kontur bilan (kontrast + Pop vivesi) */
-@utility ink-stroke {
-  -webkit-text-stroke: 4px var(--on-accent);
-  paint-order: stroke fill;
-}
-
 /* Narxlar: qalin, raqamlar bir xil kenglikda */
 @utility price {
   font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
 }

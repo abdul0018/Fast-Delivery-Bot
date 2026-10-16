@@ -5,7 +5,7 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 | Qism | Texnologiyalar | Papka |
 |---|---|---|
 | Bot + REST API | Node.js, Telegraf, Express, Sequelize, PostgreSQL (Neon) | [`backend/`](backend) |
-| Mini App | Next.js (App Router), TypeScript, Tailwind CSS v4, Zustand, Lucide, Rubik | [`frontend/`](frontend) |
+| Mini App | Next.js (App Router), TypeScript, Tailwind CSS v4, Zustand, Lucide, Red Hat Display | [`frontend/`](frontend) |
 
 ## Imkoniyatlar
 
@@ -24,15 +24,16 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 4. **Mahsulot** — Bottom Sheet: katta rasm, tarkibi, ishonch bloki, sticky "Savatchaga qo'shish — narx"
 5. **Savatcha** — Order Stack, Order Bump (Switch), manzil, to'lov usullari, jami summa, bitta bosishda tasdiqlash
 
-### Dizayn: "Pop"
+### Dizayn
 
-UI [Impeccable](https://impeccable.style) (`.claude/skills/impeccable`) yordamida loyihalangan: krem fon, pomidor qizil va
-xantal sariq, jigarrang siyoh, 2px konturli kartochkalar, qalin bosh harfli Rubik shrifti, dumaloq xantal "+" tugmalari —
-zamonaviy fast-food brendi energiyasi. Savatchaga qo'shilganda son "muhr" bo'lib kartochkaga bosiladi.
+UI foydalanuvchi bergan namuna asosida va [Impeccable](https://impeccable.style) (`.claude/skills/impeccable`) yordamida:
+oq fon, yorqin qizil (#F00000), och kulrang kartochkalar, yashil "+" tugmalar, pushti yumshoq fon,
+oddiy chiziqli ikonkalar (Lucide), Red Hat Display shrifti (kirill harflari uchun Manrope).
+Qizil splash/onboarding, "Menyu" sahifasi qidiruv va kategoriya plitkalari bilan, qizil "Rahmat!" ekrani.
 Mahsulot konteksti: [`PRODUCT.md`](PRODUCT.md), yo'nalish shartnomasi: `.impeccable/surfaces/`, dizayn tizimi: [`DESIGN.md`](DESIGN.md).
 
 **Boshqa restoranga moslashtirish:** faqat [`frontend/src/config/brand.ts`](frontend/src/config/brand.ts) ni o'zgartiring —
-`name`, `brand` (asosiy rang), `onBrand` (uning ustidagi matn), `accent` / `onAccent` (ikkinchi rang va uning ustidagi matn),
+`name`, `brand` (asosiy qizil), `onBrand` (uning ustidagi matn), `accent` / `onAccent` ("+" tugmalari rangi), `soft` (yumshoq fon),
 hamda `promises` (30 daqiqa, halol, bepul yetkazish — bajarilmaydiganini o'chiring).
 Butun interfeys va Telegram sarlavha rangi shu tokenlardan olinadi; tungi (dark) mavzu avtomatik.
 
@@ -109,7 +110,7 @@ frontend/src/
 ├── providers/TelegramProvider.tsx
 ├── store/                       # cartStore, settingsStore, catalogStore, userStore, uiStore (Zustand)
 ├── locales/                     # uz.json, ru.json
-└── styles/globals.css           # Tailwind + Pop dizayn tokenlari (yorug' / tungi)
+└── styles/globals.css           # Tailwind + dizayn tokenlari (yorug' / tungi)
 ```
 
 > ⚠️ `.env` va `.env.local` fayllari `.gitignore` da — maxfiy kalitlar repozitoriyga yuklanmaydi.

@@ -12,7 +12,7 @@ const OPTIONS: { value: Lang; label: string }[] = [
 ];
 
 /** UZ / RU almashtirgich — tanlov backend'ga ham saqlanadi (bot ham shu tilda javob beradi) */
-export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
+export function LanguageSwitcher({ compact = false, onBrand = false }: { compact?: boolean; onBrand?: boolean }) {
   const { lang, setLang } = useI18n();
   const { haptic } = useTelegram();
   const updateMe = useUserStore((state) => state.updateMe);
@@ -25,7 +25,10 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   };
 
   return (
-    <div role="radiogroup" className={cn('inline-flex rounded-full border-2 border-outline p-0.5', !compact && 'w-full bg-surface')}>
+    <div
+      role="radiogroup"
+      className={cn('inline-flex rounded-full p-1', onBrand ? 'bg-white/20' : 'bg-surface', !compact && 'w-full')}
+    >
       {OPTIONS.map((option) => {
         const active = lang === option.value;
         return (
@@ -36,9 +39,15 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
             aria-checked={active}
             onClick={() => change(option.value)}
             className={cn(
-              'flex-1 rounded-full font-extrabold transition-colors duration-200',
-              compact ? 'px-2.5 py-1 text-xs' : 'px-4 py-2.5 text-sm',
-              active ? 'bg-ink text-ground' : 'text-ink-2',
+              'flex-1 rounded-full font-bold transition-colors duration-200',
+              compact ? 'px-3 py-1 text-xs' : 'px-4 py-2.5 text-sm',
+              active
+                ? onBrand
+                  ? 'bg-white text-[#e00000]'
+                  : 'bg-brand-fill text-on-brand'
+                : onBrand
+                  ? 'text-white'
+                  : 'text-ink-2',
             )}
           >
             {compact ? option.value.toUpperCase() : option.label}

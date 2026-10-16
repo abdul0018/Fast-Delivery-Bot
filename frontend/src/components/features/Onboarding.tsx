@@ -1,32 +1,31 @@
 'use client';
 
 /**
- * Onboarding — faqat birinchi kirishda ko'rsatiladi.
+ * Onboarding — faqat birinchi kirishda ko'rsatiladi (namunadagi qizil splash uslubida).
  * 3 ta slayd: barmoq bilan surish (CSS scroll-snap) yoki "Keyingi" tugmasi.
- * Har bir slayd: katta dumaloq taom rasmi (rangli halqa bilan) va qalin bosh harfli sarlavha.
+ * Har bir slayd: oq likopchadagi taom, oq sarlavha va matn.
  */
 import { useRef, useState, type ReactNode } from 'react';
 import { ClipboardCheck, DoorOpen, Hand } from 'lucide-react';
+import { Logo } from '@/components/layout/Header';
 import { Button } from '@/components/ui/Button';
-import { Wordmark } from '@/components/layout/Header';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import { cn } from '@/lib/utils';
 import { useSettingsStore } from '@/store/settingsStore';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-const RINGS = ['bg-brand', 'bg-accent', 'bg-ok'] as const;
-
-function Slide({ image, ring, children }: { image: string; ring: (typeof RINGS)[number]; children: ReactNode }) {
+function Slide({ image, children }: { image: string; children: ReactNode }) {
   return (
-    <section className="flex w-full shrink-0 snap-center snap-always flex-col px-6">
+    <section className="flex w-full shrink-0 snap-center snap-always flex-col px-7">
       <div className="flex min-h-0 flex-1 items-center justify-center py-4">
-        <div className={cn('relative aspect-square h-full max-h-[330px] max-w-full rounded-full border-2 border-outline p-3', ring)}>
+        {/* Oq likopcha */}
+        <span className="flex aspect-square h-full max-h-[260px] max-w-full items-center justify-center rounded-full bg-white shadow-[0_20px_40px_-20px_rgba(0,0,0,0.45)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={image} alt="" className="size-full rounded-full border-2 border-outline object-cover" />
-        </div>
+          <img src={image} alt="" className="size-[80%] rounded-full object-cover" />
+        </span>
       </div>
-      <div className="shrink-0 pb-2">{children}</div>
+      <div className="shrink-0 pb-2 text-center">{children}</div>
     </section>
   );
 }
@@ -67,17 +66,17 @@ export function Onboarding() {
   ] as const;
 
   return (
-    <div className="fixed inset-0 z-50 mx-auto flex max-w-lg flex-col bg-ground">
-      <div className="flex items-start justify-between px-5 pt-4">
-        <Wordmark className="text-[18px]" />
-        <div className="flex items-center gap-3">
-          <LanguageSwitcher compact />
-          {!isLast && (
-            <button type="button" onClick={finish} className="text-sm font-bold text-ink-2">
-              {t('onboarding.skip')}
-            </button>
-          )}
-        </div>
+    <div className="fixed inset-0 z-50 mx-auto flex max-w-lg flex-col bg-brand-fill text-on-brand">
+      <div className="flex items-center justify-between px-5 pt-4">
+        <LanguageSwitcher compact onBrand />
+        {!isLast && (
+          <button type="button" onClick={finish} className="text-sm font-semibold opacity-90">
+            {t('onboarding.skip')}
+          </button>
+        )}
+      </div>
+      <div className="flex justify-center pt-3">
+        <Logo />
       </div>
 
       <div
@@ -86,31 +85,31 @@ export function Onboarding() {
         className="no-scrollbar flex min-h-0 flex-1 snap-x snap-mandatory overflow-x-auto overflow-y-hidden"
       >
         {/* 1. Muammo / Yechim */}
-        <Slide image="/images/products/classic-burger.jpg" ring="bg-brand">
-          <h2 className="shout text-[36px]">{t('onboarding.slide1Title')}</h2>
-          <p className="mt-3 text-[17px] font-medium text-ink-2">{t('onboarding.slide1Text')}</p>
+        <Slide image="/images/products/classic-burger.jpg">
+          <h2 className="text-[30px] leading-tight font-black">{t('onboarding.slide1Title')}</h2>
+          <p className="mt-2 text-[16px] font-medium opacity-90">{t('onboarding.slide1Text')}</p>
         </Slide>
 
         {/* 2. Qanday ishlaydi */}
-        <Slide image="/images/products/bag-delivery.jpg" ring="bg-accent">
-          <h2 className="shout text-[36px]">{t('onboarding.slide2Title')}</h2>
-          <ol className="mt-4 space-y-2">
+        <Slide image="/images/products/bag-delivery.jpg">
+          <h2 className="text-[30px] leading-tight font-black">{t('onboarding.slide2Title')}</h2>
+          <ol className="mx-auto mt-3 w-fit space-y-2 text-left">
             {steps.map(({ icon: Icon, key }, i) => (
               <li key={key} className="flex items-center gap-3">
-                <span className="price flex size-9 shrink-0 items-center justify-center rounded-full border-2 border-outline bg-accent text-[15px] font-black text-on-accent">
+                <span className="price flex size-8 shrink-0 items-center justify-center rounded-full bg-white text-[14px] font-bold text-[#e00000]">
                   {i + 1}
                 </span>
-                <span className="flex-1 text-[17px] font-extrabold">{t(key)}</span>
-                <Icon size={21} strokeWidth={2.25} className="text-ink-2" />
+                <span className="text-[17px] font-bold">{t(key)}</span>
+                <Icon size={20} strokeWidth={2} className="opacity-80" />
               </li>
             ))}
           </ol>
         </Slide>
 
         {/* 3. Ijtimoiy isbot (raqamlar har bir restoran uchun almashtiriladi) */}
-        <Slide image="/images/products/hero-spread.jpg" ring="bg-ok">
-          <h2 className="shout text-[34px]">{t('onboarding.slide3Title')}</h2>
-          <p className="mt-3 text-[17px] font-medium text-ink-2">{t('onboarding.rating')}</p>
+        <Slide image="/images/products/hero-spread.jpg">
+          <h2 className="text-[28px] leading-tight font-black">{t('onboarding.slide3Title')}</h2>
+          <p className="mt-2 text-[16px] font-medium opacity-90">{t('onboarding.rating')}</p>
         </Slide>
       </div>
 
@@ -124,14 +123,11 @@ export function Onboarding() {
               aria-selected={i === index}
               aria-label={`${i + 1} / ${total}`}
               onClick={() => goTo(i)}
-              className={cn(
-                'h-2.5 rounded-full border-2 border-outline transition-all duration-300 ease-pop',
-                i === index ? 'w-8 bg-brand' : 'w-2.5 bg-transparent',
-              )}
+              className={cn('h-2 rounded-full transition-all duration-300 ease-out-expo', i === index ? 'w-7 bg-white' : 'w-2 bg-white/45')}
             />
           ))}
         </div>
-        <Button size="lg" fullWidth onClick={isLast ? finish : () => goTo(index + 1)} className="mb-2">
+        <Button variant="inverse" size="lg" fullWidth onClick={isLast ? finish : () => goTo(index + 1)} className="mb-2">
           {isLast ? t('onboarding.start') : t('onboarding.next')}
         </Button>
       </div>

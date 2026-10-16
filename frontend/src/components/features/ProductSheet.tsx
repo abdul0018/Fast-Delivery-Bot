@@ -2,18 +2,20 @@
 
 /**
  * Mahsulot tafsilotlari — alohida sahifa emas, pastdan chiquvchi Bottom Sheet.
- * Katta rasm, tarkibi (bullet), xavfni yopuvchi blok va pastga yopishgan "Savatchaga qo'shish — narx" tugmasi.
+ * Katta rasm (pushti fonda), nom va narx, tarkibi (bullet), "Qo'shimcha" ichimliklar qatori,
+ * xavfni yopuvchi blok va pastga yopishgan "Savatchaga qo'shish — narx" tugmasi.
  */
 import { useEffect, useState } from 'react';
-import { Leaf, ShieldCheck, Timer } from 'lucide-react';
+import { Leaf, Plus, ShieldCheck, Timer } from 'lucide-react';
 import { BottomSheet } from '@/components/ui/BottomSheet';
-import { brand } from '@/config/brand';
 import { Button } from '@/components/ui/Button';
 import { QuantityStepper } from '@/components/ui/QuantityStepper';
+import { brand } from '@/config/brand';
 import { useCart } from '@/hooks/useCart';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import { discountPercent, formatPrice } from '@/lib/utils';
+import { useCatalogStore } from '@/store/catalogStore';
 import { useUiStore } from '@/store/uiStore';
 import type { Product } from '@/types';
 
@@ -60,44 +62,47 @@ function ProductDetails({
   quantity: number;
   onQuantityChange: (value: number) => void;
 }) {
-  const { t, pick } = useI18n();
+  const { t, pick, price } = useI18n();
   const { haptic } = useTelegram();
+  const { add } = useCart();
+  const showToast = useUiStore((state) => state.showToast);
+  const products = useCatalogStore((state) => state.products);
   const discount = discountPercent(product.price, product.oldPrice);
+  // "Qo'shimcha" — ichimliklar (namunadagi "Add One" qatori)
+  const addOns = product.category === 'drinks' ? [] : products.filter((item) => item.category === 'drinks').slice(0, 3);
 
   return (
-    <div className="px-4 pt-4 pb-6">
-      <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[26px] border-2 border-outline bg-muted">
+    <div className="pb-6">
+      <div className="relative flex aspect-[5/4] w-full items-center justify-center bg-soft">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={product.image} alt={pick(product.name)} className="size-full object-cover" />
+        <img src={product.image} alt={pick(product.name)} className="size-[78%] rounded-full object-cover shadow-[0_18px_40px_-18px_rgba(0,0,0,0.45)]" />
         {discount > 0 && (
-          <span className="price absolute bottom-3 left-3 rounded-full border-2 border-outline bg-accent px-3 py-1 text-sm font-black text-on-accent">
+          <span className="price absolute bottom-4 left-4 rounded-full bg-brand-fill px-3 py-1 text-sm font-bold text-on-brand">
             −{discount}%
           </span>
         )}
       </div>
 
-      <div className="space-y-6 px-1 pt-5">
+      <div className="space-y-6 px-5 pt-5">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <h2 className="shout text-[28px]">{pick(product.name)}</h2>
-            <p className="mt-2 text-[15px] font-medium text-ink-2">{pick(product.description)}</p>
+            <h2 className="text-[24px] leading-tight font-extrabold">{pick(product.name)}</h2>
+            <p className="mt-1.5 text-[15px] font-medium text-ink-2">{pick(product.description)}</p>
           </div>
           <div className="shrink-0 text-right">
-            {product.oldPrice && (
-              <p className="price text-sm font-medium text-ink-2 line-through decoration-[1.5px]">{formatPrice(product.oldPrice)}</p>
-            )}
-            <p className="price text-[26px] leading-tight font-black whitespace-nowrap text-sale">{formatPrice(product.price)}</p>
-            <p className="text-xs font-bold text-ink-2">{t('common.currency')}</p>
+            {product.oldPrice && <p className="price text-sm font-medium text-ink-2 line-through">{formatPrice(product.oldPrice)}</p>}
+            <p className="price text-[22px] leading-tight font-extrabold whitespace-nowrap text-sale">{formatPrice(product.price)}</p>
+            <p className="text-xs font-semibold text-ink-2">{t('common.currency')}</p>
           </div>
         </div>
 
         {pick(product.ingredients).length > 0 && (
           <section>
-            <h3 className="shout mb-3 text-[17px]">{t('product.ingredients')}</h3>
+            <h3 className="mb-2.5 text-[16px] font-bold">{t('product.ingredients')}</h3>
             <ul className="space-y-2">
               {pick(product.ingredients).map((ingredient) => (
                 <li key={ingredient} className="flex items-center gap-3 text-[15px] font-medium">
-                  <span aria-hidden="true" className="size-3 shrink-0 rounded-full border-2 border-outline bg-accent" />
+                  <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-brand" />
                   {ingredient}
                 </li>
               ))}
@@ -105,11 +110,39 @@ function ProductDetails({
           </section>
         )}
 
+        {addOns.length > 0 && (
+          <section>
+            <h3 className="mb-2.5 text-[16px] font-bold">{t('product.addOne')}</h3>
+            <div className="grid grid-cols-3 gap-2.5">
+              {addOns.map((item) => (
+                <div key={item.id} className="relative flex flex-col items-center rounded-[16px] bg-surface p-2 pb-2.5 text-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.image} alt="" className="size-16 rounded-full object-cover" />
+                  <span className="mt-1.5 line-clamp-1 text-[12px] font-bold">{pick(item.name)}</span>
+                  <span className="price text-[12px] font-bold text-sale">{price(item.price)}</span>
+                  <button
+                    type="button"
+                    aria-label={`+ ${pick(item.name)}`}
+                    onClick={() => {
+                      haptic.impact('medium');
+                      add(item);
+                      showToast(t('product.added'));
+                    }}
+                    className="absolute top-1.5 right-1.5 flex size-7 items-center justify-center rounded-full bg-accent text-on-accent active:scale-90"
+                  >
+                    <Plus size={16} strokeWidth={2.75} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {TRUST_ITEMS.length > 0 && (
-          <section className="grid gap-2.5 rounded-[22px] border-2 border-outline bg-surface px-4 py-3.5">
+          <section className="grid gap-2.5 rounded-[18px] bg-surface px-4 py-3.5">
             {TRUST_ITEMS.map(({ icon: Icon, key }) => (
-              <div key={key} className="flex items-center gap-3 text-sm font-bold">
-                <Icon size={19} strokeWidth={2.25} className="shrink-0 text-ok" />
+              <div key={key} className="flex items-center gap-3 text-sm font-semibold">
+                <Icon size={18} strokeWidth={2} className="shrink-0 text-ok" />
                 {t(key, { minutes: deliveryMinutes ?? '' })}
               </div>
             ))}
@@ -117,7 +150,7 @@ function ProductDetails({
         )}
 
         <div className="flex items-center justify-between">
-          <span className="text-[15px] font-bold text-ink-2 uppercase">{t('product.quantity')}</span>
+          <span className="text-[15px] font-semibold text-ink-2">{t('product.quantity')}</span>
           <QuantityStepper
             value={quantity}
             onIncrement={() => {

@@ -7,9 +7,8 @@ import { brand } from '@/config/brand';
 import { useI18n } from '@/hooks/useI18n';
 
 /**
- * Asosiy vidjet — ixcham qizil aksiya kartasi: konturli xantal chegirma, dumaloq taom rasmi,
- * restoran va'dalari, krem "Katalogni ko'rish" kapsulasi va "Yangi buyurtma berish" havolasi.
- * Ixcham — birinchi ekranda ommabop taomlar narxi bilan ko'rinib turishi uchun.
+ * Asosiy vidjet — qizil banner: sarlavha, restoran va'dalari, oq "Katalogni ko'rish" tugmasi,
+ * "Yangi buyurtma berish" havolasi va o'ngda oq likopchadagi taom (namunadagi splash uslubida).
  */
 export function HeroWidget() {
   const { t } = useI18n();
@@ -23,37 +22,32 @@ export function HeroWidget() {
   ].filter((fact): fact is { icon: LucideIcon; label: string } => fact !== null);
 
   return (
-    <section className="mx-4 overflow-hidden rounded-[30px] bg-brand-fill p-4 text-on-brand">
-      <div className="relative min-h-[124px] pr-[112px]">
-        <p className="shout ink-stroke text-[52px] leading-[0.85] text-accent">{t('home.promoValue')}</p>
-        <p className="shout mt-2 text-[16px] leading-[1.05]">{t('home.promoText')}</p>
+    <section className="relative mx-4 overflow-hidden rounded-[24px] bg-brand-fill p-4 text-on-brand">
+      <div className="pr-[104px]">
+        <h2 className="text-[21px] leading-tight font-extrabold">{t('home.heroTitle')}</h2>
         {facts.length > 0 && (
-          <ul className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-bold">
+          <ul className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1 text-[12px] font-semibold">
             {facts.map(({ icon: Icon, label }) => (
-              <li key={label} className="flex items-center gap-1.5">
-                <Icon size={15} strokeWidth={2.25} className="shrink-0 text-accent" />
+              <li key={label} className="flex items-center gap-1">
+                <Icon size={14} strokeWidth={2.25} className="shrink-0" />
                 {label}
               </li>
             ))}
           </ul>
         )}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/products/cheeseburger.jpg"
-          alt=""
-          className="absolute -top-1 -right-8 size-[124px] rounded-full border-[5px] border-on-brand object-cover"
-        />
       </div>
 
-      {/* Asosiy harakat — krem kapsula, ikkinchisi — sokin matnli havola (ikkalasi bir qatorda) */}
-      <div className="mt-4 flex items-center justify-between gap-3">
-        <Link href="/catalog" className={buttonClasses({ variant: 'inverse', size: 'md', className: 'shrink-0 px-5 whitespace-nowrap text-[13px]' })}>
+      {/* Oq likopcha ustidagi taom */}
+      <span className="absolute top-3 -right-6 flex size-[128px] items-center justify-center rounded-full bg-white">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/products/cheeseburger.jpg" alt="" className="size-[104px] rounded-full object-cover" />
+      </span>
+
+      <div className="relative mt-5 flex items-center gap-4">
+        <Link href="/catalog" className={buttonClasses({ variant: 'inverse', size: 'md', className: 'shrink-0 whitespace-nowrap' })}>
           {t('home.viewCatalog')}
         </Link>
-        <Link
-          href="/catalog?category=burgers"
-          className="text-right text-[13px] leading-tight font-extrabold underline decoration-2 underline-offset-4"
-        >
+        <Link href="/catalog?category=burgers" className="text-[13px] leading-tight font-bold whitespace-nowrap underline underline-offset-4">
           {t('home.newOrder')}
         </Link>
       </div>

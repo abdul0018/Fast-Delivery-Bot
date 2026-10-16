@@ -16,12 +16,12 @@ import { useI18n } from '@/hooks/useI18n';
 import { useSettingsStore } from '@/store/settingsStore';
 import { useUiStore } from '@/store/uiStore';
 import { BottomNavigation } from './BottomNavigation';
-import { Wordmark } from './Header';
+import { Logo } from './Header';
 
 function Splash() {
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center gap-5 bg-ground">
-      <Wordmark className="animate-pulse text-center text-[40px]" />
+    <div className="flex min-h-dvh items-center justify-center bg-brand text-on-brand">
+      <Logo size="lg" className="animate-pulse" />
     </div>
   );
 }

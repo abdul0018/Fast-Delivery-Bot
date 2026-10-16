@@ -29,8 +29,8 @@
   "home": {
     "greeting": "Добро пожаловать, {name}!",
     "guest": "гость",
-    "heroTitle": "Проголодались?",
-    "heroText": "Бургеры, пицца и напитки прямо к вашей двери.",
+    "heroTitle": "Горячо и вкусно — прямо к двери",
+    "heroText": "Бургеры, пицца и напитки за считанные минуты.",
     "viewCatalog": "Смотреть каталог",
     "newOrder": "Сделать новый заказ",
     "popular": "Популярное",
@@ -40,9 +40,8 @@
     "featureFree": "Бесплатная доставка",
     "storiesTitle": "Скидки",
     "menuTitle": "Меню",
-    "heroTitleAccent": "Мы привезём!",
-    "promoValue": "−20%",
-    "promoText": "На все бургеры"
+    "searchPlaceholder": "Поиск блюд",
+    "promotions": "Акции"
   },
   "stories": {
     "s1Title": "-20%",
@@ -66,7 +65,9 @@
       "pizza": "Пиццы",
       "drinks": "Напитки",
       "premium": "Премиум"
-    }
+    },
+    "searchPlaceholder": "Поиск блюд",
+    "noResults": "Ничего не найдено"
   },
   "product": {
     "ingredients": "Состав",
@@ -75,7 +76,9 @@
     "trustFresh": "Свежие ингредиенты каждый день",
     "addToCart": "В корзину — {price}",
     "added": "Добавлено в корзину",
-    "quantity": "Количество"
+    "quantity": "Количество",
+    "addOne": "Добавить",
+    "addOneHint": "Добавьте напиток"
   },
   "cart": {
     "title": "Корзина",
@@ -115,7 +118,12 @@
     "paidText": "Заказ #{id} оплачен и передан на кухню.",
     "backHome": "На главную",
     "paymentCancelled": "Оплата отменена. Вы можете подтвердить заказ ещё раз.",
-    "summary": "Счёт"
+    "summary": "Счёт",
+    "itemsInCart": "В корзине: {count}",
+    "cancelOrder": "Отменить",
+    "backToMenu": "Вернуться в меню",
+    "thanks": "Спасибо!",
+    "onTheWay": "Ваш заказ принят"
   },
   "errors": {
     "CART_EMPTY": "Корзина пуста",

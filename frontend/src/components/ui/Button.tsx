@@ -1,7 +1,7 @@
 import { forwardRef, type ButtonHTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
-type Variant = 'primary' | 'accent' | 'secondary' | 'ghost' | 'outline' | 'outlineOnBrand' | 'inverse';
+type Variant = 'primary' | 'secondary' | 'ghost' | 'outline' | 'inverse';
 type Size = 'sm' | 'md' | 'lg';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,21 +12,18 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-brand-fill text-on-brand hover:brightness-105 active:brightness-95',
-  accent: 'border-2 border-outline bg-accent text-on-accent hover:brightness-105',
-  secondary: 'bg-brand-soft text-brand-ink hover:brightness-[0.98]',
+  primary: 'bg-brand-fill text-on-brand hover:brightness-110 active:brightness-95',
+  secondary: 'bg-soft text-brand-ink hover:brightness-[0.98]',
   ghost: 'bg-transparent text-ink hover:bg-muted',
-  outline: 'border-2 border-outline bg-transparent text-ink hover:bg-muted',
-  // Qizil maydon ustidagi konturli tugma
-  outlineOnBrand: 'border-2 border-on-brand bg-transparent text-on-brand hover:bg-on-brand/10',
-  // Krem tugma — foni har doim krem, shuning uchun matn har ikki mavzuda to'q qizil
-  inverse: 'bg-on-brand text-brand-fill hover:brightness-95',
+  outline: 'border-[1.5px] border-ink bg-transparent text-ink hover:bg-muted',
+  // Oq tugma — qizil fon ustida (splash, aksiya kartasi)
+  inverse: 'bg-white text-[#e00000] hover:brightness-95',
 };
 
 const sizes: Record<Size, string> = {
   sm: 'h-9 px-4 text-[13px]',
   md: 'h-11 px-5 text-[14px]',
-  lg: 'h-[54px] px-6 text-[15px]',
+  lg: 'h-[52px] px-6 text-[16px]',
 };
 
 /** Tugma klasslari — <Link> kabi boshqa elementlarni ham bir xil ko'rinishda qilish uchun */
@@ -37,8 +34,8 @@ export function buttonClasses({
   className,
 }: { variant?: Variant; size?: Size; fullWidth?: boolean; className?: string } = {}) {
   return cn(
-    'inline-flex select-none items-center justify-center gap-2 rounded-full font-display font-extrabold uppercase tracking-[0.01em]',
-    'transition-[transform,filter,background-color] duration-200 ease-pop active:scale-[0.97]',
+    'inline-flex select-none items-center justify-center gap-2 rounded-full font-display font-bold',
+    'transition-[transform,filter,background-color] duration-200 ease-out-expo active:scale-[0.97]',
     'disabled:pointer-events-none disabled:opacity-45',
     variants[variant],
     sizes[size],

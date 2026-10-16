@@ -1,8 +1,8 @@
 'use client';
 
 /**
- * Mahsulot kartochkasi: konturli oq karta, rasm, nom, eski narx (chizilgan), yangi narx (qizil)
- * va dumaloq xantal "+" tugmasi. Savatchadagi soni "muhr" bo'lib rasm burchagiga bosiladi.
+ * Mahsulot kartochkasi (namunadagi "Popular" kartasi): och kulrang karta, rasm, nom,
+ * eski narx (chizilgan), yangi narx (qizil) va kichik yashil dumaloq "+" tugmasi.
  */
 import type { MouseEvent } from 'react';
 import { Plus } from 'lucide-react';
@@ -29,7 +29,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
   };
 
   return (
-    <article className={cn('relative flex flex-col rounded-[26px] border-2 border-outline bg-surface p-2', className)}>
+    <article className={cn('relative flex flex-col rounded-[22px] bg-surface p-2.5', className)}>
       <button
         type="button"
         onClick={() => {
@@ -39,32 +39,25 @@ export function ProductCard({ product, className }: { product: Product; classNam
         className="flex flex-1 flex-col text-left"
         aria-label={name}
       >
-        <div className="relative aspect-square overflow-hidden rounded-[19px] bg-muted">
+        <div className="relative aspect-square overflow-hidden rounded-[16px] bg-muted">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={product.image} alt="" loading="lazy" className="size-full object-cover" />
           {discount > 0 && (
-            <span className="price absolute top-2 left-2 rounded-full border-2 border-outline bg-accent px-2 py-0.5 text-[12px] font-black text-on-accent">
+            <span className="price absolute top-2 left-2 rounded-full bg-brand-fill px-2 py-0.5 text-[11px] font-bold text-on-brand">
               −{discount}%
             </span>
           )}
         </div>
-        <div className="flex flex-1 flex-col px-1.5 pt-2 pb-1">
-          <h3 className="line-clamp-2 min-h-[2.5em] text-[15px] leading-tight font-extrabold tracking-normal">{name}</h3>
-          <div className="mt-1 pr-11">
+        <div className="flex flex-1 flex-col px-1 pt-2.5">
+          <h3 className="line-clamp-2 min-h-[2.5em] text-[15px] leading-tight font-bold">{name}</h3>
+          <div className="mt-1 pr-10">
             {product.oldPrice ? (
-              <p className="price text-[12px] font-medium text-ink-2 line-through decoration-[1.5px]">
-                {formatPrice(product.oldPrice)}
-              </p>
+              <p className="price text-[12px] font-medium text-ink-2 line-through">{formatPrice(product.oldPrice)}</p>
             ) : (
               <p className="text-[12px]">&nbsp;</p>
             )}
-            <p
-              className={cn(
-                'price leading-tight font-black whitespace-nowrap text-sale',
-                product.price >= 100000 ? 'text-[16px]' : 'text-[19px]',
-              )}
-            >
-              {formatPrice(product.price)} <span className="text-[11px] font-bold text-ink-2">{t('common.currency')}</span>
+            <p className="price text-[16px] leading-tight font-extrabold whitespace-nowrap text-sale">
+              {formatPrice(product.price)} <span className="text-[11px] font-semibold text-ink-2">{t('common.currency')}</span>
             </p>
           </div>
         </div>
@@ -74,16 +67,16 @@ export function ProductCard({ product, className }: { product: Product; classNam
         type="button"
         aria-label={`${t('nav.cart')}: ${name}`}
         onClick={quickAdd}
-        className="absolute right-3 bottom-3 flex size-10 items-center justify-center rounded-full border-2 border-outline bg-accent text-on-accent transition-transform duration-150 active:scale-90"
+        className="absolute right-2.5 bottom-2.5 flex size-8 items-center justify-center rounded-full bg-accent text-on-accent transition-transform duration-150 active:scale-90"
       >
-        <Plus size={20} strokeWidth={3} />
+        <Plus size={18} strokeWidth={2.75} />
       </button>
 
       {quantity > 0 && (
         <span
           key={quantity}
           aria-label={`× ${quantity}`}
-          className="price absolute top-3 right-3 flex size-9 animate-stamp items-center justify-center rounded-full border-2 border-outline bg-brand-fill text-[15px] font-black text-on-brand"
+          className="price absolute top-4 right-4 flex size-7 animate-pop-in items-center justify-center rounded-full bg-brand-fill text-[13px] font-bold text-on-brand ring-2 ring-white"
         >
           {quantity}
         </span>

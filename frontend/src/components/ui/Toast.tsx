@@ -21,9 +21,11 @@ export function Toast() {
     <div role="status" className="pointer-events-none fixed inset-x-0 top-3 z-[60] flex justify-center px-4">
       <div
         key={toast.id}
-        className="flex animate-rise items-center gap-2 rounded-full border-2 border-outline bg-accent px-4 py-2.5 text-sm font-extrabold text-on-accent uppercase"
+        className="flex animate-rise items-center gap-2 rounded-full bg-[#1a1a1a] px-4 py-2.5 text-sm font-semibold text-white"
       >
-        <Check size={16} strokeWidth={3} />
+        <span className="flex size-5 items-center justify-center rounded-full bg-accent">
+          <Check size={13} strokeWidth={3} />
+        </span>
         {toast.message}
       </div>
     </div>

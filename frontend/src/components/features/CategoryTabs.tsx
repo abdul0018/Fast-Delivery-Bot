@@ -1,8 +1,11 @@
 'use client';
 
-/** Gorizontal kategoriyalar: konturli kapsulalar, faoli to'q siyoh bilan to'ldirilgan */
+/**
+ * Kategoriyalar — namunadagidek kvadrat plitkalar: faol plitka qizil (oq ikonka),
+ * qolganlari och kulrang fonda kategoriya taomining rasmi; nomi plitka ostida.
+ */
 import { useEffect, useRef } from 'react';
-import { CupSoda, Crown, Pizza, Sandwich, UtensilsCrossed, type LucideIcon } from 'lucide-react';
+import { Ellipsis } from 'lucide-react';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import { cn } from '@/lib/utils';
@@ -10,28 +13,28 @@ import type { Category } from '@/types';
 
 export type CategoryFilter = 'all' | Category;
 
-const CATEGORIES: { id: CategoryFilter; icon: LucideIcon }[] = [
-  { id: 'all', icon: UtensilsCrossed },
-  { id: 'burgers', icon: Sandwich },
-  { id: 'pizza', icon: Pizza },
-  { id: 'drinks', icon: CupSoda },
-  { id: 'premium', icon: Crown },
-];
+export const CATEGORY_IDS: CategoryFilter[] = ['all', 'burgers', 'pizza', 'drinks', 'premium'];
 
-export function CategoryTabs({ value, onChange }: { value: CategoryFilter; onChange: (value: CategoryFilter) => void }) {
+const IMAGES: Record<Category, string> = {
+  burgers: '/images/products/classic-burger.jpg',
+  pizza: '/images/products/pepperoni.jpg',
+  drinks: '/images/products/coca-cola.jpg',
+  premium: '/images/products/black-angus.jpg',
+};
+
+export function CategoryTabs({ value, onChange }: { value: CategoryFilter | null; onChange: (value: CategoryFilter) => void }) {
   const { t } = useI18n();
   const { haptic } = useTelegram();
   const listRef = useRef<HTMLDivElement>(null);
 
-  // Faol tabni ko'rinadigan joyga suramiz
   useEffect(() => {
     const el = listRef.current?.querySelector<HTMLElement>('[aria-selected="true"]');
     el?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }, [value]);
 
   return (
-    <div ref={listRef} role="tablist" className="no-scrollbar flex gap-2 overflow-x-auto px-4 py-2">
-      {CATEGORIES.map(({ id, icon: Icon }) => {
+    <div ref={listRef} role="tablist" className="no-scrollbar flex gap-3 overflow-x-auto px-4 py-1">
+      {CATEGORY_IDS.map((id) => {
         const active = id === value;
         return (
           <button
@@ -43,13 +46,24 @@ export function CategoryTabs({ value, onChange }: { value: CategoryFilter; onCha
               haptic.select();
               onChange(id);
             }}
-            className={cn(
-              'flex h-10 shrink-0 items-center gap-1.5 rounded-full border-2 border-outline px-4 text-[14px] font-extrabold transition-colors duration-200',
-              active ? 'bg-ink text-ground' : 'bg-transparent text-ink hover:bg-muted',
-            )}
+            className="flex w-[62px] shrink-0 flex-col items-center gap-1.5"
           >
-            <Icon size={17} strokeWidth={2.25} />
-            {t(`catalog.categories.${id}`)}
+            <span
+              className={cn(
+                'flex size-[60px] items-center justify-center overflow-hidden rounded-[16px] transition-colors duration-200',
+                active ? 'bg-brand text-on-brand' : 'bg-surface text-ink-2',
+              )}
+            >
+              {id === 'all' ? (
+                <Ellipsis size={26} strokeWidth={2.5} />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={IMAGES[id]} alt="" className={cn('size-full object-cover', active && 'opacity-90 mix-blend-luminosity')} />
+              )}
+            </span>
+            <span className={cn('text-[12px] font-semibold', active ? 'text-brand-ink' : 'text-ink-2')}>
+              {t(`catalog.categories.${id}`)}
+            </span>
           </button>
         );
       })}

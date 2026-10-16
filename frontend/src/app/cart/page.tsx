@@ -7,7 +7,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { MapPin, MessageSquareText, Phone, ShoppingBag } from 'lucide-react';
+import { MapPin, MessageSquareText, Phone, ShoppingCart } from 'lucide-react';
 import { CartList } from '@/components/features/CartList';
 import { OrderBump } from '@/components/features/OrderBump';
 import { OrderSuccess } from '@/components/features/OrderSuccess';
@@ -137,10 +137,10 @@ export default function CartPage() {
       <>
         <PageHeader title={t('cart.title')} />
         <div className="flex flex-col items-center px-8 pt-16 text-center">
-          <div className="flex size-28 items-center justify-center rounded-full border-2 border-outline bg-accent text-on-accent">
-            <ShoppingBag size={48} strokeWidth={2.25} />
+          <div className="flex size-28 items-center justify-center rounded-full bg-soft text-brand-ink">
+            <ShoppingCart size={48} strokeWidth={1.9} />
           </div>
-          <h2 className="shout mt-6 text-[28px]">{t('cart.empty')}</h2>
+          <h2 className="mt-6 text-[24px] font-bold">{t('cart.empty')}</h2>
           <p className="mt-2 font-medium text-ink-2">{t('cart.emptyText')}</p>
           <Link href="/catalog" className="mt-6 w-full">
             <Button size="lg" fullWidth>
@@ -158,12 +158,7 @@ export default function CartPage() {
     <>
       <PageHeader
         title={t('cart.title')}
-        subtitle={t('profile.items', { count: cart.count })}
-        action={
-          <button type="button" onClick={cart.clear} className="pb-1 text-sm font-extrabold text-ink-2 uppercase hover:text-sale">
-            {t('cart.clear')}
-          </button>
-        }
+        subtitle={t('cart.itemsInCart', { count: cart.count })}
       />
 
       <div className="space-y-7 px-4">
@@ -175,10 +170,10 @@ export default function CartPage() {
 
         {/* 3. Yetkazib berish */}
         <section className="space-y-3">
-          <h2 className="shout text-[22px]">{t('cart.delivery')}</h2>
+          <h2 className="text-[19px] font-bold">{t('cart.delivery')}</h2>
           <Textarea
             id="address"
-            icon={<MapPin size={15} strokeWidth={2.25} />}
+            icon={<MapPin size={15} strokeWidth={2} />}
             label={t('cart.address')}
             placeholder={t('cart.addressPlaceholder')}
             value={address}
@@ -190,7 +185,7 @@ export default function CartPage() {
           />
           <Input
             id="phone"
-            icon={<Phone size={15} strokeWidth={2.25} />}
+            icon={<Phone size={15} strokeWidth={2} />}
             label={t('cart.phone')}
             type="tel"
             inputMode="tel"
@@ -200,7 +195,7 @@ export default function CartPage() {
           />
           <Input
             id="comment"
-            icon={<MessageSquareText size={15} strokeWidth={2.25} />}
+            icon={<MessageSquareText size={15} strokeWidth={2} />}
             label={t('cart.comment')}
             placeholder={t('cart.commentPlaceholder')}
             value={comment}
@@ -210,12 +205,12 @@ export default function CartPage() {
 
         {/* 4. To'lov usuli */}
         <section className="space-y-3">
-          <h2 className="shout text-[22px]">{t('cart.payment')}</h2>
+          <h2 className="text-[19px] font-bold">{t('cart.payment')}</h2>
           <PaymentMethods available={available} starsRate={config?.starsRateUzs ?? 200} total={cart.total} />
         </section>
 
         {/* 5. Jami */}
-        <section className="rounded-[26px] border-2 border-outline bg-surface px-4 py-4 text-[15px] font-medium">
+        <section className="rounded-[20px] bg-surface px-4 py-4 text-[15px] font-medium">
           <dl className="space-y-2">
             <div className="flex justify-between">
               <dt className="text-ink-2">{t('cart.subtotal')}</dt>
@@ -229,14 +224,24 @@ export default function CartPage() {
             )}
             <div className="flex justify-between">
               <dt className="text-ink-2">{t('cart.deliveryFee')}</dt>
-              <dd className="font-extrabold text-ok">{t('cart.free')}</dd>
+              <dd className="font-bold text-ok">{t('cart.free')}</dd>
             </div>
           </dl>
-          <div className="mt-3 flex items-baseline justify-between border-t-2 border-dashed border-outline pt-3">
-            <span className="shout text-[20px]">{t('cart.total')}</span>
-            <span className="price text-[28px] font-black">{price(cart.total)}</span>
+          <div className="mt-3 flex items-baseline justify-between border-t border-line pt-3">
+            <span className="text-[18px] font-bold">{t('cart.total')}:</span>
+            <span className="price text-[24px] font-extrabold text-sale">{price(cart.total)}</span>
           </div>
         </section>
+
+        {/* Namunadagidek: "Bekor qilish" va "Menyuga qaytish" */}
+        <div className="flex flex-col items-center gap-3">
+          <Button variant="outline" fullWidth onClick={cart.clear}>
+            {t('cart.cancelOrder')}
+          </Button>
+          <Link href="/catalog" className="text-[14px] font-bold text-ink">
+            {t('cart.backToMenu')}
+          </Link>
+        </div>
       </div>
 
       {/* Sticky CTA — pastki navigatsiya ustida */}

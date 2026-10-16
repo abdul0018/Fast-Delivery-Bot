@@ -7,26 +7,26 @@ related_targets: ["frontend/src/app/page.tsx","frontend/src/app/catalog/page.tsx
 
 # Surface brief: Telegram Mini App (all five screens)
 
-Scope: the whole Mini App shell — Onboarding, Home, Catalog, Product sheet, Cart, Profile. Visitor mode: **Operate** (a hungry customer completes an order inside Telegram, one-handed, in Uzbek or Russian).
+Scope: the whole Mini App shell — Onboarding, Home ("Menyu"), Catalog, Product sheet, Cart, Profile. Visitor mode: **Operate** (a hungry customer completes an order inside Telegram, one-handed, in Uzbek or Russian).
 
-Audience & job: see PRODUCT.md. Task: pick dishes → confirm address → choose payment → confirm in one tap. Proof/content: seed menu (12 dishes), AI-generated placeholder photos (to be replaced by each restaurant). Constraints: universal template (brand colours are tokens), Telegram light/dark theme, safe areas, native Back button, standard controls only.
+Audience & job: see PRODUCT.md. Constraints: universal template (brand colours are tokens), Telegram light/dark theme, safe areas, native Back button, standard controls only.
 
-History: Atlas Silk (ikat bands) was built first and rejected by the user ("colours", "too traditional"); a re-roll was presented as three rendered home-screen sketches (Fresh / Night / Pop) and the user chose **Pop**.
+History: Atlas Silk (rejected: colours, too traditional) → Pop (user-chosen from sketches) → **user-pinned reference** (a "food delivery app" Dribbble-style mockup the user supplied: "I want same design colors and icons"). The pinned reference wins over every earlier roll. Only its style is used; its sample brand name and logo are not copied.
 
-Memorable moment: adding a dish stamps its quantity onto the card like an ink stamp.
+Memorable moment: the full-red "Rahmat!" thank-you screen after one-tap confirm.
 
 Unresolved: real restaurant photography and logo; real proof numbers (10 000+, 4.9) per restaurant.
 
 ## Direction contract
 
-THESIS: Loud, modern burger-joint brand energy as a working app: cream ground, tomato red and mustard, brown ink, every object outlined in 2px ink with fat round corners, uppercase heavy type that shouts the offer. Refuses the grey-card delivery-app default and the "national ornament" look.
+THESIS: A clean, bright delivery app exactly in the user's reference: white ground, one loud red, light-grey food cards, small green add buttons, simple line icons. Refuses the earlier ornamental/brutal looks in favour of the reference's friendly commerce clarity.
 
-OWN-WORLD: Cream #FFF3E2 ground, white cards, brown ink #3A1D0F for type and 2px outlines, tomato red #E8392B (brand: CTAs, promo blocks, prices), mustard #FFBF2E (accent: round "+" buttons, discount tags, active nav), green #2B8A50 for ok/halal; dark: ground #1C110A, surface #2A1B11, cream ink and cream outlines. Rubik variable, 900 uppercase for headlines, 800 for labels/buttons, 500 body. Pill buttons, round icon buttons, Lucide icons at 2.25 stroke. No shadows: depth is outline and colour.
+OWN-WORLD: Reference palette sampled from the user's image: red #F00000 (fills; text-bearing red derives #E00000 for 4.5:1), orange-red #F12E00, pink #FCDED4 (soft fills), taupe #887D77 (secondary text darkened to #756B66 for contrast), greys #C1C1C1 / #F5F5F5, green #006D1A (add buttons, switch, ok). Red Hat Display (Manrope for Cyrillic). Pills, 16–24px card radii, red rounded-square category tile and steppers, Lucide line icons (house, search, cart, user in an icon-only bottom bar with a red dot for active). Dark: #121212 ground, #1F1F1F cards.
 
-STORY: The visitor feels the restaurant's appetite and fun immediately, reads prices at a glance (struck old, red new), adds with one tap and trusts the total before confirming.
+STORY: The visitor opens a red splash with the restaurant mark, lands on "Menyu", finds food via search or category tiles, adds with the green +, and confirms in one tap to a red "Rahmat!".
 
-FIRST VIEWPORT: Home: two-line red wordmark + UZ/RU pill top; "OCH QOLDINGIZMI? / BIZ YETKAZAMIZ!" 34px uppercase (second line red); "Xush kelibsiz, {name}!"; story rings (red outline, dish photos); red promo card with mustard −20%, round photo with cream ring, promises row and two pill CTAs (cream "Katalogni ko'rish", outlined "Yangi buyurtma"); then OMMABOP 2-column outlined cards. Brown rounded bottom bar, active item mustard.
+FIRST VIEWPORT: Home: "Xush kelibsiz, {name}!" over a bold "Menyu" with avatar right; grey search field; category tiles (All as red square with dots when active, others photo tiles with labels); "Aksiyalar" promo cards (stories); red banner with headline, promises, white "Katalogni ko'rish" pill, link, and food on a white plate; "Ommabop" grey cards with red prices and green +. White icon-only bottom bar.
 
-FORM: Pop (fast-food brand identity), chosen by the user from three rendered sketches after a re-roll; seed: none (unavailable). Signature interaction: the quantity stamp — on add, a red count disc stamps onto the card corner (scale 1.6→1, −12°→0, 340ms expo). Motion grammar: expo ease-out, sheets rise, nothing bounces.
+FORM: User-pinned reference design (brief-pinned, beats the roll); seed: none (unavailable). Signature interaction: confirm → full-red thank-you screen; add → count pops onto the card. Motion grammar: expo ease-out, sheets rise, nothing bounces.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

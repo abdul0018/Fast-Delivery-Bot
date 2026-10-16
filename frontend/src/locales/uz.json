@@ -29,8 +29,8 @@
   "home": {
     "greeting": "Xush kelibsiz, {name}!",
     "guest": "mehmon",
-    "heroTitle": "Och qoldingizmi?",
-    "heroText": "Burger, pitsa va ichimliklar to'g'ridan-to'g'ri eshigingizgacha.",
+    "heroTitle": "Issiq va mazali — eshigingizgacha",
+    "heroText": "Burger, pitsa va ichimliklar bir necha daqiqada.",
     "viewCatalog": "Katalogni ko'rish",
     "newOrder": "Yangi buyurtma berish",
     "popular": "Ommabop",
@@ -40,9 +40,8 @@
     "featureFree": "Bepul yetkazish",
     "storiesTitle": "Chegirmalar",
     "menuTitle": "Menyu",
-    "heroTitleAccent": "Biz yetkazamiz!",
-    "promoValue": "−20%",
-    "promoText": "Barcha burgerlarga"
+    "searchPlaceholder": "Taom qidirish",
+    "promotions": "Aksiyalar"
   },
   "stories": {
     "s1Title": "-20%",
@@ -66,7 +65,9 @@
       "pizza": "Pitsalar",
       "drinks": "Ichimliklar",
       "premium": "Premium"
-    }
+    },
+    "searchPlaceholder": "Taom qidirish",
+    "noResults": "Hech narsa topilmadi"
   },
   "product": {
     "ingredients": "Tarkibi",
@@ -75,7 +76,9 @@
     "trustFresh": "Har kuni yangi masalliqlar",
     "addToCart": "Savatchaga qo'shish — {price}",
     "added": "Savatchaga qo'shildi",
-    "quantity": "Soni"
+    "quantity": "Soni",
+    "addOne": "Qo'shimcha",
+    "addOneHint": "Ichimlik qo'shing"
   },
   "cart": {
     "title": "Savatcha",
@@ -115,7 +118,12 @@
     "paidText": "Buyurtma #{id} to'landi va tayyorlashga yuborildi.",
     "backHome": "Bosh sahifaga",
     "paymentCancelled": "To'lov bekor qilindi. Buyurtmani qayta tasdiqlashingiz mumkin.",
-    "summary": "Hisob"
+    "summary": "Hisob",
+    "itemsInCart": "Savatchada {count} ta mahsulot",
+    "cancelOrder": "Bekor qilish",
+    "backToMenu": "Menyuga qaytish",
+    "thanks": "Rahmat!",
+    "onTheWay": "Buyurtmangiz qabul qilindi"
   },
   "errors": {
     "CART_EMPTY": "Savatcha bo'sh",

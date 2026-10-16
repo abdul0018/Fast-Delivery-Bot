@@ -1,8 +1,10 @@
 'use client';
 
-/** Bosh sahifa: logotip va shior, stories, qizil aksiya vidjeti, ommabop taomlar */
+/** Bosh sahifa (namunadagi "Menu"): sarlavha va avatar, qidiruv, kategoriyalar, aksiyalar, banner, ommabop */
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { ChevronRight, Search } from 'lucide-react';
+import { CategoryTabs } from '@/components/features/CategoryTabs';
 import { HeroWidget } from '@/components/features/HeroWidget';
 import { ProductCard } from '@/components/features/ProductCard';
 import { Stories } from '@/components/features/Stories';
@@ -12,8 +14,23 @@ import { useCatalog } from '@/hooks/useCatalog';
 import { useI18n } from '@/hooks/useI18n';
 import { discountPercent } from '@/lib/utils';
 
+function SectionTitle({ title, href, more }: { title: string; href?: string; more?: string }) {
+  return (
+    <div className="flex items-baseline justify-between px-4 pb-2.5">
+      <h2 className="text-[19px] font-bold">{title}</h2>
+      {href && more && (
+        <Link href={href} className="flex items-center text-[13px] font-semibold text-brand-ink">
+          {more}
+          <ChevronRight size={16} strokeWidth={2.25} />
+        </Link>
+      )}
+    </div>
+  );
+}
+
 export default function HomePage() {
   const { t } = useI18n();
+  const router = useRouter();
   const { products, status } = useCatalog();
 
   // Eng katta chegirmali mahsulotlar — "Ommabop"
@@ -24,22 +41,32 @@ export default function HomePage() {
   return (
     <div className="space-y-5 pb-2">
       <HomeHeader>
-        <Stories />
+        {/* Qidiruv — katalogdagi qidiruv maydonini ochadi */}
+        <Link
+          href="/catalog?search=1"
+          className="mt-3.5 flex h-12 items-center gap-2.5 rounded-[16px] bg-surface px-4 text-[15px] font-medium text-ink-2"
+        >
+          <Search size={19} strokeWidth={2} />
+          {t('home.searchPlaceholder')}
+        </Link>
       </HomeHeader>
+
+      <CategoryTabs value={null} onChange={(id) => router.push(id === 'all' ? '/catalog' : `/catalog?category=${id}`)} />
+
+      <section>
+        <SectionTitle title={t('home.promotions')} />
+        <div className="px-4">
+          <Stories />
+        </div>
+      </section>
 
       <HeroWidget />
 
       <section>
-        <div className="flex items-end justify-between px-4 pb-2.5">
-          <h2 className="shout text-[24px]">{t('home.popular')}</h2>
-          <Link href="/catalog" className="flex items-center gap-1 text-sm font-extrabold text-ink uppercase underline decoration-2 underline-offset-4">
-            {t('home.seeAll')}
-            <ArrowRight size={16} strokeWidth={2.5} />
-          </Link>
-        </div>
+        <SectionTitle title={t('home.popular')} href="/catalog" more={t('home.seeAll')} />
         <div className="grid grid-cols-2 gap-3 px-4">
           {status !== 'ready' && products.length === 0
-            ? Array.from({ length: 4 }, (_, i) => <Skeleton key={i} className="h-[270px]" />)
+            ? Array.from({ length: 4 }, (_, i) => <Skeleton key={i} className="h-[250px]" />)
             : popular.map((product) => <ProductCard key={product.id} product={product} />)}
         </div>
       </section>

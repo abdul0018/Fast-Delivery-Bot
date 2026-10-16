@@ -2,13 +2,14 @@
  * Restoran brendi — shablonni boshqa restoranga moslashtirish uchun FAQAT shu faylni o'zgartiring.
  * Ranglar CSS o'zgaruvchilariga aylanadi va butun dizayn ulardan foydalanadi.
  *
- *  brand    — asosiy rang (sarlavha bloklari, asosiy tugmalar, faol holatlar)
- *  onBrand  — brand rang ustidagi matn rangi
- *  accent   — ikkinchi, quvnoq rang ("+" tugmalari, chegirma yorliqlari, faol menyu)
- *  onAccent — accent ustidagi matn rangi
+ *  brand    — asosiy qizil (splash/onboarding fon, asosiy tugmalar, faol ikonkalar, narx)
+ *  onBrand  — brand ustidagi matn (oq)
+ *  accent   — "+" qo'shish tugmalari (yashil)
+ *  onAccent — accent ustidagi ikonka/matn
+ *  soft     — yumshoq fon (pushti: mahsulot rasmi foni, belgi va chiplar)
  *
- * Eslatma: matn tushadigan qizil maydonlar brand rangining biroz to'qroq variantidan (--brand-fill) foydalanadi,
- * shuning uchun och brand rang tanlansa ham krem matn o'qiladi — onBrand bilan kontrastni baribir tekshiring.
+ * Eslatma: matn tushadigan qizil maydonlar brand rangining biroz to'qroq variantidan (--brand-fill)
+ * foydalanadi — oq matn kontrasti 4.5:1 dan past tushmasligi uchun.
  *
  * promises — restoran haqiqatda bajaradigan va'dalar. Bajarilmaydiganini false/null qiling —
  * ilovada (bosh sahifa, mahsulot oynasi) ko'rinmay qoladi. Hozirgi qiymatlar NAMUNA.
@@ -16,10 +17,11 @@
 export const brand = {
   name: 'Fast Delivery',
   colors: {
-    brand: '#E8392B',
-    onBrand: '#FFF3E2',
-    accent: '#FFBF2E',
-    onAccent: '#3A1D0F',
+    brand: '#F00000',
+    onBrand: '#FFFFFF',
+    accent: '#006D1A',
+    onAccent: '#FFFFFF',
+    soft: '#FCDED4',
   },
   promises: {
     /** O'rtacha yetkazib berish vaqti, daqiqa (null — ko'rsatilmaydi) */
@@ -36,4 +38,5 @@ export const brandCssVars = {
   '--on-brand': brand.colors.onBrand,
   '--accent': brand.colors.accent,
   '--on-accent': brand.colors.onAccent,
+  '--soft': brand.colors.soft,
 } as Record<string, string>;

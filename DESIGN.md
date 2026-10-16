@@ -1,443 +1,415 @@
 ---
 name: Fast Delivery
-description: A rebrandable Telegram Mini App for local fast-food ordering, dressed in Uzbek abr (ikat) atlas silk.
+description: A rebrandable Telegram Mini App for local fast-food ordering, dressed as a loud burger-joint poster in cream, tomato red, mustard and brown ink.
 colors:
-  brand: "#2A2C9B"
-  on-brand: "#FFFFFF"
-  silk-magenta: "#D11D6B"
-  silk-saffron: "#FFB31A"
-  brand-ink: "#2A2C9B"
-  brand-soft: "#EAEAF5"
-  sale: "#E0182D"
-  ok: "#138A4B"
-  ink: "#17142A"
-  ink-2: "#5D5870"
-  ground: "#F7F3EC"
-  surface: "#FFFFFF"
-  line: "#E7E0D4"
-  muted: "#EFE9DF"
-  scrim: "#0B0A14"
-  ground-dark: "#13111C"
-  surface-dark: "#1E1B2A"
-  ink-dark: "#F4F1FA"
-  ink-2-dark: "#AAA4BD"
-  line-dark: "#2F2B3F"
-  muted-dark: "#2A2638"
-  brand-ink-dark: "#AEAFD9"
-  brand-soft-dark: "#22214E"
-  sale-dark: "#FF4D5E"
-  ok-dark: "#3CCF7F"
+  brand: "#e8392b"
+  brand-fill: "#c53325"
+  brand-ink: "#c53325"
+  brand-soft: "#fcddcc"
+  on-brand: "#fff3e2"
+  accent: "#ffbf2e"
+  on-accent: "#3a1d0f"
+  sale: "#d62d20"
+  ok: "#2b8a50"
+  ink: "#3a1d0f"
+  ink-2: "#86664f"
+  outline: "#3a1d0f"
+  hair: "rgb(58 29 15 / 0.14)"
+  ground: "#fff3e2"
+  surface: "#ffffff"
+  muted: "#f8e7cf"
+  bar: "#3a1d0f"
+  bar-ink: "#d8c1ad"
+  scrim: "rgb(28 17 10 / 0.6)"
+  ground-dark: "#1c110a"
+  surface-dark: "#2a1b11"
+  ink-dark: "#fff3e2"
+  ink-2-dark: "#c9ad95"
+  outline-dark: "rgb(255 243 226 / 0.82)"
+  hair-dark: "rgb(255 243 226 / 0.14)"
+  muted-dark: "#3a271a"
+  sale-dark: "#ff6a5a"
+  ok-dark: "#4cc27e"
+  brand-ink-dark: "#ee7066"
+  brand-soft-dark: "#511b13"
+  bar-dark: "#2a1b11"
+  bar-ink-dark: "#b89c86"
 typography:
   display:
-    fontFamily: "Geologica Variable, system-ui, sans-serif"
-    fontSize: "30px"
-    fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "-0.02em"
+    fontFamily: "Rubik Variable, system-ui, sans-serif"
+    fontSize: "52px"
+    fontWeight: 900
+    lineHeight: 0.85
+    letterSpacing: "-0.025em"
   headline:
-    fontFamily: "Geologica Variable, system-ui, sans-serif"
-    fontSize: "26px"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.02em"
-  page-title:
-    fontFamily: "Geologica Variable, system-ui, sans-serif"
-    fontSize: "28px"
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: "-0.02em"
+    fontFamily: "Rubik Variable, system-ui, sans-serif"
+    fontSize: "32px"
+    fontWeight: 900
+    lineHeight: 0.98
+    letterSpacing: "-0.025em"
   title:
-    fontFamily: "Geologica Variable, system-ui, sans-serif"
-    fontSize: "20px"
-    fontWeight: 700
-    lineHeight: 1.2
-    letterSpacing: "-0.02em"
+    fontFamily: "Rubik Variable, system-ui, sans-serif"
+    fontSize: "22px"
+    fontWeight: 900
+    lineHeight: 0.98
+    letterSpacing: "-0.025em"
+  item:
+    fontFamily: "Rubik Variable, system-ui, sans-serif"
+    fontSize: "15px"
+    fontWeight: 800
+    lineHeight: 1.25
+    letterSpacing: "normal"
   body:
-    fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Rubik Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
     fontSize: "15px"
-    fontWeight: 400
+    fontWeight: 500
     lineHeight: 1.45
-  body-strong:
-    fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"
-    fontSize: "15px"
-    fontWeight: 600
-    lineHeight: 1.25
   label:
-    fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Rubik Variable, system-ui, sans-serif"
+    fontSize: "14px"
+    fontWeight: 800
+    letterSpacing: "0.01em"
+  caption:
+    fontFamily: "Rubik Variable, system-ui, sans-serif"
     fontSize: "13px"
-    fontWeight: 500
-    lineHeight: 1.35
-  nav-label:
-    fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"
-    fontSize: "11px"
-    fontWeight: 500
-    lineHeight: 1.2
-  button:
-    fontFamily: "Geologica Variable, system-ui, sans-serif"
-    fontSize: "15px"
-    fontWeight: 600
-    lineHeight: 1
-    letterSpacing: "-0.01em"
-  price:
-    fontFamily: "Geologica Variable, system-ui, sans-serif"
-    fontSize: "17px"
     fontWeight: 700
+  nav:
+    fontFamily: "Rubik Variable, system-ui, sans-serif"
+    fontSize: "11px"
+    fontWeight: 700
+  price:
+    fontFamily: "Rubik Variable, system-ui, sans-serif"
+    fontSize: "19px"
+    fontWeight: 900
     lineHeight: 1.25
     letterSpacing: "-0.01em"
-    fontFeature: "\"tnum\""
-  price-total:
-    fontFamily: "Geologica Variable, system-ui, sans-serif"
-    fontSize: "26px"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.01em"
-    fontFeature: "\"tnum\""
-  price-old:
-    fontFamily: "Geologica Variable, system-ui, sans-serif"
-    fontSize: "12px"
-    fontWeight: 400
-    lineHeight: 1.3
-    letterSpacing: "-0.01em"
-    fontFeature: "\"tnum\""
+    fontFeature: "\"tnum\" 1"
 rounded:
-  tag: "8px"
-  step: "10px"
-  control: "12px"
-  field: "14px"
-  button-lg: "16px"
-  panel: "18px"
-  card: "20px"
-  hero: "24px"
-  sheet: "26px"
-  photo: "28px"
+  field: "18px"
+  panel: "24px"
+  card: "26px"
+  bar: "28px"
+  block: "30px"
+  sheet: "32px"
   pill: "9999px"
 spacing:
-  hair: "4px"
-  tight: "6px"
+  xs: "4px"
   sm: "8px"
   md: "12px"
   gutter: "16px"
-  sheet: "20px"
-  lg: "24px"
-  section: "28px"
+  section: "20px"
+  stack: "28px"
 components:
   button-primary:
-    backgroundColor: "{colors.brand}"
+    backgroundColor: "{colors.brand-fill}"
     textColor: "{colors.on-brand}"
-    typography: "{typography.button}"
-    rounded: "{rounded.field}"
-    padding: "0 16px"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    padding: "0 20px"
     height: "44px"
   button-primary-lg:
-    backgroundColor: "{colors.brand}"
+    backgroundColor: "{colors.brand-fill}"
     textColor: "{colors.on-brand}"
-    typography: "{typography.button}"
-    rounded: "{rounded.button-lg}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
     padding: "0 24px"
     height: "54px"
-  button-primary-sm:
-    backgroundColor: "{colors.brand}"
-    textColor: "{colors.on-brand}"
-    typography: "{typography.button}"
-    rounded: "{rounded.control}"
-    padding: "0 14px"
-    height: "36px"
+  button-accent:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    height: "44px"
   button-secondary:
     backgroundColor: "{colors.brand-soft}"
     textColor: "{colors.brand-ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.field}"
-    padding: "0 16px"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
     height: "44px"
   button-outline:
-    backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.field}"
-    padding: "0 16px"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
     height: "44px"
-  button-ghost:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.field}"
-    padding: "0 16px"
+  button-outline-on-brand:
+    textColor: "{colors.on-brand}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
     height: "44px"
   button-inverse:
     backgroundColor: "{colors.on-brand}"
-    textColor: "{colors.brand}"
-    typography: "{typography.button}"
-    rounded: "{rounded.button-lg}"
-    padding: "0 24px"
-    height: "54px"
-  input:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    typography: "{typography.body}"
-    rounded: "{rounded.field}"
-    padding: "12px 16px"
-  category-tab:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    typography: "{typography.body-strong}"
-    rounded: "{rounded.control}"
-    padding: "0 14px"
-    height: "40px"
-  category-tab-active:
-    backgroundColor: "{colors.brand}"
-    textColor: "{colors.on-brand}"
-    typography: "{typography.body-strong}"
-    rounded: "{rounded.control}"
-    padding: "0 14px"
-    height: "40px"
-  product-card:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    typography: "{typography.body-strong}"
-    rounded: "{rounded.card}"
-    padding: "10px 12px 12px"
-  quick-add:
-    backgroundColor: "{colors.brand}"
-    textColor: "{colors.on-brand}"
-    rounded: "{rounded.control}"
-    size: "40px"
-  discount-tag:
-    backgroundColor: "{colors.silk-saffron}"
-    textColor: "{colors.ink}"
-    typography: "{typography.price-old}"
-    rounded: "{rounded.tag}"
-    padding: "2px 6px"
-  quantity-stepper:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    typography: "{typography.price}"
-    rounded: "{rounded.field}"
-    padding: "2px"
-    height: "46px"
-  switch:
-    backgroundColor: "{colors.brand}"
+    textColor: "{colors.brand-fill}"
+    typography: "{typography.label}"
     rounded: "{rounded.pill}"
-    width: "52px"
-    height: "30px"
-  payment-option:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    typography: "{typography.body-strong}"
-    rounded: "{rounded.card}"
-    padding: "14px 16px"
-  bottom-nav:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink-2}"
-    typography: "{typography.nav-label}"
-    padding: "4px 8px"
-  bottom-nav-active:
-    textColor: "{colors.brand-ink}"
-  bottom-sheet:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.sheet}"
-  trust-block:
-    backgroundColor: "{colors.brand-soft}"
+    height: "44px"
+  button-ghost:
     textColor: "{colors.ink}"
     typography: "{typography.label}"
-    rounded: "{rounded.panel}"
-    padding: "14px 16px"
-  toast:
+    rounded: "{rounded.pill}"
+    height: "44px"
+  button-ghost-hover:
+    backgroundColor: "{colors.muted}"
+  icon-button-add:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    rounded: "{rounded.pill}"
+    size: "40px"
+  chip-category:
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
+    padding: "0 16px"
+    height: "40px"
+  chip-category-active:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.ground}"
-    typography: "{typography.label}"
+  tag-discount:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    rounded: "{rounded.pill}"
+    padding: "2px 8px"
+  card-product:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "8px"
+  panel-list:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.card}"
+    padding: "14px 16px"
+  card-promo:
+    backgroundColor: "{colors.brand-fill}"
+    textColor: "{colors.on-brand}"
+    rounded: "{rounded.block}"
+    padding: "16px"
+  card-bump:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    rounded: "{rounded.card}"
+    padding: "14px"
+  input-field:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.field}"
+    padding: "12px 16px"
+  stepper:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
+    padding: "2px"
+  stamp:
+    backgroundColor: "{colors.brand-fill}"
+    textColor: "{colors.on-brand}"
+    typography: "{typography.price}"
+    rounded: "{rounded.pill}"
+    size: "36px"
+  switch-on:
+    backgroundColor: "{colors.ok}"
+    rounded: "{rounded.pill}"
+    width: "56px"
+    height: "32px"
+  toast:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    rounded: "{rounded.pill}"
     padding: "10px 16px"
+  nav-bar:
+    backgroundColor: "{colors.bar}"
+    textColor: "{colors.bar-ink}"
+    typography: "{typography.nav}"
+    rounded: "{rounded.bar}"
+  nav-item-active:
+    textColor: "{colors.accent}"
+  sheet:
+    backgroundColor: "{colors.ground}"
+    rounded: "{rounded.sheet}"
 ---
 
 # Design System: Fast Delivery
 
 ## Overview
 
-**Creative North Star: "Dressed in Abr Silk"**
+**Creative North Star: "The Burger-Joint Poster"**
 
-The menu is dressed in abr (ikat) atlas silk. The restaurant's colour never shows up as a lone accent on grey: it arrives as full-width silk fields (the Home header, onboarding slides, the story viewer, the order-success sheet) that end in a feathered, dye-bled band edge, and as thin ikat rails under the category tabs, product photos and the order bump. Below the silk, the food sits on warm cotton (`ground`) in calm, photo-first white cards. The silk carries identity; the cards carry appetite and price.
+The app reads like the printed poster taped inside a loud neighbourhood burger joint, then lets you order from it. A warm cream ground carries white cards; every object is drawn with a fat 2px brown-ink outline and round, generous corners; offers are shouted in heavy uppercase Rubik; tomato red owns promotions, primary actions and new prices, and mustard marks the things you tap to add. It is appetite and fun first, but it is a working tool: prices are legible at a glance, the next action is always one thumb away, and the total is trusted before confirming.
 
-The system is dense and one-handed: a single column no wider than 512px, 16px gutters, primary actions stacked at thumb height, sticky CTAs above the bottom navigation. It lives inside Telegram's WebView, so it follows Telegram's light or dark scheme (`<html class="dark">`), safe areas and native Back button, and it never reads as a website in a frame. Because this is a universal template, all identity colour flows from four tokens written from `config/brand.ts` (`--brand`, `--on-brand`, `--silk-2`, `--silk-3`); the indigo, pomegranate and saffron values recorded here are the default restaurant, not a constant.
+Density is comfortable, not airy: a single 512px column, 16px gutters, two-up product cards, and stacked outlined panels. Depth comes from outline and colour, never from shadow; motion is quick expo ease-out where sheets rise and nothing bounces. The one memorable moment is the stamp: adding a dish presses a red quantity disc onto the card's corner like an ink stamp.
 
-Confirmed rejection: the category default of a grey ground with one orange accent and emoji icons.
+The system is a rebrandable template. Brand red, cream on-brand, mustard and brown on-accent are written to `<html>` at runtime from `frontend/src/config/brand.ts`; every red surface that carries text uses a fill darkened 20% toward ink so a restaurant's lighter brand colour still holds cream text. Confirmed rejections: the earlier "national ornament" ikat world (rejected by the user as "too traditional"), and the grey-card delivery-app default. All product photography currently shipped is an AI-generated placeholder (`frontend/public/images/products/*.jpg`) for each restaurant to replace.
 
 **Key Characteristics:**
-- Full-width brand silk fields with a low-contrast satin sheen, always bounded by a seeded, stepped abr edge.
-- Warm cotton ground, white photo-first cards, ink-tinted soft shadows.
-- Geologica Variable for headings, buttons and every price (tabular numerals); system UI for body and product names.
-- Honest pricing: struck grey old price, red new price, saffron discount tag.
-- Lucide line icons at 1.75 stroke; heavier 2.25 only for action glyphs in filled controls.
-- Expo ease-out motion; sheets rise, the rail ripples on category change, nothing bounces.
+- Cream ground, white cards, brown ink type and 2px brown outlines on everything.
+- Tomato red for promotions, primary CTAs and prices; mustard for add buttons, discount tags, active nav and toasts.
+- One typeface, Rubik Variable; weight does the hierarchy (900 shout, 800 labels, 500 body).
+- Pills and circles; no corner under 18px.
+- No shadows. Outline and colour fill are the only depth.
+- Signature: the quantity stamp disc, animated by the `stamp` keyframes.
+- Full Telegram dark theme: brown-black ground, cream ink, cream outlines.
 
 ## Colors
 
-Three dye colours of atlas silk on undyed cotton, with ink for text and one honest red for prices.
+A three-voice poster palette (tomato, mustard, brown ink) on cream, with green reserved for "ok" and every value re-derived for Telegram dark mode.
 
 ### Primary
-- **Atlas Indigo** (`brand`): the silk field itself, primary buttons, quick-add "+", active category tab, selected payment icon, switch track when on, the focus outline and the text caret. Rebrandable: components reference `var(--brand)`, never the hex.
-- **White Weft** (`on-brand`): text and glyphs on any brand surface; also the inverse button fill on the story viewer. A restaurant with a pale brand colour sets this to dark.
-- **Indigo Ink** (`brand-ink`, dark `brand-ink-dark`): brand-coloured text and icons on surfaces ("See all" links, active nav item, trust-row icons, ingredient lozenges). Light mode equals `brand`; dark mode lifts it to `color-mix(in srgb, var(--brand) 38%, #fff)` so it stays legible on `surface-dark`.
-- **Indigo Wash** (`brand-soft`, dark `brand-soft-dark`): `color-mix(in srgb, var(--brand) 10%, var(--surface))` (32% in dark). Secondary buttons, the product-sheet trust block, empty-state icon discs.
+- **Tomato Red** (#e8392b, `brand`): the restaurant's colour, set in `brand.ts`. Used raw only where no text sits on it: onboarding ring and active pager dot, unseen story rings, the input caret, the browser theme colour.
+- **Fired Tomato** (#c53325, `brand-fill`, canonical `color-mix(in srgb, var(--brand) 80%, #3a1d0f)`): every red surface that carries text. The primary button, hero promo card, story viewer, profile banner, order-success card, cart badge, quantity stamp, selected radio dot and the "new" order status. Cream on it measures about 5:1.
+- **Tomato Ink** (#c53325 light, #ee7066 dark, `brand-ink`): red as text on cream: the wordmark, the second line of the home headline, profile icons, secondary-button text.
+- **Tomato Blush** (#fcddcc light, #511b13 dark, `brand-soft`): 12% brand on ground; the secondary button fill only.
+- **Poster Cream** (#fff3e2, `on-brand`): text and rings on red. The inverse button is a cream pill with Fired Tomato text in both themes.
 
 ### Secondary
-- **Pomegranate Silk** (`silk-magenta`): the middle dye band of every abr edge, one lozenge tone in rails, the active-nav thread's second segment, the cart count badge and one arc of the unseen story ring.
+- **Mustard** (#ffbf2e, `accent`): the "touch to add" colour. Round "+" buttons, the stepper's plus, discount tags, active bottom-nav item, selected payment icon, toast, order bump card, ingredient bullets, step numbers, the switch thumb at rest, text selection and the global focus outline. On red it is reserved for display numerals, which always carry the ink stroke.
+- **Bun Brown** (#3a1d0f, `on-accent`): text on mustard, and the 4px stroke behind mustard numerals on red.
 
 ### Tertiary
-- **Saffron Silk** (`silk-saffron`): the lowest dye band of every abr edge, rail lozenges, the discount tag, the initial avatar disc, the toast check, the bump's new price when the bump is on, and the text-selection highlight (55% mix).
+- **Sale Red** (#d62d20 light, #ff6a5a dark, `sale`): new prices on cards, sheet and cart lines; field errors; the "clear cart" hover. About 4.9:1 on white.
+- **Halal Green** (#2b8a50 light, #4cc27e dark, `ok`): trust icons in the product sheet, "free" delivery fee, switch track when on, completed status.
 
 ### Neutral
-- **Undyed Cotton** (`ground`, dark `ground-dark`): page background, sticky tab bar and sticky CTA backing; also passed to Telegram as the WebView background colour.
-- **Bleached Cotton** (`surface`, dark `surface-dark`): cards, grouped lists, inputs, the bottom sheet and the bottom navigation bar.
-- **Loom Ink** (`ink`, dark `ink-dark`): primary text; the toast fill (with `ground` text).
-- **Faded Ink** (`ink-2`, dark `ink-2-dark`): secondary text, labels, struck old prices, inactive nav, off-switch track (30%).
-- **Selvedge Line** (`line`, dark `line-dark`): 1px borders on inputs, outline buttons, inactive tabs and steppers; list dividers; the dashed rule above the cart total.
-- **Raw Cotton** (`muted`, dark `muted-dark`): image placeholders, skeletons, ghost and outline hover, unselected payment icon wells.
-- **Night Scrim** (`scrim` at 55%): the backdrop behind bottom sheets.
-- **Price Red** (`sale`, dark `sale-dark`): the new price, and error text / error borders. Nothing else.
-- **Leaf Green** (`ok`, dark `ok-dark`): "free" delivery fee and positive order states.
+- **Brown Ink** (#3a1d0f light, #fff3e2 dark, `ink`): all primary text; the filled state of category chips and the language switcher.
+- **Toasted Crust** (#86664f light, #c9ad95 dark, `ink-2`): secondary text, struck old prices, field labels, subtitles, inactive language option.
+- **Outline** (#3a1d0f light, cream at 82% dark, `outline`): every 2px border and divider.
+- **Hair** (brown or cream at 14%, `hair`): the seen story ring only.
+- **Cream Ground** (#fff3e2 light, #1c110a dark, `ground`): page, sheet and sticky footer background.
+- **Card White** (#ffffff light, #2a1b11 dark, `surface`): cards, panels, inputs, stepper capsule.
+- **Muted Dough** (#f8e7cf light, #3a271a dark, `muted`): image wells, skeletons, ghost and outline hover, selected payment row.
+- **Bar Brown** (#3a1d0f light, #2a1b11 dark, `bar`) with **Bar Ink** (#d8c1ad light, #b89c86 dark, `bar-ink`): the bottom navigation panel and its inactive labels.
+- **Scrim** (brown-black at 60%): bottom sheet backdrop.
 
 ### Named Rules
-**The Four-Token Rebrand Rule.** All identity colour flows from `--brand`, `--on-brand`, `--silk-2` and `--silk-3`, set in `config/brand.ts`. `brand-ink` and `brand-soft` are derived with `color-mix`, never typed. A component that hard-codes the default indigo breaks every other restaurant.
+**The Fired Fill Rule.** Any red area that carries text uses `brand-fill`, never raw `brand`. Raw brand is for rings, dots and carets only. This is what lets any restaurant's red pass with cream text; still check `onBrand` contrast when rebranding.
 
-**The Silk Field Rule.** Brand colour arrives as a full-width field or band, not as a tinted chip on grey. Small brand fills (buttons, quick-add, the active tab) are the field's threads, not substitutes for it.
+**The Mustard Means Add Rule.** Mustard marks what you touch to add, choose or be told: add buttons, the stepper plus, discount tags, the active tab, the selected payment method, the toast. Do not spend it on decoration.
 
-**The One Red Rule.** `sale` marks the new price and errors only. Old prices are `ink-2` struck through (1.5px decoration); discounts are saffron tags, never red.
-
-**The Saffron Carries Ink Rule.** Saffron surfaces (discount tag, avatar disc) always carry fixed ink `#17142A`, in dark mode too, because saffron stays light in both schemes.
+**The Honest Price Rule.** The new price is Sale Red, 900, tabular; the old price is Toasted Crust, 500, struck through with a 1.5px line, set above it. A price never appears without the currency label beside it in `ink-2`.
 
 ## Typography
 
-**Display Font:** Geologica Variable (with system-ui, sans-serif), loaded from `@fontsource-variable/geologica`
-**Body Font:** system-ui (with -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif)
+**Display Font:** Rubik Variable (with system-ui, sans-serif)
+**Body Font:** Rubik Variable (with system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif)
 
-**Character:** Geologica's geometric, slightly condensed variable sans gives headings and prices a confident, signage-like voice with full Cyrillic and Latin coverage; the platform's own UI face keeps body copy and dish names native to Telegram on every device.
+**Character:** One rounded grotesque with full Latin and Cyrillic coverage, pushed to 900 uppercase to shout offers and dropped to 500 to read calmly. The single family keeps Uzbek and Russian strings looking like the same voice.
 
 ### Hierarchy
-- **Display** (700, 30px, 1.05): onboarding slide titles. The story viewer pushes it to 44px at line-height 1.
-- **Headline** (700, 26px, 1.1): the Home offer on the silk field and the order-success title. The Home greeting sits just below at 22px / 1.15.
-- **Page Title** (700, 28px, 1): inner-page headers (Catalog, Cart, Profile).
-- **Title** (700, 20px): section headings (Popular, Delivery, Payment); the product sheet name runs at 24px.
-- **Body** (400, 15px, 1.45): the base size on `html`; descriptions at 15px, onboarding body at 17px. Inputs are 16px to stop iOS zoom.
-- **Body Strong** (600, 15px): product names on cards (system face, normal tracking, clamped to two lines), payment method names, tab labels (14px).
-- **Label** (500, 13px): field labels, fact rows, hints under payment methods, error text.
-- **Nav Label** (500, 11px): bottom navigation captions; story captions at 12px.
-- **Button** (Geologica 600, 15px, -0.01em): every button and button-styled link; 16px at the large size.
-- **Price** (Geologica 700, 17px, tabular): card prices; 22px in the product sheet, 26px for the cart total, 28px on success. Old price 12px regular, struck.
+- **Display** (900, 52px, 0.85, uppercase): the promo numeral on the hero card and the story-viewer title; mustard with ink stroke on red.
+- **Headline** (900, 26–36px, 0.98, uppercase): page titles (32px), home headline (30px), onboarding slides (34–36px), product name in the sheet (28px), empty and success states.
+- **Title** (900, 20–24px, 0.98, uppercase): section heads ("Ommabop" 24px, cart sections 22px, profile sections 20px, cart total label 20px); 16–17px for the promo line and ingredient heading.
+- **Item** (800, 15px, 1.25, normal tracking, sentence case): dish names on cards and cart lines, payment method names.
+- **Body** (500, 15px, 1.45): descriptions, greetings, hints. Onboarding body runs at 17px. Inputs set 16px to stop iOS zoom.
+- **Label** (800, 13–15px, 0.01em, uppercase): all buttons (sm 13px, md 14px, lg 15px), "see all" link, "clear" action.
+- **Caption** (700, 12–13px): field labels (uppercase, `ink-2`), promise rows, story names, status chips.
+- **Nav** (700, 11px): bottom navigation labels.
+- **Price** (900, tabular figures, -0.01em): 19px on cards (16px when six digits), 26px in the sheet, 28px cart total, 32px order success, 17px cart lines.
 
 ### Named Rules
-**The Tabular Price Rule.** Every number a customer pays, counts or compares (prices, quantities, badges, step numerals) uses the `price` treatment: Geologica, `tabular-nums`, -0.01em. Prices are formatted with spaces (`32 000 so'm`) and the currency word drops to 12px semibold.
+**The Shout Rule.** Headings use the `shout` treatment: Rubik 900, uppercase, -0.025em, line-height 0.98, balanced wrapping. Dish names are the exception and stay sentence case at 800 so a two-line name stays readable.
 
-**The Plain Dish Rule.** Headings h1-h3 are Geologica by default with -0.02em tracking and balanced wrapping, but dish names on cards are set back to the system face at normal tracking. The menu reads like food, not a poster.
+**The Ink-Stroke Rule.** Mustard display numerals on red always carry a 4px Bun Brown stroke painted behind the fill (`-webkit-text-stroke` with `paint-order: stroke fill`). Mustard text never sits on red without it.
+
+**The Tabular Price Rule.** Every number that is a price, count or order id uses tabular figures so columns and totals do not jitter.
 
 ## Layout
 
-A single phone column: `max-width: 512px`, centred, with a 16px side gutter on pages, 20px inside the product sheet and 24px on onboarding. Main content reserves 112px at the bottom for the fixed navigation. Vertical rhythm is 24px between Home sections and 28px between Cart sections; cards in grids and rails sit 12px apart; tabs 8px apart. The catalogue is a two-column grid; Home's popular rail is a horizontal snap scroller of 158px cards with `scroll-padding` matching the gutter.
+A single phone column, centred at a 512px maximum, with a 16px side gutter on every screen. Home stacks its sections 20px apart; cart and profile stack 28px apart. Products sit in a two-column grid with 12px gaps. Horizontal rows (stories, category chips) bleed to the screen edge with the gutter as inner padding and a hidden scrollbar.
 
-The Home first viewport is the silk field: avatar, 22px greeting and the quiet restaurant name, the story rings, then the offer headline and text, all on the field, ended by a full-width 32px abr edge. The hero photo card sits on cotton just below that edge, inset by the gutter. Inner pages use a cotton page header; the catalogue's tabs and rail stick to the top on a `ground` backing.
-
-Primary actions sit at thumb height: bottom sheets keep their CTA in a bordered sticky footer; the cart's confirm button is fixed just above the bottom navigation with a 20px cotton fade above it. Every fixed bottom element pads by `max(env(safe-area-inset-bottom), 0.5rem)`.
-
-**The Thumb Column Rule.** One column, 512px maximum, and the next action is always a full-width button within reach of the thumb.
+Chrome is fixed to the bottom for one-handed use: the brown navigation bar sits at the foot with safe-area padding, the cart's sticky confirm button floats directly above it, and the catalog's category row sticks to the top. The product detail is a bottom sheet (max 92% of the dynamic viewport) with a sticky footer CTA divided by a 2px ink rule. There are no breakpoints: wider screens get the same centred column.
 
 ## Elevation & Depth
 
-A hybrid system. The silk fields and abr bands carry hierarchy by colour; shadows are reserved for objects that hold food or float over content, and they are soft, long and ink-tinted (`rgba(23,20,42,…)`) so they read as cotton on cotton, never as grey haze. Brand-filled buttons cast a short glow in their own colour. The silk field adds depth by sheen alone: a 1px-every-4px warp thread at 2.8% white and a 100° satin wave peaking at ±7%, keeping the field's luminance shift around 6%.
-
-### Shadow Vocabulary
-- **Card rest** (`box-shadow: 0 1px 2px rgba(23,20,42,0.06), 0 8px 24px -16px rgba(23,20,42,0.25)`): product cards.
-- **Hero lift** (`box-shadow: 0 2px 4px rgba(23,20,42,0.06), 0 18px 36px -18px rgba(23,20,42,0.4)`): the Home hero photo card.
-- **Brand glow** (`box-shadow: 0 8px 18px -10px var(--brand)`): primary buttons; quick-add uses `0 6px 14px -8px var(--brand)`.
-- **Sheet rise** (`box-shadow: 0 -12px 40px -12px rgba(0,0,0,0.35)`): bottom sheets.
-- **Toast float** (`box-shadow: 0 10px 30px -12px rgba(0,0,0,0.5)`): the toast.
-- **Photo on silk** (`box-shadow: 0 24px 48px -24px rgba(0,0,0,0.6)`): onboarding photos on the field.
-- **Thumb** (`box-shadow: 0 2px 6px rgba(0,0,0,0.22)`): the switch knob.
-- **Focus halo** (`box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 14%, transparent)`): focused inputs, with a brand border.
+The system is flat by doctrine. There are no drop shadows anywhere; depth is drawn, not lit. Layers separate by a 2px ink outline, by fill colour (white card on cream, red block on cream, mustard on red) and by the scrim behind sheets. The only two `box-shadow` declarations are zero-blur lines doing an outline's job: the 4px mustard focus ring on inputs, and in dark mode an inset 2px cream line along the top edge of the bottom bar (#2a1b11) so it separates from the brown-black ground.
 
 ### Named Rules
-**The Silk Over Shadow Rule.** Brand surfaces are flat and never get a drop shadow; only cotton objects (cards, sheets, the toast) and brand buttons lift. Depth on silk comes from sheen, not elevation.
+**The Drawn Depth Rule.** If a layer needs to stand out, give it an outline or a different fill. A blurred shadow is never the answer, in either theme.
 
 ## Shapes
 
-Generous, soft rectangles: corners grow with the object (8px tags, 10px step numerals and stepper buttons, 12px tabs and icon wells, 14px fields and medium buttons, 16px large buttons, 18px panels, 20px cards and grouped lists, 24px hero card, 26px sheet top, 28px onboarding photos). Circles are reserved for avatars, story rings, badges, the switch and radio dots. Borders are a single 1px `line`.
+Everything is round. Controls, chips, tags, toasts, the stepper and buttons are full pills; icon buttons, photos in rings, radio dots and the stamp are circles. Containers use a fat corner ladder: inputs and cart thumbnails 18px, history rows and skeletons 24px, cards and grouped lists 26px (the card's inner image well is 19px so the curves stay concentric), the bottom bar 28px on its top corners, promo and profile blocks 30px, sheets 32px on their top corners.
 
-The signature form is the abr edge, drawn by `AtlasBand` from a seed. The **edge** variant is a 520px tile (wide enough not to repeat on a phone) of six stepped layers: brand, pomegranate and saffron bands, each preceded by a partial-opacity bleed row (55%, 50%, 45%) so the dye appears to have run along the warp. Threads vary between 2 and 4px; the boundary is cut into irregular almond "tongues" 34-80px wide. The **rail** variant is a short 64px tile (48px in the product sheet and bump) of two stepped lozenges on brand, each shadowed by a 40% copy offset 1.5px. Ingredient bullets reuse a 10px stepped lozenge in `brand-ink`. The story viewer flips the edge (rotated 180°) where the photo meets the field.
+Every object carries a 2px ink outline; dividers inside grouped lists are 2px ink too, and the cart total is split off by a 2px dashed ink rule. Photography is either a rounded-square well inside a card or a circle wearing a ring: a 5px cream ring on the hero dish (which bleeds off the card's right edge), a 2px outline inside a coloured ring on onboarding, a 3px red ring on unseen stories.
 
-**The Stepped Edge Rule.** A brand field never ends in a straight line, a CSS wave or a curve. It ends in a full-width AtlasBand edge (32px tall at standard size), and the field above it carries the `silk-field` sheen.
+Icons are Lucide line icons at a 2.25 stroke; glyphs inside small filled controls (the "+", the stepper, the toast check, the cart-line remove) go to 2.5–3 so they hold their weight against the fill.
+
+### Named Rules
+**The Fat Corner Rule.** No square corners and nothing under 18px. If it is interactive and small, it is a pill or a circle.
+
+**The 2px Ink Rule.** Outlines and dividers are 2px in the outline colour. Not 1px, not grey.
 
 ## Components
 
-Tactile and confident: big, rounded, one-tap controls in brand fills, with prices that never hide.
-
 ### Buttons
-- **Shape:** gently rounded (14px at medium, 12px small, 16px large); heights 36 / 44 / 54px.
-- **Primary:** `brand` fill, `on-brand` text in Geologica 600 15px, brand glow beneath. Hover lifts brightness 110%, active 95% and scales to 0.98 over 200ms on the silk ease.
-- **Secondary:** `brand-soft` wash with `brand-ink` text ("New order", retry).
-- **Outline / Ghost:** `surface` with a 1px `line` border, or transparent; both hover to `muted`.
-- **Inverse:** `on-brand` fill with `brand` text, used on silk (story viewer CTA).
-- **Disabled / Loading:** 45% opacity, no pointer events; loading adds a 16px spinning ring in the current colour and sets `aria-busy`.
+Chunky, loud and pressable: full pills in 800 uppercase that shrink to 97% on press.
+- **Shape:** full pill (9999px); heights 36px (sm), 44px (md), 54px (lg).
+- **Primary:** Fired Tomato with cream text; the default for every main action (add to cart with price, confirm or pay with total, start, go to catalogue). Hover brightens 5%, active dims 5%.
+- **Accent:** mustard with brown text and a 2px ink outline.
+- **Secondary:** Tomato Blush with Tomato Ink text.
+- **Outline:** transparent with a 2px ink outline and ink text; hover fills Muted Dough.
+- **Outline on brand:** transparent with a 2px cream outline and cream text, for use on red blocks; hover tints cream at 10%.
+- **Inverse:** a cream pill with Fired Tomato text in both themes; the main action on red surfaces (hero card, story viewer).
+- **Ghost:** transparent ink text; hover Muted Dough.
+- **States:** transitions on transform, filter and background at 200ms expo; disabled at 45% opacity; loading shows a 16px spinning ring in the current colour.
+- **On red, pair with a link:** the hero card's action row is a cream inverse pill plus an underlined 800-weight text link (2px underline, 4px offset), not two pills.
 
-### Chips (category tabs)
-- **Style:** 40px tall, 12px corners, 1px `line` border on `surface`, 14px semibold label with a 17px Lucide icon.
-- **State:** active fills with `brand` and `on-brand` text; inactive hovers to `muted`. The active tab scrolls itself to centre.
+### Chips
+- **Category tabs:** 40px pills with a 2px ink outline, 17px icon and 800 label. Unselected transparent with ink text (hover Muted Dough); selected fills solid ink with cream (ground) text.
+- **Language switcher:** a 2px-outlined pill segmented control; active option fills ink with ground text, inactive is Toasted Crust.
+- **Discount tag:** a mustard pill with a 2px ink outline and a 900 tabular "−20%", pinned to the image corner.
+- **Status chip:** a 2px-outlined pill; new is Fired Tomato, confirmed is mustard, delivering is solid ink, cancelled is Muted Dough.
 
 ### Cards / Containers
-- **Corner Style:** 20px (product cards, payment group, totals, order bump); 24px for the Home hero card.
-- **Background:** `surface` on `ground`; photos sit edge-to-edge on top (square on cards, 16:8 on the hero, 5:4 in the sheet) over a `muted` placeholder.
-- **Shadow Strategy:** card rest and hero lift (see Elevation & Depth); grouped lists are flat.
-- **Border:** none on cards; grouped lists use 1px `line` dividers.
-- **Internal Padding:** 12px on product cards, 14-16px on lists and panels.
+- **Corner Style:** 26px for cards and grouped lists, 24px for history rows, 30px for red blocks.
+- **Background:** Card White on Cream Ground; red blocks in Fired Tomato; the order bump in mustard.
+- **Shadow Strategy:** none (see Elevation & Depth).
+- **Border:** 2px ink on every white or mustard container; red blocks go borderless and let the colour do the work.
+- **Internal Padding:** 8px on product cards (image well inset), 14–16px on panels and blocks.
+- **Product card:** square image well, two-line dish name, struck old price over the red new price, a 40px round mustard "+" in the bottom-right corner, and the stamp in the top-right when the dish is in the cart.
+- **Grouped list:** cart lines, payment methods and profile contacts share one outlined 26px panel divided by 2px ink rules.
+- **Hero promo:** Fired Tomato block, ink-stroked mustard numeral, uppercase promo line, mustard-iconed promise row (only promises the restaurant enables in `brand.ts`), and a ringed circular dish photo bleeding off the right edge.
+- **Order bump:** a mustard card with a circular product photo, the offer sentence, struck and new price, and a switch.
 
 ### Inputs / Fields
-- **Style:** `surface` fill, 1px `line` border, 14px corners, 12px by 16px padding, 16px text; a 13px `ink-2` label above with a 15px Lucide icon.
-- **Focus:** border shifts to `brand` and a 4px brand halo at 14% fades in over 200ms.
-- **Error:** border and a 13px message in `sale`, announced with `role="alert"`.
+- **Style:** Card White, 2px ink outline, 18px corners, 12px by 16px padding, 16px text; placeholder in Toasted Crust at 70%. Labels sit above in 13px 700 uppercase Toasted Crust with a 15px icon.
+- **Focus:** a 4px mustard ring around the outline, eased in over 200ms.
+- **Error:** the outline turns Sale Red and a 13px 700 Sale Red message appears below with `role="alert"`.
 
 ### Navigation
-- **Bottom bar:** fixed `surface` bar with a top `line` border, four equal tabs (Home, Catalog, Cart, Profile), 23px Lucide icons over 11px labels in `ink-2`.
-- **Active:** label and icon turn `brand-ink`, and a 3px by 32px tri-colour thread (brand 3 : pomegranate 1 : saffron 1) fades in at the top edge.
-- **Cart badge:** an 18px pomegranate pill in white tabular numerals that pops in (scale 0.6 to 1, 360ms) whenever the count changes.
-
-### Product Card
-Photo-first: square image (scales to 1.03 on press over 500ms), optional saffron `−N%` tag top-left, two-line dish name, struck old price above the red new price, and a 40px brand quick-add "+" pinned bottom-right. Once in the cart, a brand quantity badge with a `surface` ring appears top-right. Tapping the card opens the product sheet; the "+" adds without leaving.
+- **Bottom bar:** a fixed Bar Brown panel with 28px top corners, four equal tabs (Home, Catalog, Cart, Profile), 24px Lucide icons over 11px 700 labels. Inactive tabs are Bar Ink; the active tab turns mustard. In dark mode the bar is #2a1b11 with an inset 2px cream line along its top.
+- **Cart badge:** a 20px Fired Tomato disc with a 2px bar-coloured ring and 900 tabular count, stamped in with the `stamp` animation every time the count changes.
+- **Headers:** the home header is the two-line uppercase red wordmark plus the compact UZ/RU switch, a 30px shout headline with its second line in Tomato Ink, and a greeting. Inner pages use a 32px shout title with an optional subtitle and a right-aligned action.
 
 ### Bottom Sheet
-Rises from the bottom (360ms, silk ease) over a 55% night scrim; 26px top corners, max 92dvh, a white drag handle over the photo, drag-down past 110px or Escape to close (240ms ease-in). The CTA lives in a bordered sticky footer. The product sheet stacks photo, a 12px rail, name and price, ingredient lozenges, a `brand-soft` trust block (only promises the restaurant enabled in `brand.ts`), the quantity stepper, then "Add to cart — price".
+Cream sheet with 32px top corners rising from the bottom over a 60% brown-black scrim; drag handle at the top, dismiss by drag past 110px, backdrop tap, Escape or Telegram's Back button. Sticky footer separated by a 2px ink rule holds the full-width primary CTA.
 
-### Order Bump
-A 20px-cornered card topped by a 12px rail: 60px photo, offer sentence, struck and new price, and a 52 by 30px switch. Switching on floods the whole card with `brand` (300ms), turns the new price saffron and the old price `on-brand` at 70%.
+### Switch
+56 by 32px pill with a 2px ink outline. Off: white track with a mustard thumb on the left. On: Halal Green track with a white thumb slid right. 300ms expo.
 
-### Payment Methods
-A radio group in one flat `surface` card with `line` dividers: a 40px icon well (`muted`, or `brand` when selected), name and hint, and a 22px ring that fills with a brand dot. Unavailable providers sit at 45% opacity with a "soon" hint.
+### Quantity Stepper
+A white pill with a 2px ink outline: a plain ink minus, a 900 tabular count, and a mustard circular plus. 32px or 40px buttons that shrink to 90% on press.
 
-### Atlas Band (signature)
-The `AtlasBand` component (see Shapes). The category rail under the tabs is the signature interaction: on category change the rail translates by half a motif cell per index (320ms, silk ease) and re-mounts with a travelling ripple: the motif flows in from one full 64px lozenge cell on the side of the newly chosen tab, with a ±22deg skew and 0.6px blur easing to rest (320ms). It never animates on its own.
+### Toast
+A mustard pill with a 2px ink outline, check icon and 800 uppercase message, rising in at the top of the screen for 2.2 seconds.
 
-### Motion
-One curve, `cubic-bezier(0.16, 1, 0.3, 1)` (expo ease-out, `--ease-silk`), for sheets (360ms), rail ripple (320ms), badges (360ms), list rise (420ms, 10px up with fade), switches (300ms) and button press (200ms). Fades are 200ms ease-out. Reduced-motion collapses every animation and transition to 0.01ms.
-
-**The Silk Ease Rule.** Everything decelerates on the expo curve and comes to rest; nothing bounces or overshoots.
-
-**The Two Strokes Rule.** Lucide line icons render at 1.75 stroke everywhere (nav, tabs, fields, facts, payment, empty states). Only action glyphs inside filled controls (stepper −/+, quick-add +, story close and arrow, success check) step up to 2.25.
+### The Stamp (signature)
+When a dish is added, a 36px Fired Tomato disc with a 2px ink outline and the 900 tabular quantity is stamped onto the card's top-right corner. The `stamp` keyframes scale it from 1.6 to 1 and rotate it from −12° to 0 while it fades in, over 340ms on the expo ease `cubic-bezier(0.16, 1, 0.3, 1)`. It re-stamps on every quantity change. The same motion stamps the cart badge and the order-success check.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** reference colour through the tokens (`var(--brand)`, `--silk-2`, `--silk-3`, `--on-brand`, `--brand-ink`, `--brand-soft`) so a restaurant can rebrand from `config/brand.ts` alone.
-- **Do** end every full-width brand field with an AtlasBand edge (32px, 520px seeded tile) and give the field the `silk-field` sheen.
-- **Do** show price as struck `ink-2` old price above a red tabular new price, with a saffron `−N%` tag on the photo.
-- **Do** set every price, quantity and badge in Geologica with tabular numerals.
-- **Do** keep the primary action full-width at thumb height and pad fixed bottom elements by the safe-area inset.
-- **Do** use Lucide line icons at 1.75 stroke, and 2.25 only for action glyphs inside filled controls.
-- **Do** animate on `cubic-bezier(0.16, 1, 0.3, 1)`: sheets 360ms, the rail ripple 320ms.
-- **Do** verify both Telegram light and dark schemes; body text holds at least 4.5:1 in each.
+- **Do** fill every text-bearing red surface with `brand-fill` and keep raw `brand` for rings, dots and the caret.
+- **Do** outline every card, chip, control, photo and divider in 2px of the outline colour.
+- **Do** set headings in the `shout` treatment (Rubik 900 uppercase, -0.025em, 0.98) and dish names in 800 sentence case.
+- **Do** give mustard numerals on red the 4px Bun Brown `ink-stroke`.
+- **Do** show prices as struck Toasted Crust old price over a Sale Red 900 tabular new price with the currency label.
+- **Do** use mustard for add, choose and confirm signals: "+" buttons, discount tags, active tab, selected payment, toast.
+- **Do** use Lucide icons at a 2.25 stroke, raising glyphs inside small filled controls to 2.5–3.
+- **Do** keep motion on the expo ease `cubic-bezier(0.16, 1, 0.3, 1)`: sheets rise in 360ms, content rises 10px in 420ms, the stamp lands in 340ms, presses scale to 0.97 (pills) or 0.9 (round buttons); respect reduced motion.
+- **Do** fade only a disabled row's content (icon, text, radio) to 45%, leaving its divider and panel outline intact.
+- **Do** keep every brand-coloured value flowing from `brand.ts` so a restaurant can rebrand with four colours, and check `onBrand` contrast against the derived fill.
 
 ### Don't:
-- **Don't** fall back to the category default: a grey ground with one orange accent and emoji icons.
-- **Don't** hard-code the default indigo, pomegranate or saffron hex in a component.
-- **Don't** use `sale` red for anything but the new price and errors.
-- **Don't** end a brand field with a straight edge, a CSS wave or a rounded bottom.
-- **Don't** animate the atlas band continuously or on scroll; it moves only when the category changes.
-- **Don't** use bounce, spring overshoot or elastic easing.
-- **Don't** put drop shadows on silk fields or bands.
-- **Don't** add uppercase kickers or eyebrow labels above headings, or emoji and text-glyph icons.
+- **Don't** use drop shadows or blurred glows, in either theme; depth is outline and colour.
+- **Don't** put cream or white text on raw `brand`, or mustard text on red without the ink stroke.
+- **Don't** use square corners or radii under 18px on containers.
+- **Don't** draw 1px or grey outlines and dividers.
+- **Don't** bring back the rejected "national ornament" look: no ikat bands, abr silk patterns or traditional ornament.
+- **Don't** fall back to the grey-card delivery-app default: no grey surfaces, borderless floating cards or blue system accents.
+- **Don't** add a second typeface; hierarchy comes from Rubik's weights and the uppercase shout.
+- **Don't** make anything bounce or overshoot.

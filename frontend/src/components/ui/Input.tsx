@@ -8,20 +8,20 @@ interface FieldProps {
 }
 
 const fieldClass =
-  'w-full rounded-[18px] border-2 border-outline bg-surface px-4 py-3 text-ink placeholder:text-ink-2/70 outline-none transition-[box-shadow] duration-200 focus:shadow-[0_0_0_4px_var(--accent)]';
+  'w-full rounded-[16px] border-[1.5px] border-transparent bg-surface px-4 py-3 text-ink placeholder:text-ink-2 outline-none transition-[border-color] duration-200 focus:border-brand';
 
 function FieldWrapper({ label, icon, error, id, children }: FieldProps & { id?: string; children: ReactNode }) {
   return (
     <div>
       {label && (
-        <label htmlFor={id} className="mb-1.5 flex items-center gap-1.5 text-[13px] font-bold text-ink-2 uppercase">
+        <label htmlFor={id} className="mb-1.5 flex items-center gap-1.5 text-[13px] font-semibold text-ink-2">
           {icon}
           {label}
         </label>
       )}
       {children}
       {error && (
-        <p role="alert" className="mt-1.5 text-[13px] font-bold text-sale">
+        <p role="alert" className="mt-1.5 text-[13px] font-semibold text-sale">
           {error}
         </p>
       )}

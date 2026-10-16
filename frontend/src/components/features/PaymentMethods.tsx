@@ -1,6 +1,6 @@
 'use client';
 
-/** To'lov usullari: Naqd pul | Payme/Click | Telegram Stars */
+/** To'lov usullari: Naqd pul | Payme/Click | Telegram Stars — tanlangani qizil kontur */
 import { Banknote, CreditCard, Star, type LucideIcon } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
 import { useI18n } from '@/hooks/useI18n';
@@ -31,7 +31,7 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
       : t(`cart.methods.${id}Hint`);
 
   return (
-    <div className="divide-y-2 divide-outline overflow-hidden rounded-[26px] border-2 border-outline bg-surface" role="radiogroup" aria-label={t('cart.payment')}>
+    <div className="space-y-2" role="radiogroup" aria-label={t('cart.payment')}>
       {METHODS.map(({ id, icon: Icon }) => {
         const enabled = available.includes(id);
         const selected = paymentMethod === id;
@@ -46,30 +46,33 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
               haptic.select();
               setPaymentMethod(id);
             }}
-            className={cn('flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors disabled:cursor-not-allowed', selected && 'bg-muted')}
+            className={cn(
+              'flex w-full items-center gap-3 rounded-[18px] border-[1.5px] bg-surface px-4 py-3 text-left transition-colors disabled:cursor-not-allowed',
+              selected ? 'border-brand' : 'border-transparent',
+            )}
           >
             <span
               className={cn(
+                'flex size-10 shrink-0 items-center justify-center rounded-[12px] transition-colors',
+                selected ? 'bg-brand-fill text-on-brand' : 'bg-raised text-ink',
                 !enabled && 'opacity-45',
-                'flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-outline transition-colors',
-                selected ? 'bg-accent text-on-accent' : 'bg-surface text-ink',
               )}
             >
-              <Icon size={20} strokeWidth={2.25} />
+              <Icon size={20} strokeWidth={2} />
             </span>
             <span className={cn('min-w-0 flex-1', !enabled && 'opacity-45')}>
-              <span className="block text-[15px] font-extrabold">{t(`cart.methods.${id}`)}</span>
+              <span className="block text-[15px] font-bold">{t(`cart.methods.${id}`)}</span>
               <span className="block text-[13px] font-medium text-ink-2">{enabled ? hint(id) : t('cart.soon')}</span>
             </span>
             <span
               aria-hidden="true"
               className={cn(
+                'flex size-[22px] items-center justify-center rounded-full border-2 transition-colors',
+                selected ? 'border-brand' : 'border-ink-2/50',
                 !enabled && 'opacity-45',
-                'flex size-6 items-center justify-center rounded-full border-2 border-outline transition-colors',
-                selected ? 'bg-brand-fill' : 'bg-surface',
               )}
             >
-              {selected && <span className="size-2 rounded-full bg-on-brand" />}
+              {selected && <span className="size-2.5 rounded-full bg-brand" />}
             </span>
           </button>
         );
