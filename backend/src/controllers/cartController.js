@@ -23,8 +23,8 @@ class OrderError extends Error {
 
 /** Hozir faol bo'lgan to'lov usullari */
 function availablePaymentMethods() {
-  const methods = ['cash', 'stars'];
-  if (config.payments.providerToken) methods.splice(1, 0, 'payme_click');
+  const methods = ['cash'];
+  if (config.payments.providerToken) methods.push('payme_click');
   return methods;
 }
 
@@ -152,7 +152,7 @@ async function notifyUser(user, key, params, extra = {}) {
 
 // ------------------------------------------------------------------ To'lov (invoice)
 
-/** Telegram Stars (XTR) yoki Payme/Click (UZS) uchun to'lov havolasi */
+/** Payme/Click (UZS) uchun to'lov havolasi — BotFather'da ulangan provider orqali */
 async function createInvoiceLink(order, lang) {
   const count = order.items.reduce((sum, line) => sum + line.quantity, 0) + (order.bumpPrice > 0 ? 1 : 0);
   const base = {
@@ -161,16 +161,7 @@ async function createInvoiceLink(order, lang) {
     payload: `order:${order.id}`,
   };
 
-  if (order.paymentMethod === 'stars') {
-    return bot.telegram.createInvoiceLink({
-      ...base,
-      provider_token: '',
-      currency: 'XTR',
-      prices: [{ label: t(lang, 'invoice.label'), amount: order.starsAmount }],
-    });
-  }
-
-  // Payme / Click — BotFather'da ulangan provider orqali; summa tiyinda (×100)
+  // Summa tiyinda (×100)
   return bot.telegram.createInvoiceLink({
     ...base,
     provider_token: config.payments.providerToken,
@@ -215,7 +206,6 @@ async function createOrder(user, lang, payload) {
         address: cleanAddress,
         phone: cleanPhone,
         comment: cleanComment,
-        starsAmount: paymentMethod === 'stars' ? Math.max(1, Math.ceil(cart.total / config.payments.starsRateUzs)) : null,
       },
       { transaction },
     );

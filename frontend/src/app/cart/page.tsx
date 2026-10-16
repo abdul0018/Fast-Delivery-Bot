@@ -68,7 +68,7 @@ export default function CartPage() {
     setSuccessOrder(order);
   };
 
-  /** Telegram ichida invoice'ni ochish (Stars / Payme / Click) */
+  /** Telegram ichida invoice'ni ochish (Payme / Click) */
   const openInvoice = (url: string, order: Order) => {
     if (!webApp || !webApp.isVersionAtLeast('6.1')) {
       window.open(url, '_blank');
@@ -221,7 +221,7 @@ export default function CartPage() {
         {/* 4. To'lov usuli */}
         <section>
           <h2 className="mb-3 text-[20px] font-semibold">{t('cart.payment')}</h2>
-          <PaymentMethods available={available} starsRate={config?.starsRateUzs ?? 200} total={cart.total} />
+          <PaymentMethods available={available} />
         </section>
 
         {/* 5. Jami */}

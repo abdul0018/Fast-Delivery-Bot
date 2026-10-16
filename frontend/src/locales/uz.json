@@ -110,9 +110,7 @@
       "cash": "Naqd pul",
       "cashHint": "Kuryerga yetkazilganda",
       "payme_click": "Payme / Click",
-      "payme_clickHint": "Karta orqali onlayn",
-      "stars": "Telegram Stars",
-      "starsHint": "≈ {stars} Stars"
+      "payme_clickHint": "Karta orqali onlayn"
     },
     "soon": "Tez orada",
     "subtotal": "Mahsulotlar",

@@ -110,9 +110,7 @@
       "cash": "Наличные",
       "cashHint": "Курьеру при получении",
       "payme_click": "Payme / Click",
-      "payme_clickHint": "Онлайн картой",
-      "stars": "Telegram Stars",
-      "starsHint": "≈ {stars} Stars"
+      "payme_clickHint": "Онлайн картой"
     },
     "soon": "Скоро",
     "subtotal": "Товары",

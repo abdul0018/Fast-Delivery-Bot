@@ -1,7 +1,7 @@
 'use client';
 
-/** To'lov usullari: Naqd pul | Payme/Click | Telegram Stars — bitta oq karta ichidagi radio qatorlar */
-import { Banknote, Check, CreditCard, Star, type LucideIcon } from 'lucide-react';
+/** To'lov usullari: Naqd pul | Payme/Click — bitta oq karta ichidagi radio qatorlar */
+import { Banknote, Check, CreditCard, type LucideIcon } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
@@ -11,24 +11,12 @@ import type { PaymentMethod } from '@/types';
 const METHODS: { id: PaymentMethod; icon: LucideIcon }[] = [
   { id: 'cash', icon: Banknote },
   { id: 'payme_click', icon: CreditCard },
-  { id: 'stars', icon: Star },
 ];
 
-interface PaymentMethodsProps {
-  available: PaymentMethod[];
-  starsRate: number;
-  total: number;
-}
-
-export function PaymentMethods({ available, starsRate, total }: PaymentMethodsProps) {
+export function PaymentMethods({ available }: { available: PaymentMethod[] }) {
   const { paymentMethod, setPaymentMethod } = useCart();
   const { t } = useI18n();
   const { haptic } = useTelegram();
-
-  const hint = (id: PaymentMethod) =>
-    id === 'stars'
-      ? t('cart.methods.starsHint', { stars: Math.max(1, Math.ceil(total / starsRate)) })
-      : t(`cart.methods.${id}Hint`);
 
   return (
     <div className="divide-y divide-line overflow-hidden rounded-[20px] bg-surface" role="radiogroup" aria-label={t('cart.payment')}>
@@ -53,7 +41,7 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
             </span>
             <span className={cn('min-w-0 flex-1', !enabled && 'opacity-45')}>
               <span className="block text-[15px] font-medium">{t(`cart.methods.${id}`)}</span>
-              <span className="block text-[13px] text-ink-2">{enabled ? hint(id) : t('cart.soon')}</span>
+              <span className="block text-[13px] text-ink-2">{enabled ? t(`cart.methods.${id}Hint`) : t('cart.soon')}</span>
             </span>
             <span
               aria-hidden="true"

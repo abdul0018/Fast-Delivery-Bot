@@ -1,5 +1,5 @@
 /**
- * Telegram Payments: Telegram Stars (XTR) va Payme/Click (UZS)
+ * Telegram Payments: Payme/Click (UZS)
  */
 const { Order } = require('../models');
 const { markOrderPaid } = require('./cartController');
@@ -16,7 +16,7 @@ async function preCheckout(ctx) {
   const orderId = parsePayload(query.invoice_payload);
   const order = orderId ? await Order.findByPk(orderId) : null;
 
-  const expectedAmount = order && (order.paymentMethod === 'stars' ? order.starsAmount : order.total * 100);
+  const expectedAmount = order && order.total * 100;
   const ok =
     order &&
     order.paymentStatus === 'pending' &&

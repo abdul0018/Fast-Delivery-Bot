@@ -42,8 +42,7 @@
   },
   "payment": {
     "cash": "💵 Naqd pul",
-    "payme_click": "💳 Payme / Click",
-    "stars": "⭐ Telegram Stars"
+    "payme_click": "💳 Payme / Click"
   },
   "order": {
     "created": "✅ Buyurtmangiz <b>#{id}</b> qabul qilindi!\n\n💰 Jami: <b>{total} so'm</b>\n💳 To'lov: {payment}\n📍 Manzil: {address}\n\nTez orada operatorimiz siz bilan bog'lanadi.",

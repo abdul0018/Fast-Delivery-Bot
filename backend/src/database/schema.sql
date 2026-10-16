@@ -14,7 +14,7 @@ DO $$ BEGIN
 EXCEPTION WHEN duplicate_object THEN NULL; END $$;
 
 DO $$ BEGIN
-  CREATE TYPE enum_orders_payment_method AS ENUM ('cash', 'payme_click', 'stars');
+  CREATE TYPE enum_orders_payment_method AS ENUM ('cash', 'payme_click');
 EXCEPTION WHEN duplicate_object THEN NULL; END $$;
 
 DO $$ BEGIN
@@ -79,7 +79,6 @@ CREATE TABLE IF NOT EXISTS orders (
   address             TEXT         NOT NULL,
   phone               VARCHAR(32),
   comment             TEXT,
-  stars_amount        INTEGER,
   payment_charge_id   VARCHAR(255),
   created_at          TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
   updated_at          TIMESTAMPTZ  NOT NULL DEFAULT NOW()

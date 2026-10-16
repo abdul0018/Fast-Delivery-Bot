@@ -19,7 +19,7 @@ Ordering lives entirely inside Telegram, the messenger Uzbek customers already u
 - Opened from the bot's Menu Button or an inline "open menu" button; rendered in Telegram's WebView on iOS/Android/desktop, which supplies a native Back button and light or dark theme colours (the app deliberately ignores the dark theme; see Brand Commitments).
 - Bilingual UI (Uzbek Latin default, Russian), every string from `frontend/src/locales/*.json`.
 - Prices in so'm (UZS), formatted with spaces (32 000 so'm).
-- Flow: onboarding (first run only) → home → catalog → product bottom sheet → cart with order bump → payment (cash, Payme/Click via Telegram Payments, Telegram Stars) → admin group notification.
+- Flow: onboarding (first run only) → home → catalog → product bottom sheet → cart with order bump → payment (cash, Payme/Click via Telegram Payments; Telegram Stars removed at the user's request) → admin group notification.
 
 ## Capabilities and Constraints
 - Next.js App Router + Tailwind v4 + Zustand frontend; Node.js/Telegraf/Express/PostgreSQL backend. Existing codebase answers the stack.

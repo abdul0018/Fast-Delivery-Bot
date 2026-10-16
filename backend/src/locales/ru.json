@@ -42,8 +42,7 @@
   },
   "payment": {
     "cash": "💵 Наличные",
-    "payme_click": "💳 Payme / Click",
-    "stars": "⭐ Telegram Stars"
+    "payme_click": "💳 Payme / Click"
   },
   "order": {
     "created": "✅ Ваш заказ <b>#{id}</b> принят!\n\n💰 Итого: <b>{total} сум</b>\n💳 Оплата: {payment}\n📍 Адрес: {address}\n\nОператор скоро свяжется с вами.",

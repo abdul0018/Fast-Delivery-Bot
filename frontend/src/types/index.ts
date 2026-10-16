@@ -19,7 +19,7 @@ export interface Product {
   isUpsell: boolean;
 }
 
-export type PaymentMethod = 'cash' | 'payme_click' | 'stars';
+export type PaymentMethod = 'cash' | 'payme_click';
 export type OrderStatus = 'new' | 'confirmed' | 'delivering' | 'completed' | 'cancelled';
 export type PaymentStatus = 'pending' | 'paid' | 'failed';
 
@@ -58,7 +58,6 @@ export interface AppUser {
 export interface AppConfig {
   currency: 'UZS';
   paymentMethods: PaymentMethod[];
-  starsRateUzs: number;
   bump: { product: Product; price: number } | null;
 }
 

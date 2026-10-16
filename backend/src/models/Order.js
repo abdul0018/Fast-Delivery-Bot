@@ -5,7 +5,7 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/connection');
 
-const PAYMENT_METHODS = ['cash', 'payme_click', 'stars'];
+const PAYMENT_METHODS = ['cash', 'payme_click'];
 const PAYMENT_STATUSES = ['pending', 'paid', 'failed'];
 const STATUSES = ['new', 'confirmed', 'delivering', 'completed', 'cancelled'];
 
@@ -26,7 +26,6 @@ const Order = sequelize.define(
     address: { type: DataTypes.TEXT, allowNull: false },
     phone: { type: DataTypes.STRING(32) },
     comment: { type: DataTypes.TEXT },
-    starsAmount: { type: DataTypes.INTEGER, allowNull: true },
     paymentChargeId: { type: DataTypes.STRING },
   },
   {

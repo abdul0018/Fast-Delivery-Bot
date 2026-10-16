@@ -52,8 +52,6 @@ const config = {
   payments: {
     // BotFather -> Payments orqali olingan Payme/Click provider token
     providerToken: process.env.PAYMENT_PROVIDER_TOKEN || '',
-    // 1 Telegram Star necha so'mga teng (Stars to'lovini hisoblash uchun)
-    starsRateUzs: toInt(process.env.STARS_RATE_UZS, 200),
   },
 
   order: {

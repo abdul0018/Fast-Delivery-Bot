@@ -15,7 +15,7 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 - Buyurtmalarim, aloqa, telefon raqamni yuborish, tilni o'zgartirish
 - Har bir yangi buyurtma admin/guruhga yuboriladi: mijoz ismi, telefon, manzil, mahsulotlar, jami summa
 - Admin tugmalari: ✅ Qabul qilish → 🚴 Yo'lga chiqdi → 🏁 Yetkazildi / ❌ Bekor qilish (mijozga uning tilida xabar boradi)
-- To'lovlar: naqd pul, Telegram Stars (XTR), Payme/Click (Telegram Payments provider token orqali)
+- To'lovlar: naqd pul, Payme/Click (Telegram Payments provider token orqali)
 
 **Mini App**
 1. **Onboarding** — 3 ta swipe slayd, faqat birinchi kirishda
@@ -76,7 +76,6 @@ frontend `.env.local` da `NEXT_PUBLIC_DEV_AUTH=true` qiling (faqat lokal; produc
 2. **ADMIN_CHAT_ID** — botni admin guruhiga qo'shing, guruh ID sini oling (`-100...` ko'rinishida) va `.env` ga yozing.
 3. **Payme / Click** — BotFather → `/mybots` → Payments → provider tanlang, tokenni `PAYMENT_PROVIDER_TOKEN` ga yozing.
    Token bo'lmasa Mini App'da bu usul "Tez orada" deb ko'rsatiladi.
-4. **Telegram Stars** — qo'shimcha sozlash shart emas; kurs `STARS_RATE_UZS` (1 ⭐ = necha so'm).
 
 ### 4. Deploy
 
