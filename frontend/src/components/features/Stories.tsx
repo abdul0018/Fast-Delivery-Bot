@@ -73,7 +73,7 @@ function StoryViewer({ startIndex, onClose }: { startIndex: number; onClose: () 
         type="button"
         onClick={onClose}
         aria-label={t('common.close')}
-        className="absolute top-6 right-3 z-30 flex size-10 items-center justify-center rounded-full bg-black/30 text-white"
+        className="absolute top-6 right-3 z-30 flex size-10 items-center justify-center rounded-full bg-white/90 text-brand-fill"
       >
         <X size={22} strokeWidth={2.25} />
       </button>

@@ -15,7 +15,7 @@ const variants: Record<Variant, string> = {
   primary: 'bg-brand-fill text-on-brand hover:brightness-110 active:brightness-95',
   secondary: 'bg-soft text-brand-ink hover:brightness-[0.98]',
   ghost: 'bg-transparent text-ink hover:bg-muted',
-  outline: 'border-[1.5px] border-ink bg-transparent text-ink hover:bg-muted',
+  outline: 'border-[1.5px] border-brand bg-transparent text-brand-ink hover:bg-soft',
   // Oq tugma — qizil fon ustida (splash, aksiya kartasi)
   inverse: 'bg-white text-brand-fill hover:brightness-95',
 };

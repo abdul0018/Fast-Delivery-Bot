@@ -2,7 +2,7 @@
 
 /**
  * Telegram WebApp konteksti.
- *  - WebApp.ready() / expand() ni chaqiradi, mavzu (light/dark) ni kuzatadi
+ *  - WebApp.ready() / expand() ni chaqiradi; ilova doim yorug' (oq-qizil) — Telegram tungi rejimida ham
  *  - Tilni aniqlaydi: backend (bot) tanlovi -> ?lang= parametri -> Telegram language_code
  *  - Haptic feedback uchun qulay funksiyalar beradi
  */
@@ -33,7 +33,6 @@ export function TelegramProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const tg = window.Telegram?.WebApp ?? null;
-    const applyTheme = () => document.documentElement.classList.toggle('dark', tg?.colorScheme === 'dark');
     const settings = useSettingsStore.getState();
 
     // 1) Dastlabki til: ?lang= (botdan) yoki Telegram tili — foydalanuvchi o'zi tanlamagan bo'lsa
@@ -50,11 +49,9 @@ export function TelegramProvider({ children }: { children: ReactNode }) {
       // Telegram sarlavhasi brend rangida, fon — oq
       if (tg.isVersionAtLeast('6.9')) {
         tg.setHeaderColor(brand.colors.brand);
-        tg.setBackgroundColor(tg.colorScheme === 'dark' ? '#121212' : '#ffffff');
+        tg.setBackgroundColor('#ffffff');
       }
 
-      applyTheme();
-      tg.onEvent('themeChanged', applyTheme);
       setWebApp(tg);
     }
     setReady(true);
@@ -67,7 +64,6 @@ export function TelegramProvider({ children }: { children: ReactNode }) {
         if (me?.language) useSettingsStore.getState().setLang(me.language, false);
       });
 
-    return () => tg?.offEvent('themeChanged', applyTheme);
   }, []);
 
   const impact = useCallback((style: HapticImpact = 'light') => webApp?.HapticFeedback?.impactOccurred(style), [webApp]);

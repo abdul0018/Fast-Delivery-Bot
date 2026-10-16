@@ -79,7 +79,7 @@ export function BottomSheet({ open, onClose, children, footer, ariaLabel, classN
       {/* Backdrop */}
       <div
         className={cn(
-          'absolute inset-0 bg-black/45 transition-opacity duration-200',
+          'absolute inset-0 bg-[#3a0a0a]/30 transition-opacity duration-200',
           closing ? 'opacity-0' : 'animate-fade-in',
         )}
         onClick={onClose}
