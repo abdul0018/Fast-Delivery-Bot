@@ -44,7 +44,7 @@ export function BottomNavigation() {
                 {href === '/cart' && count > 0 && (
                   <span
                     key={count}
-                    className="price absolute top-0.5 left-1/2 ml-2 flex h-[18px] min-w-[18px] animate-pop-in items-center justify-center rounded-full bg-sale px-1 text-[11px] font-semibold text-white ring-2 ring-surface"
+                    className="price absolute top-0.5 left-1/2 ml-2 flex h-[18px] min-w-[18px] animate-pop-in items-center justify-center rounded-full bg-ink px-1 text-[11px] font-semibold text-white ring-2 ring-surface"
                   >
                     {count > 99 ? '99+' : count}
                   </span>

@@ -16,6 +16,7 @@
   --line: #e6e5e1;
   --sale: #d92d27;
   --ok: #127a42;
+  --track: #cfcec9;
   --scrim: rgb(23 24 26 / 0.42);
 }
 
@@ -26,6 +27,7 @@
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
   --color-line: var(--line);
+  --color-track: var(--track);
   --color-sale: var(--sale);
   --color-ok: var(--ok);
   --color-brand: var(--brand, #ffc21a);
@@ -38,7 +40,7 @@
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Yagona soya tizimi: faqat suzib turgan elementlar (savatcha paneli, toast, tanlangan segment) */
+  /* Ikki soya: float — suzib turgan elementlar (savatcha paneli, toast), thumb — surat yoki trek ustidagi kichik boshqaruvlar */
   --shadow-float: 0 10px 30px -12px rgb(23 24 26 / 0.28), 0 2px 6px -2px rgb(23 24 26 / 0.08);
   --shadow-thumb: 0 1px 3px rgb(23 24 26 / 0.16), 0 1px 1px rgb(23 24 26 / 0.06);
 }
@@ -87,7 +89,7 @@
     font-family: var(--font-sans);
     font-size: 15px;
     line-height: 1.45;
-    scrollbar-color: #cfcec9 transparent;
+    scrollbar-color: var(--track) transparent;
   }
   h1,
   h2,

@@ -1,207 +1,236 @@
 ---
 name: Fast Delivery
-description: A rebrandable Telegram Mini App for local fast-food ordering in a clean, bright commerce look of white ground, one loud red, light-grey food cards and small green add buttons.
+description: A rebrandable Telegram Mini App for local fast-food delivery, built to the category standard of Yandex Eda and Uzum Tezkor, with a warm-grey ground, white cards, food and prices up front, and one saffron action colour.
 colors:
-  brand: "#f00000"
-  brand-fill: "#df0000"
-  brand-ink: "#df0000"
-  on-brand: "#ffffff"
-  accent: "#006d1a"
-  on-accent: "#ffffff"
-  soft: "#fcded4"
-  sale: "#e00000"
-  ok: "#006d1a"
-  ink: "#1a1a1a"
-  ink-2: "#756b66"
-  ground: "#ffffff"
-  surface: "#f5f5f5"
-  raised: "#ffffff"
-  muted: "#efefef"
-  line: "#e7e3e1"
-  scrim: "rgb(58 10 10 / 0.3)"
+  brand: "#ffc21a"
+  on-brand: "#1c1a14"
+  brand-soft: "#fff4d6"
+  brand-ink: "#8a5a00"
+  sale: "#d92d27"
+  ok: "#127a42"
+  ink: "#17181a"
+  ink-2: "#6b6c70"
+  ground: "#f4f4f2"
+  surface: "#ffffff"
+  tile: "#f1f0ec"
+  line: "#e6e5e1"
+  track: "#cfcec9"
+  scrim: "rgb(23 24 26 / 0.42)"
 typography:
   display:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, sans-serif"
-    fontSize: "56px"
-    fontWeight: 900
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+    fontSize: "40px"
+    fontWeight: 600
     lineHeight: 1
-    letterSpacing: "-0.015em"
+    letterSpacing: "-0.03em"
   headline:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, sans-serif"
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
     fontSize: "28px"
-    fontWeight: 700
-    lineHeight: 1.25
-    letterSpacing: "-0.015em"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.02em"
   title:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, sans-serif"
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
     fontSize: "24px"
-    fontWeight: 800
+    fontWeight: 600
     lineHeight: 1.25
-    letterSpacing: "-0.015em"
+    letterSpacing: "-0.02em"
   section:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, sans-serif"
-    fontSize: "19px"
-    fontWeight: 700
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+    fontSize: "20px"
+    fontWeight: 600
     lineHeight: 1.25
-    letterSpacing: "-0.015em"
-  item:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, sans-serif"
-    fontSize: "15px"
-    fontWeight: 700
-    lineHeight: 1.25
+    letterSpacing: "-0.02em"
+  subsection:
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+    fontSize: "17px"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.02em"
   body:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
     fontSize: "15px"
-    fontWeight: 500
+    fontWeight: 400
     lineHeight: 1.45
-  button:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, sans-serif"
+  item:
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
     fontSize: "14px"
-    fontWeight: 700
+    fontWeight: 400
+    lineHeight: 1.3
+  button:
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+    fontSize: "15px"
+    fontWeight: 600
   label:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, sans-serif"
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
     fontSize: "13px"
-    fontWeight: 600
+    fontWeight: 500
   caption:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, sans-serif"
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
     fontSize: "12px"
-    fontWeight: 600
+    fontWeight: 500
+  nav:
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+    fontSize: "11px"
+    fontWeight: 500
   price:
-    fontFamily: "Red Hat Display Variable, Manrope Variable, system-ui, sans-serif"
-    fontSize: "16px"
-    fontWeight: 800
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+    fontSize: "17px"
+    fontWeight: 600
     lineHeight: 1.25
-    fontFeature: "\"tnum\" 1"
+    letterSpacing: "-0.01em"
+    fontFeature: "\"pnum\" 1"
+  price-lg:
+    fontFamily: "Onest Variable, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+    fontSize: "22px"
+    fontWeight: 600
+    lineHeight: 1.25
+    letterSpacing: "-0.01em"
+    fontFeature: "\"pnum\" 1"
 rounded:
-  step: "9px"
-  tile: "12px"
-  field: "16px"
-  panel: "18px"
+  segment: "9px"
+  well: "12px"
+  field: "14px"
+  inner: "16px"
+  tray: "18px"
   card: "20px"
-  product: "22px"
   banner: "24px"
-  sheet: "28px"
+  slide: "28px"
   pill: "9999px"
 spacing:
-  xs: "4px"
-  sm: "8px"
-  card: "10px"
-  md: "12px"
+  inset: "6px"
+  tile-gap: "8px"
+  grid-gap: "10px"
+  row: "12px"
   gutter: "16px"
-  section: "20px"
-  stack: "28px"
+  sheet: "20px"
+  stack: "24px"
 components:
   button-primary:
-    backgroundColor: "{colors.brand-fill}"
+    backgroundColor: "{colors.brand}"
     textColor: "{colors.on-brand}"
     typography: "{typography.button}"
-    rounded: "{rounded.pill}"
+    rounded: "{rounded.field}"
     padding: "0 20px"
-    height: "44px"
+    height: "48px"
   button-primary-lg:
-    backgroundColor: "{colors.brand-fill}"
+    backgroundColor: "{colors.brand}"
     textColor: "{colors.on-brand}"
     typography: "{typography.button}"
-    rounded: "{rounded.pill}"
+    rounded: "{rounded.inner}"
     padding: "0 24px"
-    height: "52px"
+    height: "56px"
   button-secondary:
-    backgroundColor: "{colors.soft}"
-    textColor: "{colors.brand-ink}"
+    backgroundColor: "{colors.tile}"
+    textColor: "{colors.ink}"
     typography: "{typography.button}"
-    rounded: "{rounded.pill}"
-    height: "44px"
-  button-inverse:
-    backgroundColor: "{colors.ground}"
-    textColor: "{colors.brand-fill}"
-    typography: "{typography.button}"
-    rounded: "{rounded.pill}"
-    height: "44px"
-  button-outline:
-    textColor: "{colors.brand-ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.pill}"
-    height: "44px"
+    rounded: "{rounded.field}"
+    padding: "0 20px"
+    height: "48px"
   button-ghost:
     textColor: "{colors.ink}"
     typography: "{typography.button}"
-    rounded: "{rounded.pill}"
-    height: "44px"
+    rounded: "{rounded.inner}"
+    height: "56px"
   button-ghost-hover:
-    backgroundColor: "{colors.muted}"
-  button-add:
-    backgroundColor: "{colors.accent}"
-    textColor: "{colors.on-accent}"
-    rounded: "{rounded.pill}"
-    size: "32px"
-  stepper-button:
-    backgroundColor: "{colors.brand-fill}"
-    textColor: "{colors.on-brand}"
-    rounded: "{rounded.step}"
-    size: "36px"
-  stepper-button-sm:
-    backgroundColor: "{colors.brand-fill}"
-    textColor: "{colors.on-brand}"
-    rounded: "{rounded.step}"
-    size: "28px"
-  category-tile:
+    backgroundColor: "{colors.tile}"
+  add-button:
     backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink-2}"
-    rounded: "{rounded.field}"
-    size: "60px"
-  category-tile-active:
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
+    size: "40px"
+  stepper-brand:
     backgroundColor: "{colors.brand}"
     textColor: "{colors.on-brand}"
-    rounded: "{rounded.field}"
-    size: "60px"
-  tag-discount:
-    backgroundColor: "{colors.brand-fill}"
-    textColor: "{colors.on-brand}"
-    typography: "{typography.caption}"
     rounded: "{rounded.pill}"
-    padding: "2px 8px"
-  badge-count:
-    backgroundColor: "{colors.brand-fill}"
+    height: "40px"
+  stepper-neutral:
+    backgroundColor: "{colors.tile}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
+    height: "40px"
+  stepper-neutral-sm:
+    backgroundColor: "{colors.tile}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
+    height: "32px"
+  cart-bar:
+    backgroundColor: "{colors.brand}"
     textColor: "{colors.on-brand}"
+    typography: "{typography.button}"
+    rounded: "{rounded.tray}"
+    padding: "0 16px 0 8px"
+    height: "56px"
+  badge-count:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.surface}"
     rounded: "{rounded.pill}"
     height: "18px"
+  category-chip:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    typography: "{typography.item}"
+    rounded: "{rounded.pill}"
+    padding: "0 16px 0 4px"
+    height: "40px"
+  category-chip-active:
+    backgroundColor: "{colors.brand}"
+    textColor: "{colors.on-brand}"
+    typography: "{typography.item}"
+    rounded: "{rounded.pill}"
+    padding: "0 16px 0 4px"
+    height: "40px"
+  category-tile:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.tray}"
+    padding: "8px 4px 10px"
+  story-tile:
+    backgroundColor: "{colors.tile}"
+    textColor: "{colors.surface}"
+    rounded: "{rounded.card}"
+    width: "88px"
+    height: "112px"
   card-product:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.product}"
-    padding: "{spacing.card}"
-  card-row:
+    rounded: "{rounded.card}"
+    padding: "{spacing.inset}"
+  card-list:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
     rounded: "{rounded.card}"
-    padding: "12px"
-  card-bump:
-    backgroundColor: "{colors.soft}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.card}"
-    padding: "14px"
-  card-promo:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.panel}"
-    padding: "10px 12px 10px 10px"
-    width: "210px"
-  option-payment:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.panel}"
-    padding: "12px 16px"
+    padding: "{spacing.row}"
   banner-hero:
-    backgroundColor: "{colors.brand-fill}"
-    textColor: "{colors.on-brand}"
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.banner}"
     padding: "16px"
-  input-field:
+  fact-chip:
     backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.pill}"
+    padding: "4px 10px"
+  order-bump:
+    backgroundColor: "{colors.brand-soft}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "{spacing.row}"
+  order-bump-on:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "{spacing.row}"
+  input-field:
+    backgroundColor: "{colors.tile}"
     textColor: "{colors.ink}"
     typography: "{typography.body}"
     rounded: "{rounded.field}"
     padding: "12px 16px"
+  input-field-focus:
+    backgroundColor: "{colors.surface}"
   search-field:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink-2}"
@@ -209,239 +238,281 @@ components:
     rounded: "{rounded.field}"
     padding: "0 16px"
     height: "48px"
-  nav-bar:
-    backgroundColor: "{colors.ground}"
+  segment:
+    backgroundColor: "{colors.tile}"
     textColor: "{colors.ink-2}"
-  nav-item-active:
-    textColor: "{colors.brand-ink}"
-  sheet:
-    backgroundColor: "{colors.ground}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.sheet}"
-  switch-on:
-    backgroundColor: "{colors.accent}"
-    rounded: "{rounded.pill}"
-    height: "30px"
-    width: "52px"
-  toast:
-    backgroundColor: "{colors.brand-fill}"
-    textColor: "{colors.on-brand}"
     typography: "{typography.label}"
+    rounded: "{rounded.well}"
+    padding: "3px"
+  segment-active:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.segment}"
+  switch-off:
+    backgroundColor: "{colors.track}"
     rounded: "{rounded.pill}"
-    padding: "10px 16px"
-  screen-success:
-    backgroundColor: "{colors.brand-fill}"
-    textColor: "{colors.on-brand}"
-    typography: "{typography.display}"
+    width: "50px"
+    height: "30px"
+  switch-on:
+    backgroundColor: "{colors.brand}"
+    rounded: "{rounded.pill}"
+    width: "50px"
+    height: "30px"
+  status-pending:
+    backgroundColor: "{colors.brand-soft}"
+    textColor: "{colors.brand-ink}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.pill}"
+    padding: "2px 10px"
+  status-done:
+    backgroundColor: "{colors.tile}"
+    textColor: "{colors.ink-2}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.pill}"
+    padding: "2px 10px"
+  avatar-initial:
+    backgroundColor: "{colors.brand-soft}"
+    textColor: "{colors.brand-ink}"
+    rounded: "{rounded.pill}"
+    size: "40px"
+  nav-bar:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink-2}"
+    typography: "{typography.nav}"
+  nav-item-active:
+    textColor: "{colors.ink}"
+  sheet:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.banner}"
+  toast:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.inner}"
+    padding: "10px 16px 10px 10px"
 ---
 
 # Design System: Fast Delivery
 
 ## Overview
 
-**Creative North Star: "The White Plate on Red"**
+**Creative North Star: "The Quiet Counter"**
 
-The system is a clean, bright delivery counter: a white ground, one loud red, light-grey food cards, small green add buttons and simple line icons. Its signature image is food sitting on a round white plate inside a red field. That image appears on the splash, the onboarding slides, the home banner and the product sheet. The ending repeats it: confirming an order turns the whole screen red and says "Rahmat!". The mood is friendly, appetizing, quick and plain-spoken. This is commerce clarity for a hungry person ordering one-handed inside Telegram, not decoration.
+The app is a calm, premium delivery counter that sets the food out and gets out of the way. It is the category standard played straight, at the craft level of Yandex Eda and Uzum Tezkor / Express24. Food photography and prices lead. Chrome recedes into a warm-grey ground, white cards with no outlines, near-black type and one saffron colour that marks the thing to press. The whole flow is built for a hungry person ordering one-handed inside Telegram: find food by chips or search, tap "+", watch it turn into a stepper in place, watch the floating cart bar update, confirm in one tap.
 
-The visual source is pinned by the user: a food-delivery reference mockup. Its colours were sampled (red, orange-red, pink, taupe, greys, green) and its typeface family is Red Hat Display. Only the reference's style is used. Its sample brand name and logo are not part of this system, and neither is its star rating. Ratings are never shown on products because no real ones exist. Density is comfortable and phone-first. Each screen has one obvious next action, prices are always red and tabular, and the green "+" is never more than a thumb away.
+Density is comfortable and phone-first, inside a single 512px column. The type is one face, Onest, set in sentence case at three weights. Depth is tonal: white on warm grey, with photographs sitting on soft grey tiles. Shadows appear only under things that genuinely float. Motion is an expo ease-out. Sheets rise, the stepper pops in where the "+" was, the cart bar slides up, and nothing bounces.
 
-The app is always light. It renders white and red even when Telegram is in dark mode, because the user explicitly asked for no black. Brand colour is a token, not a constant. The template is rebranded per restaurant through `config/brand.ts`, and every red surface that carries text is derived from the brand colour so that white text stays legible whatever red a restaurant picks. Two earlier worlds are rejected anti-references. **Atlas Silk** was ornamental and traditional. **Pop** was cream ground, mustard accent, Rubik caps and 2px brown outlines with hard stamps. Neither its outlines, its cream or its uppercase voice return.
+The app is always light, including inside Telegram's dark mode, because the user asked for no black surfaces. The Telegram header and WebView background are painted the same warm grey as the ground (`brand.chrome`, #F4F4F2), so the app reads as stitched into Telegram rather than framed by it. Identity is four tokens in `config/brand.ts` (brand, on-brand, brand-soft, brand-ink), which restaurants rebrand. Three earlier worlds are rejected and survive only as anti-references. **"The White Plate on Red"** was a red reference look: a loud #f00000 field, green circular add buttons, red rounded-square steppers, Red Hat Display / Manrope type, pink blush offer cards and food on white plates. **Pop** used a cream ground, a mustard accent, Rubik caps, 2px brown outlines and hard stamps. **Atlas Silk** was ornamental and traditional.
 
 **Key Characteristics:**
-- Always light: white ground and red in every Telegram theme, with no dark palette.
-- White ground, light-grey (#f5f5f5) cards, one red used loudly but in few places.
-- Food on round white plates inside red fields; real product photos on grey tiles everywhere else.
-- Pills for buttons, generous 16–28px rounding on containers, no outlines on cards.
-- Green circular "+" for every add action; red rounded-square steppers.
-- Lucide line icons only; an icon-only bottom bar with a red active dot.
-- Red Hat Display for Latin, Manrope for Cyrillic, tabular figures on every price.
-- Motion is expo ease-out: sheets rise, count badges pop in, nothing bounces.
+- Always light: a warm-grey ground (#f4f4f2) and white cards in every Telegram theme, with no dark tokens.
+- One saffron brand fill with ink text on it, reserved for the primary action, the cart bar, the live stepper and the current selection.
+- Red appears only as a discounted current price (and errors), and green only as "Bepul" free delivery and success.
+- Food is shown in rounded photo tiles on soft grey, and prices sit above names.
+- A white "+" on the photo morphs into a saffron stepper in place, and a floating saffron cart bar sits above the labelled bottom nav.
+- One discount signal: a red current price plus a struck grey old price, with no percentage badges.
+- Onest Variable for Latin and Cyrillic, at weights 400 / 500 / 600 only, in sentence case.
+- Only two shadows, for floating elements and small controls. Motion is expo ease-out, and nothing bounces.
 
 ## Colors
 
-One saturated red does the talking against white and pale grey. A forest green handles "add" and "ok", and a blush pink softens offers and avatars.
+A quiet warm-neutral palette (ground, white, tile, ink) carries almost every pixel. One saffron fill marks action and selection, and red and green each have a single, narrow job.
 
 ### Primary
-- **Signal Red** (`brand`): the restaurant's colour as sampled from the reference. It is used raw only where no text sits on it: the active category tile, the active-tab dot under the nav icon, ingredient bullets, the selected payment radio and border, the focus ring and the input caret. It is rebranded per restaurant.
-- **Deep Signal Red** (`brand-fill`): the brand colour mixed 93% with black (`color-mix(in srgb, var(--brand) 93%, #000000)`). It fills every red surface that carries text or white glyphs: primary buttons, the home banner, the onboarding and stories screens, the product-sheet hero, steppers, discount tags, the count badge and the "Rahmat!" screen. White on it measures 5.08:1.
-- **Red Ink** (`brand-ink`): red used as text, such as the "Barchasi" links, the active nav icon, the active category label, and the outline and secondary button labels. It equals Deep Signal Red, at 5.04:1 on white and 4.62:1 on Counter Grey.
-- **On Red** (`on-brand`): white. It is the only colour that sits on red.
+- **Saffron** (`brand`): the restaurant's colour, written to `<html>` as `--brand` from `config/brand.ts`. It fills the primary button, the floating cart bar, the active stepper on a product photo, the active category chip, the logo mark, the selected payment radio, the switch's on track, the selected order-bump border, the unseen-story ring, the onboarding step-number discs and the success check disc. It is never used as text.
+- **Saffron Ink-on** (`on-brand`): the warm near-black for all text and icons on saffron (10.75:1). Saffron never carries white text.
+- **Saffron Cream** (`brand-soft`): a pale tint for the unselected order-bump card, the avatar initial disc, the "new" and "confirmed" status pills and text selection.
+- **Saffron Ink** (`brand-ink`): a deep amber-brown for text on Saffron Cream: the avatar initial and pending status labels (5.41:1 on cream).
 
 ### Secondary
-- **Add Green** (`accent`): forest green from the reference. It is used for the circular "+" add buttons, and the switch's on track, with white glyphs on it (6.56:1). It is rebrandable alongside the brand colour.
-- **Ok Green** (`ok`): the same green used as text and icons for positive facts, such as "Bepul" delivery and the trust checklist icons in the product sheet, and the check mark inside the toast's white dot.
+- **Discount Red** (`sale`): the current price, only when the product is discounted. It is used on card prices, the sheet price and cart-row line totals. It is also the colour of field errors (border and message) and the cancelled-order status. A full-price product's price is ink. It measures 4.82:1 on white.
 
 ### Tertiary
-- **Blush** (`soft`): pale pink from the reference. It is used for the order-bump card, the avatar initial disc, the empty-state icon discs, the secondary button, the outline button's hover fill and text selection.
-- **Price Red** (`sale`): a fixed #e00000 for every current price and total, and for field errors. It is separate from the brand colour so prices stay red even if a restaurant rebrands to another hue.
+- **Done Green** (`ok`): used for the "Bepul" free-delivery fee in the cart total, the toast's check disc and the "delivering" status pill. It means "good news, nothing to pay or do". It measures 5.40:1 on white.
 
 ### Neutral
-- **Ground** (`ground`): white page, sheet and bottom-bar background, and the Telegram WebView background colour.
-- **Counter Grey** (`surface`): the card colour for product cards, cart rows, promo cards, inputs, the search field, category tiles, payment options and the totals panel.
-- **Raised** (`raised`): white icon wells inside grey payment options.
-- **Ink** (`ink`): near-black body and heading text. It is used for text only, never as a filled surface.
-- **Taupe** (`ink-2`): secondary text for greetings, descriptions, struck old prices, inactive nav icons and labels. The reference taupe #887D77 is darkened to #756b66 so it clears 4.5:1 on white (5.18:1) and on Counter Grey (4.75:1).
-- **Muted** (`muted`): image-well placeholder and ghost-button hover.
-- **Hairline** (`line`): the bottom bar's top border and the total divider. It is never used as a card outline.
-- **Scrim** (`scrim`): a dark maroon (#3a0a0a) at 30% behind bottom sheets, a warm red-family veil rather than a black one.
+- **Counter Grey** (`ground`): the page background, the sticky catalog-chip band (at 95% with blur), the success screen and the cart's sticky CTA band. It is also `brand.chrome`, the Telegram header and background colour.
+- **White** (`surface`): every card, the hero banner, the bottom bar, sheets, the search field on the ground, the toast and the add button.
+- **Photo Tile** (`tile`): the soft grey behind every food photograph, plus the secondary button, input fill, neutral stepper, icon wells, the language segment track and skeletons. It is the "inside a white card" tone.
+- **Ink** (`ink`): headings, names, full prices, active nav and the focus ring (16.13:1 on ground). It also fills the count badge on the cart bar, and it is never used as a surface larger than a badge.
+- **Graphite** (`ink-2`): secondary text: greetings, subtitles, descriptions, struck old prices, inactive nav, field labels and placeholders (5.24:1 on white, 4.76:1 on ground).
+- **Hairline** (`line`): dividers between rows inside a white card, the bottom bar's top edge, the sheet footer's top edge and the total rule.
+- **Track Grey** (`track`): the switch's off track and the scrollbar thumb.
+- **Scrim** (`scrim`): ink at 42% behind bottom sheets.
 
 ### Named Rules
-**The Always Light Rule.** The app has one theme. It always renders white ground and red, even inside Telegram's dark mode, and it never toggles a `.dark` class or swaps in dark tokens. The reason is the user's explicit request: no black.
+**The Single Saffron Rule.** Saffron is the one colour that says "press this" or "this is chosen". Use it for the main action, the cart bar, the live stepper and the selected state, and nowhere else. Ink is always the text on top of it.
 
-**The Derived Red Rule.** Text never sits on the raw brand colour. Any red surface with text or white glyphs uses Deep Signal Red (the brand colour mixed 93% with black), and red text uses Red Ink. This is what keeps the template legible with any brand colour.
+**The Red Means Cheaper Rule.** Red appears on a price only when that price is discounted, always paired with the struck old price in Graphite. Outside prices, red is reserved for errors and cancelled orders.
 
-**The Two Reds Rule.** The brand red is the restaurant's identity; the price red (#e00000) is the price. Prices, totals and errors always use the price token, never the brand token.
+**The Green Means Done Rule.** Green appears only for free delivery and for success (the toast check, the delivering status). It is never used for an action button.
 
-**The Green Means Add Rule.** Green is reserved for adding and for good news, such as the "+" button, the bump switch, the toast's check mark and free delivery. Red handles navigation, steppers and commitment.
+**The Always Light Rule.** There is one theme. No `.dark` class, no `dark:` variants, no dark tokens. The app paints Counter Grey and white even in Telegram's dark mode, and Telegram's header and background are set to `brand.chrome`.
+
+**The Four Tokens Rule.** A restaurant rebrands by editing `config/brand.ts` only. Brand, on-brand, brand-soft and brand-ink must keep on-brand and brand-ink at 4.5:1 or better against their grounds.
 
 ## Typography
 
-**Display Font:** Red Hat Display Variable (with Manrope Variable, then system-ui)
-**Body Font:** Red Hat Display Variable (with Manrope Variable, then system-ui, -apple-system, Segoe UI, Roboto, Arial)
+**Display Font:** Onest Variable (with system-ui, -apple-system, Segoe UI, Roboto, Arial)
+**Body Font:** Onest Variable (same stack)
 
-**Character:** A single geometric-humanist sans in sentence case, bold for names and prices and medium for everything else. Red Hat Display has no Cyrillic, so Manrope sits second in every stack and takes over glyph by glyph for Russian. The two share a round, open shape, so a bilingual screen reads as one voice.
+**Character:** One contemporary grotesque covers both Uzbek Latin and Russian Cyrillic, so a bilingual screen reads as one voice. Headings tighten (-0.02em, balanced wrapping) and carry weight 600. Body text stays at 400, so names and descriptions read calm and prices stand out by size and colour, not by heaviness.
 
 ### Hierarchy
-- **Display** (900, 56px, line-height 1): the "Rahmat!" thank-you word on the full-red success screen. Story titles use the same weight at 44px.
-- **Headline** (700, 28px, line-height 1.25): the home "Menyu" title. Inner page headers use 26px at 700, and onboarding slide titles use 28–30px at 900 on red.
-- **Title** (800, 24px, line-height 1.25): the product name in the sheet. The home banner headline uses 21px at 800.
-- **Section** (700, 19px): section headings such as "Ommabop", delivery, payment and total.
-- **Item** (700, 15px, line-height 1.25): product and cart-row names, clamped to two lines.
-- **Body** (500, 15px, line-height 1.45): descriptions, ingredient bullets, list text. Inputs render at 16px to stop iOS zoom.
-- **Button** (700, 14px; 13px small, 16px large): sentence case, never uppercase.
-- **Label** (600, 13px): field labels, the greeting line, "Barchasi" links and toast text.
-- **Caption** (600, 12px): category tile labels, banner promise facts, discount tags (11px) and struck old prices.
-- **Price** (800, 16px, tabular figures): current prices on cards. The sheet price uses 22px, the cart total 24px and the success total 28px. A smaller taupe "so'm" unit follows the number.
-
-Headings h1–h3 carry -0.015em tracking and balanced wrapping.
+- **Display** (600, 40px, line-height 1, -0.03em): the "Rahmat!" thank-you on the success screen. The story viewer title uses 34px at the same tracking.
+- **Headline** (600, 28px, line-height 1.15): the home greeting and page titles (Katalog, Savatcha, Profil). Onboarding slide titles use 30px at -0.03em.
+- **Title** (600, 24px): the product name in the sheet. Sheet and empty-state headings use 22px, and the hero banner headline uses 21px.
+- **Section** (600, 20px): section heads such as "Katalog", "Ommabop", delivery and payment, plus the profile name.
+- **Subsection** (600, 17px): headings inside sheets and the profile ("Tarkibi", language, contacts, orders), and the "Jami" total label.
+- **Body** (400, 15px, line-height 1.45): base text, descriptions and list rows. Inputs render at 16px to stop iOS zoom.
+- **Item** (400, 14px, line-height 1.3): product names on cards (clamped to two lines), the order-bump text and toast text (500).
+- **Button** (600, 15px; 16px large, 13px small): sentence case.
+- **Label** (500, 13px): field labels, the language segment and the "so'm" unit beside a card price.
+- **Caption** (500, 12px): category tile labels, hero fact chips, status pills and the address-pill "Yetkazish manzili" line.
+- **Nav** (500, 11px): the bottom-bar labels and count badges.
+- **Price** (600, 17px on cards; **Price Large** 22px in the sheet and cart total): set in the price utility.
 
 ### Named Rules
-**The Tabular Price Rule.** Every number a customer compares (prices, totals, counts, step numbers) uses the price utility with tabular figures, so columns of so'm amounts never jitter.
+**The Proportional Price Rule.** Every price, total and count uses the `price` utility, which applies proportional numerals plus -0.01em tracking. This is deliberate: Onest's tabular "1" is wide enough to split numbers ("1 79 000"), so tabular figures are never switched on.
 
-**The Sentence Case Rule.** Buttons, tabs and headings are written in sentence case. Weight carries the emphasis; capitals and letter-spacing do not.
+**The Three Weights Rule.** Use only 400, 500 and 600. Emphasis comes from size, ink versus Graphite, and saffron, never from bold or black weights.
 
-**The Cyrillic Fallback Rule.** Never set a Red Hat Display stack without Manrope immediately behind it. Russian strings must render in a designed face, not the system font.
+**The Sentence Case Rule.** Buttons, chips, tabs and headings are sentence case. There are no uppercase labels, eyebrows or letter-spaced kickers.
 
 ## Layout
 
-The app is a single phone column capped at 512px (`max-w-lg`) and centred on wider Telegram desktop windows. The page gutter is 16px. Sections on home stack 20px apart, and the cart's sections stack 28px apart. Product grids are two columns with a 12px gap. Category tiles and promo cards scroll horizontally with hidden scrollbars, bleeding to the screen edge while staying aligned to the gutter.
+The app is a single phone column capped at 512px (`max-w-lg`), centred on wide Telegram desktop windows, with a 16px gutter. Home sections stack 24px apart: the address pill with avatar, greeting and search, the stories row, the photo hero banner, a four-up category tile grid with 8px gaps, and a horizontal "Ommabop" row of 164px product cards. The catalog is a two-column product grid with a 10px gap, under a category chip row that sticks to the top on a blurred 95% ground band. The cart stacks white cards 24px apart: the order stack, the order bump, delivery fields, payment and totals.
 
-Fixed chrome respects Telegram safe areas. The bottom bar and sheet footers pad by `max(env(safe-area-inset-bottom), 0.5rem)`, and the main column reserves 112px at the bottom. The cart's sticky "confirm, total" button floats above the bottom bar on a ground-coloured band that fades upward over 20px, so the content scrolls under it cleanly. Full-screen moments (splash, onboarding, stories, success) are fixed red layers inside the same 512px column.
+Horizontal rows (stories, chips, popular) scroll with hidden scrollbars and bleed to the screen edge while their first item stays on the gutter. The active chip scrolls itself to the centre. Sheets use 20px side padding. Card interiors use 6px around photos and 12–16px for rows and panels.
 
-The rhythm is 4 / 8 / 10 / 12 / 16 / 20 / 28px. Card interiors use 10–14px, and sheets use a 20px side padding.
+Fixed chrome respects Telegram safe areas. The labelled bottom bar pads by `max(env(safe-area-inset-bottom), 0.5rem)`. The floating cart bar and the cart's sticky confirm button sit 62px plus that inset above the bottom, so they float over the nav. The main column reserves 160px at the foot. The cart's confirm band is solid ground with a 24px upward fade, so content scrolls under it cleanly.
 
 ## Elevation & Depth
 
-The system is flat and tonal. Depth comes from grey-on-white layering (Counter Grey cards on a white ground) and from red fields against white. It does not come from lifting cards. Shadows exist in only two roles. The first is a soft, long, offset-down shadow under a white food plate on red, which makes the plate read as an object set on the field. The second is a 1–3px functional shadow on tiny controls that would otherwise vanish, namely the switch knob and the sheet's drag handle over a red hero. A third, rarer role is a red-tinted glow under the floating toast, so the red pill lifts off whatever red or white content scrolls beneath it. Bottom sheets separate by the 30% maroon scrim, not by shadow.
+Depth is tonal first: white cards on Counter Grey, and photographs on Photo Tile inside white cards. Nothing at rest is lifted. Two shadows exist, both ink-tinted rather than black. The first is for elements that genuinely float over scrolling content. The second is a tiny contact shadow that keeps small white or saffron controls legible on top of photographs. Sheets separate from the page by the 42% ink scrim, not by a shadow.
 
 ### Shadow Vocabulary
-- **Plate on Red** (`box-shadow: 0 18px 40px -18px rgba(0,0,0,0.5)`): the white plate in the product-sheet hero. Onboarding plates use the slightly larger `0 20px 40px -20px rgba(0,0,0,0.45)`.
-- **Knob** (`box-shadow: 0 1px 3px rgba(0,0,0,0.25)`): the switch's white thumb.
-- **Handle** (`box-shadow: 0 1px 3px rgba(0,0,0,0.3)`): the white drag handle at the top of a bottom sheet.
-- **Toast Glow** (`box-shadow: 0 8px 24px -10px rgba(224,0,0,0.6)`): the red-tinted glow under the floating toast pill.
+- **Float** (`box-shadow: 0 10px 30px -12px rgb(23 24 26 / 0.28), 0 2px 6px -2px rgb(23 24 26 / 0.08)`): the floating cart bar and the toast.
+- **Thumb** (`box-shadow: 0 1px 3px rgb(23 24 26 / 0.16), 0 1px 1px rgb(23 24 26 / 0.06)`): the "+" add button and the live stepper on a photo, the add-on "+" buttons, the switch knob, the sheet's drag handle, the white close buttons over photos and the active language segment.
 
 ### Named Rules
-**The Plates Only Rule.** Soft shadows belong under white food plates, plus the red glow under the floating toast. Cards, buttons, tiles, banners and the bottom bar have no shadow at rest or on hover.
+**The Only-What-Floats Rule.** Cards, banners, tiles, chips, inputs and the bottom bar have no shadow. Float is for things that hover above scrolling content; Thumb is for small controls sitting on a photo or a track.
 
 ## Shapes
 
-The form language is round and friendly, with one deliberate square. Every button, tag, badge, switch, toast and progress dot is a full pill. Containers step up in radius with their size: steppers 9px, icon wells 12px, fields, search and category tiles 16px, promo cards and payment options 18px, cart rows, the bump card and totals 20px, product cards 22px, the home banner 24px, and the sheet top 28px. Food is always clipped to a circle (cart rows, add-ons, the bump image, plates) or to a 16px rounded square inside a product card.
+The form language is softly rounded rectangles that step up with size, with full pills for everything small and tappable inside a card. The scale runs: the language segment 9px; icon wells and the segment track 12px; inputs, search, default buttons and list thumbnails 14px; photo tiles inside cards, large buttons, toasts and inner panels 16px; the cart bar, category tiles and onboarding step cards 18px; product, list and totals cards 20px; the hero banner, sheet tops and the empty-cart panel 24px; onboarding photographs 28px. Chips, steppers, the add button, badges, fact chips, status pills, switches, avatars and progress dots are full pills. Stories are 88x112 rounded rectangles (17.5px inner, 20px with the ring), never circles.
 
-The one square-ish exception is red: the active category tile and the cart steppers are red rounded squares, echoing the reference. Cards have no outline. A 1.5px border appears only as a state: the brand border on the selected payment option, the brand border on a focused input, the price-red border on an errored field, and the outline button's brand border. Focus is a 2px brand outline offset by 2px with a 12px radius.
+Food photography is always clipped: rounded squares in cards (16px), rounded thumbnails in cart rows (14px), circles only inside category chips and tiles, and a full-width photo top on the hero banner and the product sheet.
 
 ### Named Rules
-**The No Outline Rule.** Containers separate by tone, never by stroke. A border on a card means "selected" or "error", and nothing else.
-
-**The Round Food Rule.** Food photography is shown on a round plate or in a rounded tile, never as a hard-edged rectangle or a full-bleed card top.
+**The Tone-Not-Stroke Rule.** A card on the ground never carries an outline. Hairlines appear only as dividers inside a white surface (list rows, the totals rule, the sheet footer, the bottom bar's top edge, and the trust panel inside the product sheet). A coloured border is a state: ink at 70% on a focused field, red on an errored field, saffron on the selected order bump and payment radio.
 
 ## Components
 
 ### Buttons
-Friendly, solid, thumb-sized pills.
-- **Shape:** full pill (9999px). Heights are 36px small, 44px default and 52px large, with 16px / 20px / 24px horizontal padding.
-- **Primary:** Deep Signal Red with white bold sentence-case label. It is used for "Savatchaga qo'shish — 64 000 so'm" and for confirm with the total. Large buttons fill the width at the screen foot.
-- **Hover / Focus / Active:** hover brightens 10%, press scales to 0.97 and darkens 5%, over 200ms on the expo ease-out curve. Focus uses the global 2px brand outline. Disabled drops to 45% opacity. Loading shows a 16px spinning ring in the current colour.
-- **Inverse:** a white pill with a Deep Signal Red label, used on red fields (onboarding "Boshlash", the banner's "Katalogni ko'rish", the stories CTA, "Bosh sahifaga" on success). On the banner it pairs with an underlined white text link.
-- **Secondary:** a Blush pill with a Red Ink label.
-- **Outline:** a transparent pill with a 1.5px brand border and a Red Ink label that fills Blush on hover. It is used only for the reference's "Bekor qilish" (cancel order).
-- **Ghost:** transparent with an ink label, and a Muted fill on hover.
+Calm, solid and thumb-sized, with softly squared corners rather than pills.
+- **Shape:** 14px radius at the default 48px height, 16px at the large 56px height, and 12px at the small 36px height.
+- **Primary:** Saffron with an Ink-on 600 label. It carries "Katalogni ko'rish", "Savatchaga qo'shish — 64 000 so'm", the cart's confirm-with-total and "Boshlash". Large buttons fill the width at a sheet or screen foot.
+- **Hover / Focus / Active:** hover brightens to 1.04 and press darkens to 0.95 with a 0.98 scale, over 200ms on the expo ease-out. Focus is the global 2px ink outline offset by 2px. Disabled drops to 45% opacity. Loading shows a 16px spinning ring in the current colour.
+- **Secondary:** a Photo Tile fill with an ink label, used for "Yangi buyurtma berish" under the primary in the hero banner and for retry.
+- **Ghost:** transparent with an ink label and a Photo Tile fill on hover. Its one use, "O'tkazib yuborish" in onboarding, sets the label in Graphite.
+- The button API also has outline and inverse variants, but no shipped surface uses them.
 
-### Add Button (signature)
-A 32px green circle with a white 2.75-stroke Lucide plus, pinned 10px from the bottom-right of a product card. The add-on tiles use a 28px version in the top-right corner. Press scales to 0.9. Adding pops a 28px Deep Signal Red count badge (white 2px ring) onto the card's image corner.
+### Add Button and Stepper (signature)
+The "+" is a 40px white circle with an ink 2.25-stroke Lucide plus and the Thumb shadow, pinned 8px inside the bottom-right of the product photo. The first tap replaces it in place with a saffron pill stepper ("− 2 +", 40px tall, 600 count), which pops in over 280ms. The stepper keeps the Thumb shadow, so it still reads over the photo. In the sheet, the quantity stepper is neutral (Photo Tile). In cart rows it is a 32px neutral pill whose "−" becomes a trash icon at quantity 1. Press scales icon buttons to 0.9.
 
-### Quantity Stepper
-Red rounded squares (36px, or 28px in cart rows, 9px radius) with white Lucide minus and plus around a tabular bold count. In the sheet it is horizontal. In cart rows it stacks vertically, with plus on top, count, then minus, as in the reference. Press scales to 0.9.
+### Floating Cart Bar (signature)
+Whenever the cart is not empty, and on any page except the cart, a 56px saffron bar with an 18px radius floats 12px in from the column edges, above the bottom nav, with the Float shadow. It holds a 40px translucent-white bag well with an ink count badge, a "Savatcha" label and the total at the right. It enters with bar-in. The count badge pops and the total re-fades on every change, so adding food is visible from anywhere. Tapping it goes to the cart, and press scales it to 0.985.
 
-### Category Tiles
-A 60px square with a 16px radius over a 12px semibold label, scrolling horizontally. Inactive tiles show the category's food photo on Counter Grey with a Taupe label. The active tile turns raw Signal Red with a Red Ink label. "All" shows a white Lucide ellipsis, and an active photo tile tints its photo through luminosity blending. The active tile scrolls itself to centre.
+### Discount Display (signature)
+The only discount signal is the price pair. The current price is in Discount Red, with the struck old price in Graphite on the line below on cards (or beside it in the sheet and cart). There are no "−20%" badges, ribbons or percentage tags. On cards the price comes first and the old-price line is always reserved (18px), so product names align across the grid.
 
-### Chips / Tags
-- **Discount tag:** a Deep Signal Red pill with white bold tabular "−20%" at 11px, set top-left on the product image. In the sheet it is a white pill with red text, sitting on the red hero.
+### Chips
+- **Category chip (catalog):** a 40px white pill with a 32px round food photo (or a Lucide grid icon for "Barchasi") and a 14px 500 label. The active chip fills saffron with ink text. The row sticks to the top on a blurred ground band.
+- **Category tile (home):** four up, white with an 18px radius, a 52px round photo on Photo Tile and a 12px label. Tapping one opens the catalog filtered.
+- **Fact chip:** a 92% white blurred pill on the hero photo with a 14px Lucide icon and a 12px label (for example "30 daqiqa", "100% halol", "Bepul yetkazish"). Only the promises the restaurant switched on in `brand.ts` appear.
+- **Status pill:** a 12px label in a pill. Pending statuses use Saffron Cream with Saffron Ink. Delivering uses green at 10% with green text, completed uses Photo Tile with Graphite, and cancelled uses red at 10% with red text.
 
 ### Cards / Containers
-- **Corner Style:** product 22px, cart row and bump 20px, promo and payment 18px.
-- **Background:** Counter Grey on white. The bump card is Blush. The banner is Deep Signal Red.
-- **Shadow Strategy:** none (see The Plates Only Rule).
-- **Border:** none at rest.
-- **Internal Padding:** 10px for product cards, 12px for cart rows, 14px for the bump card, and 16px for the banner and totals.
-- **Product card:** a square rounded photo, a two-line bold name, a struck Taupe old price and a red tabular price with a small "so'm", plus the green add button.
-- **Promo cards ("Aksiyalar"):** 210px grey cards with a 48px round photo in a 2px brand ring (a hairline ring once seen), a bold title and a two-line description. They open full-screen red stories, closed by a 40px white pill button (90% opacity) with a red Lucide X.
+- **Corner Style:** 20px for product, list and totals cards, and 24px for the hero banner.
+- **Background:** white on Counter Grey. Photographs sit on Photo Tile.
+- **Shadow Strategy:** none (see The Only-What-Floats Rule).
+- **Border:** none. Rows inside a card are divided by Hairlines.
+- **Internal Padding:** 6px around a product photo, then 6px text inset; 12px for cart rows; 16px for list rows, form panels and totals.
+- **Product card:** a square 16px-rounded photo, then the price line (17px), the struck old-price line and a two-line 14px name, with the add button or stepper on the photo corner.
+- **Hero banner:** a white card with a 2:1 photo top carrying the fact chips, then a 21px headline, a Graphite line, and a stacked primary and secondary pair.
 
-### Home Banner (signature)
-A Deep Signal Red block with a 24px radius and 16px padding. It carries an 800-weight 21px white headline, the restaurant's confirmed promises as small icon-led facts (only those switched on in `brand.ts`), and a white inverse pill with an underlined link. A 128px white plate with a round food photo hangs off the right edge.
+### Stories
+These are 88x112 rounded-rectangle photo tiles with a dark bottom gradient and a 13px white 600 caption. Unseen stories carry a 2.5px saffron ring separated by a 2px ground gap, and seen stories drop the ring. The viewer is full-screen: the photo on top, with white progress bars over a light top gradient and a white 40px close button. A white 24px-radius panel overlaps the photo by 24px and carries a 34px title, a 17px Graphite line and a large primary CTA.
 
 ### Inputs / Fields
-- **Style:** Counter Grey fill, 16px radius, 12px 16px padding, a transparent 1.5px border, a 13px semibold Taupe label with a 15px line icon, and a brand caret.
-- **Focus:** the border turns brand red over 200ms. The search field shows a 1.5px brand ring on focus-within.
-- **Error:** the border turns price red, with a 13px semibold price-red message below and `aria-invalid`.
+- **Style:** a Photo Tile fill with a 14px radius, 12px 16px padding and a transparent 1px border. Above it sits a 13px 500 Graphite label with a 15px Lucide icon. The caret is ink.
+- **Focus:** the fill turns white and the border turns ink at 70%, over 200ms. The search field (white on ground) gains the same ink border on focus-within.
+- **Error / Disabled:** a red border on a white fill, a 13px 500 red message below (`role="alert"`) and `aria-invalid`.
 
 ### Navigation
-A fixed white bar with a hairline top border and four icon-only tabs: house, search, cart, user. Icons are 24px Lucide lines with an `aria-label` per tab. Inactive tabs are Taupe at 1.9 stroke. The active tab is Red Ink at 2.25 stroke with a faint 10% brand fill and a 6px red dot beneath. The cart tab carries an 18px Deep Signal Red count pill that pops in on every change. Selection fires Telegram haptics.
+A fixed white bar with a Hairline top edge, holding four labelled tabs: Bosh sahifa, Katalog, Savatcha, Profil. Each tab is a 24px Lucide icon over an 11px 500 label. Inactive tabs are Graphite at 1.75 stroke. The active tab is ink at 2.1 stroke, with no pill or dot. The cart tab carries an 18px count badge with a 2px white ring that pops in on every change. The badge is filled with ink, like the cart bar's, because red is reserved for cheaper prices and errors. Selection fires Telegram haptics. Telegram's native Back button closes the open sheet first, then navigates back.
 
 ### Bottom Sheet (Product Sheet)
-The sheet rises from the bottom with a 28px top radius over the 30% maroon scrim, at most 92dvh tall. It closes by backdrop tap, Escape, or a 110px drag on the white handle. The product sheet opens on a 5:4 Deep Signal Red hero with the food on a white plate (Plate on Red shadow). Below that come the name and a 22px red price, round ingredient bullets in brand red, and a three-up "Qo'shimcha" drinks row of grey tiles with green add buttons. Next is a grey trust panel with green icons, then the quantity stepper. A sticky large primary "add, price" button sits in the footer.
+The sheet rises from the bottom (sheet-up, 380ms) with a 24px top radius over the ink scrim, at most 92dvh tall. It closes by backdrop tap, Escape, a 110px drag on the white handle, or Telegram Back, and falls away over 200ms ease-in. The product sheet opens on a full-width 4:3 photo with a white close button. Below it come the 24px name, a 22px price (red only if discounted, with the struck old price), the neutral stepper, the description, the ingredient list on a 60% Photo Tile panel, a three-up add-on drinks row with white "+" buttons, and a Hairline-framed trust panel with icon discs. A sticky large primary "Savatchaga qo'shish — price" sits in a footer with a Hairline top edge.
 
 ### Order Bump
-A Blush card with a 20px radius: a 58px round drink photo, the bold offer text, the struck regular price beside the red offer price, and a green switch.
+A 20px card offering a drink at a special price, with a 60px rounded photo, 14px offer text, the offer price beside the struck regular price, and a switch. When off, the card is Saffron Cream. When on, it turns white with a saffron border. The colour change runs over 300ms expo.
 
 ### Switch
-A 52x30px pill track, green when on, with a 24px white thumb (Knob shadow) that slides over 300ms on the expo curve.
+A 50x30 pill: Track Grey when off and Saffron when on, with a 26px white knob carrying the Thumb shadow. The knob slides over 300ms expo.
 
 ### Payment Options
-Grey 18px rows, each with a 40px icon well (white, or Deep Signal Red with a white icon when selected), a bold name, a Taupe hint and a 22px radio ring. The selected row gains a 1.5px brand border. Unavailable methods sit at 45% opacity with a "soon" hint.
+A single white 20px card with Hairline-divided radio rows. Each row has a 40px Photo Tile icon well, a 15px 500 name, a 13px Graphite hint, and a 24px radio ring that fills saffron with an ink check when selected. Unavailable methods sit at 45% opacity with a "soon" hint.
 
 ### Toast
-A Deep Signal Red pill near the top of the screen with the Toast Glow shadow. It holds a 20px white dot with a green check and 14px semibold white text. It rises in and leaves after 2.2s.
+A white 16px-radius card near the top of the screen with the Float shadow, holding a 24px green check disc and 14px 500 ink text. It rises in and leaves after 2.2s.
 
-### Success Screen (signature)
-A full-screen Deep Signal Red layer. It shows the logo mark, an 18px "Buyurtmangiz qabul qilindi" line, a 56px 900-weight "Rahmat!" that pops in, the order number, the 28px tabular total, and a white inverse "home" pill at the foot. It is the memorable end of the flow.
+### Success Screen
+A full-screen Counter Grey layer showing a 96px saffron disc with an ink check (pop-in), a 40px "Rahmat!", a 17px on-the-way line, a Graphite order line, a white details card (order number, total), and a large primary "home" button at the foot.
+
+### Onboarding
+Three swipeable slides on Counter Grey, with the logo and a compact UZ / RU segment on top. Each slide has a large 28px-rounded food photograph on Photo Tile and a 30px headline. The "how it works" slide uses three white step cards with saffron number discs. The foot carries ink progress dots (the active dot stretches to 24px), a ghost "skip" and a large primary "next" or "Boshlash".
 
 ### Motion
-All motion uses expo ease-out (`cubic-bezier(0.16, 1, 0.3, 1)`). Sheets rise over 360ms and fall away over 200ms ease-in. Count badges and the "Rahmat!" word pop from 0.5 scale over 300ms. Lists and the toast rise 10px over 420ms. Backdrops fade over 200ms. Press feedback is a 0.9–0.97 scale. Nothing overshoots or bounces, and `prefers-reduced-motion` collapses everything to near-instant.
+All motion uses expo ease-out (`cubic-bezier(0.16, 1, 0.3, 1)`).
+- sheet-up: sheets rise 100% over 380ms.
+- pop-in: steppers, badges and the success disc grow from 0.6 scale with a fade over 280ms.
+- bar-in: the cart bar rises 16px from 0.98 scale over 420ms.
+- rise: toasts, cart rows and the re-filtered catalog grid rise 10px over 420ms.
+- fade-in: backdrops and total changes fade over 200ms.
+- Story progress fills linearly over 5s.
+
+Press feedback is a 0.9–0.985 scale. Nothing overshoots, springs or bounces, and `prefers-reduced-motion` collapses everything to near-instant.
+
+### Imagery
+The product, hero, story and onboarding photographs in `public/images/products/` are AI-generated placeholders for each restaurant to replace with its own. The user waived regenerating them. Treat them as replaceable content, not as part of the system. Any replacement must sit on Photo Tile, be cropped to the shapes above, and carry no text baked into the image.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** fill every text-bearing red surface with Deep Signal Red (brand mixed 93% with black, #df0000 for the default brand), and keep raw Signal Red for icon-only and text-free marks.
-- **Do** colour every current price and total with the price token (#e00000) in tabular 800-weight figures, followed by a smaller Taupe "so'm".
-- **Do** use the green circular "+" (32px) for every add action, and red rounded-square steppers (9px radius) for quantity.
-- **Do** separate containers by tone: Counter Grey (#f5f5f5) cards on a white ground, Blush (#fcded4) for offers.
-- **Do** present hero food on a round white plate inside a red field, with the soft Plate on Red shadow.
-- **Do** use Lucide line icons at 1.9–2.75 stroke for every icon, and keep the bottom bar icon-only with a red active dot.
-- **Do** keep Manrope directly behind Red Hat Display in every font stack, so Russian renders in a designed face.
-- **Do** animate with expo ease-out only: sheets rise, badges pop, lists rise 10px.
-- **Do** read brand colours from `config/brand.ts` and show only the promises a restaurant has switched on.
-- **Do** render white and red in every Telegram theme, and set the WebView background to white (#ffffff).
+- **Do** put saffron (#ffc21a by default, from `config/brand.ts`) only on the primary action, the cart bar, the live stepper and the selected state, always with Saffron Ink-on (#1c1a14) text.
+- **Do** separate surfaces by tone: white (#ffffff) cards on Counter Grey (#f4f4f2), and photos on Photo Tile (#f1f0ec).
+- **Do** show a discount as a red current price (#d92d27) plus a struck Graphite old price, and show full prices in ink.
+- **Do** set every price, total and count in the `price` utility with proportional numerals.
+- **Do** use the white "+" that morphs in place into a saffron pill stepper, and keep the floating cart bar visible whenever the cart has items.
+- **Do** use Lucide line icons (1.75–2.25 stroke) and the labelled four-tab bottom bar.
+- **Do** keep type at Onest 400 / 500 / 600, in sentence case.
+- **Do** reserve the Float shadow for the cart bar and toast, and the Thumb shadow for small controls on photos or tracks.
+- **Do** animate with expo ease-out only: sheets rise, steppers and badges pop, lists rise 10px.
+- **Do** paint Telegram's header and background with `brand.chrome` (#F4F4F2) and stay light in every Telegram theme.
+- **Do** show only the promises a restaurant has switched on in `brand.ts`.
 
 ### Don't:
-- **Don't** add a dark theme, `.dark` tokens or `dark:` variants, and don't use black or near-black as a filled surface (the user asked for no black).
-- **Don't** put white text on the raw brand red (#f00000 measures 4.46:1); use Deep Signal Red.
-- **Don't** outline cards or tiles at rest; a 1.5px border means selected, focused or error.
-- **Don't** add shadows to cards, buttons, banners or the bottom bar; soft shadows live only under food plates.
-- **Don't** show star ratings or review counts on products; no real ratings exist and none may be invented.
-- **Don't** copy the reference's sample brand name or its logo; each restaurant supplies its own.
-- **Don't** uppercase buttons or headings, or letter-space them for emphasis.
+- **Don't** add a dark theme, `.dark` tokens or `dark:` variants, or use black as a surface. The user asked for no black.
+- **Don't** put white text on saffron, or use saffron as a text colour. Use Saffron Ink on Saffron Cream instead.
+- **Don't** add "−20%" badges, ribbons or percentage tags. The red price and struck old price are the single discount signal.
+- **Don't** use red for anything but a discounted current price, errors and cancelled status, and don't use green for anything but free delivery and success.
+- **Don't** outline cards on the ground, or add shadows to cards, banners, chips or the bottom bar.
+- **Don't** switch prices to tabular figures. Onest's tabular "1" splits numbers.
+- **Don't** use bold or black weights, uppercase labels, eyebrows or letter-spaced kickers.
+- **Don't** show star ratings or review counts on products. No real ones exist.
 - **Don't** use emoji or glyph characters as icons.
 - **Don't** let anything bounce, overshoot or spring.
-- **Don't** return to Pop: no cream ground, mustard accent, Rubik caps, 2px brown outlines or hard offset stamps.
-- **Don't** return to Atlas Silk: no ornamental, traditional or silk-pattern decoration.
+- **Don't** return to "The White Plate on Red": no #f00000 red field, green circular add buttons, red square steppers, pink blush cards, food on white plates, or Red Hat Display / Manrope.
+- **Don't** return to Pop (cream ground, mustard accent, Rubik caps, 2px brown outlines, hard stamps) or to Atlas Silk (ornamental, traditional, silk-pattern decoration).

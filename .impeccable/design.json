@@ -1,569 +1,551 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T02:11:08+00:00",
+  "generatedAt": "2026-10-16T03:16:40+00:00",
   "title": "Design System: Fast Delivery",
   "extensions": {
     "colorMeta": {
       "brand": {
         "role": "primary",
-        "displayName": "Signal Red",
-        "canonical": "oklch(60.0% 0.246 29.2)",
+        "displayName": "Saffron",
+        "canonical": "oklch(84.6% 0.169 84.9)",
         "tonalRamp": [
-          "#1f0000",
-          "#4b0000",
-          "#820000",
-          "#bc0301",
-          "#f81810",
-          "#ff806e",
-          "#febbb0",
-          "#fee9e5"
+          "#110a00",
+          "#302201",
+          "#523c02",
+          "#765805",
+          "#9d760b",
+          "#c69619",
+          "#f4ba23",
+          "#ffedc8"
         ],
-        "note": "Rebrandable: written to <html> as --brand from config/brand.ts. Raw value carries no text."
-      },
-      "brand-fill": {
-        "role": "primary",
-        "displayName": "Deep Signal Red",
-        "canonical": "color-mix(in srgb, var(--brand) 93%, #000000)",
-        "tonalRamp": [
-          "#1f0000",
-          "#4b0000",
-          "#810101",
-          "#bc0100",
-          "#f22b1f",
-          "#fe806f",
-          "#febaaf",
-          "#ffe9e5"
-        ],
-        "note": "Derived from --brand; #df0000 for the default brand. White text 5.08:1."
-      },
-      "brand-ink": {
-        "role": "primary",
-        "displayName": "Red Ink",
-        "canonical": "color-mix(in srgb, var(--brand) 93%, #000000)",
-        "tonalRamp": [
-          "#1f0000",
-          "#4b0000",
-          "#810101",
-          "#bc0100",
-          "#f22b1f",
-          "#fe806f",
-          "#febaaf",
-          "#ffe9e5"
-        ]
+        "note": "Rebrandable: written to <html> as --brand from config/brand.ts. Never carries white text; never used as text."
       },
       "on-brand": {
         "role": "primary",
-        "displayName": "On Red",
-        "canonical": "oklch(100.0% 0.000 89.9)",
+        "displayName": "Saffron Ink-on",
+        "canonical": "oklch(21.8% 0.012 91.8)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#424242",
-          "#636363",
-          "#868686",
-          "#ababab",
-          "#cecece",
-          "#eeeeee"
-        ]
+          "#0d0b06",
+          "#26241e",
+          "#424039",
+          "#605d56",
+          "#807d76",
+          "#a19e96",
+          "#c7c4bc",
+          "#f1eee6"
+        ],
+        "note": "Text and icons on saffron (10.75:1). Rebrandable as onBrand."
       },
-      "accent": {
-        "role": "secondary",
-        "displayName": "Add Green",
-        "canonical": "oklch(46.5% 0.146 145.0)",
+      "brand-soft": {
+        "role": "primary",
+        "displayName": "Saffron Cream",
+        "canonical": "oklch(96.8% 0.041 90.2)",
         "tonalRamp": [
-          "#001001",
-          "#002e06",
-          "#025112",
-          "#167826",
-          "#439c4a",
-          "#6ac36f",
-          "#8de791",
-          "#caffcb"
-        ]
+          "#100a00",
+          "#2c230a",
+          "#483f26",
+          "#665d43",
+          "#877d62",
+          "#a89e82",
+          "#cec4a7",
+          "#f9eed0"
+        ],
+        "note": "Unselected order bump, avatar disc, pending status pills, selection. Rebrandable as brandSoft."
       },
-      "on-accent": {
-        "role": "secondary",
-        "displayName": "On Green",
-        "canonical": "oklch(100.0% 0.000 89.9)",
+      "brand-ink": {
+        "role": "primary",
+        "displayName": "Saffron Ink",
+        "canonical": "oklch(50.8% 0.108 73.3)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#424242",
-          "#636363",
-          "#868686",
-          "#ababab",
-          "#cecece",
-          "#eeeeee"
-        ]
-      },
-      "soft": {
-        "role": "tertiary",
-        "displayName": "Blush",
-        "canonical": "oklch(92.3% 0.036 39.3)",
-        "tonalRamp": [
-          "#170602",
-          "#331e17",
-          "#543c34",
-          "#765d54",
-          "#9a7f76",
-          "#c0a49a",
-          "#e4c6bd",
-          "#feeae3"
-        ]
+          "#130900",
+          "#341f00",
+          "#573805",
+          "#7e540c",
+          "#a47228",
+          "#c7934c",
+          "#efb972",
+          "#ffebd3"
+        ],
+        "note": "Text on Saffron Cream (5.41:1). Rebrandable as brandInk."
       },
       "sale": {
-        "role": "tertiary",
-        "displayName": "Price Red",
-        "canonical": "oklch(56.9% 0.234 29.2)",
+        "role": "secondary",
+        "displayName": "Discount Red",
+        "canonical": "oklch(57.6% 0.208 28.1)",
         "tonalRamp": [
           "#1f0000",
-          "#4b0100",
-          "#810000",
-          "#bc0402",
-          "#f32a1e",
-          "#fe806f",
-          "#ffbaaf",
-          "#fee9e5"
-        ]
+          "#4b0001",
+          "#7b0809",
+          "#af1112",
+          "#de332c",
+          "#fe6658",
+          "#fdaca1",
+          "#fee9e6"
+        ],
+        "note": "Discounted current price only, plus errors and cancelled status. 4.82:1 on white."
       },
       "ok": {
-        "role": "secondary",
-        "displayName": "Ok Green",
-        "canonical": "oklch(46.5% 0.146 145.0)",
+        "role": "tertiary",
+        "displayName": "Done Green",
+        "canonical": "oklch(51.1% 0.125 153.1)",
         "tonalRamp": [
-          "#001001",
-          "#002e06",
-          "#025112",
-          "#167826",
-          "#439c4a",
-          "#6ac36f",
-          "#8de791",
-          "#caffcb"
-        ]
+          "#001004",
+          "#022d14",
+          "#054d27",
+          "#0d703c",
+          "#349258",
+          "#59b579",
+          "#80dc9d",
+          "#c7ffd6"
+        ],
+        "note": "\"Bepul\" free delivery, toast check, delivering status. 5.40:1 on white."
       },
       "ink": {
         "role": "neutral",
         "displayName": "Ink",
-        "canonical": "oklch(21.8% 0.000 89.9)",
+        "canonical": "oklch(20.9% 0.004 264.5)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#424242",
-          "#636363",
-          "#868686",
-          "#ababab",
-          "#cecece",
-          "#eeeeee"
-        ]
+          "#0a0b0d",
+          "#232426",
+          "#3f4042",
+          "#5c5e60",
+          "#7c7d80",
+          "#9d9ea1",
+          "#c3c4c7",
+          "#edeef1"
+        ],
+        "note": "Primary text, focus ring, count badge."
       },
       "ink-2": {
         "role": "neutral",
-        "displayName": "Taupe",
-        "canonical": "oklch(53.5% 0.015 48.4)",
+        "displayName": "Graphite",
+        "canonical": "oklch(53.2% 0.006 274.9)",
         "tonalRamp": [
-          "#100906",
-          "#2a221e",
-          "#49403c",
-          "#6b615c",
-          "#8e847f",
-          "#b3a8a3",
-          "#d6cbc5",
-          "#f7ece6"
+          "#0a0b0e",
+          "#232427",
+          "#3f3f43",
+          "#5c5d61",
+          "#7c7d81",
+          "#9d9ea2",
+          "#c3c4c8",
+          "#edeef3"
         ],
-        "note": "Reference taupe #887D77 darkened for 4.5:1 contrast."
+        "note": "Secondary text, struck old prices, inactive nav. 5.24:1 on white, 4.76:1 on ground."
       },
       "ground": {
         "role": "neutral",
-        "displayName": "Ground",
-        "canonical": "oklch(100.0% 0.000 89.9)",
+        "displayName": "Counter Grey",
+        "canonical": "oklch(96.7% 0.003 106.4)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#424242",
-          "#636363",
-          "#868686",
-          "#ababab",
-          "#cecece",
-          "#eeeeee"
-        ]
+          "#0b0b0a",
+          "#242423",
+          "#40403e",
+          "#5e5e5c",
+          "#7d7d7b",
+          "#9e9e9d",
+          "#c4c4c2",
+          "#eeeeec"
+        ],
+        "note": "Page ground; equals brand.chrome, the Telegram header and background colour."
       },
       "surface": {
         "role": "neutral",
-        "displayName": "Counter Grey",
-        "canonical": "oklch(97.0% 0.000 89.9)",
-        "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#424242",
-          "#636363",
-          "#868686",
-          "#ababab",
-          "#cecece",
-          "#eeeeee"
-        ]
-      },
-      "raised": {
-        "role": "neutral",
-        "displayName": "Raised",
+        "displayName": "White",
         "canonical": "oklch(100.0% 0.000 89.9)",
         "tonalRamp": [
           "#0b0b0b",
           "#242424",
-          "#424242",
-          "#636363",
-          "#868686",
-          "#ababab",
-          "#cecece",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
           "#eeeeee"
-        ]
+        ],
+        "note": "Cards, sheets, bottom bar, toast, add button."
       },
-      "muted": {
+      "tile": {
         "role": "neutral",
-        "displayName": "Muted",
-        "canonical": "oklch(95.2% 0.000 89.9)",
+        "displayName": "Photo Tile",
+        "canonical": "oklch(95.5% 0.005 95.1)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#424242",
-          "#636363",
-          "#868686",
-          "#ababab",
-          "#cecece",
-          "#eeeeee"
-        ]
+          "#0c0b09",
+          "#252421",
+          "#40403d",
+          "#5e5e5a",
+          "#7e7d7a",
+          "#9f9e9b",
+          "#c5c4c0",
+          "#efeeea"
+        ],
+        "note": "Behind food photos; input fill, secondary button, neutral stepper, icon wells."
       },
       "line": {
         "role": "neutral",
         "displayName": "Hairline",
-        "canonical": "oklch(91.8% 0.005 48.7)",
+        "canonical": "oklch(92.2% 0.005 95.1)",
         "tonalRamp": [
-          "#0d0b09",
-          "#262322",
-          "#454240",
-          "#666261",
-          "#898583",
-          "#aeaaa8",
-          "#d1cdcb",
-          "#f1edeb"
-        ]
+          "#0c0b09",
+          "#252421",
+          "#40403c",
+          "#5e5e5a",
+          "#7e7d7a",
+          "#9f9e9b",
+          "#c5c4c0",
+          "#efeeea"
+        ],
+        "note": "Dividers inside white surfaces only."
+      },
+      "track": {
+        "role": "neutral",
+        "displayName": "Track Grey",
+        "canonical": "oklch(85.1% 0.007 97.4)",
+        "tonalRamp": [
+          "#0c0b08",
+          "#252420",
+          "#41403c",
+          "#5f5e59",
+          "#7e7d79",
+          "#9f9e9a",
+          "#c5c4bf",
+          "#f0efe9"
+        ],
+        "note": "Switch off track and scrollbar thumb (--track in globals.css)."
       },
       "scrim": {
         "role": "neutral",
-        "displayName": "Maroon Scrim",
-        "canonical": "rgb(58 10 10 / 0.3)",
+        "displayName": "Scrim",
+        "canonical": "rgb(23 24 26 / 0.42)",
         "tonalRamp": [
-          "#1f0001",
-          "#411110",
-          "#65312d",
-          "#89524d",
-          "#af746f",
-          "#d69993",
-          "#fbbbb5",
-          "#fee9e7"
-        ]
+          "#0a0b0d",
+          "#232426",
+          "#3f4042",
+          "#5c5e60",
+          "#7c7d80",
+          "#9d9ea1",
+          "#c3c4c7",
+          "#edeef1"
+        ],
+        "note": "Ink at 42% behind bottom sheets."
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The \"Rahmat!\" word on the full-red success screen; story titles at 44px."
+        "purpose": "\"Rahmat!\" on the success screen; story titles at 34px."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Home \"Menyu\" title; page headers at 26px; onboarding titles at 28-30px/900 on red."
+        "purpose": "Home greeting and page titles; onboarding titles at 30px."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Product name in the sheet; home banner headline at 21px."
+        "purpose": "Product name in the sheet; 22px sheet headings, 21px hero headline."
       },
       "section": {
         "displayName": "Section",
-        "purpose": "Section headings such as \"Ommabop\", delivery, payment."
+        "purpose": "Section heads on home and cart; profile name."
       },
-      "item": {
-        "displayName": "Item",
-        "purpose": "Product and cart-row names, clamped to two lines."
+      "subsection": {
+        "displayName": "Subsection",
+        "purpose": "Headings inside sheets and profile; \"Jami\" label."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Descriptions, ingredients, list text; inputs at 16px."
+        "purpose": "Base text and descriptions; inputs at 16px."
+      },
+      "item": {
+        "displayName": "Item",
+        "purpose": "Product names on cards (two-line clamp), bump text."
       },
       "button": {
         "displayName": "Button",
-        "purpose": "Sentence-case pill labels; 13px small, 16px large."
+        "purpose": "Button labels, sentence case; 16px large, 13px small."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Field labels, greeting line, links, toast text."
+        "purpose": "Field labels, language segment, \"so'm\" unit."
       },
       "caption": {
         "displayName": "Caption",
-        "purpose": "Category tile labels, banner facts, discount tags, struck old prices."
+        "purpose": "Category tile labels, fact chips, status pills."
+      },
+      "nav": {
+        "displayName": "Nav",
+        "purpose": "Bottom-bar labels and count badges."
       },
       "price": {
         "displayName": "Price",
-        "purpose": "Tabular prices: 16px cards, 22px sheet, 24px total, 28px success."
+        "purpose": "Card prices; proportional numerals on purpose (Onest tabular \"1\" splits numbers)."
+      },
+      "price-lg": {
+        "displayName": "Price Large",
+        "purpose": "Sheet price and cart total."
       }
     },
     "shadows": [
       {
-        "name": "plate-on-red",
-        "value": "0 18px 40px -18px rgba(0,0,0,0.5)",
-        "purpose": "White food plate in the product-sheet hero."
+        "name": "float",
+        "value": "0 10px 30px -12px rgb(23 24 26 / 0.28), 0 2px 6px -2px rgb(23 24 26 / 0.08)",
+        "purpose": "Floating cart bar and toast: things that hover over scrolling content."
       },
       {
-        "name": "plate-onboarding",
-        "value": "0 20px 40px -20px rgba(0,0,0,0.45)",
-        "purpose": "White food plate on onboarding slides."
-      },
-      {
-        "name": "knob",
-        "value": "0 1px 3px rgba(0,0,0,0.25)",
-        "purpose": "Switch thumb."
-      },
-      {
-        "name": "handle",
-        "value": "0 1px 3px rgba(0,0,0,0.3)",
-        "purpose": "Bottom-sheet drag handle over the red hero."
-      },
-      {
-        "name": "toast-glow",
-        "value": "0 8px 24px -10px rgba(224,0,0,0.6)",
-        "purpose": "Red-tinted glow under the floating toast pill."
+        "name": "thumb",
+        "value": "0 1px 3px rgb(23 24 26 / 0.16), 0 1px 1px rgb(23 24 26 / 0.06)",
+        "purpose": "Small controls on photos or tracks: add button, live stepper, switch knob, sheet handle, photo close buttons, active language segment."
       }
     ],
     "motion": [
       {
         "name": "ease-out-expo",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "The only easing curve: state changes, sheets, pops, rises."
+        "purpose": "The only easing curve; every transition and keyframe uses it (sheet close uses ease-in for 200ms)."
       },
       {
         "name": "sheet-up",
-        "value": "translateY(100%) -> 0, 360ms ease-out-expo",
-        "purpose": "Bottom sheet entrance; exit is 200ms ease-in to translateY(100%)."
+        "value": "translateY(100%) → 0, 380ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Bottom sheets rising."
       },
       {
         "name": "pop-in",
-        "value": "scale(0.5), opacity 0 -> none, 300ms ease-out-expo",
-        "purpose": "Count badges on cards and nav, and the \"Rahmat!\" word."
+        "value": "scale(0.6), opacity 0 → none, 280ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "\"+\" becoming the stepper, count badges, success check disc."
+      },
+      {
+        "name": "bar-in",
+        "value": "translateY(16px) scale(0.98), opacity 0 → none, 420ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Floating cart bar entrance."
       },
       {
         "name": "rise",
-        "value": "translateY(10px), opacity 0 -> none, 420ms ease-out-expo",
-        "purpose": "Catalog grids and the toast entering."
+        "value": "translateY(10px), opacity 0 → none, 420ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Toast, cart rows, re-filtered catalog grid."
       },
       {
         "name": "fade-in",
-        "value": "opacity 0 -> 1, 200ms ease-out",
-        "purpose": "Scrim, stories and success layers."
+        "value": "opacity 0 → 1, 200ms ease-out",
+        "purpose": "Backdrops, cart bar total change, story images."
+      },
+      {
+        "name": "story-progress",
+        "value": "scaleX(0) → 1, linear, 5000ms",
+        "purpose": "Story viewer progress bars."
       },
       {
         "name": "press",
-        "value": "scale(0.97) buttons / scale(0.9) add and stepper, 150-200ms",
-        "purpose": "Tap feedback; nothing overshoots or bounces."
+        "value": "scale(0.9–0.985)",
+        "purpose": "Press feedback: 0.9 icon buttons, 0.97 tiles, 0.98 buttons, 0.985 cart bar."
       },
       {
         "name": "reduced-motion",
-        "value": "durations 0.01ms",
-        "purpose": "prefers-reduced-motion collapses all animation."
+        "value": "0.01ms",
+        "purpose": "prefers-reduced-motion collapses all animation and transition durations."
       }
     ],
     "breakpoints": [
       {
-        "name": "column",
-        "value": "512px",
-        "note": "Single phone column (max-w-lg), centred on wider Telegram windows."
+        "name": "column-max",
+        "value": "512px"
       }
+    ],
+    "platform": {
+      "alwaysLight": true,
+      "telegramChrome": "#F4F4F2",
+      "note": "TelegramProvider calls setHeaderColor and setBackgroundColor with brand.chrome (Bot API 6.9+); viewport themeColor is brand.chrome. No dark tokens exist."
+    },
+    "brandSource": {
+      "file": "frontend/src/config/brand.ts",
+      "cssVars": [
+        "--brand",
+        "--on-brand",
+        "--brand-soft",
+        "--brand-ink"
+      ],
+      "note": "Written to <html> style by app/layout.tsx; globals.css falls back to the default saffron values."
+    },
+    "imagery": {
+      "source": "frontend/public/images/products/",
+      "status": "AI-generated placeholders; user waived regeneration; each restaurant replaces them."
+    },
+    "antiReferences": [
+      "The White Plate on Red (red #f00000 reference look)",
+      "Pop",
+      "Atlas Silk"
     ]
   },
   "components": [
     {
       "name": "Primary Button",
       "kind": "button",
-      "refersTo": "button-primary-lg",
-      "description": "Deep Signal Red pill for every main action: add to cart with price, confirm with total.",
+      "refersTo": "button-primary",
+      "description": "Saffron action with ink label; the one thing to press on a screen.",
       "html": "<button class=\"ds-btn-primary\">Savatchaga qo'shish — 64 000 so'm</button>",
-      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:9999px; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-weight:700; border:0; cursor:pointer; transition:transform 200ms cubic-bezier(0.16,1,0.3,1), filter 200ms cubic-bezier(0.16,1,0.3,1), background-color 200ms cubic-bezier(0.16,1,0.3,1); height:52px; padding:0 24px; font-size:16px; background:var(--brand-fill, #df0000); color:var(--on-brand, #ffffff); } .ds-btn-primary:hover { filter:brightness(1.1); } .ds-btn-primary:active { transform:scale(0.97); filter:brightness(0.95); } .ds-btn-primary:focus-visible { outline:2px solid var(--brand, #f00000); outline-offset:2px; }"
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:48px; padding:0 20px; border:0; border-radius:14px; background:var(--brand, #ffc21a); color:var(--on-brand, #1c1a14); font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size:15px; font-weight:600; cursor:pointer; transition:transform .2s cubic-bezier(0.16, 1, 0.3, 1), filter .2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary:hover { filter:brightness(1.04); } .ds-btn-primary:active { filter:brightness(.95); transform:scale(.98); } .ds-btn-primary:focus-visible { outline:2px solid var(--ink, #17181a); outline-offset:2px; }"
     },
     {
-      "name": "Inverse Button on Red",
+      "name": "Secondary Button",
       "kind": "button",
-      "refersTo": "button-inverse",
-      "description": "White pill with red label on red fields (onboarding, banner, stories, success), paired with an underlined white link.",
-      "html": "<div class=\"ds-red-field\"><button class=\"ds-btn-inverse\">Katalogni ko'rish</button><a class=\"ds-link-on-red\" href=\"#\">Yangi buyurtma berish</a></div>",
-      "css": ".ds-red-field { display:flex; align-items:center; gap:16px; padding:16px; border-radius:24px; background:var(--brand-fill, #df0000); } .ds-btn-inverse { display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:9999px; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-weight:700; border:0; cursor:pointer; transition:transform 200ms cubic-bezier(0.16,1,0.3,1), filter 200ms cubic-bezier(0.16,1,0.3,1), background-color 200ms cubic-bezier(0.16,1,0.3,1); height:44px; padding:0 20px; font-size:14px; background:#ffffff; color:var(--brand-fill, #df0000); white-space:nowrap; } .ds-btn-inverse:hover { filter:brightness(0.95); } .ds-btn-inverse:active { transform:scale(0.97); } .ds-btn-inverse:focus-visible { outline:2px solid #ffffff; outline-offset:2px; } .ds-link-on-red { font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-size:13px; font-weight:700; color:#ffffff; text-decoration:underline; text-underline-offset:4px; white-space:nowrap; }"
+      "refersTo": "button-secondary",
+      "description": "Photo Tile fill with ink label; the quieter second action.",
+      "html": "<button class=\"ds-btn-secondary\">Yangi buyurtma berish</button>",
+      "css": ".ds-btn-secondary { display:inline-flex; align-items:center; justify-content:center; height:48px; padding:0 20px; border:0; border-radius:14px; background:var(--tile, #f1f0ec); color:var(--ink, #17181a); font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size:15px; font-weight:600; cursor:pointer; transition:transform .2s cubic-bezier(0.16, 1, 0.3, 1), filter .2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-secondary:hover { filter:brightness(.98); } .ds-btn-secondary:active { filter:brightness(.95); transform:scale(.98); } .ds-btn-secondary:focus-visible { outline:2px solid var(--ink, #17181a); outline-offset:2px; }"
     },
     {
-      "name": "Outline Button",
-      "kind": "button",
-      "refersTo": "button-outline",
-      "description": "Transparent pill with a 1.5px brand border; used only for cancel order.",
-      "html": "<button class=\"ds-btn-outline\">Bekor qilish</button>",
-      "css": ".ds-btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:9999px; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-weight:700; border:0; cursor:pointer; transition:transform 200ms cubic-bezier(0.16,1,0.3,1), filter 200ms cubic-bezier(0.16,1,0.3,1), background-color 200ms cubic-bezier(0.16,1,0.3,1); height:44px; padding:0 20px; font-size:14px; width:100%; background:transparent; color:var(--brand-fill, #df0000); border:1.5px solid var(--brand, #f00000); } .ds-btn-outline:hover { background:var(--soft-bg, #fcded4); } .ds-btn-outline:active { transform:scale(0.97); } .ds-btn-outline:focus-visible { outline:2px solid var(--brand, #f00000); outline-offset:2px; }"
+      "name": "Add Button → Stepper",
+      "kind": "custom",
+      "refersTo": "add-button",
+      "description": "Signature: the white \"+\" on a photo morphs in place into a saffron pill stepper.",
+      "html": "<div class=\"ds-morph\"><button class=\"ds-add\" aria-label=\"Qo'shish\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></button><div class=\"ds-stepper\" role=\"group\"><button aria-label=\"Kamaytirish\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg></button><span>2</span><button aria-label=\"Ko'paytirish\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></button></div></div>",
+      "css": ".ds-morph { display:flex; gap:16px; align-items:center; padding:16px; background:var(--tile, #f1f0ec); border-radius:16px; } .ds-add { display:flex; align-items:center; justify-content:center; width:40px; height:40px; border:0; border-radius:9999px; background:var(--surface, #ffffff); color:var(--ink, #17181a); box-shadow:0 1px 3px rgb(23 24 26 / 0.16), 0 1px 1px rgb(23 24 26 / 0.06); cursor:pointer; transition:transform .15s; } .ds-add:active { transform:scale(.9); } .ds-add:focus-visible, .ds-stepper button:focus-visible { outline:2px solid var(--ink, #17181a); outline-offset:2px; } .ds-stepper { display:inline-flex; align-items:center; height:40px; border-radius:9999px; background:var(--brand, #ffc21a); color:var(--on-brand, #1c1a14); box-shadow:0 1px 3px rgb(23 24 26 / 0.16), 0 1px 1px rgb(23 24 26 / 0.06); animation:ds-pop .28s cubic-bezier(0.16, 1, 0.3, 1); font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; } .ds-stepper button { display:flex; align-items:center; justify-content:center; width:40px; height:100%; border:0; background:none; color:inherit; cursor:pointer; transition:transform .15s; } .ds-stepper button:active { transform:scale(.9); } .ds-stepper span { min-width:24px; text-align:center; font-size:15px; font-weight:600; font-variant-numeric:proportional-nums; } @keyframes ds-pop { from { transform:scale(.6); opacity:0; } to { transform:none; opacity:1; } }"
     },
     {
-      "name": "Search Field",
-      "kind": "input",
-      "refersTo": "search-field",
-      "description": "Counter Grey 48px field with a Lucide search icon; brand ring on focus.",
-      "html": "<label class=\"ds-search\"><svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input class=\"ds-search-input\" placeholder=\"Taom qidirish\"></label>",
-      "css": ".ds-search { display:flex; align-items:center; gap:10px; height:48px; padding:0 16px; border-radius:16px; background:var(--surface, #f5f5f5); color:var(--ink-2, #756b66); transition:box-shadow 200ms cubic-bezier(0.16,1,0.3,1); } .ds-search:focus-within { box-shadow:0 0 0 1.5px var(--brand, #f00000); } .ds-search-input { flex:1; min-width:0; border:0; background:transparent; outline:none; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-size:16px; font-weight:500; color:var(--ink, #1a1a1a); caret-color:var(--brand, #f00000); } .ds-search-input::placeholder { color:var(--ink-2, #756b66); }"
-    },
-    {
-      "name": "Category Tiles",
-      "kind": "chip",
-      "refersTo": "category-tile-active",
-      "description": "Square 60px tiles: active is a red square, others are food-photo tiles on grey.",
-      "html": "<div class=\"ds-cats\"><button class=\"ds-cat ds-cat-active\"><span class=\"ds-cat-tile\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"1\"/><circle cx=\"19\" cy=\"12\" r=\"1\"/><circle cx=\"5\" cy=\"12\" r=\"1\"/></svg></span><span class=\"ds-cat-label\">Barchasi</span></button><button class=\"ds-cat\"><span class=\"ds-cat-tile\"><span class=\"ds-cat-photo\"></span></span><span class=\"ds-cat-label\">Burgerlar</span></button><button class=\"ds-cat\"><span class=\"ds-cat-tile\"><span class=\"ds-cat-photo ds-cat-photo-2\"></span></span><span class=\"ds-cat-label\">Pitsa</span></button></div>",
-      "css": ".ds-cats { display:flex; gap:12px; } .ds-cat { display:flex; flex-direction:column; align-items:center; gap:6px; width:62px; border:0; background:none; padding:0; cursor:pointer; } .ds-cat-tile { display:flex; align-items:center; justify-content:center; width:60px; height:60px; border-radius:16px; overflow:hidden; background:var(--surface, #f5f5f5); color:var(--ink-2, #756b66); transition:background-color 200ms; } .ds-cat-photo { width:100%; height:100%; background:radial-gradient(circle at 40% 35%, #f3b25a 0 30%, #b5562a 31% 55%, #7a3b1c 56% 100%); } .ds-cat-photo-2 { background:radial-gradient(circle at 50% 50%, #c0392b 0 12%, #f2c46d 13% 60%, #c98a3d 61% 100%); } .ds-cat-label { font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-size:12px; font-weight:600; color:var(--ink-2, #756b66); } .ds-cat-active .ds-cat-tile { background:var(--brand, #f00000); color:#ffffff; } .ds-cat-active .ds-cat-label { color:var(--brand-fill, #df0000); } .ds-cat:focus-visible { outline:2px solid var(--brand, #f00000); outline-offset:2px; border-radius:12px; }"
+      "name": "Floating Cart Bar",
+      "kind": "custom",
+      "refersTo": "cart-bar",
+      "description": "Signature: saffron bar floating above the nav whenever the cart has items; count pops, total re-fades.",
+      "html": "<a class=\"ds-cartbar\" href=\"#\"><span class=\"ds-cartbar-well\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M16 10a4 4 0 0 1-8 0\"/><path d=\"M3.103 6.034h17.794\"/><path d=\"M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z\"/></svg><span class=\"ds-cartbar-count\">3</span></span><span class=\"ds-cartbar-label\">Savatcha</span><span class=\"ds-cartbar-total\">99 000 so'm</span></a>",
+      "css": ".ds-cartbar { display:flex; align-items:center; gap:12px; height:56px; padding:0 16px 0 8px; border-radius:18px; background:var(--brand, #ffc21a); color:var(--on-brand, #1c1a14); text-decoration:none; font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; box-shadow:0 10px 30px -12px rgb(23 24 26 / 0.28), 0 2px 6px -2px rgb(23 24 26 / 0.08); transition:transform .2s cubic-bezier(0.16, 1, 0.3, 1); animation:ds-bar-in .42s cubic-bezier(0.16, 1, 0.3, 1) both; } .ds-cartbar:active { transform:scale(.985); } .ds-cartbar:focus-visible { outline:2px solid var(--ink, #17181a); outline-offset:2px; } .ds-cartbar-well { position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:13px; background:rgb(255 255 255 / .45); } .ds-cartbar-count { position:absolute; top:-4px; right:-4px; min-width:18px; height:18px; padding:0 4px; display:flex; align-items:center; justify-content:center; border-radius:9999px; background:var(--ink, #17181a); color:#fff; font-size:11px; font-weight:600; } .ds-cartbar-label { flex:1; font-size:15px; font-weight:600; } .ds-cartbar-total { font-size:16px; font-weight:600; font-variant-numeric:proportional-nums; letter-spacing:-.01em; } @keyframes ds-bar-in { from { opacity:0; transform:translateY(16px) scale(.98); } to { opacity:1; transform:none; } }"
     },
     {
       "name": "Product Card",
       "kind": "card",
       "refersTo": "card-product",
-      "description": "Grey 22px card: rounded photo, two-line name, struck old price, red tabular price, green circular add button, popping count badge.",
-      "html": "<article class=\"ds-card\"><div class=\"ds-card-img\"><span class=\"ds-tag\">−20%</span></div><h3 class=\"ds-card-name\">Chizburger</h3><p class=\"ds-card-old\">40 000</p><p class=\"ds-card-price\">32 000 <span>so'm</span></p><button class=\"ds-add\" aria-label=\"Qo'shish\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></button><span class=\"ds-count\">2</span></article>",
-      "css": ".ds-card { position:relative; width:170px; padding:10px; border-radius:22px; background:var(--surface, #f5f5f5); font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; color:var(--ink, #1a1a1a); } .ds-card-img { position:relative; aspect-ratio:1; border-radius:16px; background:radial-gradient(circle at 40% 35%, #f3b25a 0 30%, #b5562a 31% 55%, #7a3b1c 56% 100%); } .ds-tag { position:absolute; top:8px; left:8px; padding:2px 8px; border-radius:9999px; background:var(--brand-fill, #df0000); color:#ffffff; font-size:11px; font-weight:700; font-variant-numeric:tabular-nums; } .ds-card-name { margin:10px 4px 0; font-size:15px; font-weight:700; line-height:1.25; min-height:2.5em; } .ds-card-old { margin:4px 4px 0; font-size:12px; font-weight:500; color:var(--ink-2, #756b66); text-decoration:line-through; font-variant-numeric:tabular-nums; } .ds-card-price { margin:0 4px; font-size:16px; font-weight:800; line-height:1.25; color:var(--sale, #e00000); font-variant-numeric:tabular-nums; } .ds-card-price span { font-size:11px; font-weight:600; color:var(--ink-2, #756b66); } .ds-add { position:absolute; right:10px; bottom:10px; display:flex; align-items:center; justify-content:center; width:32px; height:32px; border:0; border-radius:9999px; background:var(--accent, #006d1a); color:#ffffff; cursor:pointer; transition:transform 150ms; } .ds-add:active { transform:scale(0.9); } .ds-add:focus-visible { outline:2px solid var(--brand, #f00000); outline-offset:2px; } .ds-count { position:absolute; top:16px; right:16px; display:flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:9999px; background:var(--brand-fill, #df0000); color:#ffffff; font-size:13px; font-weight:700; box-shadow:0 0 0 2px #ffffff; animation:ds-pop 300ms cubic-bezier(0.16,1,0.3,1); } @keyframes ds-pop { from { transform:scale(0.5); opacity:0; } to { transform:none; opacity:1; } }"
+      "description": "White card, photo on Photo Tile, price first; discount shown only as red price plus struck old price.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-photo\"><button class=\"ds-card-add\" aria-label=\"Qo'shish\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></button></div><div class=\"ds-card-body\"><p class=\"ds-card-price ds-card-price--sale\">32 000 <span>so'm</span></p><p class=\"ds-card-old\">38 000</p><h3 class=\"ds-card-name\">Klassik burger</h3></div></article>",
+      "css": ".ds-card { width:164px; padding:6px 6px 10px; border-radius:20px; background:var(--surface, #ffffff); font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; color:var(--ink, #17181a); } .ds-card-photo { position:relative; aspect-ratio:1; border-radius:16px; background:var(--tile, #f1f0ec); } .ds-card-add { position:absolute; right:8px; bottom:8px; display:flex; align-items:center; justify-content:center; width:40px; height:40px; border:0; border-radius:9999px; background:var(--surface, #ffffff); color:var(--ink, #17181a); box-shadow:0 1px 3px rgb(23 24 26 / 0.16), 0 1px 1px rgb(23 24 26 / 0.06); cursor:pointer; transition:transform .15s; } .ds-card-add:active { transform:scale(.9); } .ds-card-add:focus-visible { outline:2px solid var(--ink, #17181a); outline-offset:2px; } .ds-card-body { padding:10px 6px 0; } .ds-card-price { margin:0; font-size:17px; font-weight:600; line-height:1.25; font-variant-numeric:proportional-nums; letter-spacing:-.01em; white-space:nowrap; } .ds-card-price span { font-size:13px; font-weight:500; } .ds-card-price--sale { color:var(--sale, #d92d27); } .ds-card-old { margin:0; height:18px; font-size:13px; line-height:18px; color:var(--ink-2, #6b6c70); text-decoration:line-through; font-variant-numeric:proportional-nums; } .ds-card-name { margin:4px 0 0; font-size:14px; font-weight:400; line-height:1.3; }"
     },
     {
-      "name": "Cart Row with Stacked Stepper",
-      "kind": "custom",
-      "refersTo": "stepper-button-sm",
-      "description": "Grey cart row with a round food photo and stacked red square steppers (plus on top).",
-      "html": "<div class=\"ds-row\"><span class=\"ds-row-img\"></span><div class=\"ds-row-body\"><h3>Klassik burger</h3><p class=\"ds-row-old\">80 000</p><p class=\"ds-row-price\">64 000 so'm</p></div><div class=\"ds-stepper\"><button aria-label=\"+\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></button><span>2</span><button aria-label=\"−\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/></svg></button></div></div>",
-      "css": ".ds-row { display:flex; align-items:center; gap:12px; padding:12px; border-radius:20px; background:var(--surface, #f5f5f5); font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; color:var(--ink, #1a1a1a); } .ds-row-img { width:64px; height:64px; flex-shrink:0; border-radius:9999px; background:radial-gradient(circle at 40% 35%, #f3b25a 0 30%, #b5562a 31% 55%, #7a3b1c 56% 100%); } .ds-row-body { flex:1; min-width:0; } .ds-row-body h3 { margin:0; font-size:15px; font-weight:700; line-height:1.25; } .ds-row-old { margin:4px 0 0; font-size:12px; font-weight:500; color:var(--ink-2, #756b66); text-decoration:line-through; font-variant-numeric:tabular-nums; } .ds-row-price { margin:0; font-size:16px; font-weight:800; color:var(--sale, #e00000); font-variant-numeric:tabular-nums; } .ds-stepper { display:inline-flex; flex-direction:column; align-items:center; gap:6px; } .ds-stepper span { font-weight:700; font-size:14px; font-variant-numeric:tabular-nums; } .ds-stepper button { display:flex; align-items:center; justify-content:center; width:28px; height:28px; border:0; border-radius:9px; background:var(--brand-fill, #df0000); color:#ffffff; cursor:pointer; transition:transform 150ms; } .ds-stepper button:active { transform:scale(0.9); } .ds-stepper button:focus-visible { outline:2px solid var(--brand, #f00000); outline-offset:2px; }"
+      "name": "Category Chips",
+      "kind": "chip",
+      "refersTo": "category-chip",
+      "description": "White pills with a round food photo; the active chip fills saffron.",
+      "html": "<div class=\"ds-chips\" role=\"tablist\"><button class=\"ds-chip ds-chip--all\" role=\"tab\" aria-selected=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\"/></svg>Barchasi</button><button class=\"ds-chip\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-chip-photo\"></span>Burgerlar</button><button class=\"ds-chip\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-chip-photo\"></span>Pitsalar</button></div>",
+      "css": ".ds-chips { display:flex; gap:8px; padding:8px; background:var(--ground, #f4f4f2); } .ds-chip { display:flex; align-items:center; gap:8px; height:40px; padding:0 16px 0 4px; border:0; border-radius:9999px; background:var(--surface, #ffffff); color:var(--ink, #17181a); font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size:14px; font-weight:500; cursor:pointer; transition:background-color .2s, color .2s; } .ds-chip--all { padding-left:14px; } .ds-chip[aria-selected=\"true\"] { background:var(--brand, #ffc21a); color:var(--on-brand, #1c1a14); } .ds-chip:focus-visible { outline:2px solid var(--ink, #17181a); outline-offset:2px; } .ds-chip-photo { width:32px; height:32px; border-radius:9999px; background:var(--tile, #f1f0ec); }"
     },
     {
-      "name": "Home Banner",
-      "kind": "card",
-      "refersTo": "banner-hero",
-      "description": "Deep Signal Red block with headline, confirmed promises, white pill and food on a white plate hanging off the edge.",
-      "html": "<section class=\"ds-banner\"><div class=\"ds-banner-copy\"><h2>Issiq va mazali — eshigingizgacha</h2><ul><li>30 daqiqa</li><li>100% halol</li><li>Bepul yetkazish</li></ul></div><span class=\"ds-plate\"><span></span></span><button class=\"ds-banner-btn\">Katalogni ko'rish</button></section>",
-      "css": ".ds-banner { position:relative; overflow:hidden; padding:16px; border-radius:24px; background:var(--brand-fill, #df0000); color:#ffffff; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; max-width:360px; } .ds-banner-copy { padding-right:104px; } .ds-banner h2 { margin:0; font-size:21px; font-weight:800; line-height:1.25; letter-spacing:-0.015em; } .ds-banner ul { display:flex; flex-wrap:wrap; gap:4px 12px; margin:10px 0 0; padding:0; list-style:none; font-size:12px; font-weight:600; } .ds-plate { position:absolute; top:12px; right:-24px; display:flex; align-items:center; justify-content:center; width:128px; height:128px; border-radius:9999px; background:#ffffff; } .ds-plate span { width:104px; height:104px; border-radius:9999px; background:radial-gradient(circle at 40% 35%, #f3b25a 0 30%, #b5562a 31% 55%, #7a3b1c 56% 100%); } .ds-banner-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:9999px; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-weight:700; border:0; cursor:pointer; transition:transform 200ms cubic-bezier(0.16,1,0.3,1), filter 200ms cubic-bezier(0.16,1,0.3,1), background-color 200ms cubic-bezier(0.16,1,0.3,1); position:relative; margin-top:20px; height:44px; padding:0 20px; font-size:14px; background:#ffffff; color:var(--brand-fill, #df0000); } .ds-banner-btn:hover { filter:brightness(0.95); } .ds-banner-btn:focus-visible { outline:2px solid #ffffff; outline-offset:2px; }"
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Photo Tile fill that turns white with an ink border on focus; red border on error.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-addr\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>Manzil</label><input class=\"ds-input\" id=\"ds-addr\" placeholder=\"Ko'cha, uy, xonadon\"></div>",
+      "css": ".ds-field { font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; width:280px; } .ds-field-label { display:flex; align-items:center; gap:6px; margin-bottom:6px; font-size:13px; font-weight:500; color:var(--ink-2, #6b6c70); } .ds-input { width:100%; padding:12px 16px; border:1px solid transparent; border-radius:14px; background:var(--tile, #f1f0ec); color:var(--ink, #17181a); caret-color:var(--ink, #17181a); font:inherit; font-size:16px; outline:none; transition:border-color .2s, background-color .2s; } .ds-input::placeholder { color:var(--ink-2, #6b6c70); } .ds-input:focus { background:var(--surface, #ffffff); border-color:rgb(23 24 26 / .7); } .ds-input[aria-invalid=\"true\"] { background:var(--surface, #ffffff); border-color:var(--sale, #d92d27); }"
     },
     {
       "name": "Bottom Navigation",
       "kind": "nav",
       "refersTo": "nav-bar",
-      "description": "White icon-only bar: house, search, cart, user; active tab red with a dot; cart count pill.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item ds-nav-active\" aria-label=\"Bosh sahifa\" aria-current=\"page\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg><i></i></a><a class=\"ds-nav-item\" aria-label=\"Katalog\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><i></i></a><a class=\"ds-nav-item\" aria-label=\"Savatcha\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"21\" r=\"1\"/><circle cx=\"19\" cy=\"21\" r=\"1\"/><path d=\"M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12\"/></svg><i></i><b>3</b></a><a class=\"ds-nav-item\" aria-label=\"Profil\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"5\"/><path d=\"M20 21a8 8 0 0 0-16 0\"/></svg><i></i></a></nav>",
-      "css": ".ds-nav { display:grid; grid-template-columns:repeat(4,1fr); max-width:360px; padding:10px 8px 8px; border-top:1px solid var(--line, #e7e3e1); background:var(--ground, #ffffff); } .ds-nav-item { position:relative; display:flex; flex-direction:column; align-items:center; gap:6px; padding-bottom:4px; color:var(--ink-2, #756b66); cursor:pointer; transition:color 200ms; } .ds-nav-item:hover { color:var(--ink, #1a1a1a); } .ds-nav-item:focus-visible { outline:2px solid var(--brand, #f00000); outline-offset:2px; border-radius:12px; } .ds-nav-item i { width:6px; height:6px; border-radius:9999px; background:transparent; } .ds-nav-active { color:var(--brand-fill, #df0000); } .ds-nav-active svg { fill:color-mix(in srgb, var(--brand, #f00000) 10%, transparent); } .ds-nav-active i { background:var(--brand, #f00000); } .ds-nav-item b { position:absolute; top:-6px; left:50%; margin-left:6px; display:flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 4px; border-radius:9999px; background:var(--brand-fill, #df0000); color:#ffffff; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-size:10px; font-weight:700; font-variant-numeric:tabular-nums; }"
+      "description": "White bar, four labelled Lucide tabs; active tab is ink with heavier stroke.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item\" aria-current=\"page\" href=\"#\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg>Bosh sahifa</a><a class=\"ds-nav-item\" href=\"#\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\"/><rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\"/></svg>Katalog</a><a class=\"ds-nav-item\" href=\"#\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M16 10a4 4 0 0 1-8 0\"/><path d=\"M3.103 6.034h17.794\"/><path d=\"M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z\"/></svg>Savatcha</a><a class=\"ds-nav-item\" href=\"#\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"5\"/><path d=\"M20 21a8 8 0 0 0-16 0\"/></svg>Profil</a></nav>",
+      "css": ".ds-nav { display:grid; grid-template-columns:repeat(4,1fr); width:360px; padding:6px 8px 8px; background:var(--surface, #ffffff); border-top:1px solid var(--line, #e6e5e1); font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; } .ds-nav-item { display:flex; flex-direction:column; align-items:center; gap:4px; padding:6px 0; border-radius:12px; color:var(--ink-2, #6b6c70); text-decoration:none; font-size:11px; font-weight:500; transition:color .2s; } .ds-nav-item:hover { color:var(--ink, #17181a); } .ds-nav-item[aria-current=\"page\"] { color:var(--ink, #17181a); } .ds-nav-item:focus-visible { outline:2px solid var(--ink, #17181a); outline-offset:2px; }"
     },
     {
-      "name": "Order Bump with Switch",
-      "kind": "custom",
-      "refersTo": "card-bump",
-      "description": "Blush card with a round drink photo, offer text, struck and red prices, and a green switch.",
-      "html": "<label class=\"ds-bump\"><span class=\"ds-bump-img\"></span><span class=\"ds-bump-text\"><b>Coca-Cola ni atigi 5 000 so'mga qo'shasizmi?</b><small><s>9 000</s> <em>5 000 so'm</em></small></span><button class=\"ds-switch\" role=\"switch\" aria-checked=\"true\"><span></span></button></label>",
-      "css": ".ds-bump { display:flex; align-items:center; gap:12px; padding:14px; border-radius:20px; background:var(--soft-bg, #fcded4); font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; color:var(--ink, #1a1a1a); max-width:360px; } .ds-bump-img { width:58px; height:58px; flex-shrink:0; border-radius:9999px; background:radial-gradient(circle at 45% 40%, #e23b2e 0 40%, #7a0f0a 41% 100%); } .ds-bump-text { flex:1; min-width:0; } .ds-bump-text b { display:block; font-size:14px; font-weight:700; line-height:1.35; } .ds-bump-text small { display:block; margin-top:4px; font-size:13px; font-weight:600; font-variant-numeric:tabular-nums; } .ds-bump-text s { color:var(--ink-2, #756b66); } .ds-bump-text em { font-style:normal; font-weight:800; color:var(--sale, #e00000); } .ds-switch { position:relative; display:inline-flex; align-items:center; width:52px; height:30px; flex-shrink:0; border:0; border-radius:9999px; background:var(--accent, #006d1a); cursor:pointer; transition:background-color 300ms cubic-bezier(0.16,1,0.3,1); } .ds-switch span { width:24px; height:24px; border-radius:9999px; background:#ffffff; box-shadow:0 1px 3px rgba(0,0,0,0.25); transform:translateX(25px); transition:transform 300ms cubic-bezier(0.16,1,0.3,1); } .ds-switch[aria-checked=\"false\"] { background:#c1c1c1; } .ds-switch[aria-checked=\"false\"] span { transform:translateX(3px); } .ds-switch:focus-visible { outline:2px solid var(--brand, #f00000); outline-offset:2px; }"
+      "name": "Order Bump",
+      "kind": "card",
+      "refersTo": "order-bump",
+      "description": "Saffron Cream offer card with switch; turns white with a saffron border when on.",
+      "html": "<label class=\"ds-bump\"><input type=\"checkbox\" class=\"ds-bump-input\"><span class=\"ds-bump-photo\"></span><span class=\"ds-bump-text\">Coca-Cola ni atigi 5 000 so'mga qo'shasizmi?<span class=\"ds-bump-price\"><b>5 000 so'm</b><s>12 000</s></span></span><span class=\"ds-switch\"><span></span></span></label>",
+      "css": ".ds-bump { display:flex; align-items:center; gap:12px; width:320px; padding:12px; border:1px solid transparent; border-radius:20px; background:var(--brand-soft, #fff4d6); color:var(--ink, #17181a); font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; cursor:pointer; transition:background-color .3s cubic-bezier(0.16, 1, 0.3, 1), border-color .3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-bump:has(.ds-bump-input:checked) { background:var(--surface, #ffffff); border-color:var(--brand, #ffc21a); } .ds-bump-input { position:absolute; opacity:0; } .ds-bump-photo { flex:none; width:60px; height:60px; border-radius:14px; background:var(--tile, #f1f0ec); } .ds-bump-text { flex:1; font-size:14px; line-height:1.35; } .ds-bump-price { display:flex; gap:6px; align-items:baseline; margin-top:4px; font-variant-numeric:proportional-nums; } .ds-bump-price b { font-size:15px; font-weight:600; } .ds-bump-price s { font-size:12px; color:var(--ink-2, #6b6c70); } .ds-switch { position:relative; flex:none; width:50px; height:30px; border-radius:9999px; background:var(--track, #cfcec9); transition:background-color .3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-switch span { position:absolute; top:2px; left:2px; width:26px; height:26px; border-radius:9999px; background:#fff; box-shadow:0 1px 3px rgb(23 24 26 / 0.16), 0 1px 1px rgb(23 24 26 / 0.06); transition:transform .3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-bump:has(.ds-bump-input:checked) .ds-switch { background:var(--brand, #ffc21a); } .ds-bump:has(.ds-bump-input:checked) .ds-switch span { transform:translateX(20px); } .ds-bump:has(.ds-bump-input:focus-visible) { outline:2px solid var(--ink, #17181a); outline-offset:2px; }"
     },
     {
       "name": "Toast",
       "kind": "custom",
       "refersTo": "toast",
-      "description": "Deep Signal Red pill with a red glow, a white dot holding a green check, and white text.",
-      "html": "<div class=\"ds-toast\" role=\"status\"><span class=\"ds-toast-dot\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6 9 17l-5-5\"/></svg></span>Savatchaga qo'shildi</div>",
-      "css": ".ds-toast { display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:9999px; background:var(--brand-fill, #df0000); color:#ffffff; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-size:14px; font-weight:600; box-shadow:0 8px 24px -10px rgba(224,0,0,0.6); animation:ds-rise 420ms cubic-bezier(0.16,1,0.3,1) both; } .ds-toast-dot { display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:9999px; background:#ffffff; color:var(--ok, #006d1a); } @keyframes ds-rise { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }"
-    },
-    {
-      "name": "Success Screen",
-      "kind": "custom",
-      "refersTo": "screen-success",
-      "description": "Full-red \"Rahmat!\" thank-you screen with tabular total and white home pill.",
-      "html": "<div class=\"ds-success\"><p class=\"ds-success-sub\">Buyurtmangiz qabul qilindi</p><h2>Rahmat!</h2><p class=\"ds-success-total\">96 000 so'm</p><button class=\"ds-success-btn\">Bosh sahifaga</button></div>",
-      "css": ".ds-success { display:flex; flex-direction:column; align-items:center; gap:8px; padding:40px 24px 24px; border-radius:24px; background:var(--brand-fill, #df0000); color:#ffffff; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; text-align:center; max-width:320px; } .ds-success-sub { margin:0; font-size:18px; font-weight:600; } .ds-success h2 { margin:0; font-size:56px; font-weight:900; line-height:1; letter-spacing:-0.015em; animation:ds-pop2 300ms cubic-bezier(0.16,1,0.3,1); } .ds-success-total { margin:12px 0 24px; font-size:28px; font-weight:800; font-variant-numeric:tabular-nums; } .ds-success-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:9999px; font-family:'Red Hat Display Variable','Manrope Variable',system-ui,sans-serif; font-weight:700; border:0; cursor:pointer; transition:transform 200ms cubic-bezier(0.16,1,0.3,1), filter 200ms cubic-bezier(0.16,1,0.3,1), background-color 200ms cubic-bezier(0.16,1,0.3,1); width:100%; height:52px; padding:0 24px; font-size:16px; background:#ffffff; color:var(--brand-fill, #df0000); } .ds-success-btn:hover { filter:brightness(0.95); } .ds-success-btn:active { transform:scale(0.97); } .ds-success-btn:focus-visible { outline:2px solid #ffffff; outline-offset:2px; } @keyframes ds-pop2 { from { transform:scale(0.5); opacity:0; } to { transform:none; opacity:1; } }"
+      "description": "White floating card with a green check disc; rises in, leaves after 2.2s.",
+      "html": "<div class=\"ds-toast\" role=\"status\"><span class=\"ds-toast-check\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></span>Savatchaga qo'shildi</div>",
+      "css": ".ds-toast { display:inline-flex; align-items:center; gap:10px; padding:10px 16px 10px 10px; border-radius:16px; background:var(--surface, #ffffff); color:var(--ink, #17181a); font-family:'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size:14px; font-weight:500; box-shadow:0 10px 30px -12px rgb(23 24 26 / 0.28), 0 2px 6px -2px rgb(23 24 26 / 0.08); animation:ds-rise .42s cubic-bezier(0.16, 1, 0.3, 1) both; } .ds-toast-check { display:flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:9999px; background:var(--ok, #127a42); color:#fff; } @keyframes ds-rise { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }"
     }
   ],
   "narrative": {
-    "northStar": "The White Plate on Red",
-    "overview": "The system is a clean, bright delivery counter: a white ground, one loud red, light-grey food cards, small green add buttons and simple line icons. Its signature image is food sitting on a round white plate inside a red field. That image appears on the splash, the onboarding slides, the home banner and the product sheet. The ending repeats it: confirming an order turns the whole screen red and says \"Rahmat!\". The mood is friendly, appetizing, quick and plain-spoken. This is commerce clarity for a hungry person ordering one-handed inside Telegram, not decoration.\n\nThe visual source is pinned by the user: a food-delivery reference mockup. Its colours were sampled (red, orange-red, pink, taupe, greys, green) and its typeface family is Red Hat Display. Only the reference's style is used. Its sample brand name and logo are not part of this system, and neither is its star rating. Ratings are never shown on products because no real ones exist. Density is comfortable and phone-first. Each screen has one obvious next action, prices are always red and tabular, and the green \"+\" is never more than a thumb away.\n\nThe app is always light. It renders white and red even when Telegram is in dark mode, because the user explicitly asked for no black. Brand colour is a token, not a constant. The template is rebranded per restaurant through `config/brand.ts`, and every red surface that carries text is derived from the brand colour so that white text stays legible whatever red a restaurant picks. Two earlier worlds are rejected anti-references. **Atlas Silk** was ornamental and traditional. **Pop** was cream ground, mustard accent, Rubik caps and 2px brown outlines with hard stamps. Neither its outlines, its cream or its uppercase voice return.",
+    "northStar": "The Quiet Counter",
+    "overview": "The app is a calm, premium delivery counter that sets the food out and gets out of the way. It is the category standard played straight, at the craft level of Yandex Eda and Uzum Tezkor / Express24. Food photography and prices lead. Chrome recedes into a warm-grey ground, white cards with no outlines, near-black type and one saffron colour that marks the thing to press. The whole flow is built for a hungry person ordering one-handed inside Telegram: find food by chips or search, tap \"+\", watch it turn into a stepper in place, watch the floating cart bar update, confirm in one tap.\n\nDensity is comfortable and phone-first, inside a single 512px column. The type is one face, Onest, set in sentence case at three weights. Depth is tonal: white on warm grey, with photographs sitting on soft grey tiles. Shadows appear only under things that genuinely float. Motion is an expo ease-out. Sheets rise, the stepper pops in where the \"+\" was, the cart bar slides up, and nothing bounces.\n\nThe app is always light, including inside Telegram's dark mode, because the user asked for no black surfaces. The Telegram header and WebView background are painted the same warm grey as the ground (`brand.chrome`, #F4F4F2), so the app reads as stitched into Telegram rather than framed by it. Identity is four tokens in `config/brand.ts` (brand, on-brand, brand-soft, brand-ink), which restaurants rebrand. Three earlier worlds are rejected and survive only as anti-references. **\"The White Plate on Red\"** was a red reference look: a loud #f00000 field, green circular add buttons, red rounded-square steppers, Red Hat Display / Manrope type, pink blush offer cards and food on white plates. **Pop** used a cream ground, a mustard accent, Rubik caps, 2px brown outlines and hard stamps. **Atlas Silk** was ornamental and traditional.",
     "keyCharacteristics": [
-      "Always light: white ground and red in every Telegram theme, with no dark palette.",
-      "White ground, light-grey (#f5f5f5) cards, one red used loudly but in few places.",
-      "Food on round white plates inside red fields; real product photos on grey tiles everywhere else.",
-      "Pills for buttons, generous 16–28px rounding on containers, no outlines on cards.",
-      "Green circular \"+\" for every add action; red rounded-square steppers.",
-      "Lucide line icons only; an icon-only bottom bar with a red active dot.",
-      "Red Hat Display for Latin, Manrope for Cyrillic, tabular figures on every price.",
-      "Motion is expo ease-out: sheets rise, count badges pop in, nothing bounces."
+      "Always light: a warm-grey ground (#f4f4f2) and white cards in every Telegram theme, with no dark tokens.",
+      "One saffron brand fill with ink text on it, reserved for the primary action, the cart bar, the live stepper and the current selection.",
+      "Red appears only as a discounted current price (and errors), and green only as \"Bepul\" free delivery and success.",
+      "Food is shown in rounded photo tiles on soft grey, and prices sit above names.",
+      "A white \"+\" on the photo morphs into a saffron stepper in place, and a floating saffron cart bar sits above the labelled bottom nav.",
+      "One discount signal: a red current price plus a struck grey old price, with no percentage badges.",
+      "Onest Variable for Latin and Cyrillic, at weights 400 / 500 / 600 only, in sentence case.",
+      "Only two shadows, for floating elements and small controls. Motion is expo ease-out, and nothing bounces."
     ],
     "rules": [
       {
+        "name": "The Single Saffron Rule",
+        "body": "Saffron is the one colour that says \"press this\" or \"this is chosen\". Use it for the main action, the cart bar, the live stepper and the selected state, and nowhere else. Ink is always the text on top of it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red Means Cheaper Rule",
+        "body": "Red appears on a price only when that price is discounted, always paired with the struck old price in Graphite. Outside prices, red is reserved for errors and cancelled orders.",
+        "section": "colors"
+      },
+      {
+        "name": "The Green Means Done Rule",
+        "body": "Green appears only for free delivery and for success (the toast check, the delivering status). It is never used for an action button.",
+        "section": "colors"
+      },
+      {
         "name": "The Always Light Rule",
-        "body": "The app has one theme. It always renders white ground and red, even inside Telegram's dark mode, and it never toggles a `.dark` class or swaps in dark tokens. The reason is the user's explicit request: no black.",
+        "body": "There is one theme. No `.dark` class, no `dark:` variants, no dark tokens. The app paints Counter Grey and white even in Telegram's dark mode, and Telegram's header and background are set to `brand.chrome`.",
         "section": "colors"
       },
       {
-        "name": "The Derived Red Rule",
-        "body": "Text never sits on the raw brand colour. Any red surface with text or white glyphs uses Deep Signal Red (the brand colour mixed 93% with black), and red text uses Red Ink. This is what keeps the template legible with any brand colour.",
+        "name": "The Four Tokens Rule",
+        "body": "A restaurant rebrands by editing `config/brand.ts` only. Brand, on-brand, brand-soft and brand-ink must keep on-brand and brand-ink at 4.5:1 or better against their grounds.",
         "section": "colors"
       },
       {
-        "name": "The Two Reds Rule",
-        "body": "The brand red is the restaurant's identity; the price red (#e00000) is the price. Prices, totals and errors always use the price token, never the brand token.",
-        "section": "colors"
+        "name": "The Proportional Price Rule",
+        "body": "Every price, total and count uses the `price` utility, which applies proportional numerals plus -0.01em tracking. This is deliberate: Onest's tabular \"1\" is wide enough to split numbers (\"1 79 000\"), so tabular figures are never switched on.",
+        "section": "typography"
       },
       {
-        "name": "The Green Means Add Rule",
-        "body": "Green is reserved for adding and for good news, such as the \"+\" button, the bump switch, the toast's check mark and free delivery. Red handles navigation, steppers and commitment.",
-        "section": "colors"
-      },
-      {
-        "name": "The Tabular Price Rule",
-        "body": "Every number a customer compares (prices, totals, counts, step numbers) uses the price utility with tabular figures, so columns of so'm amounts never jitter.",
+        "name": "The Three Weights Rule",
+        "body": "Use only 400, 500 and 600. Emphasis comes from size, ink versus Graphite, and saffron, never from bold or black weights.",
         "section": "typography"
       },
       {
         "name": "The Sentence Case Rule",
-        "body": "Buttons, tabs and headings are written in sentence case. Weight carries the emphasis; capitals and letter-spacing do not.",
+        "body": "Buttons, chips, tabs and headings are sentence case. There are no uppercase labels, eyebrows or letter-spaced kickers.",
         "section": "typography"
       },
       {
-        "name": "The Cyrillic Fallback Rule",
-        "body": "Never set a Red Hat Display stack without Manrope immediately behind it. Russian strings must render in a designed face, not the system font.",
-        "section": "typography"
-      },
-      {
-        "name": "The Plates Only Rule",
-        "body": "Soft shadows belong under white food plates, plus the red glow under the floating toast. Cards, buttons, tiles, banners and the bottom bar have no shadow at rest or on hover.",
+        "name": "The Only-What-Floats Rule",
+        "body": "Cards, banners, tiles, chips, inputs and the bottom bar have no shadow. Float is for things that hover above scrolling content; Thumb is for small controls sitting on a photo or a track.",
         "section": "elevation"
       },
       {
-        "name": "The No Outline Rule",
-        "body": "Containers separate by tone, never by stroke. A border on a card means \"selected\" or \"error\", and nothing else.",
-        "section": "shapes"
-      },
-      {
-        "name": "The Round Food Rule",
-        "body": "Food photography is shown on a round plate or in a rounded tile, never as a hard-edged rectangle or a full-bleed card top.",
+        "name": "The Tone-Not-Stroke Rule",
+        "body": "A card on the ground never carries an outline. Hairlines appear only as dividers inside a white surface (list rows, the totals rule, the sheet footer, the bottom bar's top edge, and the trust panel inside the product sheet). A coloured border is a state: ink at 70% on a focused field, red on an errored field, saffron on the selected order bump and payment radio.",
         "section": "shapes"
       }
     ],
     "dos": [
-      "**Do** fill every text-bearing red surface with Deep Signal Red (brand mixed 93% with black, #df0000 for the default brand), and keep raw Signal Red for icon-only and text-free marks.",
-      "**Do** colour every current price and total with the price token (#e00000) in tabular 800-weight figures, followed by a smaller Taupe \"so'm\".",
-      "**Do** use the green circular \"+\" (32px) for every add action, and red rounded-square steppers (9px radius) for quantity.",
-      "**Do** separate containers by tone: Counter Grey (#f5f5f5) cards on a white ground, Blush (#fcded4) for offers.",
-      "**Do** present hero food on a round white plate inside a red field, with the soft Plate on Red shadow.",
-      "**Do** use Lucide line icons at 1.9–2.75 stroke for every icon, and keep the bottom bar icon-only with a red active dot.",
-      "**Do** keep Manrope directly behind Red Hat Display in every font stack, so Russian renders in a designed face.",
-      "**Do** animate with expo ease-out only: sheets rise, badges pop, lists rise 10px.",
-      "**Do** read brand colours from `config/brand.ts` and show only the promises a restaurant has switched on.",
-      "**Do** render white and red in every Telegram theme, and set the WebView background to white (#ffffff)."
+      "**Do** put saffron (#ffc21a by default, from `config/brand.ts`) only on the primary action, the cart bar, the live stepper and the selected state, always with Saffron Ink-on (#1c1a14) text.",
+      "**Do** separate surfaces by tone: white (#ffffff) cards on Counter Grey (#f4f4f2), and photos on Photo Tile (#f1f0ec).",
+      "**Do** show a discount as a red current price (#d92d27) plus a struck Graphite old price, and show full prices in ink.",
+      "**Do** set every price, total and count in the `price` utility with proportional numerals.",
+      "**Do** use the white \"+\" that morphs in place into a saffron pill stepper, and keep the floating cart bar visible whenever the cart has items.",
+      "**Do** use Lucide line icons (1.75–2.25 stroke) and the labelled four-tab bottom bar.",
+      "**Do** keep type at Onest 400 / 500 / 600, in sentence case.",
+      "**Do** reserve the Float shadow for the cart bar and toast, and the Thumb shadow for small controls on photos or tracks.",
+      "**Do** animate with expo ease-out only: sheets rise, steppers and badges pop, lists rise 10px.",
+      "**Do** paint Telegram's header and background with `brand.chrome` (#F4F4F2) and stay light in every Telegram theme.",
+      "**Do** show only the promises a restaurant has switched on in `brand.ts`."
     ],
     "donts": [
-      "**Don't** add a dark theme, `.dark` tokens or `dark:` variants, and don't use black or near-black as a filled surface (the user asked for no black).",
-      "**Don't** put white text on the raw brand red (#f00000 measures 4.46:1); use Deep Signal Red.",
-      "**Don't** outline cards or tiles at rest; a 1.5px border means selected, focused or error.",
-      "**Don't** add shadows to cards, buttons, banners or the bottom bar; soft shadows live only under food plates.",
-      "**Don't** show star ratings or review counts on products; no real ratings exist and none may be invented.",
-      "**Don't** copy the reference's sample brand name or its logo; each restaurant supplies its own.",
-      "**Don't** uppercase buttons or headings, or letter-space them for emphasis.",
+      "**Don't** add a dark theme, `.dark` tokens or `dark:` variants, or use black as a surface. The user asked for no black.",
+      "**Don't** put white text on saffron, or use saffron as a text colour. Use Saffron Ink on Saffron Cream instead.",
+      "**Don't** add \"−20%\" badges, ribbons or percentage tags. The red price and struck old price are the single discount signal.",
+      "**Don't** use red for anything but a discounted current price, errors and cancelled status, and don't use green for anything but free delivery and success.",
+      "**Don't** outline cards on the ground, or add shadows to cards, banners, chips or the bottom bar.",
+      "**Don't** switch prices to tabular figures. Onest's tabular \"1\" splits numbers.",
+      "**Don't** use bold or black weights, uppercase labels, eyebrows or letter-spaced kickers.",
+      "**Don't** show star ratings or review counts on products. No real ones exist.",
       "**Don't** use emoji or glyph characters as icons.",
       "**Don't** let anything bounce, overshoot or spring.",
-      "**Don't** return to Pop: no cream ground, mustard accent, Rubik caps, 2px brown outlines or hard offset stamps.",
-      "**Don't** return to Atlas Silk: no ornamental, traditional or silk-pattern decoration."
+      "**Don't** return to \"The White Plate on Red\": no #f00000 red field, green circular add buttons, red square steppers, pink blush cards, food on white plates, or Red Hat Display / Manrope.",
+      "**Don't** return to Pop (cream ground, mustard accent, Rubik caps, 2px brown outlines, hard stamps) or to Atlas Silk (ornamental, traditional, silk-pattern decoration)."
     ]
   }
 }
