@@ -8,7 +8,7 @@ import { useI18n } from '@/hooks/useI18n';
 
 /**
  * Asosiy vidjet — ixcham qizil aksiya kartasi: konturli xantal chegirma, dumaloq taom rasmi,
- * restoran va'dalari va yonma-yon "Katalogni ko'rish" / "Yangi buyurtma berish".
+ * restoran va'dalari, krem "Katalogni ko'rish" kapsulasi va "Yangi buyurtma berish" havolasi.
  * Ixcham — birinchi ekranda ommabop taomlar narxi bilan ko'rinib turishi uchun.
  */
 export function HeroWidget() {
@@ -24,7 +24,7 @@ export function HeroWidget() {
 
   return (
     <section className="mx-4 overflow-hidden rounded-[30px] bg-brand-fill p-4 text-on-brand">
-      <div className="relative pr-[120px]">
+      <div className="relative min-h-[124px] pr-[112px]">
         <p className="shout ink-stroke text-[52px] leading-[0.85] text-accent">{t('home.promoValue')}</p>
         <p className="shout mt-2 text-[16px] leading-[1.05]">{t('home.promoText')}</p>
         {facts.length > 0 && (
@@ -41,17 +41,18 @@ export function HeroWidget() {
         <img
           src="/images/products/cheeseburger.jpg"
           alt=""
-          className="absolute -top-1 -right-8 size-[140px] rounded-full border-[5px] border-on-brand object-cover"
+          className="absolute -top-1 -right-8 size-[124px] rounded-full border-[5px] border-on-brand object-cover"
         />
       </div>
 
-      <div className="mt-3.5 grid grid-cols-2 gap-2">
-        <Link href="/catalog" className={buttonClasses({ variant: 'inverse', size: 'md', className: 'h-auto min-h-[48px] px-3 py-2 text-center text-[12px] leading-[1.15]' })}>
+      {/* Asosiy harakat — krem kapsula, ikkinchisi — sokin matnli havola (ikkalasi bir qatorda) */}
+      <div className="mt-4 flex items-center justify-between gap-3">
+        <Link href="/catalog" className={buttonClasses({ variant: 'inverse', size: 'md', className: 'shrink-0 px-5 whitespace-nowrap text-[13px]' })}>
           {t('home.viewCatalog')}
         </Link>
         <Link
           href="/catalog?category=burgers"
-          className={buttonClasses({ variant: 'outlineOnBrand', size: 'md', className: 'h-auto min-h-[48px] px-3 py-2 text-center text-[12px] leading-[1.15]' })}
+          className="text-right text-[13px] leading-tight font-extrabold underline decoration-2 underline-offset-4"
         >
           {t('home.newOrder')}
         </Link>

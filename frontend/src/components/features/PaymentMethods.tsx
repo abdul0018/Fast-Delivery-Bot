@@ -46,23 +46,25 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
               haptic.select();
               setPaymentMethod(id);
             }}
-            className={cn('flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors disabled:opacity-45', selected && 'bg-muted')}
+            className={cn('flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors disabled:cursor-not-allowed', selected && 'bg-muted')}
           >
             <span
               className={cn(
+                !enabled && 'opacity-45',
                 'flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-outline transition-colors',
                 selected ? 'bg-accent text-on-accent' : 'bg-surface text-ink',
               )}
             >
               <Icon size={20} strokeWidth={2.25} />
             </span>
-            <span className="min-w-0 flex-1">
+            <span className={cn('min-w-0 flex-1', !enabled && 'opacity-45')}>
               <span className="block text-[15px] font-extrabold">{t(`cart.methods.${id}`)}</span>
               <span className="block text-[13px] font-medium text-ink-2">{enabled ? hint(id) : t('cart.soon')}</span>
             </span>
             <span
               aria-hidden="true"
               className={cn(
+                !enabled && 'opacity-45',
                 'flex size-6 items-center justify-center rounded-full border-2 border-outline transition-colors',
                 selected ? 'bg-brand-fill' : 'bg-surface',
               )}

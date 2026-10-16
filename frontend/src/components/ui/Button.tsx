@@ -19,7 +19,8 @@ const variants: Record<Variant, string> = {
   outline: 'border-2 border-outline bg-transparent text-ink hover:bg-muted',
   // Qizil maydon ustidagi konturli tugma
   outlineOnBrand: 'border-2 border-on-brand bg-transparent text-on-brand hover:bg-on-brand/10',
-  inverse: 'bg-on-brand text-brand-ink hover:brightness-95',
+  // Krem tugma — foni har doim krem, shuning uchun matn har ikki mavzuda to'q qizil
+  inverse: 'bg-on-brand text-brand-fill hover:brightness-95',
 };
 
 const sizes: Record<Size, string> = {
