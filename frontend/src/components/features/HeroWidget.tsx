@@ -7,8 +7,9 @@ import { brand } from '@/config/brand';
 import { useI18n } from '@/hooks/useI18n';
 
 /**
- * Asosiy vidjet — qizil aksiya kartasi: katta xantal chegirma, dumaloq taom rasmi,
- * "Katalogni ko'rish" / "Yangi buyurtma berish" va restoran va'dalari.
+ * Asosiy vidjet — ixcham qizil aksiya kartasi: konturli xantal chegirma, dumaloq taom rasmi,
+ * restoran va'dalari va yonma-yon "Katalogni ko'rish" / "Yangi buyurtma berish".
+ * Ixcham — birinchi ekranda ommabop taomlar narxi bilan ko'rinib turishi uchun.
  */
 export function HeroWidget() {
   const { t } = useI18n();
@@ -22,36 +23,35 @@ export function HeroWidget() {
   ].filter((fact): fact is { icon: LucideIcon; label: string } => fact !== null);
 
   return (
-    <section className="mx-4 overflow-hidden rounded-[30px] bg-brand text-on-brand">
-      <div className="relative min-h-[172px] px-5 pt-5">
-        <p className="shout text-[58px] leading-[0.85] text-accent">{t('home.promoValue')}</p>
-        <p className="shout mt-2 max-w-[150px] text-[17px] leading-[1.05]">{t('home.promoText')}</p>
+    <section className="mx-4 overflow-hidden rounded-[30px] bg-brand-fill p-4 text-on-brand">
+      <div className="relative pr-[120px]">
+        <p className="shout ink-stroke text-[52px] leading-[0.85] text-accent">{t('home.promoValue')}</p>
+        <p className="shout mt-2 text-[16px] leading-[1.05]">{t('home.promoText')}</p>
+        {facts.length > 0 && (
+          <ul className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1 text-[13px] font-bold">
+            {facts.map(({ icon: Icon, label }) => (
+              <li key={label} className="flex items-center gap-1.5">
+                <Icon size={15} strokeWidth={2.25} className="shrink-0 text-accent" />
+                {label}
+              </li>
+            ))}
+          </ul>
+        )}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/products/cheeseburger.jpg"
           alt=""
-          className="absolute top-4 -right-6 size-[180px] rounded-full border-[6px] border-on-brand object-cover"
+          className="absolute -top-1 -right-8 size-[140px] rounded-full border-[5px] border-on-brand object-cover"
         />
       </div>
 
-      {facts.length > 0 && (
-        <ul className="flex flex-wrap gap-x-4 gap-y-1.5 px-5 pt-4 text-[13px] font-bold">
-          {facts.map(({ icon: Icon, label }) => (
-            <li key={label} className="flex items-center gap-1.5">
-              <Icon size={16} strokeWidth={2.25} className="text-accent" />
-              {label}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <div className="grid gap-2 p-4 pt-4">
-        <Link href="/catalog" className={buttonClasses({ variant: 'inverse', size: 'lg', fullWidth: true })}>
+      <div className="mt-3.5 grid grid-cols-2 gap-2">
+        <Link href="/catalog" className={buttonClasses({ variant: 'inverse', size: 'md', className: 'h-auto min-h-[48px] px-3 py-2 text-center text-[12px] leading-[1.15]' })}>
           {t('home.viewCatalog')}
         </Link>
         <Link
           href="/catalog?category=burgers"
-          className={buttonClasses({ variant: 'outline', size: 'lg', fullWidth: true, className: 'border-on-brand text-on-brand hover:bg-white/10' })}
+          className={buttonClasses({ variant: 'outlineOnBrand', size: 'md', className: 'h-auto min-h-[48px] px-3 py-2 text-center text-[12px] leading-[1.15]' })}
         >
           {t('home.newOrder')}
         </Link>

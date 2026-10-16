@@ -7,6 +7,9 @@
  *  accent   — ikkinchi, quvnoq rang ("+" tugmalari, chegirma yorliqlari, faol menyu)
  *  onAccent — accent ustidagi matn rangi
  *
+ * Eslatma: matn tushadigan qizil maydonlar brand rangining biroz to'qroq variantidan (--brand-fill) foydalanadi,
+ * shuning uchun och brand rang tanlansa ham krem matn o'qiladi — onBrand bilan kontrastni baribir tekshiring.
+ *
  * promises — restoran haqiqatda bajaradigan va'dalar. Bajarilmaydiganini false/null qiling —
  * ilovada (bosh sahifa, mahsulot oynasi) ko'rinmay qoladi. Hozirgi qiymatlar NAMUNA.
  */

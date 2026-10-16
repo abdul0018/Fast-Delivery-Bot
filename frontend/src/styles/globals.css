@@ -16,9 +16,11 @@
   --outline: #3a1d0f;
   --hair: rgb(58 29 15 / 0.14);
   --muted: #f8e7cf;
-  --sale: #e8392b;
+  --sale: #d62d20;
   --ok: #2b8a50;
-  --brand-ink: var(--brand);
+  --brand-ink: color-mix(in srgb, var(--brand) 80%, #3a1d0f);
+  /* Matn tushadigan qizil maydonlar uchun: brand rang siyoh tomon 20% to'qlashtiriladi (krem matn >= 4.5:1) */
+  --brand-fill: color-mix(in srgb, var(--brand) 80%, #3a1d0f);
   --brand-soft: color-mix(in srgb, var(--brand) 12%, var(--ground));
   --bar: #3a1d0f;
   --bar-ink: #d8c1ad;
@@ -34,8 +36,9 @@
   --sale: #ff6a5a;
   --ok: #4cc27e;
   --brand-ink: color-mix(in srgb, var(--brand) 72%, #ffffff);
+  --brand-fill: color-mix(in srgb, var(--brand) 80%, #3a1d0f);
   --brand-soft: color-mix(in srgb, var(--brand) 26%, var(--ground));
-  --bar: #0f0905;
+  --bar: #2a1b11;
   --bar-ink: #b89c86;
 }
 
@@ -55,6 +58,7 @@
   --color-on-accent: var(--on-accent, #3a1d0f);
   --color-brand-ink: var(--brand-ink);
   --color-brand-soft: var(--brand-soft);
+  --color-brand-fill: var(--brand-fill);
   --color-bar: var(--bar);
   --color-bar-ink: var(--bar-ink);
 
@@ -154,6 +158,12 @@
   text-transform: uppercase;
   letter-spacing: -0.025em;
   line-height: 0.98;
+}
+
+/* Qizil maydondagi xantal raqamlar: siyoh kontur bilan (kontrast + Pop vivesi) */
+@utility ink-stroke {
+  -webkit-text-stroke: 4px var(--on-accent);
+  paint-order: stroke fill;
 }
 
 /* Narxlar: qalin, raqamlar bir xil kenglikda */

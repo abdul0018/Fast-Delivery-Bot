@@ -25,7 +25,7 @@ export function BottomNavigation() {
 
   return (
     <nav aria-label="Navigation" className="fixed inset-x-0 bottom-0 z-40">
-      <ul className="mx-auto grid max-w-lg grid-cols-4 rounded-t-[28px] bg-bar px-2 pt-2 pb-safe">
+      <ul className="mx-auto grid max-w-lg grid-cols-4 rounded-t-[28px] bg-bar px-2 pt-2 pb-safe dark:shadow-[inset_0_2px_0_var(--outline)]">
         {TABS.map(({ href, icon: Icon, label }) => {
           const active = href === '/' ? pathname === '/' : pathname.startsWith(href);
           return (
@@ -44,7 +44,7 @@ export function BottomNavigation() {
                 {href === '/cart' && count > 0 && (
                   <span
                     key={count}
-                    className="price absolute top-0 left-1/2 ml-1.5 flex h-5 min-w-5 animate-stamp items-center justify-center rounded-full border-2 border-bar bg-brand px-1 text-[11px] font-black text-on-brand"
+                    className="price absolute top-0 left-1/2 ml-1.5 flex h-5 min-w-5 animate-stamp items-center justify-center rounded-full border-2 border-bar bg-brand-fill px-1 text-[11px] font-black text-on-brand"
                   >
                     {count > 99 ? '99+' : count}
                   </span>

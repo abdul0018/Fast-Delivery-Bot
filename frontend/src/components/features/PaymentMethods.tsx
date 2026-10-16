@@ -31,7 +31,7 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
       : t(`cart.methods.${id}Hint`);
 
   return (
-    <div className="divide-y-2 divide-hair overflow-hidden rounded-[26px] border-2 border-outline bg-surface" role="radiogroup" aria-label={t('cart.payment')}>
+    <div className="divide-y-2 divide-outline overflow-hidden rounded-[26px] border-2 border-outline bg-surface" role="radiogroup" aria-label={t('cart.payment')}>
       {METHODS.map(({ id, icon: Icon }) => {
         const enabled = available.includes(id);
         const selected = paymentMethod === id;
@@ -46,7 +46,7 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
               haptic.select();
               setPaymentMethod(id);
             }}
-            className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-muted/60 disabled:opacity-45"
+            className={cn('flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors disabled:opacity-45', selected && 'bg-muted')}
           >
             <span
               className={cn(
@@ -64,7 +64,7 @@ export function PaymentMethods({ available, starsRate, total }: PaymentMethodsPr
               aria-hidden="true"
               className={cn(
                 'flex size-6 items-center justify-center rounded-full border-2 border-outline transition-colors',
-                selected ? 'bg-brand' : 'bg-surface',
+                selected ? 'bg-brand-fill' : 'bg-surface',
               )}
             >
               {selected && <span className="size-2 rounded-full bg-on-brand" />}

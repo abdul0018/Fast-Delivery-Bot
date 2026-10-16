@@ -36,7 +36,7 @@ export function HomeHeader({ children }: { children?: ReactNode }) {
         <Wordmark />
         <LanguageSwitcher compact />
       </div>
-      <h1 className="shout mt-4 text-[34px]">
+      <h1 className="shout mt-3 text-[30px]">
         {t('home.heroTitle')}
         <span className="block text-brand-ink">{t('home.heroTitleAccent')}</span>
       </h1>

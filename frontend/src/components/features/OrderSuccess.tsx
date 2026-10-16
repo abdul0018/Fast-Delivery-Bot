@@ -22,7 +22,7 @@ export function OrderSuccess({ order, onClose }: { order: Order | null; onClose:
     >
       {order && (
         <div className="px-4 pt-6 pb-6">
-          <div className="flex flex-col items-center rounded-[28px] bg-brand px-6 pt-8 pb-6 text-center text-on-brand">
+          <div className="flex flex-col items-center rounded-[28px] bg-brand-fill px-6 pt-8 pb-6 text-center text-on-brand">
             <span className="flex size-[72px] animate-stamp items-center justify-center rounded-full border-[3px] border-on-brand bg-accent text-on-accent">
               <Check size={38} strokeWidth={3} />
             </span>

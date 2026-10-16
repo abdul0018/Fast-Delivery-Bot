@@ -1,7 +1,7 @@
 import { forwardRef, type ButtonHTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
-type Variant = 'primary' | 'accent' | 'secondary' | 'ghost' | 'outline' | 'inverse';
+type Variant = 'primary' | 'accent' | 'secondary' | 'ghost' | 'outline' | 'outlineOnBrand' | 'inverse';
 type Size = 'sm' | 'md' | 'lg';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,12 +12,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-brand text-on-brand hover:brightness-105 active:brightness-95',
+  primary: 'bg-brand-fill text-on-brand hover:brightness-105 active:brightness-95',
   accent: 'border-2 border-outline bg-accent text-on-accent hover:brightness-105',
   secondary: 'bg-brand-soft text-brand-ink hover:brightness-[0.98]',
   ghost: 'bg-transparent text-ink hover:bg-muted',
   outline: 'border-2 border-outline bg-transparent text-ink hover:bg-muted',
-  inverse: 'bg-on-brand text-brand hover:brightness-95',
+  // Qizil maydon ustidagi konturli tugma
+  outlineOnBrand: 'border-2 border-on-brand bg-transparent text-on-brand hover:bg-on-brand/10',
+  inverse: 'bg-on-brand text-brand-ink hover:brightness-95',
 };
 
 const sizes: Record<Size, string> = {

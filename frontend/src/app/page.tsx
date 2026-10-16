@@ -22,7 +22,7 @@ export default function HomePage() {
     .slice(0, 4);
 
   return (
-    <div className="space-y-6 pb-2">
+    <div className="space-y-5 pb-2">
       <HomeHeader>
         <Stories />
       </HomeHeader>
@@ -30,9 +30,9 @@ export default function HomePage() {
       <HeroWidget />
 
       <section>
-        <div className="flex items-end justify-between px-4 pb-3">
+        <div className="flex items-end justify-between px-4 pb-2.5">
           <h2 className="shout text-[24px]">{t('home.popular')}</h2>
-          <Link href="/catalog" className="flex items-center gap-1 text-sm font-extrabold text-brand-ink uppercase">
+          <Link href="/catalog" className="flex items-center gap-1 text-sm font-extrabold text-ink uppercase underline decoration-2 underline-offset-4">
             {t('home.seeAll')}
             <ArrowRight size={16} strokeWidth={2.5} />
           </Link>

@@ -58,8 +58,13 @@ export function ProductCard({ product, className }: { product: Product; classNam
             ) : (
               <p className="text-[12px]">&nbsp;</p>
             )}
-            <p className="price text-[18px] leading-tight font-black text-sale">
-              {formatPrice(product.price)} <span className="text-[11px] font-bold">{t('common.currency')}</span>
+            <p
+              className={cn(
+                'price leading-tight font-black whitespace-nowrap text-sale',
+                product.price >= 100000 ? 'text-[16px]' : 'text-[19px]',
+              )}
+            >
+              {formatPrice(product.price)} <span className="text-[11px] font-bold text-ink-2">{t('common.currency')}</span>
             </p>
           </div>
         </div>
@@ -78,7 +83,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
         <span
           key={quantity}
           aria-label={`× ${quantity}`}
-          className="price absolute top-3 right-3 flex size-9 animate-stamp items-center justify-center rounded-full border-2 border-outline bg-brand text-[15px] font-black text-on-brand"
+          className="price absolute top-3 right-3 flex size-9 animate-stamp items-center justify-center rounded-full border-2 border-outline bg-brand-fill text-[15px] font-black text-on-brand"
         >
           {quantity}
         </span>

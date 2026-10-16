@@ -9,7 +9,7 @@ import { cn, formatDate } from '@/lib/utils';
 import type { Order, OrderStatus } from '@/types';
 
 const STATUS_STYLES: Record<OrderStatus, string> = {
-  new: 'bg-brand text-on-brand',
+  new: 'bg-brand-fill text-on-brand',
   confirmed: 'bg-accent text-on-accent',
   delivering: 'bg-ink text-ground',
   completed: 'bg-ok text-white',

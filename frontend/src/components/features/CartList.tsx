@@ -14,7 +14,7 @@ export function CartList() {
   const { haptic } = useTelegram();
 
   return (
-    <ul className="divide-y-2 divide-hair overflow-hidden rounded-[26px] border-2 border-outline bg-surface">
+    <ul className="divide-y-2 divide-outline overflow-hidden rounded-[26px] border-2 border-outline bg-surface">
       {items.map(({ product, quantity }) => {
         const name = pick(product.name);
         return (

@@ -25,7 +25,7 @@ export default function ProfilePage() {
   return (
     <div>
       <header className="px-4 pt-5">
-        <div className="flex items-center gap-4 rounded-[30px] bg-brand p-4 text-on-brand">
+        <div className="flex items-center gap-4 rounded-[30px] bg-brand-fill p-4 text-on-brand">
           {user?.photo_url ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={user.photo_url} alt="" className="size-16 rounded-full border-[3px] border-on-brand object-cover" />
@@ -49,7 +49,7 @@ export default function ProfilePage() {
 
         <section className="space-y-2.5">
           <h2 className="shout text-[20px]">{t('profile.contacts')}</h2>
-          <dl className="divide-y-2 divide-hair rounded-[24px] border-2 border-outline bg-surface">
+          <dl className="divide-y-2 divide-outline rounded-[24px] border-2 border-outline bg-surface">
             {rows.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-center gap-3 px-4 py-3.5">
                 <Icon size={19} strokeWidth={2.25} className="shrink-0 text-brand-ink" />
