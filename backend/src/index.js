@@ -66,6 +66,8 @@ async function main() {
         path: WEBHOOK_PATH,
         secret_token: config.bot.webhookSecret,
         allowed_updates: ALLOWED_UPDATES,
+        // Server o'chiq paytida yig'ilib qolgan eski xabarlarga (masalan, 12 ta /start) qayta-qayta javob bermaymiz
+        drop_pending_updates: true,
       }),
     };
   }
@@ -86,7 +88,7 @@ async function main() {
     // launch() polling tugaguncha resolve bo'lmaydi, shuning uchun await qilmaymiz.
     // Eslatma: bitta token bilan bir vaqtda faqat BITTA nusxa polling qila oladi.
     bot
-      .launch({ allowedUpdates: ALLOWED_UPDATES }, () => {
+      .launch({ allowedUpdates: ALLOWED_UPDATES, dropPendingUpdates: true }, () => {
         logger.info(`🤖 Bot ishga tushdi (long polling): @${bot.botInfo?.username}`);
       })
       .catch((error) => {
