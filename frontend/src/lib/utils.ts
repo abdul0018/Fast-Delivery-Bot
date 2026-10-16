@@ -1,6 +1,13 @@
 import { clsx, type ClassValue } from 'clsx';
 import type { Lang, Localized } from '@/types';
 
+/**
+ * Sayt ichidagi fayl yo'liga basePath qo'shish (GitHub Pages: /Fast-Delivery-Bot/...).
+ * next/link avtomatik qo'shadi, lekin oddiy <img src> qo'shmaydi.
+ */
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+export const asset = (path: string) => (path.startsWith('/') && !path.startsWith('//') ? `${BASE_PATH}${path}` : path);
+
 /** Tailwind klasslarini shartli birlashtirish */
 export const cn = (...inputs: ClassValue[]) => clsx(inputs);
 

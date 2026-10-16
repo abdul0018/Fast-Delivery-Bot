@@ -14,7 +14,7 @@ import { brand } from '@/config/brand';
 import { useCart } from '@/hooks/useCart';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
-import { discountPercent, formatPrice } from '@/lib/utils';
+import { asset, discountPercent, formatPrice } from '@/lib/utils';
 import { useCatalogStore } from '@/store/catalogStore';
 import { useUiStore } from '@/store/uiStore';
 import type { Product } from '@/types';
@@ -80,7 +80,7 @@ function ProductDetails({
     <div className="pb-6">
       <div className="relative aspect-[4/3] w-full bg-tile">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={product.image} alt={pick(product.name)} className="size-full object-cover" />
+        <img src={asset(product.image)} alt={pick(product.name)} className="size-full object-cover" />
         <button
           type="button"
           onClick={onClose}
@@ -149,7 +149,7 @@ function ProductDetails({
                 >
                   <span className="relative block aspect-square overflow-hidden rounded-[12px] bg-tile">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.image} alt="" className="size-full object-cover" />
+                    <img src={asset(item.image)} alt="" className="size-full object-cover" />
                     <span className="absolute right-1.5 bottom-1.5 flex size-7 items-center justify-center rounded-full bg-surface text-ink shadow-(--shadow-thumb)">
                       <Plus size={16} strokeWidth={2.25} />
                     </span>

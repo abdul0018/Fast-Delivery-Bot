@@ -1,0 +1,65 @@
+# Mini App (frontend) ni GitHub Pages'ga joylash: https://<owner>.github.io/<repo>/
+# Bir martalik sozlash: Settings → Pages → Build and deployment → Source: "GitHub Actions".
+# Backend manzili: Settings → Secrets and variables → Actions → Variables → API_URL = https://<backend>/api
+name: Deploy Mini App to GitHub Pages
+
+on:
+  push:
+    branches: [claude/telegram-bot-mini-app-lyr39c]
+    paths: ['frontend/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - run: npm ci
+
+      - name: Warn if backend URL is not set
+        if: ${{ vars.API_URL == '' }}
+        run: echo "::warning::API_URL repository variable is empty — the Mini App will not load the menu until it points to the deployed backend (https://<backend>/api)."
+
+      - name: Static export
+        run: npm run build
+        env:
+          STATIC_EXPORT: 'true'
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_API_URL: ${{ vars.API_URL }}
+          NEXT_PUBLIC_DEV_AUTH: 'false'
+
+      # _next/ papkasi Jekyll tomonidan e'tiborsiz qoldirilmasligi uchun
+      - run: touch out/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

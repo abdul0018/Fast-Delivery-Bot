@@ -8,7 +8,7 @@ import { Switch } from '@/components/ui/Switch';
 import { useCart } from '@/hooks/useCart';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
-import { cn, formatPrice } from '@/lib/utils';
+import { asset, cn, formatPrice } from '@/lib/utils';
 
 export function OrderBump() {
   const { bump, bumpOffer, setBump } = useCart();
@@ -32,7 +32,7 @@ export function OrderBump() {
     >
       <label className="flex cursor-pointer items-center gap-3 p-3">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={product.image} alt="" className="size-[60px] shrink-0 rounded-[14px] bg-tile object-cover" />
+        <img src={asset(product.image)} alt="" className="size-[60px] shrink-0 rounded-[14px] bg-tile object-cover" />
         <span className="min-w-0 flex-1">
           <span className="block text-[14px] leading-snug">
             {t('cart.bumpText', { name: pick(product.name), price: formatPrice(price) })}

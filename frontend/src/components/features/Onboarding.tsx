@@ -11,7 +11,7 @@ import { Logo } from '@/components/layout/Header';
 import { Button } from '@/components/ui/Button';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
-import { cn } from '@/lib/utils';
+import { asset, cn } from '@/lib/utils';
 import { useSettingsStore } from '@/store/settingsStore';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -20,7 +20,7 @@ function Slide({ image, children }: { image: string; children: ReactNode }) {
     <section className="flex w-full shrink-0 snap-center snap-always flex-col px-4">
       <div className="relative min-h-0 flex-1 overflow-hidden rounded-[28px] bg-tile">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt="" className="size-full object-cover" />
+        <img src={asset(image)} alt="" className="size-full object-cover" />
       </div>
       <div className="shrink-0 px-2 pt-6">{children}</div>
     </section>

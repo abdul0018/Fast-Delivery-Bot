@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/Button';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import type { TranslationKey } from '@/lib/i18n';
-import { cn } from '@/lib/utils';
+import { asset, cn } from '@/lib/utils';
 import { useSettingsStore } from '@/store/settingsStore';
 
 interface Story {
@@ -57,7 +57,7 @@ function StoryViewer({ startIndex, onClose }: { startIndex: number; onClose: () 
     <div role="dialog" aria-modal="true" aria-label={t(story.title)} className="fixed inset-0 z-[70] mx-auto flex max-w-lg animate-fade-in flex-col bg-surface">
       <div className="relative min-h-0 flex-1 overflow-hidden bg-tile">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img key={story.id} src={story.image} alt="" className="size-full animate-fade-in object-cover" />
+        <img key={story.id} src={asset(story.image)} alt="" className="size-full animate-fade-in object-cover" />
         {/* Progress chiziqlari o'qilishi uchun tepada yengil soyalik */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/35 to-transparent" />
         <div className="absolute inset-x-0 top-0 z-20 flex gap-1 px-3 pt-3">
@@ -133,7 +133,7 @@ export function Stories() {
             >
               <span className="relative block h-[112px] w-[88px] overflow-hidden rounded-[17.5px] border-2 border-ground bg-tile">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={story.image} alt="" className="size-full object-cover" />
+                <img src={asset(story.image)} alt="" className="size-full object-cover" />
                 <span className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/65 to-transparent" />
                 <span className="absolute inset-x-2 bottom-2 text-left text-[13px] leading-tight font-semibold text-white">
                   {t(story.title)}

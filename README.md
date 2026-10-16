@@ -77,7 +77,14 @@ Tavsiya etilgan sxema: **Neon** (baza, allaqachon bor) + **Render** (bot + API, 
 **0. Xavfsizlik.** Bot tokeni va baza paroli ochiq yozilgan bo'lsa, avval almashtiring:
 BotFather → `/mybots` → bot → *API Token* → *Revoke*; Neon → *Roles* → parolni yangilang.
 
-**1. Mini App (Vercel).** vercel.com → *Add New Project* → shu repozitoriy → *Root Directory*: `frontend`.
+**1. Mini App — GitHub Pages (bepul).** Repozitoriyda `.github/workflows/pages.yml` bor: har bir push'da frontend
+statik fayllarga yig'iladi va `https://abdul0018.github.io/Fast-Delivery-Bot/` ga joylanadi. Bir martalik sozlash:
+*Settings → Pages → Source: GitHub Actions*; *Settings → Secrets and variables → Actions → Variables* → `API_URL` =
+`https://<backend-manzil>/api`, so'ng *Actions → Deploy Mini App to GitHub Pages → Run workflow*.
+Backend'da: `WEBAPP_URL=https://abdul0018.github.io/Fast-Delivery-Bot/`, `CORS_ORIGINS=https://abdul0018.github.io`.
+GitHub Pages faqat statik fayllar uchun — bot va API baribir alohida serverda (2-qadam) ishlashi kerak.
+
+**1b. Yoki Mini App — Vercel.** vercel.com → *Add New Project* → shu repozitoriy → *Root Directory*: `frontend`.
 Environment: `NEXT_PUBLIC_API_URL=https://<render-manzil>/api`, `NEXT_PUBLIC_DEV_AUTH=false`. Deploy →
 `https://<loyiha>.vercel.app` manzilini oling (bu **WEBAPP_URL**).
 

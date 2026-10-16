@@ -9,7 +9,7 @@ import { QuantityStepper } from '@/components/ui/QuantityStepper';
 import { useCart } from '@/hooks/useCart';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
-import { cn, discountPercent, formatPrice } from '@/lib/utils';
+import { asset, cn, discountPercent, formatPrice } from '@/lib/utils';
 import { useUiStore } from '@/store/uiStore';
 import type { Product } from '@/types';
 
@@ -35,7 +35,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
       >
         <div className="relative aspect-square overflow-hidden rounded-[16px] bg-tile">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={product.image} alt="" loading="lazy" className="size-full object-cover" />
+          <img src={asset(product.image)} alt="" loading="lazy" className="size-full object-cover" />
         </div>
         <div className="flex flex-1 flex-col px-1.5 pt-2.5">
           {/* Narx — birinchi qator, eski narx — doim ikkinchi qator: nomlar bir qatorda tekislanadi */}

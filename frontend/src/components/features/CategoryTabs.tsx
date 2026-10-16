@@ -9,7 +9,7 @@ import { useEffect, useRef } from 'react';
 import { LayoutGrid } from 'lucide-react';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
-import { cn } from '@/lib/utils';
+import { asset, cn } from '@/lib/utils';
 import type { Category } from '@/types';
 
 export type CategoryFilter = 'all' | Category;
@@ -57,7 +57,7 @@ export function CategoryTabs({ value, onChange, variant = 'chips' }: CategoryTab
           >
             <span className="size-[52px] overflow-hidden rounded-full bg-tile">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMAGES[id]} alt="" className="size-full scale-110 object-cover" />
+              <img src={asset(IMAGES[id])} alt="" className="size-full scale-110 object-cover" />
             </span>
             <span className="w-full truncate text-center text-[12px] font-medium">{t(`catalog.categories.${id}`)}</span>
           </button>
@@ -87,7 +87,7 @@ export function CategoryTabs({ value, onChange, variant = 'chips' }: CategoryTab
               <LayoutGrid size={17} strokeWidth={2} />
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={IMAGES[id]} alt="" className="size-8 rounded-full bg-tile object-cover" />
+              <img src={asset(IMAGES[id])} alt="" className="size-8 rounded-full bg-tile object-cover" />
             )}
             {t(`catalog.categories.${id}`)}
           </button>

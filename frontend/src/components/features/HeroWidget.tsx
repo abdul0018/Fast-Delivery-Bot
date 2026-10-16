@@ -5,6 +5,7 @@ import { Bike, ShieldCheck, Timer, type LucideIcon } from 'lucide-react';
 import { buttonClasses } from '@/components/ui/Button';
 import { brand } from '@/config/brand';
 import { useI18n } from '@/hooks/useI18n';
+import { asset } from '@/lib/utils';
 
 /**
  * Asosiy vidjet — katta surat-banner: sarlavha, restoran tasdiqlagan va'dalar (brand.ts),
@@ -24,7 +25,7 @@ export function HeroWidget() {
     <section className="mx-4 overflow-hidden rounded-[24px] bg-surface">
       <div className="relative aspect-[2/1] bg-tile">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/products/hero-spread.jpg" alt="" className="size-full object-cover object-[50%_60%]" />
+        <img src={asset('/images/products/hero-spread.jpg')} alt="" className="size-full object-cover object-[50%_60%]" />
         {facts.length > 0 && (
           <ul className="absolute inset-x-3 bottom-3 flex flex-wrap gap-1.5">
             {facts.map(({ icon: Icon, label }) => (
