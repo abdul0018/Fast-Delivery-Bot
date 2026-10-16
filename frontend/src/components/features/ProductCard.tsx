@@ -45,7 +45,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
           <p className="price h-[18px] text-[13px] leading-[18px] text-ink-2 line-through">
             {product.oldPrice ? formatPrice(product.oldPrice) : null}
           </p>
-          <h3 className="mt-1 line-clamp-2 min-h-[2.6em] text-[14px] leading-[1.3] text-ink">{name}</h3>
+          <h3 className="mt-1 line-clamp-2 text-[14px] leading-[1.3] text-ink">{name}</h3>
         </div>
       </button>
 
