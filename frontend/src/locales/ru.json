@@ -9,7 +9,8 @@
     "decrease": "Уменьшить",
     "increase": "Увеличить",
     "prev": "Назад",
-    "next": "Далее"
+    "next": "Далее",
+    "clear": "Очистить"
   },
   "nav": {
     "home": "Главная",
@@ -30,7 +31,8 @@
     "slide2Step3": "Встречайте",
     "slide3Title": "Присоединяйтесь к 10 000+ клиентов!",
     "slide3Text": "Каждый день тысячи горячих и вкусных заказов — вовремя.",
-    "rating": "Рейтинг 4.9"
+    "rating": "Рейтинг 4.9",
+    "progress": "Слайды"
   },
   "home": {
     "greeting": "Добро пожаловать, {name}!",
@@ -47,7 +49,9 @@
     "storiesTitle": "Скидки",
     "menuTitle": "Меню",
     "searchPlaceholder": "Поиск блюд",
-    "promotions": "Акции"
+    "promotions": "Акции",
+    "deliverTo": "Адрес доставки",
+    "chooseAddress": "Укажите адрес"
   },
   "stories": {
     "s1Title": "-20%",
@@ -129,7 +133,10 @@
     "cancelOrder": "Отменить",
     "backToMenu": "Вернуться в меню",
     "thanks": "Спасибо!",
-    "onTheWay": "Ваш заказ принят"
+    "onTheWay": "Ваш заказ принят",
+    "remove": "Удалить",
+    "openCart": "Корзина",
+    "orderNumber": "Заказ"
   },
   "errors": {
     "CART_EMPTY": "Корзина пуста",
@@ -155,7 +162,9 @@
     "orders": "История заказов",
     "noOrders": "Заказов пока нет",
     "openInTelegram": "Откройте приложение через Telegram, чтобы увидеть историю заказов",
-    "items": "Товаров: {count}"
+    "items": "Товаров: {count}",
+    "saved": "Сохранено",
+    "save": "Сохранить"
   },
   "status": {
     "new": "Новый",

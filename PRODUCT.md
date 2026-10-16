@@ -29,6 +29,8 @@ Ordering lives entirely inside Telegram, the messenger Uzbek customers already u
 
 ## Brand Commitments
 - Working name "Fast Delivery" is a placeholder; each restaurant rebrands.
+- Visual direction is a standing preference: the category standard of food-delivery apps, played straight with a premium feel, benchmarked against Yandex Eda and Uzum Tezkor / Express24. No themed or ornamental worlds.
+- Always light: the app renders light surfaces even in Telegram dark mode (the user asked for no black surfaces).
 - Onboarding copy is fixed by the brief: "Och qoldingizmi? Biz eng mazali fast-foodlarni yetkazib beramiz.", "Qanday ishlaydi? 1. Tanlang 2. Buyurtma bering 3. Kutib oling.", "10,000+ mijozlarimiz safiga qo'shiling!", button "Boshlash".
 
 ## Evidence on Hand

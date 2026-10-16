@@ -1,12 +1,12 @@
 'use client';
 
 /**
- * Onboarding — faqat birinchi kirishda ko'rsatiladi (namunadagi qizil splash uslubida).
+ * Onboarding — faqat birinchi kirishda ko'rsatiladi.
  * 3 ta slayd: barmoq bilan surish (CSS scroll-snap) yoki "Keyingi" tugmasi.
- * Har bir slayd: oq likopchadagi taom, oq sarlavha va matn.
+ * Har bir slayd: katta yumaloq burchakli taom surati, sarlavha va matn.
  */
 import { useRef, useState, type ReactNode } from 'react';
-import { ClipboardCheck, DoorOpen, Hand } from 'lucide-react';
+import { ClipboardCheck, DoorOpen, Pointer, Star } from 'lucide-react';
 import { Logo } from '@/components/layout/Header';
 import { Button } from '@/components/ui/Button';
 import { useI18n } from '@/hooks/useI18n';
@@ -17,15 +17,12 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 
 function Slide({ image, children }: { image: string; children: ReactNode }) {
   return (
-    <section className="flex w-full shrink-0 snap-center snap-always flex-col px-7">
-      <div className="flex min-h-0 flex-1 items-center justify-center py-4">
-        {/* Oq likopcha */}
-        <span className="flex aspect-square h-full max-h-[260px] max-w-full items-center justify-center rounded-full bg-white shadow-[0_20px_40px_-20px_rgba(0,0,0,0.45)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={image} alt="" className="size-[80%] rounded-full object-cover" />
-        </span>
+    <section className="flex w-full shrink-0 snap-center snap-always flex-col px-4">
+      <div className="relative min-h-0 flex-1 overflow-hidden rounded-[28px] bg-tile">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={image} alt="" className="size-full object-cover" />
       </div>
-      <div className="shrink-0 pb-2 text-center">{children}</div>
+      <div className="shrink-0 px-2 pt-6">{children}</div>
     </section>
   );
 }
@@ -60,23 +57,16 @@ export function Onboarding() {
   };
 
   const steps = [
-    { icon: Hand, key: 'onboarding.slide2Step1' },
+    { icon: Pointer, key: 'onboarding.slide2Step1' },
     { icon: ClipboardCheck, key: 'onboarding.slide2Step2' },
     { icon: DoorOpen, key: 'onboarding.slide2Step3' },
   ] as const;
 
   return (
-    <div className="fixed inset-0 z-50 mx-auto flex max-w-lg flex-col bg-brand-fill text-on-brand">
-      <div className="flex items-center justify-between px-5 pt-4">
-        <LanguageSwitcher compact onBrand />
-        {!isLast && (
-          <button type="button" onClick={finish} className="text-sm font-semibold opacity-90">
-            {t('onboarding.skip')}
-          </button>
-        )}
-      </div>
-      <div className="flex justify-center pt-3">
+    <div className="fixed inset-0 z-50 mx-auto flex max-w-lg flex-col bg-ground">
+      <div className="flex items-center justify-between px-4 pt-3 pb-3">
         <Logo />
+        <LanguageSwitcher compact />
       </div>
 
       <div
@@ -86,21 +76,23 @@ export function Onboarding() {
       >
         {/* 1. Muammo / Yechim */}
         <Slide image="/images/products/classic-burger.jpg">
-          <h2 className="text-[30px] leading-tight font-black">{t('onboarding.slide1Title')}</h2>
-          <p className="mt-2 text-[16px] font-medium opacity-90">{t('onboarding.slide1Text')}</p>
+          <h2 className="text-[30px] leading-[1.1] font-semibold tracking-[-0.03em]">{t('onboarding.slide1Title')}</h2>
+          <p className="mt-2.5 text-[17px] leading-snug text-ink-2">{t('onboarding.slide1Text')}</p>
         </Slide>
 
         {/* 2. Qanday ishlaydi */}
         <Slide image="/images/products/bag-delivery.jpg">
-          <h2 className="text-[30px] leading-tight font-black">{t('onboarding.slide2Title')}</h2>
-          <ol className="mx-auto mt-3 w-fit space-y-2 text-left">
+          <h2 className="text-[30px] leading-[1.1] font-semibold tracking-[-0.03em]">{t('onboarding.slide2Title')}</h2>
+          <ol className="mt-4 grid grid-cols-3 gap-2">
             {steps.map(({ icon: Icon, key }, i) => (
-              <li key={key} className="flex items-center gap-3">
-                <span className="price flex size-8 shrink-0 items-center justify-center rounded-full bg-white text-[14px] font-bold text-brand-fill">
-                  {i + 1}
+              <li key={key} className="flex flex-col gap-2.5 rounded-[18px] bg-surface p-3">
+                <span className="flex items-center justify-between">
+                  <span className="price flex size-7 items-center justify-center rounded-full bg-brand text-[13px] font-semibold text-on-brand">
+                    {i + 1}
+                  </span>
+                  <Icon size={19} strokeWidth={1.9} className="text-ink-2" />
                 </span>
-                <span className="text-[17px] font-bold">{t(key)}</span>
-                <Icon size={20} strokeWidth={2} className="opacity-80" />
+                <span className="text-[14px] leading-tight font-medium">{t(key)}</span>
               </li>
             ))}
           </ol>
@@ -108,13 +100,16 @@ export function Onboarding() {
 
         {/* 3. Ijtimoiy isbot (raqamlar har bir restoran uchun almashtiriladi) */}
         <Slide image="/images/products/hero-spread.jpg">
-          <h2 className="text-[28px] leading-tight font-black">{t('onboarding.slide3Title')}</h2>
-          <p className="mt-2 text-[16px] font-medium opacity-90">{t('onboarding.rating')}</p>
+          <h2 className="text-[30px] leading-[1.1] font-semibold tracking-[-0.03em]">{t('onboarding.slide3Title')}</h2>
+          <p className="mt-2.5 flex items-center gap-1.5 text-[17px] text-ink-2">
+            <Star size={18} strokeWidth={0} className="fill-brand" />
+            {t('onboarding.rating')}
+          </p>
         </Slide>
       </div>
 
-      <div className="space-y-4 px-6 pt-3 pb-safe">
-        <div className="flex justify-center gap-2" role="tablist">
+      <div className="flex items-center gap-3 px-4 pt-6 pb-safe">
+        <div className="flex gap-1.5" role="tablist" aria-label={t('onboarding.progress')}>
           {Array.from({ length: total }, (_, i) => (
             <button
               key={i}
@@ -123,13 +118,23 @@ export function Onboarding() {
               aria-selected={i === index}
               aria-label={`${i + 1} / ${total}`}
               onClick={() => goTo(i)}
-              className={cn('h-2 rounded-full transition-all duration-300 ease-out-expo', i === index ? 'w-7 bg-white' : 'w-2 bg-white/45')}
+              className={cn(
+                'h-2 rounded-full transition-all duration-300 ease-out-expo',
+                i === index ? 'w-6 bg-ink' : 'w-2 bg-ink/20',
+              )}
             />
           ))}
         </div>
-        <Button variant="inverse" size="lg" fullWidth onClick={isLast ? finish : () => goTo(index + 1)} className="mb-2">
-          {isLast ? t('onboarding.start') : t('onboarding.next')}
-        </Button>
+        <div className={cn('flex items-center gap-1', isLast ? 'flex-1' : 'ml-auto')}>
+          {!isLast && (
+            <Button variant="ghost" size="lg" onClick={finish} className="px-3 text-[15px] whitespace-nowrap text-ink-2">
+              {t('onboarding.skip')}
+            </Button>
+          )}
+          <Button size="lg" onClick={isLast ? finish : () => goTo(index + 1)} className={cn('mb-1', isLast ? 'flex-1' : 'min-w-[116px]')}>
+            {isLast ? t('onboarding.start') : t('onboarding.next')}
+          </Button>
+        </div>
       </div>
     </div>
   );

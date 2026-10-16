@@ -2,11 +2,11 @@
 
 /**
  * Mahsulot tafsilotlari — alohida sahifa emas, pastdan chiquvchi Bottom Sheet.
- * Katta rasm (pushti fonda), nom va narx, tarkibi (bullet), "Qo'shimcha" ichimliklar qatori,
- * xavfni yopuvchi blok va pastga yopishgan "Savatchaga qo'shish — narx" tugmasi.
+ * Katta surat, nom va narx, tarkibi (bullet), ichimlik qo'shish qatori, xavfni yopuvchi blok
+ * va pastga yopishgan "soni + Savatchaga qo'shish — narx" paneli.
  */
 import { useEffect, useState } from 'react';
-import { Leaf, Plus, ShieldCheck, Timer } from 'lucide-react';
+import { Leaf, Plus, ShieldCheck, Timer, X } from 'lucide-react';
 import { BottomSheet } from '@/components/ui/BottomSheet';
 import { Button } from '@/components/ui/Button';
 import { QuantityStepper } from '@/components/ui/QuantityStepper';
@@ -48,7 +48,9 @@ export function ProductSheet() {
       ariaLabel={product?.name.uz}
       footer={product && <AddToCartButton product={product} quantity={quantity} onAdded={closeProduct} />}
     >
-      {product && <ProductDetails product={product} quantity={quantity} onQuantityChange={setQuantity} />}
+      {product && (
+        <ProductDetails product={product} quantity={quantity} onQuantityChange={setQuantity} onClose={closeProduct} />
+      )}
     </BottomSheet>
   );
 }
@@ -57,10 +59,12 @@ function ProductDetails({
   product,
   quantity,
   onQuantityChange,
+  onClose,
 }: {
   product: Product;
   quantity: number;
   onQuantityChange: (value: number) => void;
+  onClose: () => void;
 }) {
   const { t, pick, price } = useI18n();
   const { haptic } = useTelegram();
@@ -68,43 +72,63 @@ function ProductDetails({
   const showToast = useUiStore((state) => state.showToast);
   const products = useCatalogStore((state) => state.products);
   const discount = discountPercent(product.price, product.oldPrice);
-  // "Qo'shimcha" — ichimliklar (namunadagi "Add One" qatori)
+  const ingredients = pick(product.ingredients);
+  // Ichimlik qo'shish qatori (ichimlikning o'zida ko'rsatilmaydi)
   const addOns = product.category === 'drinks' ? [] : products.filter((item) => item.category === 'drinks').slice(0, 3);
 
   return (
     <div className="pb-6">
-      <div className="relative flex aspect-[5/4] w-full items-center justify-center bg-brand-fill">
+      <div className="relative aspect-[4/3] w-full bg-tile">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <span className="flex aspect-square h-[82%] items-center justify-center rounded-full bg-white shadow-[0_18px_40px_-18px_rgba(0,0,0,0.5)]">
-          <img src={product.image} alt={pick(product.name)} className="aspect-square h-[86%] rounded-full object-cover" />
-        </span>
+        <img src={product.image} alt={pick(product.name)} className="size-full object-cover" />
         {discount > 0 && (
-          <span className="price absolute bottom-4 left-4 rounded-full bg-white px-3 py-1 text-sm font-bold text-brand-fill">
+          <span className="price absolute bottom-3 left-4 rounded-[8px] bg-sale px-2 py-0.5 text-[13px] font-semibold text-white">
             −{discount}%
           </span>
         )}
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label={t('common.close')}
+          className="absolute top-3 right-3 flex size-9 items-center justify-center rounded-full bg-white/95 text-ink shadow-(--shadow-thumb)"
+        >
+          <X size={19} strokeWidth={2.25} />
+        </button>
       </div>
 
       <div className="space-y-6 px-5 pt-5">
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <h2 className="text-[24px] leading-tight font-extrabold">{pick(product.name)}</h2>
-            <p className="mt-1.5 text-[15px] font-medium text-ink-2">{pick(product.description)}</p>
+        <div>
+          <h2 className="text-[24px] leading-tight font-semibold">{pick(product.name)}</h2>
+          <div className="mt-2.5 flex items-center justify-between gap-3">
+            <p className="price flex min-w-0 flex-wrap items-baseline gap-x-2">
+              <span className={discount > 0 ? 'text-[22px] font-semibold text-sale' : 'text-[22px] font-semibold'}>
+                {price(product.price)}
+              </span>
+              {product.oldPrice && <span className="text-[15px] text-ink-2 line-through">{formatPrice(product.oldPrice)}</span>}
+            </p>
+            <QuantityStepper
+              label={t('product.quantity')}
+              value={quantity}
+              onIncrement={() => {
+                haptic.impact('light');
+                onQuantityChange(Math.min(50, quantity + 1));
+              }}
+              onDecrement={() => {
+                haptic.impact('light');
+                onQuantityChange(Math.max(1, quantity - 1));
+              }}
+            />
           </div>
-          <div className="shrink-0 text-right">
-            {product.oldPrice && <p className="price text-sm font-medium text-ink-2 line-through">{formatPrice(product.oldPrice)}</p>}
-            <p className="price text-[22px] leading-tight font-extrabold whitespace-nowrap text-sale">{formatPrice(product.price)}</p>
-            <p className="text-xs font-semibold text-ink-2">{t('common.currency')}</p>
-          </div>
+          <p className="mt-3 text-[15px] leading-relaxed text-ink-2">{pick(product.description)}</p>
         </div>
 
-        {pick(product.ingredients).length > 0 && (
+        {ingredients.length > 0 && (
           <section>
-            <h3 className="mb-2.5 text-[16px] font-bold">{t('product.ingredients')}</h3>
-            <ul className="space-y-2">
-              {pick(product.ingredients).map((ingredient) => (
-                <li key={ingredient} className="flex items-center gap-3 text-[15px] font-medium">
-                  <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-brand" />
+            <h3 className="mb-2 text-[17px] font-semibold">{t('product.ingredients')}</h3>
+            <ul className="divide-y divide-line rounded-[16px] bg-tile/60 px-4">
+              {ingredients.map((ingredient) => (
+                <li key={ingredient} className="flex items-center gap-3 py-2.5 text-[15px]">
+                  <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-ink-2" />
                   {ingredient}
                 </li>
               ))}
@@ -114,57 +138,47 @@ function ProductDetails({
 
         {addOns.length > 0 && (
           <section>
-            <h3 className="mb-2.5 text-[16px] font-bold">{t('product.addOne')}</h3>
-            <div className="grid grid-cols-3 gap-2.5">
+            <h3 className="mb-2 text-[17px] font-semibold">{t('product.addOneHint')}</h3>
+            <div className="grid grid-cols-3 gap-2">
               {addOns.map((item) => (
-                <div key={item.id} className="relative flex flex-col items-center rounded-[16px] bg-surface p-2 pb-2.5 text-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={item.image} alt="" className="size-16 rounded-full object-cover" />
-                  <span className="mt-1.5 line-clamp-1 text-[12px] font-bold">{pick(item.name)}</span>
-                  <span className="price text-[12px] font-bold text-sale">{price(item.price)}</span>
-                  <button
-                    type="button"
-                    aria-label={`+ ${pick(item.name)}`}
-                    onClick={() => {
-                      haptic.impact('medium');
-                      add(item);
-                      showToast(t('product.added'));
-                    }}
-                    className="absolute top-1.5 right-1.5 flex size-7 items-center justify-center rounded-full bg-accent text-on-accent active:scale-90"
-                  >
-                    <Plus size={16} strokeWidth={2.75} />
-                  </button>
-                </div>
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-label={`+ ${pick(item.name)}`}
+                  onClick={() => {
+                    haptic.impact('medium');
+                    add(item);
+                    showToast(t('product.added'));
+                  }}
+                  className="group flex flex-col rounded-[16px] bg-tile/60 p-1.5 pb-2.5 text-left transition-transform duration-200 ease-out-expo active:scale-[0.97]"
+                >
+                  <span className="relative block aspect-square overflow-hidden rounded-[12px] bg-tile">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.image} alt="" className="size-full object-cover" />
+                    <span className="absolute right-1.5 bottom-1.5 flex size-7 items-center justify-center rounded-full bg-surface text-ink shadow-(--shadow-thumb)">
+                      <Plus size={16} strokeWidth={2.25} />
+                    </span>
+                  </span>
+                  <span className="mt-2 line-clamp-1 px-1 text-[12px] text-ink">{pick(item.name)}</span>
+                  <span className="price px-1 text-[13px] font-semibold">{price(item.price)}</span>
+                </button>
               ))}
             </div>
           </section>
         )}
 
         {TRUST_ITEMS.length > 0 && (
-          <section className="grid gap-2.5 rounded-[18px] bg-surface px-4 py-3.5">
+          <section className="grid gap-3 rounded-[16px] border border-line px-4 py-3.5">
             {TRUST_ITEMS.map(({ icon: Icon, key }) => (
-              <div key={key} className="flex items-center gap-3 text-sm font-semibold">
-                <Icon size={18} strokeWidth={2} className="shrink-0 text-ok" />
+              <div key={key} className="flex items-center gap-3 text-[14px]">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ok/10 text-ok">
+                  <Icon size={17} strokeWidth={2} />
+                </span>
                 {t(key, { minutes: deliveryMinutes ?? '' })}
               </div>
             ))}
           </section>
         )}
-
-        <div className="flex items-center justify-between">
-          <span className="text-[15px] font-semibold text-ink-2">{t('product.quantity')}</span>
-          <QuantityStepper
-            value={quantity}
-            onIncrement={() => {
-              haptic.impact('light');
-              onQuantityChange(Math.min(50, quantity + 1));
-            }}
-            onDecrement={() => {
-              haptic.impact('light');
-              onQuantityChange(Math.max(1, quantity - 1));
-            }}
-          />
-        </div>
       </div>
     </div>
   );

@@ -11,8 +11,8 @@ const OPTIONS: { value: Lang; label: string }[] = [
   { value: 'ru', label: 'Русский' },
 ];
 
-/** UZ / RU almashtirgich — tanlov backend'ga ham saqlanadi (bot ham shu tilda javob beradi) */
-export function LanguageSwitcher({ compact = false, onBrand = false }: { compact?: boolean; onBrand?: boolean }) {
+/** UZ / RU segment boshqaruvi — tanlov backend'ga ham saqlanadi (bot ham shu tilda javob beradi) */
+export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   const { lang, setLang } = useI18n();
   const { haptic } = useTelegram();
   const updateMe = useUserStore((state) => state.updateMe);
@@ -25,10 +25,7 @@ export function LanguageSwitcher({ compact = false, onBrand = false }: { compact
   };
 
   return (
-    <div
-      role="radiogroup"
-      className={cn('inline-flex rounded-full p-1', onBrand ? 'bg-white/20' : 'bg-surface', !compact && 'w-full')}
-    >
+    <div role="radiogroup" className={cn('inline-flex rounded-[12px] bg-tile p-[3px]', !compact && 'w-full')}>
       {OPTIONS.map((option) => {
         const active = lang === option.value;
         return (
@@ -37,17 +34,12 @@ export function LanguageSwitcher({ compact = false, onBrand = false }: { compact
             type="button"
             role="radio"
             aria-checked={active}
+            aria-label={option.label}
             onClick={() => change(option.value)}
             className={cn(
-              'flex-1 rounded-full font-bold transition-colors duration-200',
-              compact ? 'px-3 py-1 text-xs' : 'px-4 py-2.5 text-sm',
-              active
-                ? onBrand
-                  ? 'bg-white text-brand-fill'
-                  : 'bg-brand-fill text-on-brand'
-                : onBrand
-                  ? 'text-white'
-                  : 'text-ink-2',
+              'flex-1 rounded-[9px] font-medium transition-[background-color,color,box-shadow] duration-200',
+              compact ? 'px-3 py-1.5 text-[13px]' : 'px-4 py-2 text-[14px]',
+              active ? 'bg-surface text-ink shadow-(--shadow-thumb)' : 'text-ink-2',
             )}
           >
             {compact ? option.value.toUpperCase() : option.label}

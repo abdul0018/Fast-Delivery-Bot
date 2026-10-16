@@ -7,13 +7,13 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { MapPin, MessageSquareText, Phone, ShoppingCart } from 'lucide-react';
+import { MapPin, MessageSquareText, Phone, ShoppingBag, Trash2 } from 'lucide-react';
 import { CartList } from '@/components/features/CartList';
 import { OrderBump } from '@/components/features/OrderBump';
 import { OrderSuccess } from '@/components/features/OrderSuccess';
 import { PaymentMethods } from '@/components/features/PaymentMethods';
 import { PageHeader } from '@/components/layout/Header';
-import { Button } from '@/components/ui/Button';
+import { Button, buttonClasses } from '@/components/ui/Button';
 import { Input, Textarea } from '@/components/ui/Input';
 import { useCart } from '@/hooks/useCart';
 import { useCatalog } from '@/hooks/useCatalog';
@@ -136,16 +136,14 @@ export default function CartPage() {
     return (
       <>
         <PageHeader title={t('cart.title')} />
-        <div className="flex flex-col items-center px-8 pt-16 text-center">
-          <div className="flex size-28 items-center justify-center rounded-full bg-soft text-brand-ink">
-            <ShoppingCart size={48} strokeWidth={1.9} />
+        <div className="mx-4 flex flex-col items-center rounded-[24px] bg-surface px-6 pt-10 pb-6 text-center">
+          <div className="flex size-20 items-center justify-center rounded-full bg-tile text-ink-2">
+            <ShoppingBag size={36} strokeWidth={1.6} />
           </div>
-          <h2 className="mt-6 text-[24px] font-bold">{t('cart.empty')}</h2>
-          <p className="mt-2 font-medium text-ink-2">{t('cart.emptyText')}</p>
-          <Link href="/catalog" className="mt-6 w-full">
-            <Button size="lg" fullWidth>
-              {t('cart.goCatalog')}
-            </Button>
+          <h2 className="mt-5 text-[22px] font-semibold">{t('cart.empty')}</h2>
+          <p className="mt-1.5 text-ink-2">{t('cart.emptyText')}</p>
+          <Link href="/catalog" className={buttonClasses({ size: 'lg', fullWidth: true, className: 'mt-6' })}>
+            {t('cart.goCatalog')}
           </Link>
         </div>
       </>
@@ -159,9 +157,23 @@ export default function CartPage() {
       <PageHeader
         title={t('cart.title')}
         subtitle={t('cart.itemsInCart', { count: cart.count })}
+        action={
+          <button
+            type="button"
+            onClick={() => {
+              haptic.impact('rigid');
+              cart.clear();
+            }}
+            aria-label={t('cart.clear')}
+            className="flex h-10 items-center gap-1.5 rounded-[12px] bg-surface px-3 text-[14px] font-medium text-ink-2"
+          >
+            <Trash2 size={16} strokeWidth={2} />
+            {t('cart.clear')}
+          </button>
+        }
       />
 
-      <div className="space-y-7 px-4">
+      <div className="space-y-6 px-4">
         {/* 1. Order Stack */}
         <CartList />
 
@@ -169,92 +181,83 @@ export default function CartPage() {
         <OrderBump />
 
         {/* 3. Yetkazib berish */}
-        <section className="space-y-3">
-          <h2 className="text-[19px] font-bold">{t('cart.delivery')}</h2>
-          <Textarea
-            id="address"
-            icon={<MapPin size={15} strokeWidth={2} />}
-            label={t('cart.address')}
-            placeholder={t('cart.addressPlaceholder')}
-            value={address}
-            error={addressError}
-            onChange={(event) => {
-              setAddress(event.target.value);
-              setAddressError(undefined);
-            }}
-          />
-          <Input
-            id="phone"
-            icon={<Phone size={15} strokeWidth={2} />}
-            label={t('cart.phone')}
-            type="tel"
-            inputMode="tel"
-            placeholder={t('cart.phonePlaceholder')}
-            value={phone}
-            onChange={(event) => setPhone(event.target.value)}
-          />
-          <Input
-            id="comment"
-            icon={<MessageSquareText size={15} strokeWidth={2} />}
-            label={t('cart.comment')}
-            placeholder={t('cart.commentPlaceholder')}
-            value={comment}
-            onChange={(event) => setComment(event.target.value)}
-          />
+        <section>
+          <h2 className="mb-3 text-[20px] font-semibold">{t('cart.delivery')}</h2>
+          <div className="space-y-3 rounded-[20px] bg-surface p-4">
+            <Textarea
+              id="address"
+              icon={<MapPin size={15} strokeWidth={2} />}
+              label={t('cart.address')}
+              placeholder={t('cart.addressPlaceholder')}
+              value={address}
+              error={addressError}
+              onChange={(event) => {
+                setAddress(event.target.value);
+                setAddressError(undefined);
+              }}
+            />
+            <Input
+              id="phone"
+              icon={<Phone size={15} strokeWidth={2} />}
+              label={t('cart.phone')}
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              placeholder={t('cart.phonePlaceholder')}
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+            />
+            <Input
+              id="comment"
+              icon={<MessageSquareText size={15} strokeWidth={2} />}
+              label={t('cart.comment')}
+              placeholder={t('cart.commentPlaceholder')}
+              value={comment}
+              onChange={(event) => setComment(event.target.value)}
+            />
+          </div>
         </section>
 
         {/* 4. To'lov usuli */}
-        <section className="space-y-3">
-          <h2 className="text-[19px] font-bold">{t('cart.payment')}</h2>
+        <section>
+          <h2 className="mb-3 text-[20px] font-semibold">{t('cart.payment')}</h2>
           <PaymentMethods available={available} starsRate={config?.starsRateUzs ?? 200} total={cart.total} />
         </section>
 
         {/* 5. Jami */}
-        <section className="rounded-[20px] bg-surface px-4 py-4 text-[15px] font-medium">
-          <dl className="space-y-2">
-            <div className="flex justify-between">
+        <section className="rounded-[20px] bg-surface p-4 text-[15px]">
+          <dl className="space-y-2.5">
+            <div className="flex justify-between gap-3">
               <dt className="text-ink-2">{t('cart.subtotal')}</dt>
               <dd className="price">{price(cart.subtotal)}</dd>
             </div>
             {cart.bumpPrice > 0 && (
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-3">
                 <dt className="text-ink-2">{t('cart.bump')}</dt>
                 <dd className="price">{price(cart.bumpPrice)}</dd>
               </div>
             )}
-            <div className="flex justify-between">
+            <div className="flex justify-between gap-3">
               <dt className="text-ink-2">{t('cart.deliveryFee')}</dt>
-              <dd className="font-bold text-ok">{t('cart.free')}</dd>
+              <dd className="font-medium text-ok">{t('cart.free')}</dd>
             </div>
           </dl>
-          <div className="mt-3 flex items-baseline justify-between border-t border-line pt-3">
-            <span className="text-[18px] font-bold">{t('cart.total')}:</span>
-            <span className="price text-[24px] font-extrabold text-sale">{price(cart.total)}</span>
+          <div className="mt-3.5 flex items-baseline justify-between border-t border-line pt-3.5">
+            <span className="text-[17px] font-semibold">{t('cart.total')}</span>
+            <span className="price text-[22px] font-semibold">{price(cart.total)}</span>
           </div>
         </section>
-
-        {/* Namunadagidek: "Bekor qilish" va "Menyuga qaytish" */}
-        <div className="flex flex-col items-center gap-3">
-          <Button variant="outline" fullWidth onClick={cart.clear}>
-            {t('cart.cancelOrder')}
-          </Button>
-          <Link href="/catalog" className="text-[14px] font-bold text-ink">
-            {t('cart.backToMenu')}
-          </Link>
-        </div>
       </div>
 
       {/* Sticky CTA — pastki navigatsiya ustida */}
       <div
-        className="fixed inset-x-0 z-30 mx-auto max-w-lg bg-ground px-4 pt-2 pb-2 before:pointer-events-none before:absolute before:inset-x-0 before:-top-5 before:h-5 before:bg-gradient-to-t before:from-ground before:to-transparent"
-        style={{ bottom: 'calc(60px + max(env(safe-area-inset-bottom), 0.5rem))' }}
+        className="fixed inset-x-0 z-30 mx-auto max-w-lg bg-ground px-4 pt-2 pb-2 before:pointer-events-none before:absolute before:inset-x-0 before:-top-6 before:h-6 before:bg-gradient-to-t before:from-ground before:to-transparent"
+        style={{ bottom: 'calc(62px + max(env(safe-area-inset-bottom), 0.5rem))' }}
       >
         <Button size="lg" fullWidth loading={submitting} onClick={submit}>
           {submitting ? t('cart.processing') : t(ctaLabel, { price: price(cart.total) })}
         </Button>
       </div>
-      <div className="h-24" />
-
     </>
   );
 }

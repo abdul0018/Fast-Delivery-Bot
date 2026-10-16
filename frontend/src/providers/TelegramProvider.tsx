@@ -46,10 +46,10 @@ export function TelegramProvider({ children }: { children: ReactNode }) {
       tg.expand();
       // Bottom Sheet'ni pastga tortganda ilova yopilib qolmasligi uchun (Bot API 7.7+)
       if (tg.isVersionAtLeast('7.7')) tg.disableVerticalSwipes?.();
-      // Telegram sarlavhasi brend rangida, fon — oq
+      // Telegram sarlavhasi va foni ilova foni bilan bir xil — ilova Telegram ichida "tikilgan" ko'rinadi
       if (tg.isVersionAtLeast('6.9')) {
-        tg.setHeaderColor(brand.colors.brand);
-        tg.setBackgroundColor('#ffffff');
+        tg.setHeaderColor(brand.chrome);
+        tg.setBackgroundColor(brand.chrome);
       }
 
       setWebApp(tg);

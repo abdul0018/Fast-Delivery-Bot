@@ -1,17 +1,18 @@
 'use client';
 
 /**
- * Instagram stories uslubidagi chegirmalar bloki (UI).
- * Doiracha bosilganda to'liq ekranli ko'ruvchi ochiladi: avtomatik o'tish, chap/o'ng tegish.
+ * Instagram stories uslubidagi chegirmalar (UI): yumaloq-to'rtburchak surat plitkalari,
+ * ko'rilmaganlari brend rangidagi halqa bilan. Bosilganda to'liq ekranli ko'ruvchi ochiladi.
  */
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
-import { ArrowRight, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import type { TranslationKey } from '@/lib/i18n';
+import { cn } from '@/lib/utils';
 import { useSettingsStore } from '@/store/settingsStore';
 
 interface Story {
@@ -53,43 +54,42 @@ function StoryViewer({ startIndex, onClose }: { startIndex: number; onClose: () 
   }, [story.id, next, markStorySeen]);
 
   return createPortal(
-    <div role="dialog" aria-modal="true" className="fixed inset-0 z-[70] mx-auto flex max-w-lg animate-fade-in flex-col bg-brand-fill text-on-brand">
-      {/* Progress chiziqlari */}
-      <div className="absolute inset-x-0 top-0 z-20 flex gap-1 px-3 pt-3">
-        {STORIES.map((item, i) => (
-          <div key={item.id} className="h-[3px] flex-1 overflow-hidden rounded-full bg-white/35">
-            {i < index && <div className="h-full w-full bg-white" />}
-            {i === index && (
-              <div
-                key={story.id}
-                className="h-full w-full origin-left animate-story bg-white"
-                style={{ animationDuration: `${STORY_DURATION_MS}ms` }}
-              />
-            )}
-          </div>
-        ))}
-      </div>
-      <button
-        type="button"
-        onClick={onClose}
-        aria-label={t('common.close')}
-        className="absolute top-6 right-3 z-30 flex size-10 items-center justify-center rounded-full bg-white/90 text-brand-fill"
-      >
-        <X size={22} strokeWidth={2.25} />
-      </button>
-
-      <div className="relative flex-1 overflow-hidden">
+    <div role="dialog" aria-modal="true" aria-label={t(story.title)} className="fixed inset-0 z-[70] mx-auto flex max-w-lg animate-fade-in flex-col bg-surface">
+      <div className="relative min-h-0 flex-1 overflow-hidden bg-tile">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img key={story.id} src={story.image} alt="" className="size-full animate-fade-in object-cover" />
+        {/* Progress chiziqlari o'qilishi uchun tepada yengil soyalik */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/35 to-transparent" />
+        <div className="absolute inset-x-0 top-0 z-20 flex gap-1 px-3 pt-3">
+          {STORIES.map((item, i) => (
+            <div key={item.id} className="h-[3px] flex-1 overflow-hidden rounded-full bg-white/40">
+              {i < index && <div className="h-full w-full bg-white" />}
+              {i === index && (
+                <div
+                  key={story.id}
+                  className="h-full w-full origin-left animate-story bg-white"
+                  style={{ animationDuration: `${STORY_DURATION_MS}ms` }}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label={t('common.close')}
+          className="absolute top-7 right-3 z-30 flex size-10 items-center justify-center rounded-full bg-white text-ink shadow-(--shadow-thumb)"
+        >
+          <X size={20} strokeWidth={2.25} />
+        </button>
         {/* Chap / o'ng tegish zonalari */}
         <button type="button" aria-label={t('common.prev')} className="absolute inset-y-0 left-0 z-10 w-1/3" onClick={prev} />
         <button type="button" aria-label={t('common.next')} className="absolute inset-y-0 right-0 z-10 w-2/3" onClick={next} />
       </div>
-      <div className="relative z-20 -mt-8 rounded-t-[28px] bg-brand-fill px-6 pt-6 pb-safe">
-        <h3 className="text-[44px] leading-none font-black">{t(story.title)}</h3>
-        <p className="mt-3 text-lg font-medium text-on-brand">{t(story.text)}</p>
+      <div className="relative z-20 -mt-6 rounded-t-[24px] bg-surface px-5 pt-6 pb-safe">
+        <h3 className="text-[34px] leading-none font-semibold tracking-[-0.03em]">{t(story.title)}</h3>
+        <p className="mt-3 text-[17px] leading-snug text-ink-2">{t(story.text)}</p>
         <Button
-          variant="inverse"
           size="lg"
           fullWidth
           className="mt-6 mb-3"
@@ -99,7 +99,6 @@ function StoryViewer({ startIndex, onClose }: { startIndex: number; onClose: () 
           }}
         >
           {t('home.viewCatalog')}
-          <ArrowRight size={18} strokeWidth={2.25} />
         </Button>
       </div>
     </div>,
@@ -116,8 +115,7 @@ export function Stories() {
 
   return (
     <>
-      {/* "Aksiyalar" — namunadagi Promotions kartalari; har biri Instagram stories'dek ochiladi */}
-      <div className="no-scrollbar -mx-4 flex gap-3 overflow-x-auto px-4" aria-label={t('home.storiesTitle')}>
+      <div className="no-scrollbar flex gap-2.5 overflow-x-auto px-4 py-0.5" aria-label={t('home.storiesTitle')}>
         {STORIES.map((story, i) => {
           const isSeen = seen.includes(story.id);
           return (
@@ -128,15 +126,18 @@ export function Stories() {
                 haptic.impact('light');
                 setOpenIndex(i);
               }}
-              className="flex w-[210px] shrink-0 items-center gap-3 rounded-[18px] bg-surface p-2.5 pr-3 text-left"
+              className={cn(
+                'shrink-0 rounded-[20px] p-[2.5px] transition-transform duration-200 ease-out-expo active:scale-[0.97]',
+                isSeen ? 'bg-transparent' : 'bg-brand',
+              )}
             >
-              <span className={isSeen ? 'inline-flex shrink-0 rounded-full p-[2px] ring-2 ring-line' : 'inline-flex shrink-0 rounded-full p-[2px] ring-2 ring-brand'}>
+              <span className="relative block h-[112px] w-[88px] overflow-hidden rounded-[17.5px] border-2 border-ground bg-tile">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={story.image} alt="" className="size-12 rounded-full object-cover" />
-              </span>
-              <span className="min-w-0">
-                <span className="block text-[15px] font-bold">{t(story.title)}</span>
-                <span className="line-clamp-2 block text-[12px] leading-snug font-medium text-ink-2">{t(story.text)}</span>
+                <img src={story.image} alt="" className="size-full object-cover" />
+                <span className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/65 to-transparent" />
+                <span className="absolute inset-x-2 bottom-2 text-left text-[13px] leading-tight font-semibold text-white">
+                  {t(story.title)}
+                </span>
               </span>
             </button>
           );

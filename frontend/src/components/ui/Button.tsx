@@ -12,18 +12,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-brand-fill text-on-brand hover:brightness-110 active:brightness-95',
-  secondary: 'bg-soft text-brand-ink hover:brightness-[0.98]',
-  ghost: 'bg-transparent text-ink hover:bg-muted',
-  outline: 'border-[1.5px] border-brand bg-transparent text-brand-ink hover:bg-soft',
-  // Oq tugma — qizil fon ustida (splash, aksiya kartasi)
-  inverse: 'bg-white text-brand-fill hover:brightness-95',
+  // Brend rangidagi asosiy tugma (za'faron, to'q matn)
+  primary: 'bg-brand text-on-brand hover:brightness-[1.04] active:brightness-95',
+  // Kulrang tugma — ikkinchi darajali amallar
+  secondary: 'bg-tile text-ink hover:brightness-[0.98] active:brightness-95',
+  ghost: 'bg-transparent text-ink hover:bg-tile',
+  outline: 'border border-line bg-surface text-ink hover:bg-tile',
+  // Oq tugma — surat yoki rangli fon ustida
+  inverse: 'bg-white text-ink hover:brightness-95',
 };
 
 const sizes: Record<Size, string> = {
-  sm: 'h-9 px-4 text-[13px]',
-  md: 'h-11 px-5 text-[14px]',
-  lg: 'h-[52px] px-6 text-[16px]',
+  sm: 'h-9 rounded-[12px] px-3.5 text-[13px]',
+  md: 'h-12 rounded-[14px] px-5 text-[15px]',
+  lg: 'h-14 rounded-[16px] px-6 text-[16px]',
 };
 
 /** Tugma klasslari — <Link> kabi boshqa elementlarni ham bir xil ko'rinishda qilish uchun */
@@ -34,8 +36,8 @@ export function buttonClasses({
   className,
 }: { variant?: Variant; size?: Size; fullWidth?: boolean; className?: string } = {}) {
   return cn(
-    'inline-flex select-none items-center justify-center gap-2 rounded-full font-display font-bold',
-    'transition-[transform,filter,background-color] duration-200 ease-out-expo active:scale-[0.97]',
+    'inline-flex select-none items-center justify-center gap-2 font-semibold',
+    'transition-[transform,filter,background-color] duration-200 ease-out-expo active:scale-[0.98]',
     'disabled:pointer-events-none disabled:opacity-45',
     variants[variant],
     sizes[size],

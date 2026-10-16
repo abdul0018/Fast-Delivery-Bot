@@ -32,7 +32,7 @@ function CatalogContent() {
       <PageHeader title={t('catalog.title')} subtitle={t('catalog.subtitle')} />
 
       <div className="px-4 pb-3">
-        <label className="flex h-12 items-center gap-2.5 rounded-[16px] bg-surface px-4 text-ink-2 focus-within:ring-[1.5px] focus-within:ring-brand">
+        <label className="flex h-12 items-center gap-2.5 rounded-[14px] border border-transparent bg-surface px-4 text-ink-2 transition-colors duration-200 focus-within:border-ink/70">
           <Search size={19} strokeWidth={2} className="shrink-0" />
           <input
             id="catalog-search"
@@ -41,41 +41,41 @@ function CatalogContent() {
             autoFocus={searchParams.get('search') === '1'}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t('catalog.searchPlaceholder')}
-            className="min-w-0 flex-1 bg-transparent text-[15px] font-medium text-ink outline-none placeholder:text-ink-2"
+            className="min-w-0 flex-1 bg-transparent text-[15px] text-ink outline-none placeholder:text-ink-2"
           />
           {query && (
-            <button type="button" aria-label={t('common.close')} onClick={() => setQuery('')}>
+            <button type="button" aria-label={t('common.clear')} onClick={() => setQuery('')} className="-mr-1 flex size-8 items-center justify-center rounded-full">
               <X size={18} strokeWidth={2} />
             </button>
           )}
         </label>
       </div>
 
-      <div className="sticky top-0 z-30 bg-ground pt-1 pb-2">
+      <div className="sticky top-0 z-30 bg-ground/95 pt-1 pb-2 backdrop-blur-md">
         <CategoryTabs value={category} onChange={setCategory} />
       </div>
 
       <div className="px-4 pt-2">
         {status === 'error' ? (
           <div className="flex flex-col items-center gap-3 py-16 text-center">
-            <span className="flex size-16 items-center justify-center rounded-full bg-soft text-brand-ink">
+            <span className="flex size-16 items-center justify-center rounded-full bg-surface text-ink-2">
               <WifiOff size={28} strokeWidth={2} />
             </span>
-            <p className="font-medium text-ink-2">{t(error === 'NETWORK' ? 'errors.NETWORK' : 'common.loadError')}</p>
+            <p className="text-ink-2">{t(error === 'NETWORK' ? 'errors.NETWORK' : 'common.loadError')}</p>
             <Button variant="secondary" onClick={reload}>
               {t('common.retry')}
             </Button>
           </div>
         ) : status !== 'ready' && products.length === 0 ? (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2.5">
             {Array.from({ length: 6 }, (_, i) => (
-              <Skeleton key={i} className="h-[250px]" />
+              <Skeleton key={i} className="h-[248px]" />
             ))}
           </div>
         ) : visible.length === 0 ? (
-          <p className="py-16 text-center font-medium text-ink-2">{q ? t('catalog.noResults') : t('catalog.empty')}</p>
+          <p className="py-16 text-center text-ink-2">{q ? t('catalog.noResults') : t('catalog.empty')}</p>
         ) : (
-          <div key={category} className="grid animate-rise grid-cols-2 gap-3">
+          <div key={category} className="grid animate-rise grid-cols-2 gap-2.5">
             {visible.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

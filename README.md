@@ -5,7 +5,7 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 | Qism | Texnologiyalar | Papka |
 |---|---|---|
 | Bot + REST API | Node.js, Telegraf, Express, Sequelize, PostgreSQL (Neon) | [`backend/`](backend) |
-| Mini App | Next.js (App Router), TypeScript, Tailwind CSS v4, Zustand, Lucide, Red Hat Display | [`frontend/`](frontend) |
+| Mini App | Next.js (App Router), TypeScript, Tailwind CSS v4, Zustand, Lucide, Onest | [`frontend/`](frontend) |
 
 ## Imkoniyatlar
 
@@ -26,16 +26,17 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 
 ### Dizayn
 
-UI foydalanuvchi bergan namuna asosida va [Impeccable](https://impeccable.style) (`.claude/skills/impeccable`) yordamida:
-oq fon, yorqin qizil (#F00000), och kulrang kartochkalar, yashil "+" tugmalar, pushti yumshoq fon,
-oddiy chiziqli ikonkalar (Lucide), Red Hat Display shrifti (kirill harflari uchun Manrope).
-Qizil splash/onboarding, "Menyu" sahifasi qidiruv va kategoriya plitkalari bilan, qizil "Rahmat!" ekrani.
+UI [Impeccable](https://impeccable.style) (`.claude/skills/impeccable`) yordamida: yetkazib berish ilovalarining standarti
+(Yandex Eda / Uzum Tezkor darajasida), premium va xotirjam. Iliq-neytral kulrang fon, oq kartochkalar, taom suratlari va narxlar
+oldinda, bitta za'faron rangli brend (#FFC21A, ustida to'q matn), chegirmadagi narx qizil, Lucide ikonkalar, Onest shrifti
+(lotin va kirill). "+" tugmasi o'sha joyda "− 1 +" boshqaruviga aylanadi, pastki menyu ustida suzuvchi savatcha paneli
+(soni va jami summa), oq "Rahmat!" ekrani. Ilova doim yorug' mavzuda (Telegram tungi rejimida ham).
 Mahsulot konteksti: [`PRODUCT.md`](PRODUCT.md), yo'nalish shartnomasi: `.impeccable/surfaces/`, dizayn tizimi: [`DESIGN.md`](DESIGN.md).
 
 **Boshqa restoranga moslashtirish:** faqat [`frontend/src/config/brand.ts`](frontend/src/config/brand.ts) ni o'zgartiring —
-`name`, `brand` (asosiy qizil), `onBrand` (uning ustidagi matn), `accent` / `onAccent` ("+" tugmalari rangi), `soft` (yumshoq fon),
-hamda `promises` (30 daqiqa, halol, bepul yetkazish — bajarilmaydiganini o'chiring).
-Butun interfeys va Telegram sarlavha rangi shu tokenlardan olinadi; tungi (dark) mavzu avtomatik.
+`name`, `brand` (asosiy rang), `onBrand` (uning ustidagi matn, kontrast ≥ 4.5:1), `brandSoft` / `brandInk` (och fon va undagi matn),
+`chrome` (Telegram sarlavha/fon rangi) hamda `promises` (30 daqiqa, halol, bepul yetkazish — bajarilmaydiganini o'chiring).
+Butun interfeys shu tokenlardan olinadi.
 
 **Rasmlar:** `frontend/public/images/products/*.jpg` — Pollinations.ai (bepul) orqali yaratilgan **namuna** rasmlar
 (har bir faylga prompt va manba JPEG izohi sifatida yozilgan). Restoranning haqiqiy fotosuratlari bilan shu nomlarda almashtiring.

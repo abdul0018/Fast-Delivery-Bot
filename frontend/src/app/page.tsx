@@ -1,6 +1,6 @@
 'use client';
 
-/** Bosh sahifa (namunadagi "Menu"): sarlavha va avatar, qidiruv, kategoriyalar, aksiyalar, banner, ommabop */
+/** Bosh sahifa: manzil va salom, qidiruv, stories, banner, kategoriyalar, ommabop */
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChevronRight, Search } from 'lucide-react';
@@ -16,12 +16,12 @@ import { discountPercent } from '@/lib/utils';
 
 function SectionTitle({ title, href, more }: { title: string; href?: string; more?: string }) {
   return (
-    <div className="flex items-baseline justify-between px-4 pb-2.5">
-      <h2 className="text-[19px] font-bold">{title}</h2>
+    <div className="flex items-center justify-between px-4 pb-3">
+      <h2 className="text-[20px] leading-tight font-semibold">{title}</h2>
       {href && more && (
-        <Link href={href} className="flex items-center text-[13px] font-semibold text-brand-ink">
+        <Link href={href} className="-mr-1 flex items-center gap-0.5 rounded-[10px] px-1 text-[14px] font-medium text-ink-2">
           {more}
-          <ChevronRight size={16} strokeWidth={2.25} />
+          <ChevronRight size={17} strokeWidth={2} />
         </Link>
       )}
     </div>
@@ -36,38 +36,36 @@ export default function HomePage() {
   // Eng katta chegirmali mahsulotlar — "Ommabop"
   const popular = [...products]
     .sort((a, b) => discountPercent(b.price, b.oldPrice) - discountPercent(a.price, a.oldPrice))
-    .slice(0, 4);
+    .slice(0, 6);
 
   return (
-    <div className="space-y-5 pb-2">
+    <div className="space-y-6 pb-2">
       <HomeHeader>
         {/* Qidiruv — katalogdagi qidiruv maydonini ochadi */}
         <Link
           href="/catalog?search=1"
-          className="mt-3.5 flex h-12 items-center gap-2.5 rounded-[16px] bg-surface px-4 text-[15px] font-medium text-ink-2"
+          className="mt-4 flex h-12 items-center gap-2.5 rounded-[14px] bg-surface px-4 text-[15px] text-ink-2"
         >
           <Search size={19} strokeWidth={2} />
           {t('home.searchPlaceholder')}
         </Link>
       </HomeHeader>
 
-      <CategoryTabs value="all" onChange={(id) => router.push(id === 'all' ? '/catalog' : `/catalog?category=${id}`)} />
-
-      <section>
-        <SectionTitle title={t('home.promotions')} />
-        <div className="px-4">
-          <Stories />
-        </div>
-      </section>
+      <Stories />
 
       <HeroWidget />
 
       <section>
+        <SectionTitle title={t('catalog.title')} href="/catalog" more={t('home.seeAll')} />
+        <CategoryTabs variant="tiles" value={null} onChange={(id) => router.push(`/catalog?category=${id}`)} />
+      </section>
+
+      <section>
         <SectionTitle title={t('home.popular')} href="/catalog" more={t('home.seeAll')} />
-        <div className="grid grid-cols-2 gap-3 px-4">
+        <div className="no-scrollbar flex gap-2.5 overflow-x-auto px-4 pb-1">
           {status !== 'ready' && products.length === 0
-            ? Array.from({ length: 4 }, (_, i) => <Skeleton key={i} className="h-[250px]" />)
-            : popular.map((product) => <ProductCard key={product.id} product={product} />)}
+            ? Array.from({ length: 3 }, (_, i) => <Skeleton key={i} className="h-[236px] w-[164px] shrink-0" />)
+            : popular.map((product) => <ProductCard key={product.id} product={product} className="w-[164px] shrink-0" />)}
         </div>
       </section>
     </div>

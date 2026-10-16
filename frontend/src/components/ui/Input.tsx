@@ -8,20 +8,20 @@ interface FieldProps {
 }
 
 const fieldClass =
-  'w-full rounded-[16px] border-[1.5px] border-transparent bg-surface px-4 py-3 text-ink placeholder:text-ink-2 outline-none transition-[border-color] duration-200 focus:border-brand';
+  'w-full rounded-[14px] border border-transparent bg-tile px-4 py-3 text-ink placeholder:text-ink-2 outline-none transition-[border-color,background-color] duration-200 focus:border-ink/70 focus:bg-surface';
 
 function FieldWrapper({ label, icon, error, id, children }: FieldProps & { id?: string; children: ReactNode }) {
   return (
     <div>
       {label && (
-        <label htmlFor={id} className="mb-1.5 flex items-center gap-1.5 text-[13px] font-semibold text-ink-2">
+        <label htmlFor={id} className="mb-1.5 flex items-center gap-1.5 text-[13px] font-medium text-ink-2">
           {icon}
           {label}
         </label>
       )}
       {children}
       {error && (
-        <p role="alert" className="mt-1.5 text-[13px] font-semibold text-sale">
+        <p role="alert" className="mt-1.5 text-[13px] font-medium text-sale">
           {error}
         </p>
       )}
@@ -35,7 +35,13 @@ export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
 ) {
   return (
     <FieldWrapper label={label} icon={icon} error={error} id={id}>
-      <input ref={ref} id={id} aria-invalid={Boolean(error) || undefined} className={cn(fieldClass, error && 'border-sale', className)} {...props} />
+      <input
+        ref={ref}
+        id={id}
+        aria-invalid={Boolean(error) || undefined}
+        className={cn(fieldClass, error && 'border-sale bg-surface', className)}
+        {...props}
+      />
     </FieldWrapper>
   );
 });
@@ -49,7 +55,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaHTMLAttributes<H
           id={id}
           rows={2}
           aria-invalid={Boolean(error) || undefined}
-          className={cn(fieldClass, 'resize-none', error && 'border-sale', className)}
+          className={cn(fieldClass, 'resize-none', error && 'border-sale bg-surface', className)}
           {...props}
         />
       </FieldWrapper>
