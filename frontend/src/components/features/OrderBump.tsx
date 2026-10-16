@@ -33,8 +33,8 @@ export function OrderBump() {
             {t('cart.bumpText', { name: pick(product.name), price: formatPrice(price) })}
           </span>
           <span className="price mt-1 block text-[13px] font-semibold">
-            <span className="text-ink-2 line-through">{formatPrice(product.price)}</span>{' '}
-            <span className="font-extrabold text-sale">
+            <span className="text-ink line-through opacity-70">{formatPrice(product.price)}</span>{' '}
+            <span className="font-extrabold text-ink">
               {formatPrice(price)} {t('common.currency')}
             </span>
           </span>

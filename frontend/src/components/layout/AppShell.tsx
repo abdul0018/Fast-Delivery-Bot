@@ -20,7 +20,7 @@ import { Logo } from './Header';
 
 function Splash() {
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-brand text-on-brand">
+    <div className="flex min-h-dvh items-center justify-center bg-brand-fill text-on-brand">
       <Logo size="lg" className="animate-pulse" />
     </div>
   );
