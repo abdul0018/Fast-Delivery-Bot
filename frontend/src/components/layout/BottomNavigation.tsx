@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { House, LayoutGrid, ShoppingBag, UserRound, type LucideIcon } from 'lucide-react';
+import { House, Search, ShoppingBag, UserRound, type LucideIcon } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 const TABS: { href: string; icon: LucideIcon; label: TranslationKey }[] = [
   { href: '/', icon: House, label: 'nav.home' },
-  { href: '/catalog', icon: LayoutGrid, label: 'nav.catalog' },
+  { href: '/catalog', icon: Search, label: 'nav.catalog' },
   { href: '/cart', icon: ShoppingBag, label: 'nav.cart' },
   { href: '/profile', icon: UserRound, label: 'nav.profile' },
 ];

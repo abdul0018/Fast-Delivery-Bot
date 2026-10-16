@@ -130,7 +130,7 @@ const products = [
     ingredientsUz: ['0.5 litr', 'Muzdek holda yetkaziladi'],
     ingredientsRu: ['0,5 литра', 'Доставляется охлаждённой'],
     price: 9000,
-    oldPrice: null,
+    oldPrice: 12000,
     sortOrder: 2,
   },
   {
