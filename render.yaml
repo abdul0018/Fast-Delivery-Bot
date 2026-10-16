@@ -1,9 +1,13 @@
-# Render Blueprint — backend (bot + API). Render Dashboard → New → Blueprint → shu repozitoriy.
-# Frontend (Mini App) Vercel'ga alohida joylanadi (README → "Production'ga chiqarish").
+# Render Blueprint — bot + API. Bir marta bosing:
+#   https://render.com/deploy?repo=https://github.com/abdul0018/Fast-Delivery-Bot
+# So'raladigan yagona qiymatlar: BOT_TOKEN va DATABASE_URL (ADMIN_CHAT_ID — keyin, guruhda /id bilan).
+# Mini App GitHub Pages'da: https://abdul0018.github.io/Fast-Delivery-Bot/ (.github/workflows/pages.yml)
 services:
   - type: web
-    name: fast-delivery-api
+    name: fast-del-bot-abdul0018
     runtime: docker
+    plan: free            # haqiqiy restoran uchun "starter" (uxlamaydi) tavsiya etiladi
+    region: ohio          # Neon bazasi us-east-2 (Ohio) da — eng yaqin mintaqa
     rootDir: backend
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health
@@ -15,15 +19,14 @@ services:
         sync: false
       - key: DATABASE_URL
         sync: false
-      - key: WEBAPP_URL          # https://<loyiha>.vercel.app
-        sync: false
-      - key: CORS_ORIGINS        # WEBAPP_URL bilan bir xil domen
-        sync: false
-      - key: WEBHOOK_DOMAIN      # https://fast-delivery-api.onrender.com (Render bergan manzil)
-        sync: false
-      - key: ADMIN_CHAT_ID       # botni guruhga qo'shing, guruhda /id yuboring
+      - key: WEBAPP_URL
+        value: https://abdul0018.github.io/Fast-Delivery-Bot/
+      - key: CORS_ORIGINS
+        value: https://abdul0018.github.io
+      - key: ADMIN_CHAT_ID       # botni guruhga qo'shing, guruhda /id yuboring va shu yerga yozing
         sync: false
       - key: ADMIN_LANGUAGE
         value: uz
       - key: SUPPORT_PHONE
         sync: false
+      # WEBHOOK_DOMAIN kerak emas: Render o'z manzilini RENDER_EXTERNAL_URL orqali beradi

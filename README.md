@@ -77,30 +77,16 @@ Tavsiya etilgan sxema: **Neon** (baza, allaqachon bor) + **Render** (bot + API, 
 **0. Xavfsizlik.** Bot tokeni va baza paroli ochiq yozilgan bo'lsa, avval almashtiring:
 BotFather → `/mybots` → bot → *API Token* → *Revoke*; Neon → *Roles* → parolni yangilang.
 
-**1. Mini App — GitHub Pages (bepul).** Repozitoriyda `.github/workflows/pages.yml` bor: har bir push'da frontend
-statik fayllarga yig'iladi va `https://abdul0018.github.io/Fast-Delivery-Bot/` ga joylanadi. Bir martalik sozlash:
-*Settings → Pages → Source: GitHub Actions*; *Settings → Secrets and variables → Actions → Variables* → `API_URL` =
-`https://<backend-manzil>/api`, so'ng *Actions → Deploy Mini App to GitHub Pages → Run workflow*.
-Backend'da: `WEBAPP_URL=https://abdul0018.github.io/Fast-Delivery-Bot/`, `CORS_ORIGINS=https://abdul0018.github.io`.
-GitHub Pages faqat statik fayllar uchun — bot va API baribir alohida serverda (2-qadam) ishlashi kerak.
+**1. Mini App — GitHub Pages (tayyor).** `https://abdul0018.github.io/Fast-Delivery-Bot/` —
+`.github/workflows/pages.yml` har bir push'da yangilaydi. Backend manzili standart:
+`https://fast-del-bot-abdul0018.onrender.com/api` (Render boshqa manzil bersa: *Settings → Secrets and variables →
+Actions → Variables* → `API_URL`, so'ng *Actions → Run workflow*).
 
-**1b. Yoki Mini App — Vercel.** vercel.com → *Add New Project* → shu repozitoriy → *Root Directory*: `frontend`.
-Environment: `NEXT_PUBLIC_API_URL=https://<render-manzil>/api`, `NEXT_PUBLIC_DEV_AUTH=false`. Deploy →
-`https://<loyiha>.vercel.app` manzilini oling (bu **WEBAPP_URL**).
-
-**2. Bot + API (Render).** render.com → *New* → *Blueprint* → shu repozitoriy (`render.yaml` o'qiladi). O'zgaruvchilar:
-
-| Kalit | Qiymat |
-|---|---|
-| `BOT_TOKEN` | BotFather tokeni |
-| `DATABASE_URL` | Neon ulanish satri (`?sslmode=verify-full`) |
-| `WEBAPP_URL` | `https://<loyiha>.vercel.app` |
-| `CORS_ORIGINS` | `https://<loyiha>.vercel.app` |
-| `WEBHOOK_DOMAIN` | `https://fast-delivery-api.onrender.com` (Render bergan manzil) |
-| `ADMIN_CHAT_ID` | hozircha bo'sh — 3-qadamda to'ldiriladi |
-
-Birinchi ishga tushishda jadvallar yaratiladi va menyu bo'sh bo'lsa 12 ta namuna mahsulot qo'shiladi.
-Vercel'dagi `NEXT_PUBLIC_API_URL` ni Render manziliga moslab, frontend'ni qayta deploy qiling.
+**2. Bot + API — Render (bir bosish).** Shu havolani oching va GitHub bilan kiring:
+https://render.com/deploy?repo=https://github.com/abdul0018/Fast-Delivery-Bot — faqat ikki qiymat so'raladi:
+`BOT_TOKEN` va `DATABASE_URL` (Neon: `...neon.tech/neondb?sslmode=verify-full`). `WEBAPP_URL`, `CORS_ORIGINS`
+`render.yaml` da yozilgan, webhook manzili Render'ning `RENDER_EXTERNAL_URL` idan avtomatik olinadi.
+Ishga tushgach bot "Menyu" tugmasini Mini App'ga o'zi bog'laydi; jadvallar va menyu bazada bo'lmasa o'zi yaratiladi.
 
 **3. Admin guruh.** Telegram'da guruh yarating, botni qo'shing, guruhda `/id` yuboring — bot chat ID ni yozadi
 (`-100...`). Uni Render'da `ADMIN_CHAT_ID` ga yozing (servis qayta ishga tushadi). Shu paytgacha bot

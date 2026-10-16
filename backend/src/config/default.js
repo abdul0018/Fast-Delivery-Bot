@@ -38,7 +38,8 @@ const config = {
     supportPhone: process.env.SUPPORT_PHONE || '+998 90 000 00 00',
     // Webhook rejimi: domen ko'rsatilsa bot long polling o'rniga webhook orqali ishlaydi
     // (Render/Railway kabi "uxlab qoladigan" hostinglar uchun shart). Bo'sh — long polling (VPS).
-    webhookDomain: (process.env.WEBHOOK_DOMAIN || '').replace(/\/+$/, ''),
+    // Render o'z manzilini RENDER_EXTERNAL_URL da beradi — u yerda qo'lda yozish shart emas
+    webhookDomain: (process.env.WEBHOOK_DOMAIN || process.env.RENDER_EXTERNAL_URL || '').replace(/\/+$/, ''),
     // Telegram so'rovlarini tekshirish uchun maxfiy kalit (berilmasa tokendan hosil qilinadi)
     webhookSecret:
       process.env.WEBHOOK_SECRET ||

@@ -1,6 +1,7 @@
 # Mini App (frontend) ni GitHub Pages'ga joylash: https://<owner>.github.io/<repo>/
 # Bir martalik sozlash: Settings → Pages → Build and deployment → Source: "GitHub Actions".
-# Backend manzili: Settings → Secrets and variables → Actions → Variables → API_URL = https://<backend>/api
+# Backend manzili: standart https://fast-del-bot-abdul0018.onrender.com/api (render.yaml); boshqacha bo'lsa
+#   Settings → Secrets and variables → Actions → Variables → API_URL = https://<backend>/api
 name: Deploy Mini App to GitHub Pages
 
 on:
@@ -35,16 +36,17 @@ jobs:
 
       - run: npm ci
 
-      - name: Warn if backend URL is not set
+      - name: Backend URL
         if: ${{ vars.API_URL == '' }}
-        run: echo "::warning::API_URL repository variable is empty — the Mini App will not load the menu until it points to the deployed backend (https://<backend>/api)."
+        run: echo "::notice::API_URL variable not set — using the render.yaml service address https://fast-del-bot-abdul0018.onrender.com/api. If Render gave your service a different address, set the API_URL repository variable."
 
       - name: Static export
         run: npm run build
         env:
           STATIC_EXPORT: 'true'
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
-          NEXT_PUBLIC_API_URL: ${{ vars.API_URL }}
+          # Standart: render.yaml dagi servis manzili (Render boshqa nom bersa — API_URL o'zgaruvchisini qo'ying)
+          NEXT_PUBLIC_API_URL: ${{ vars.API_URL || 'https://fast-del-bot-abdul0018.onrender.com/api' }}
           NEXT_PUBLIC_DEV_AUTH: 'false'
 
       # _next/ papkasi Jekyll tomonidan e'tiborsiz qoldirilmasligi uchun
