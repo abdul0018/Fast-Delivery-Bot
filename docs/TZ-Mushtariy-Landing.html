@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<title>Mushtariy — Texnik topshiriq</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1d1a16;
+    --ink-2: #5d574e;
+    --ink-3: #8c857a;
+    --gold: #a9834a;
+    --gold-soft: #f5eee2;
+    --paper: #ffffff;
+    --tint: #faf8f4;
+    --line: #e7e1d6;
+    --ok: #2f7a4b;
+    --no: #b23b32;
+    --tg: #eef3f8;
+    --tg-bubble: #ffffff;
+    --tg-btn: #e3ecf5;
+    --tg-link: #2a6fb0;
+  }
+
+  @page {
+    size: A4;
+    margin: 20mm 18mm 20mm 18mm;
+    @bottom-left {
+      content: "Mushtariy Premium Restaurant · Texnik topshiriq v1.0";
+      font: 500 8pt Inter, sans-serif;
+      color: #8c857a;
+    }
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font: 500 8pt Inter, sans-serif;
+      color: #8c857a;
+    }
+  }
+  @page :first {
+    margin: 0;
+    @bottom-left { content: none; }
+    @bottom-right { content: none; }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 9.6pt/1.5 Inter, "DejaVu Sans", sans-serif;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1, h2, h3, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+  h2 {
+    font-size: 22pt; font-weight: 600; line-height: 1.1; letter-spacing: -0.01em;
+    margin: 0 0 4mm; padding-top: 2mm;
+    break-after: avoid;
+  }
+  h2 .num { color: var(--gold); margin-right: 3mm; }
+  h3 {
+    font-size: 14pt; font-weight: 600; margin: 6mm 0 2mm;
+    break-after: avoid;
+  }
+  p { margin: 0 0 2.5mm; }
+  ul, ol { margin: 0 0 3mm; padding-left: 5mm; }
+  li { margin-bottom: 1mm; }
+  strong { font-weight: 600; }
+  section { margin-bottom: 9mm; }
+  .page-break { break-before: page; }
+  .muted { color: var(--ink-2); }
+  .small { font-size: 8.4pt; }
+  code {
+    font: 500 8.2pt "JetBrains Mono", monospace;
+    background: var(--tint); border: 1px solid var(--line);
+    padding: 0 1.2mm; border-radius: 1mm;
+  }
+
+  /* Belgilar */
+  .tag {
+    display: inline-block; white-space: nowrap;
+    font: 600 7pt/1 Inter, sans-serif; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 1.1mm 1.8mm; border-radius: 10mm; vertical-align: 1px;
+  }
+  .tag.mvp { background: #e6f1ea; color: var(--ok); }
+  .tag.p2 { background: #eceaf6; color: #4f4a8a; }
+  .tag.q { background: var(--gold-soft); color: #8a6631; }
+
+  /* Jadvallar */
+  table { width: 100%; border-collapse: collapse; margin: 1mm 0 4mm; font-size: 8.8pt; break-inside: avoid; }
+  table.long { break-inside: auto; }
+  .checklist, .statuses, .callout, .grid-4 { break-inside: avoid; }
+  th {
+    text-align: left; font-weight: 600; font-size: 7.6pt; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink-2); border-bottom: 1.5px solid var(--ink); padding: 1.6mm 2mm;
+  }
+  td { border-bottom: 1px solid var(--line); padding: 2mm; vertical-align: top; }
+  tr { break-inside: avoid; }
+  td:first-child { font-weight: 500; }
+  table.plain td:first-child { font-weight: 400; }
+
+  /* Muqova */
+  .cover {
+    height: 297mm; width: 210mm; position: relative; overflow: hidden;
+    background: #1b1814; color: #f3ede3;
+    padding: 26mm 22mm;
+    display: flex; flex-direction: column;
+  }
+  .cover::before {
+    content: ""; position: absolute; inset: 12mm; border: 1px solid rgba(201, 167, 110, 0.45); pointer-events: none;
+  }
+  .cover .brand-mark {
+    font: 600 9pt Inter, sans-serif; letter-spacing: 0.32em; text-transform: uppercase; color: #c9a76e;
+  }
+  .cover h1 {
+    font-size: 54pt; font-weight: 600; line-height: 0.98; letter-spacing: -0.01em;
+    margin: 58mm 0 6mm; color: #fbf7f0;
+  }
+  .cover h1 em { font-style: italic; color: #c9a76e; font-weight: 500; }
+  .cover .lead { font-size: 13pt; line-height: 1.45; color: #d9d0c2; max-width: 130mm; }
+  .cover .meta {
+    margin-top: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm;
+    border-top: 1px solid rgba(201, 167, 110, 0.45); padding-top: 6mm;
+  }
+  .cover .meta div span { display: block; font-size: 7.5pt; letter-spacing: 0.14em; text-transform: uppercase; color: #a39783; margin-bottom: 1.2mm; }
+  .cover .meta div b { font-weight: 500; font-size: 10.5pt; color: #f3ede3; }
+
+  /* Qisqacha */
+  .kicker { font: 600 7.8pt Inter, sans-serif; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 2mm; }
+  .summary-title { font-size: 28pt; font-weight: 600; line-height: 1.08; margin: 0 0 5mm; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin: 5mm 0 7mm; }
+  .card {
+    border: 1px solid var(--line); border-radius: 3mm; padding: 4.5mm 5mm; background: var(--paper);
+    break-inside: avoid;
+  }
+  .card .n { font: 600 20pt/1 "Cormorant Garamond", serif; color: var(--gold); margin-bottom: 1.5mm; }
+  .card h4 { margin: 0 0 1.2mm; font-size: 10.5pt; font-weight: 600; }
+  .card p { margin: 0; color: var(--ink-2); font-size: 8.9pt; }
+
+  .flow { display: grid; grid-template-columns: 1fr 7mm 1fr 7mm 1fr 7mm 1fr; align-items: stretch; margin: 3mm 0 7mm; }
+  .flow .step { background: var(--tint); border: 1px solid var(--line); border-radius: 3mm; padding: 4mm; break-inside: avoid; }
+  .flow .step b { display: block; font-size: 9.6pt; margin-bottom: 1mm; }
+  .flow .step span { color: var(--ink-2); font-size: 8.2pt; line-height: 1.4; display: block; }
+  .flow .step i { font-style: normal; font-size: 15pt; display: block; margin-bottom: 1.5mm; }
+  .flow .arrow { display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 13pt; }
+
+  .timeline { display: grid; grid-template-columns: 1.3fr 1.9fr 2.8fr 1.9fr 1.8fr 2.2fr; gap: 1.2mm; margin: 2mm 0 1.5mm; }
+  .timeline div {
+    background: var(--gold-soft); border-left: 2px solid var(--gold); padding: 2.2mm 2mm; font-size: 7.6pt; line-height: 1.3;
+  }
+  .timeline div b { display: block; font-size: 8pt; }
+  .timeline div:nth-child(even) { background: #efe6d6; }
+
+  .callout {
+    background: var(--gold-soft); border-radius: 3mm; padding: 4mm 5mm; margin: 3mm 0 5mm; break-inside: avoid;
+  }
+  .callout b { color: #7a5a2a; }
+
+  /* Telegram xabari namunasi */
+  .tg-wrap { display: grid; grid-template-columns: 92mm 1fr; gap: 7mm; align-items: start; margin: 3mm 0 4mm; break-inside: avoid; }
+  .tg {
+    background: var(--tg); border-radius: 4mm; padding: 4mm; font-size: 8.4pt; line-height: 1.45;
+  }
+  .tg .head { font-weight: 600; font-size: 8pt; color: var(--ink-2); margin-bottom: 2.5mm; display: flex; justify-content: space-between; }
+  .tg .bubble { background: var(--tg-bubble); border-radius: 3mm 3mm 3mm 1mm; padding: 3mm 3.5mm; box-shadow: 0 0.3mm 0.6mm rgba(0,0,0,0.08); }
+  .tg .bubble .sender { color: var(--tg-link); font-weight: 600; margin-bottom: 1mm; }
+  .tg .bubble p { margin: 0 0 1.6mm; }
+  .tg .bubble a { color: var(--tg-link); text-decoration: none; }
+  .tg .bubble .total { font-weight: 600; }
+  .tg .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2mm; margin-top: 1.2mm; }
+  .tg .btns span { background: var(--tg-btn); color: #1f4f7d; text-align: center; padding: 2mm; border-radius: 2mm; font-weight: 600; font-size: 8pt; }
+
+  .statuses { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5mm; margin: 2mm 0 4mm; }
+  .statuses .s { border: 1px solid var(--line); background: var(--tint); border-radius: 10mm; padding: 1.4mm 3mm; font-weight: 500; font-size: 8.6pt; }
+  .statuses .a { color: var(--gold); }
+
+  /* Diagramma */
+  .arch { display: grid; grid-template-columns: 1fr 9mm 1.25fr 9mm 1fr; align-items: center; margin: 3mm 0 5mm; break-inside: avoid; }
+  .arch .box { border: 1px solid var(--line); border-radius: 3mm; padding: 3.5mm; background: var(--tint); font-size: 8.4pt; }
+  .arch .box b { display: block; font-size: 9.2pt; margin-bottom: 1mm; }
+  .arch .box + .box { margin-top: 3mm; }
+  .arch .mid { background: var(--ink); color: #f3ede3; border: none; }
+  .arch .mid span { color: #c9b896; }
+  .arch .arrow { text-align: center; color: var(--gold); font-size: 13pt; }
+
+  pre {
+    font: 500 7.6pt/1.45 "JetBrains Mono", monospace; background: var(--tint); border: 1px solid var(--line);
+    border-radius: 2mm; padding: 3mm 4mm; margin: 1mm 0 4mm; white-space: pre-wrap; break-inside: avoid;
+  }
+
+  .checklist { list-style: none; padding: 0; columns: 2; column-gap: 7mm; }
+  .checklist li { break-inside: avoid; padding-left: 6mm; position: relative; margin-bottom: 2mm; }
+  .checklist li::before {
+    content: ""; position: absolute; left: 0; top: 0.7mm; width: 3.2mm; height: 3.2mm;
+    border: 1.2px solid var(--gold); border-radius: 0.8mm;
+  }
+
+  .questions { counter-reset: q; list-style: none; padding: 0; }
+  .questions li {
+    counter-increment: q; position: relative; padding: 2.4mm 0 2.4mm 10mm; border-bottom: 1px solid var(--line);
+    margin: 0; break-inside: avoid;
+  }
+  .questions li::before {
+    content: counter(q, decimal-leading-zero); position: absolute; left: 0; top: 2.1mm;
+    font: 600 11pt "Cormorant Garamond", serif; color: var(--gold);
+  }
+  .questions li .ans { display: block; margin-top: 2mm; border-bottom: 1px dotted var(--ink-3); height: 4mm; }
+
+  .toc { list-style: none; padding: 0; margin: 4mm 0 0; columns: 2; column-gap: 8mm; }
+  .toc li { display: flex; gap: 3mm; padding: 1.6mm 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+  .toc li span { color: var(--gold); font-weight: 600; min-width: 6mm; }
+
+  .appendix-note { font-size: 8.6pt; color: var(--ink-2); border-left: 2px solid var(--gold); padding-left: 3mm; margin-bottom: 4mm; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ MUQOVA -->
+<div class="cover">
+  <div class="brand-mark">Mushtariy · Premium Restaurant</div>
+  <h1 class="serif">Veb-sayt va<br><em>onlayn buyurtma</em><br>tizimi</h1>
+  <p class="lead">Landing sayt, onlayn menyu va buyurtmalarni to'g'ridan-to'g'ri menejerlarning Telegram guruhiga
+    yetkazadigan tizim uchun texnik topshiriq.</p>
+  <div class="meta">
+    <div><span>Hujjat</span><b>Texnik topshiriq (TZ)</b></div>
+    <div><span>Versiya / sana</span><b>1.0 · 28.10.2026</b></div>
+    <div><span>Holati</span><b>Kelishish uchun</b></div>
+  </div>
+</div>
+
+<!-- ============================================================ QISQACHA -->
+<section class="page-break">
+  <div class="kicker">Qisqacha</div>
+  <h2 class="summary-title serif">Restoran nima oladi</h2>
+  <p class="muted">Mijoz Instagram, Google yoki Yandex xaritadan saytga kiradi, menyuni ko'radi va ro'yxatdan o'tmasdan
+    bir daqiqada buyurtma beradi. Buyurtma darhol menejerlarning Telegram guruhiga tushadi. Restoranga murakkab dastur
+    o'rganish shart emas: hamma narsa xodimlar har kuni ishlatadigan Telegram'da.</p>
+
+  <div class="grid-4">
+    <div class="card"><div class="n">01</div><h4>Premium landing sayt</h4><p>Restoran haqida, interyer, galereya, sharhlar, manzil va xarita. O'zbek va rus tillarida, telefonga moslashgan.</p></div>
+    <div class="card"><div class="n">02</div><h4>Onlayn menyu va savatcha</h4><p>Kategoriyalar, suratlar, narxlar, porsiyalar. Mijoz taomlarni tanlaydi, jami summani ko'radi va buyurtma beradi.</p></div>
+    <div class="card"><div class="n">03</div><h4>Buyurtmalar Telegram'da</h4><p>Har bir buyurtma 5 soniyada guruhga keladi. Menejer tugmalar bilan qabul qiladi, kuryerga beradi va yopadi.</p></div>
+    <div class="card"><div class="n">04</div><h4>Admin panel</h4><p>Menyu, narx, surat, stop-list, ish vaqti va yetkazib berish narxini restoranning o'zi o'zgartiradi.</p></div>
+  </div>
+
+  <h3>Buyurtma qanday ishlaydi</h3>
+  <div class="flow">
+    <div class="step"><i>📱</i><b>Mijoz saytda</b><span>Taomlarni tanlaydi, ism, telefon va manzilni yozadi</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><i>💬</i><b>Telegram guruh</b><span>Buyurtma 5 soniyada menejerlarga keladi</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><i>✅</i><b>Menejer</b><span>Qo'ng'iroq qilib tasdiqlaydi, oshxona va kuryerga beradi</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><i>🏁</i><b>Yetkazildi</b><span>Tugma bilan yopiladi, hammasi bazada saqlanadi</span></div>
+  </div>
+
+  <h3>Muddat: taxminan 4–5 hafta</h3>
+  <div class="timeline">
+    <div><b>Tayyorgarlik</b>2–3 kun</div>
+    <div><b>Dizayn</b>5–7 kun</div>
+    <div><b>Sayt (frontend)</b>7–10 kun</div>
+    <div><b>Server + Telegram</b>4–6 kun</div>
+    <div><b>Admin panel</b>4–6 kun</div>
+    <div><b>Test va ishga tushirish</b>3–4 kun</div>
+  </div>
+  <p class="small muted">Muddat restoran materiallarni (menyu, suratlar, logotip) va 14-bo'limdagi savollarga javoblarni o'z vaqtida berishiga bog'liq.</p>
+
+  <div class="callout"><b>Restorandan kerak:</b> logotip, to'liq menyu va narxlar, taom va interyer suratlari, manzil va ish vaqti,
+    yetkazib berish shartlari, menejerlarning Telegram akkauntlari. To'liq ro'yxat 11-bo'limda.</div>
+
+</section>
+
+<!-- ============================================================ 1 -->
+<section class="page-break">
+  <h2 class="serif"><span class="num">1</span>Loyihaning maqsadi</h2>
+  <ol>
+    <li>Restoranning Instagram'dan tashqari rasmiy sayti bo'lishi: restoran haqida, menyu, narxlar, manzil, ish vaqti, aloqa.</li>
+    <li>Mijoz saytdan ro'yxatdan o'tmasdan, 1–2 daqiqada taom buyurtma qila olishi.</li>
+    <li>Har bir buyurtma <strong>darhol menejerlarning Telegram guruhiga</strong> tushishi va menejer uni Telegram'dan turib
+      boshqarishi (qabul qilish → yo'lga chiqarish → yetkazildi / bekor qilish). Alohida murakkab CRM shart emas.</li>
+    <li>Instagram bio'dagi havola, Google/Yandex xaritalar va qidiruvdan keladigan mijozlarni buyurtmaga aylantirish.</li>
+  </ol>
+  <h3>O'lchanadigan natijalar</h3>
+  <table class="plain">
+    <tr><th style="width:60%">Ko'rsatkich</th><th>Maqsad</th></tr>
+    <tr><td>Telefonda sahifa ochilish tezligi</td><td>2,5 soniyadan tez</td></tr>
+    <tr><td>Saytga kirgandan buyurtma tasdiqlanguncha</td><td>60 soniyadan kam</td></tr>
+    <tr><td>Buyurtma tasdiqlangandan Telegram guruhga tushguncha</td><td>5 soniyadan kam</td></tr>
+    <tr><td>Yo'qolgan buyurtmalar (Telegram ishlamay qolganda ham)</td><td>0 ta</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ 2–3 -->
+<section>
+  <h2 class="serif"><span class="num">2</span>Atamalar</h2>
+  <table>
+    <tr><th style="width:28%">Atama</th><th>Ma'nosi</th></tr>
+    <tr><td>Sayt</td><td>Restoranning bosh sahifasi (landing) va yordamchi sahifalari</td></tr>
+    <tr><td>Mijoz</td><td>Saytdan buyurtma beruvchi odam</td></tr>
+    <tr><td>Menejer</td><td>Restoran xodimi, buyurtmalarni Telegram guruhda qabul qiladi</td></tr>
+    <tr><td>Menejerlar guruhi</td><td>Yopiq Telegram guruh, unda bot va menejerlar bor</td></tr>
+    <tr><td>Bot</td><td>Restoranning Telegram boti: buyurtmalarni guruhga yuboradi, tugmalarni qayta ishlaydi</td></tr>
+    <tr><td>Admin panel</td><td>Menyu, narx, surat va ish vaqtini tahrirlash uchun parol bilan himoyalangan sahifa</td></tr>
+    <tr><td>Stop-list</td><td>Vaqtincha tugagan, buyurtma qilib bo'lmaydigan taomlar ro'yxati</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2 class="serif"><span class="num">3</span>Foydalanuvchilar</h2>
+  <table>
+    <tr><th style="width:28%">Kim</th><th>Nima qiladi</th></tr>
+    <tr><td>Mijoz</td><td>Asosan telefondan (80%+), Instagram bio'dagi havola yoki xaritadan keladi, o'zbek yoki rus tilida. Yetkazib berish yoki olib ketish uchun buyurtma qiladi.</td></tr>
+    <tr><td>Menejer</td><td>Telegram'da buyurtmani ko'radi, mijozga qo'ng'iroq qilib tasdiqlaydi, oshxona va kuryerga uzatadi.</td></tr>
+    <tr><td>Restoran egasi</td><td>Menyu, narx va ish vaqtini o'zgartiradi, buyurtmalar statistikasini ko'radi.</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ 4 -->
+<section>
+  <h2 class="serif"><span class="num">4</span>Loyiha doirasi</h2>
+  <p>Belgilar: <span class="tag mvp">MVP</span> 1-bosqichda albatta bo'ladi · <span class="tag p2">2-bosqich</span> keyinroq, alohida baholanadi ·
+    <span class="tag q">Kelishiladi</span> restoran tasdiqlashi kerak.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6mm">
+    <div class="card">
+      <h4>Kiradi</h4>
+      <ul style="margin:0">
+        <li>Landing sayt (UZ / RU)</li>
+        <li>Onlayn menyu, savatcha, buyurtma formasi</li>
+        <li>Buyurtmalarni Telegram guruhga yuborish va tugmalar bilan boshqarish</li>
+        <li>Menyuni boshqarish uchun admin panel</li>
+        <li>SEO, analitika, domen va hostingga joylash</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Kirmaydi (alohida kelishiladi)</h4>
+      <ul style="margin:0">
+        <li>Mobil ilova (iOS / Android)</li>
+        <li>Kuryer ilovasi, kuryerni xaritada kuzatish</li>
+        <li>Onlayn to'lov: Payme / Click / Uzum <span class="tag p2">2-bosqich</span></li>
+        <li>Kassa (iiko, R-Keeper, Poster) bilan integratsiya <span class="tag p2">2-bosqich</span></li>
+        <li>Bonuslar, promokodlar <span class="tag p2">2-bosqich</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 5 -->
+<section>
+  <h2 class="serif"><span class="num">5</span>Sayt tuzilmasi</h2>
+  <table class="plain">
+    <tr><th style="width:30%">Sahifa</th><th>Vazifasi</th></tr>
+    <tr><td><code>/</code></td><td>Bosh sahifa: barcha asosiy bo'limlar</td></tr>
+    <tr><td><code>/menu</code></td><td>To'liq menyu kategoriyalar bo'yicha (qidiruvda alohida chiqishi uchun)</td></tr>
+    <tr><td><code>/checkout</code></td><td>Buyurtmani rasmiylashtirish</td></tr>
+    <tr><td><code>/order/&lt;kod&gt;</code></td><td>«Buyurtmangiz qabul qilindi» sahifasi</td></tr>
+    <tr><td><code>/privacy</code></td><td>Maxfiylik siyosati</td></tr>
+    <tr><td><code>/admin</code></td><td>Admin panel (parol bilan)</td></tr>
+    <tr><td><code>/ru/…</code></td><td>Rus tilidagi versiya</td></tr>
+  </table>
+
+  <h3>5.1. Bosh sahifa bo'limlari (yuqoridan pastga)</h3>
+  <table class="long">
+    <tr><th style="width:4%">#</th><th style="width:22%">Bo'lim</th><th>Tarkibi</th><th style="width:15%">Bosqich</th></tr>
+    <tr><td>1</td><td>Header</td><td>Logotip, menyu havolalari, til UZ/RU, telefon (bosilsa qo'ng'iroq), savatcha soni bilan. Ekran tepasida doim ko'rinadi.</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>2</td><td>Hero</td><td>Interyer yoki eng mashhur taomning sifatli surati / qisqa video, sarlavha, «Buyurtma berish» va «Qo'ng'iroq qilish» tugmalari, «Hozir ochiq / yopiq» belgisi.</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>3</td><td>Afzalliklar</td><td>3–4 qisqa blok: yetkazib berish vaqti, halol, oshpaz, zal sig'imi. Faqat restoran haqiqatda bajaradiganlari.</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>4</td><td>Menyu</td><td>Kategoriya tablari, taom kartochkalari, «Savatga qo'shish».</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>5</td><td>Biz haqimizda</td><td>Qisqa tarix, interyer suratlari, oshpaz.</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>6</td><td>Galereya</td><td>Interyer va taomlar suratlari (Instagram'dan tanlab olinadi).</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>7</td><td>Banket / stol band qilish</td><td>Zal haqida, sig'imi, «Stol band qilish» formasi (ism, telefon, sana, vaqt, mehmonlar soni). So'rov ham Telegram guruhga tushadi.</td><td><span class="tag q">Kelishiladi</span></td></tr>
+    <tr><td>8</td><td>Sharhlar</td><td>Haqiqiy mijozlar sharhlari (Google/Yandex xarita yoki Instagram'dan, ruxsat bilan). Soxta sharh yozilmaydi.</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>9</td><td>Yetkazib berish</td><td>Hudud, narx, minimal buyurtma summasi, taxminiy vaqt, to'lov usullari.</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>10</td><td>Aloqa</td><td>Manzil, mo'ljal, xarita, telefon, Instagram, Telegram, ish vaqti.</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>11</td><td>Footer</td><td>Logotip, ijtimoiy tarmoqlar, maxfiylik siyosati.</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>—</td><td>Savatcha paneli</td><td>Telefonda ekran pastida: «Savatcha · 3 ta · 245 000 so'm → Rasmiylashtirish».</td><td><span class="tag mvp">MVP</span></td></tr>
+  </table>
+
+  <h3>5.2. Taom kartochkasi</h3>
+  <ul>
+    <li>Surat, nomi (UZ/RU), qisqa tavsif yoki tarkibi, porsiya hajmi (g, ml, dona).</li>
+    <li>Narx «85 000 so'm» ko'rinishida; chegirma bo'lsa eski narx chizilgan holda.</li>
+    <li>Belgilar (ixtiyoriy): «Xit», «Yangi», «Achchiq», «Vegetarian».</li>
+    <li>«+» tugmasi taomni savatga qo'shadi va o'sha joyda «− 1 +» boshqaruviga aylanadi.</li>
+    <li>Kartochka bosilsa kattaroq oyna ochiladi: katta surat, to'liq tarkibi, miqdor, «Savatga qo'shish — narx».</li>
+    <li>Stop-listdagi taom kulrang, «Vaqtincha mavjud emas» deb yoziladi, qo'shib bo'lmaydi.</li>
+    <li>Porsiya o'lchami yoki garnir tanlash kabi variantlar <span class="tag q">Kelishiladi</span> (menyuda bo'lsa kerak bo'ladi).</li>
+  </ul>
+</section>
+
+<!-- ============================================================ 6 -->
+<section>
+  <div style="break-inside:avoid">
+  <h2 class="serif"><span class="num">6</span>Buyurtma: mijoz tomoni</h2>
+  <div class="statuses">
+    <span class="s">Menyu</span><span class="a">→</span><span class="s">Savatcha</span><span class="a">→</span>
+    <span class="s">Rasmiylashtirish</span><span class="a">→</span><span class="s">Tasdiqlash</span><span class="a">→</span>
+    <span class="s">«Buyurtma #1024 qabul qilindi»</span>
+  </div>
+
+  <h3>6.1. Savatcha</h3>
+  <ul>
+    <li>Taomlar ro'yxati, miqdorni o'zgartirish, o'chirish.</li>
+    <li>Taomlar summasi, yetkazib berish narxi va <strong>jami summa</strong> doim ko'rinib turadi.</li>
+    <li>Minimal summadan kam bo'lsa: «Yana 35 000 so'mlik taom qo'shing», tugma faol emas.</li>
+    <li>Savatcha sahifa yangilansa yoki mijoz qayta kirsa ham yo'qolmaydi.</li>
+  </ul>
+  </div>
+
+  <h3>6.2. Rasmiylashtirish formasi</h3>
+  <table>
+    <tr><th style="width:24%">Maydon</th><th style="width:14%">Majburiy</th><th>Izoh</th></tr>
+    <tr><td>Ism</td><td>ha</td><td>2–50 belgi</td></tr>
+    <tr><td>Telefon</td><td>ha</td><td><code>+998 XX XXX XX XX</code> ko'rinishida, to'liq tekshiriladi</td></tr>
+    <tr><td>Olish usuli</td><td>ha</td><td>«Yetkazib berish» yoki «Olib ketish» <span class="tag q">Kelishiladi</span></td></tr>
+    <tr><td>Manzil</td><td>yetkazishda</td><td>Ko'cha va uy; alohida: podyezd, qavat, xonadon, mo'ljal</td></tr>
+    <tr><td>Xaritada nuqta</td><td>yo'q</td><td>Joyni xaritada belgilash, menejerga havola bo'lib boradi <span class="tag p2">2-bosqich</span></td></tr>
+    <tr><td>Vaqt</td><td>ha</td><td>«Imkon qadar tez» yoki «Belgilangan vaqtga» (faqat ish vaqti ichida)</td></tr>
+    <tr><td>To'lov usuli</td><td>ha</td><td>Naqd pul; kuryerda karta terminali <span class="tag q">Kelishiladi</span>; Payme/Click <span class="tag p2">2-bosqich</span></td></tr>
+    <tr><td>Izoh</td><td>yo'q</td><td>Masalan, «domofon ishlamaydi»</td></tr>
+    <tr><td>Rozilik</td><td>ha</td><td>Shaxsiy ma'lumotlarni qayta ishlashga rozilik + maxfiylik siyosati havolasi</td></tr>
+  </table>
+  <ul>
+    <li>Xatolar o'sha maydon yonida tushunarli tilda chiqadi («Telefon raqami to'liq emas»).</li>
+    <li>«Buyurtmani tasdiqlash — 245 000 so'm» tugmasi bosilgach bloklanadi: buyurtma ikki marta ketmaydi.</li>
+    <li>Ism, telefon va manzil keyingi buyurtma uchun eslab qolinadi.</li>
+  </ul>
+
+  <h3>6.3. Tasdiqlangandan keyin</h3>
+  <ul>
+    <li>«Rahmat! Buyurtma #1024 qabul qilindi. Menejer 5 daqiqa ichida siz bilan bog'lanadi.» va buyurtma tarkibi.</li>
+    <li><strong>«Telegram'da kuzatish»</strong> tugmasi (ixtiyoriy): mijoz botni ochsa, status o'zgarganda unga xabar keladi
+      («Buyurtmangiz yo'lga chiqdi 🚴»).</li>
+    <li>SMS xabarnoma <span class="tag p2">2-bosqich</span></li>
+  </ul>
+
+  <h3>6.4. Restoran yopiq bo'lganda</h3>
+  <p>Sayt va menyu ochiq qoladi, lekin «Hozir yopiqmiz. Buyurtmalar 10:00 dan qabul qilinadi» deb yoziladi. Oldindan
+    (belgilangan vaqtga) buyurtma qabul qilinadimi yoki yo'qmi — <span class="tag q">Kelishiladi</span>. Menejer
+    buyurtma qabulini Telegram'dan vaqtincha to'xtatishi ham mumkin (7.4).</p>
+</section>
+
+<!-- ============================================================ 7 -->
+<section>
+  <h2 class="serif"><span class="num">7</span>Buyurtma: menejer tomoni (Telegram)</h2>
+
+  <h3>7.1. Sozlash</h3>
+  <ul>
+    <li>Restoran nomidan Telegram bot yaratiladi (masalan, <code>@mushtariy_order_bot</code>, nomi kelishiladi).</li>
+    <li>«Mushtariy — Buyurtmalar» yopiq guruhi ochiladi, unga bot va menejerlar qo'shiladi.</li>
+    <li>Tugmalarni faqat shu guruh a'zolari bosa oladi.</li>
+    <li>Banket / stol band qilish so'rovlari uchun alohida guruh yoki mavzu <span class="tag q">Kelishiladi</span></li>
+  </ul>
+
+  <h3>7.2. Yangi buyurtma xabari (namuna)</h3>
+  <div class="tg-wrap">
+    <div class="tg">
+      <div class="head"><span>Mushtariy — Buyurtmalar</span><span>19:42</span></div>
+      <div class="bubble">
+        <div class="sender">Mushtariy Bot</div>
+        <p><b>🆕 Buyurtma #1024 · 🌐 Sayt</b><br>⏱ Imkon qadar tez</p>
+        <p>👤 Aziz<br>📞 <a>+998 90 123 45 67</a><br>🚚 Yetkazib berish<br>
+          📍 Chilonzor 9-kv., 12-uy, 3-podyezd, 4-qavat, 45-xonadon<br>🧭 Mo'ljal: Korzinka yonida</p>
+        <p>🍽 Qozon kabob × 1 = 120 000<br>🍽 Mastava × 2 = 70 000<br>🍽 Non × 2 = 8 000</p>
+        <p>Taomlar: 198 000 so'm<br>Yetkazib berish: 15 000 so'm<br><span class="total">💰 Jami: 213 000 so'm</span><br>💵 To'lov: naqd</p>
+        <p style="margin:0">💬 Domofon ishlamaydi, qo'ng'iroq qiling</p>
+      </div>
+      <div class="btns"><span>✅ Qabul qilish</span><span>❌ Bekor qilish</span></div>
+    </div>
+    <div>
+      <p><strong>Menejer bir qarashda hammasini ko'radi:</strong> kim, qayerga, nima, qancha va qanday to'lov.</p>
+      <ul>
+        <li>Telefon raqami bosiladigan — bir bosishda qo'ng'iroq.</li>
+        <li>Xaritada nuqta belgilangan bo'lsa, «Xaritada ochish» havolasi qo'shiladi.</li>
+        <li>Status o'zgarganda <strong>shu xabarning o'zi</strong> yangilanadi, guruh toza turadi.</li>
+        <li>Xabarlar tili (UZ yoki RU) sozlamada tanlanadi.</li>
+      </ul>
+      <p class="small muted">Taomlar va narxlar namuna sifatida keltirilgan.</p>
+    </div>
+  </div>
+
+  <div style="break-inside:avoid">
+  <h3>7.3. Statuslar va tugmalar</h3>
+  <div class="statuses">
+    <span class="s">🆕 Yangi</span><span class="a">→</span><span class="s">✅ Qabul qilindi</span><span class="a">→</span>
+    <span class="s">🚴 Yo'lda</span><span class="a">→</span><span class="s">🏁 Yetkazildi</span>
+    <span class="muted small" style="margin-left:2mm">istalgan bosqichda: ❌ Bekor qilindi (sababi bilan)</span>
+  </div>
+  <table>
+    <tr><th style="width:20%">Status</th><th style="width:36%">Tugmalar</th><th>Xabarda nima yoziladi</th></tr>
+    <tr><td>🆕 Yangi</td><td>✅ Qabul qilish · ❌ Bekor qilish</td><td>—</td></tr>
+    <tr><td>✅ Qabul qilindi</td><td>🚴 Yo'lga chiqdi · ❌ Bekor qilish</td><td>«Qabul qildi: Dilshod, 19:44»</td></tr>
+    <tr><td>🚴 Yo'lda</td><td>🏁 Yetkazildi · ❌ Bekor qilish</td><td>«Yo'lga chiqdi: 20:05»</td></tr>
+    <tr><td>🏁 Yetkazildi</td><td>—</td><td>«Yetkazildi: 20:31», tugmalar olib tashlanadi</td></tr>
+    <tr><td>❌ Bekor qilindi</td><td>Sabab: mijoz rad etdi / javob bermadi / taom tugagan / boshqa</td><td>Kim, qachon va nima sababdan</td></tr>
+  </table>
+  </div>
+  <ul>
+    <li>Olib ketish buyurtmalarida «Yo'lga chiqdi» o'rniga «🛍 Tayyor, olib ketish mumkin».</li>
+    <li>Har bir o'zgarish bazaga yoziladi: kim, qachon, qaysi statusga.</li>
+    <li>Mijoz Telegram'ni bog'lagan bo'lsa, unga o'z tilida xabar boradi.</li>
+    <li>5 daqiqada hech kim qabul qilmasa — guruhga eslatma <span class="tag q">Kelishiladi</span></li>
+  </ul>
+
+  <h3>7.4. Guruhdagi buyruqlar</h3>
+  <table class="plain">
+    <tr><th style="width:30%">Buyruq</th><th>Vazifasi</th></tr>
+    <tr><td><code>/pause</code> · <code>/resume</code></td><td>Saytda buyurtma qabulini vaqtincha to'xtatish / yoqish (masalan, oshxona juda band)</td></tr>
+    <tr><td><code>/stop</code> · <code>/unstop</code></td><td>Taomni stop-listga qo'shish / chiqarish (tugmali ro'yxat orqali)</td></tr>
+    <tr><td><code>/today</code></td><td>Bugungi buyurtmalar soni va summasi</td></tr>
+    <tr><td><code>/id</code></td><td>Guruh ID sini ko'rsatadi (bir martalik sozlash uchun)</td></tr>
+  </table>
+
+  <h3>7.5. Ishonchlilik</h3>
+  <ul>
+    <li>Buyurtma <strong>avval bazaga yoziladi</strong>, keyin Telegram'ga yuboriladi. Telegram javob bermasa 3 marta qayta urinadi,
+      baribir bo'lmasa zaxira kanalga (ikkinchi guruh yoki e-mail) yuboriladi. Buyurtma yo'qolmaydi.</li>
+    <li>Bot tokeni faqat serverda saqlanadi, saytda (brauzerda) hech qachon ko'rinmaydi.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ 8 -->
+<section>
+  <h2 class="serif"><span class="num">8</span>Admin panel</h2>
+  <table>
+    <tr><th>Funksiya</th><th style="width:16%">Bosqich</th></tr>
+    <tr><td>Kirish: login + parol</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>Kategoriyalar: qo'shish, tahrirlash, tartibini o'zgartirish, yashirish</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>Taomlar: nom va tavsif (UZ/RU), narx, eski narx, porsiya, surat, belgilar, stop-list</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>Sozlamalar: ish vaqti, yetkazib berish narxi, minimal summa, telefon, manzil, buyurtma qabuli yoqilgan/o'chirilgan</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>Buyurtmalar ro'yxati: sana va status bo'yicha filtr, telefon yoki raqam bo'yicha qidiruv</td><td><span class="tag mvp">MVP</span></td></tr>
+    <tr><td>Hisobot: kunlik/oylik buyurtmalar, summa, eng ko'p sotilgan taomlar, Excel'ga eksport</td><td><span class="tag p2">2-bosqich</span></td></tr>
+    <tr><td>Bir nechta rol (admin / operator)</td><td><span class="tag p2">2-bosqich</span></td></tr>
+    <tr><td>Bannerlar va aksiyalar</td><td><span class="tag p2">2-bosqich</span></td></tr>
+  </table>
+  <p class="muted">Yuklangan suratlar avtomatik siqiladi va tez ochiladigan formatga o'giriladi — restoran xodimi buni o'ylamaydi.</p>
+</section>
+
+<!-- ============================================================ 9 -->
+<section>
+  <h2 class="serif"><span class="num">9</span>Dizayn talablari</h2>
+  <ul>
+    <li><strong>Avval telefon</strong> (360–430 px), keyin planshet va kompyuter.</li>
+    <li><strong>Premium uslub:</strong> xotirjam, keng bo'sh joy, sifatli taom suratlari asosiy o'rinda. Ranglar va shrift restoran
+      logotipi va Instagram uslubidan olinadi; brendbuk bo'lmasa dizayner taklif qiladi va kelishiladi.</li>
+    <li>O'zbek (lotin) va rus (kirill) harflari to'liq qo'llab-quvvatlanadi.</li>
+    <li>Narx va «Buyurtma berish» tugmasi doim ko'zga tashlanadi; tugmalar bosh barmoq bilan bosishga qulay.</li>
+    <li>Matn o'qilishi oson (kontrast xalqaro WCAG AA standarti bo'yicha).</li>
+    <li>Avval Figma'da maket: telefon va kompyuter uchun. Restoran maketni tasdiqlagach dasturlash boshlanadi.</li>
+    <li>Soxta ma'lumot ishlatilmaydi: «10 000+ mijoz», «4.9 reyting» kabi raqamlar faqat haqiqiy bo'lsa yoziladi.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ 10 -->
+<section>
+  <h2 class="serif"><span class="num">10</span>Sifat, xavfsizlik, SEO</h2>
+  <table>
+    <tr><th style="width:24%">Yo'nalish</th><th>Talab</th></tr>
+    <tr><td>Tezlik</td><td>Google Lighthouse (mobil) bo'yicha 90+ ball; 4G tarmoqda sahifa 2,5 soniyadan tez ochiladi. Suratlar CDN orqali.</td></tr>
+    <tr><td>SEO</td><td>Har sahifada sarlavha va tavsif; Instagram/Telegram'da ulashganda chiroyli ko'rinish (Open Graph); Google uchun restoran
+      ma'lumotlari (manzil, telefon, ish vaqti, menyu) mikrorazmetkasi; <code>sitemap.xml</code>. Google Business va Yandex Biznes kartochkalariga sayt havolasi.</td></tr>
+    <tr><td>Tillar</td><td>O'zbek (asosiy) va rus. Til tanlovi eslab qolinadi. Ingliz tili <span class="tag q">Kelishiladi</span></td></tr>
+    <tr><td>Brauzerlar</td><td>Chrome, Safari (iPhone), Samsung Internet, Firefox, Edge. <strong>Instagram va Telegram ichidagi brauzerda to'g'ri ishlashi majburiy</strong> — mijozlar asosan shu yerdan keladi.</td></tr>
+    <tr><td>Narx xavfsizligi</td><td>Narx va jami summa <strong>faqat serverda</strong> hisoblanadi — mijoz narxni «aldab» o'zgartira olmaydi.</td></tr>
+    <tr><td>Spamdan himoya</td><td>Bitta telefon/IP'dan 10 daqiqada 3 tadan ortiq buyurtma yo'q; ko'rinmas bot-tekshiruv (Cloudflare Turnstile).</td></tr>
+    <tr><td>Umumiy xavfsizlik</td><td>Faqat HTTPS; admin parollari shifrlangan; kirishga urinishlar cheklangan; maxfiy kalitlar kodda saqlanmaydi.</td></tr>
+    <tr><td>Zaxira nusxa</td><td>Bazaning kunlik avtomatik zaxira nusxasi, kamida 7 kun saqlanadi.</td></tr>
+    <tr><td>Analitika</td><td>Google Analytics 4 / Yandex Metrika; Meta Pixel (Instagram reklamasi uchun) <span class="tag q">Kelishiladi</span>.
+      Kuzatiladi: menyuni ko'rish, savatga qo'shish, buyurtma, qo'ng'iroq tugmasi. Qaysi post yoki reklamadan buyurtma kelgani ko'rinadi.</td></tr>
+  </table>
+
+  <h3>Shaxsiy ma'lumotlar (huquqiy)</h3>
+  <div class="callout">
+    Saytda maxfiylik siyosati va buyurtmada rozilik belgisi bo'ladi. O'zbekistonning «Shaxsiy ma'lumotlar to'g'risida»gi
+    qonuni (O'RQ-547) fuqarolarning shaxsiy ma'lumotlarini <b>O'zbekiston hududidagi serverlarda</b> saqlashni talab qiladi.
+    Shu sababli baza mahalliy hostingda joylashtirilishi tavsiya etiladi. Yakuniy qarorni restoran yurist bilan
+    maslahatlashib qabul qiladi.
+  </div>
+</section>
+
+<!-- ============================================================ 11 -->
+<section>
+  <h2 class="serif"><span class="num">11</span>Restorandan kerakli materiallar</h2>
+  <ul class="checklist">
+    <li>Logotip (vektor: SVG / AI / PDF), brend ranglari</li>
+    <li>To'liq menyu: kategoriyalar, nomlar (UZ va RU), tarkibi, porsiya, narxlar</li>
+    <li>Har bir taomning sifatli surati (yoki fotosessiya)</li>
+    <li>Interyer suratlari / video, restoran haqida qisqa matn</li>
+    <li>Manzil, mo'ljal, xaritadagi nuqta</li>
+    <li>Telefon raqam(lar), ish vaqti (hafta kunlari bo'yicha)</li>
+    <li>Yetkazib berish: hudud, narx, minimal summa, vaqt</li>
+    <li>To'lov usullari (naqd, kuryerda karta)</li>
+    <li>Menejerlarning Telegram akkauntlari</li>
+    <li>Domen (bor bo'lsa — kirish ma'lumotlari)</li>
+    <li>Haqiqiy mijozlar sharhlari (ruxsat bilan)</li>
+    <li>Yuridik ma'lumotlar: kompaniya nomi, STIR</li>
+  </ul>
+</section>
+
+<!-- ============================================================ 12 -->
+<section>
+  <h2 class="serif"><span class="num">12</span>Qabul qilish mezonlari</h2>
+  <p class="muted">Ish topshirilganda quyidagi tekshiruvlar restoran vakili ishtirokida o'tkaziladi.</p>
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:44%">Tekshiruv</th><th>Kutilgan natija</th></tr>
+    <tr><td>1</td><td>Telefondan, Instagram ichidan saytni ochish</td><td>2,5 soniyada ochiladi, hamma narsa to'g'ri ko'rinadi</td></tr>
+    <tr><td>2</td><td>Tilni UZ ↔ RU almashtirish</td><td>Barcha matnlar va taom nomlari tarjima qilingan</td></tr>
+    <tr><td>3</td><td>3 ta taom bilan yetkazib berishga naqd buyurtma</td><td>«Rahmat» sahifasi raqam bilan; 5 soniyada guruhda xabar (7.2 ko'rinishida)</td></tr>
+    <tr><td>4</td><td>Menejer: Qabul qilish → Yo'lga chiqdi → Yetkazildi</td><td>Xabar yangilanadi, kim va qachon bosgani yoziladi</td></tr>
+    <tr><td>5</td><td>Mijoz «Telegram'da kuzatish»ni bosadi</td><td>Har status o'zgarishida unga xabar keladi</td></tr>
+    <tr><td>6</td><td>Narxni brauzerda «aldab» o'zgartirib buyurtma berish</td><td>Server haqiqiy narx bo'yicha hisoblaydi</td></tr>
+    <tr><td>7</td><td>Minimal summadan kam savatcha</td><td>Buyurtma berib bo'lmaydi, qancha qo'shish kerakligi yoziladi</td></tr>
+    <tr><td>8</td><td>Stop-listdagi taom</td><td>«Mavjud emas», savatga qo'shib bo'lmaydi</td></tr>
+    <tr><td>9</td><td>Ish vaqtidan tashqarida buyurtma</td><td>Kelishilgan qoida (6.4) ishlaydi</td></tr>
+    <tr><td>10</td><td>Bir telefondan ketma-ket 4 ta buyurtma</td><td>4-si rad etiladi</td></tr>
+    <tr><td>11</td><td>Telegram vaqtincha ishlamaydi</td><td>Buyurtma saqlanadi va keyin yetkaziladi</td></tr>
+    <tr><td>12</td><td>Admin panelda narx yoki surat o'zgartiriladi</td><td>1 daqiqa ichida saytda yangilanadi</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ 13 -->
+<section>
+  <h2 class="serif"><span class="num">13</span>Bosqichlar va muddatlar</h2>
+  <table>
+    <tr><th style="width:6%">#</th><th>Ish</th><th style="width:22%">Muddat (taxminiy)</th></tr>
+    <tr><td>0</td><td>Materiallarni yig'ish, ochiq savollarni yopish</td><td>2–3 kun</td></tr>
+    <tr><td>1</td><td>Dizayn: telefon va kompyuter maketlari, kelishish</td><td>5–7 kun</td></tr>
+    <tr><td>2</td><td>Sayt: landing, menyu, savatcha, buyurtma, UZ/RU</td><td>7–10 kun</td></tr>
+    <tr><td>3</td><td>Server: buyurtmalar, Telegram xabari va statuslar, himoya</td><td>4–6 kun</td></tr>
+    <tr><td>4</td><td>Admin panel</td><td>4–6 kun</td></tr>
+    <tr><td>5</td><td>SEO, analitika, domen, hosting, test va tuzatishlar</td><td>3–4 kun</td></tr>
+    <tr><td>6</td><td>Ishga tushirish + 2 hafta kuzatuv va bepul tuzatishlar</td><td>—</td></tr>
+    <tr><td></td><td><strong>Jami (1-bosqich, MVP)</strong></td><td><strong>≈ 4–5 hafta</strong></td></tr>
+  </table>
+  <p><strong>2-bosqich</strong> (alohida baholanadi): onlayn to'lov (Payme/Click), SMS xabarnomalar, xaritada manzil tanlash va
+    yetkazish narxini masofaga qarab hisoblash, promokodlar, hisobotlar, kassa dasturi bilan integratsiya.</p>
+</section>
+
+<!-- ============================================================ 14 -->
+<section class="page-break">
+  <h2 class="serif"><span class="num">14</span>Ochiq savollar</h2>
+  <p class="muted">Ishni boshlashdan oldin restoran javob berishi kerak bo'lgan savollar. Javoblarni shu yerga yozish mumkin.</p>
+  <ol class="questions">
+    <li>Yetkazib berish o'z kuryerlaringiz bilanmi yoki taksi/servis orqali? Olib ketish ham kerakmi?<span class="ans"></span></li>
+    <li>Yetkazib berish hududi va narxi qanday? Minimal buyurtma summasi bormi?<span class="ans"></span></li>
+    <li>To'lov: faqat naqdmi yoki kuryerda karta terminali ham bormi? Onlayn to'lov qachon kerak?<span class="ans"></span></li>
+    <li>Stol band qilish / banket so'rovlari saytda bo'lsinmi? Ular ham shu Telegram guruhga tushsinmi?<span class="ans"></span></li>
+    <li>Menyuda porsiya tanlash yoki qo'shimchalar bormi?<span class="ans"></span></li>
+    <li>Filiallar nechta? Har biriga alohida menyu yoki guruh kerakmi?<span class="ans"></span></li>
+    <li>Ish vaqtidan tashqarida oldindan buyurtma qabul qilinsinmi?<span class="ans"></span></li>
+    <li>Menejer 5 daqiqada javob bermasa eslatma kerakmi?<span class="ans"></span></li>
+    <li>Domen bormi? Brendbuk (logotip, ranglar) bormi?<span class="ans"></span></li>
+    <li>Kassa dasturi (iiko, R-Keeper, Poster va h.k.) ishlatiladimi?<span class="ans"></span></li>
+    <li>Ingliz tili kerakmi?<span class="ans"></span></li>
+    <li>Instagram/Facebook reklamasi uchun Meta Pixel o'rnatilsinmi?<span class="ans"></span></li>
+  </ol>
+</section>
+
+<!-- ============================================================ ILOVA -->
+<section class="page-break">
+  <h2 class="serif"><span class="num">A</span>Ilova: texnik tafsilotlar</h2>
+  <p class="appendix-note">Bu bo'lim dasturchilar uchun. Restoran rahbariyati uchun asosiy ma'lumot oldingi bo'limlarda.</p>
+
+  <h3>Tizim qanday tuzilgan</h3>
+  <div class="arch">
+    <div>
+      <div class="box"><b>Sayt</b>Mijoz telefoni yoki kompyuteri</div>
+      <div class="box"><b>Admin panel</b>Restoran xodimi</div>
+    </div>
+    <div class="arrow">⇄</div>
+    <div class="box mid"><b>Server</b><span>Buyurtmalar, menyu, sozlamalar, Telegram bot · PostgreSQL bazasi</span></div>
+    <div class="arrow">⇄</div>
+    <div>
+      <div class="box"><b>Menejerlar guruhi</b>Telegram, tugmalar</div>
+      <div class="box"><b>Mijoz Telegram'i</b>Statuslar (ixtiyoriy)</div>
+    </div>
+  </div>
+
+  <table>
+    <tr><th style="width:26%">Qism</th><th>Texnologiya</th></tr>
+    <tr><td>Sayt va admin panel</td><td>Next.js (statik generatsiya — tez ochilish va SEO), TypeScript, Tailwind CSS</td></tr>
+    <tr><td>Server va bot</td><td>Node.js, Express, Telegraf (webhook rejimi)</td></tr>
+    <tr><td>Baza</td><td>PostgreSQL, kunlik zaxira nusxa</td></tr>
+    <tr><td>Suratlar</td><td>Obyekt saqlash + CDN, avtomatik WebP/AVIF</td></tr>
+    <tr><td>Hosting</td><td>Server va baza — O'zbekistondagi VPS (huquqiy talab, 10-bo'lim). «Uxlab qoladigan» bepul tariflar ishlatilmaydi</td></tr>
+    <tr><td>Domen</td><td>Masalan, <code>mushtariy.uz</code> <span class="tag q">Kelishiladi</span>, SSL sertifikat</td></tr>
+  </table>
+
+  <p><strong>Tayyor asos.</strong> Ijrochida ishlab turgan buyurtma tizimi (Telegram bot, server, menyu, narxni serverda hisoblash,
+    guruhga buyurtma yuborish va status tugmalari) bor. Loyiha shu asosda quriladi — bu muddat va xarajatni kamaytiradi.
+    Sayt buyurtmalari uchun qo'shiladigan o'zgarishlar:</p>
+  <ul>
+    <li>Buyurtmaga Telegram akkauntsiz mijoz ma'lumotlari: manba (sayt/Telegram), ism, olish usuli, manzil tafsilotlari,
+      xaritadagi nuqta, belgilangan vaqt, yetkazish narxi, kuzatish kodi, reklama manbasi (UTM), bekor qilish sababi.</li>
+    <li>Status tarixi jadvali: kim, qachon, qaysi statusdan qaysiga.</li>
+    <li>Kategoriyalar — alohida jadval (restoran menyusiga moslashuvchan); taomlarga porsiya, belgilar, stop-list.</li>
+    <li>Sozlamalar jadvali: ish vaqti, yetkazish narxi, minimal summa, buyurtma qabuli yoqilgan/o'chirilgan.</li>
+  </ul>
+
+  <h3>API</h3>
+  <table class="plain">
+    <tr><th style="width:9%">Metod</th><th style="width:33%">Yo'l</th><th>Vazifasi</th><th style="width:22%">Himoya</th></tr>
+    <tr><td>GET</td><td><code>/api/config</code></td><td>Ish vaqti, ochiqmi, yetkazish narxi, minimal summa, to'lov usullari</td><td>ochiq</td></tr>
+    <tr><td>GET</td><td><code>/api/categories</code></td><td>Kategoriyalar</td><td>ochiq</td></tr>
+    <tr><td>GET</td><td><code>/api/products</code></td><td>Faol taomlar (stop-list belgisi bilan)</td><td>ochiq</td></tr>
+    <tr><td>POST</td><td><code>/api/web-orders</code></td><td>Saytdan yangi buyurtma</td><td>Turnstile + limit</td></tr>
+    <tr><td>GET</td><td><code>/api/web-orders/:code</code></td><td>Buyurtma holati</td><td>maxfiy kod</td></tr>
+    <tr><td>POST</td><td><code>/api/reservations</code></td><td>Stol band qilish so'rovi</td><td>Turnstile + limit</td></tr>
+    <tr><td>*</td><td><code>/api/admin/*</code></td><td>Admin panel amallari</td><td>sessiya</td></tr>
+  </table>
+
+  <p class="small"><strong>POST /api/web-orders</strong> — so'rov namunasi:</p>
+<pre>{
+  "items": [{ "productId": 12, "quantity": 2 }],
+  "customer": { "name": "Aziz", "phone": "+998901234567" },
+  "deliveryType": "delivery",
+  "address": { "street": "Chilonzor 9-kvartal, 12-uy", "entrance": "3", "floor": "4",
+               "apartment": "45", "landmark": "Korzinka yonida" },
+  "scheduledAt": null, "paymentMethod": "cash", "comment": "Domofon ishlamaydi",
+  "lang": "uz", "consent": true, "utm": { "source": "instagram" }, "captchaToken": "…"
+}</pre>
+  <p class="small">Javob <code>201</code>: buyurtma raqami, kuzatish kodi, jami summa va Telegram'da kuzatish havolasi.
+    Xato kodlari: <code>CART_EMPTY</code>, <code>PRODUCT_UNAVAILABLE</code>, <code>BELOW_MIN_ORDER</code>, <code>RESTAURANT_CLOSED</code>,
+    <code>ORDERS_PAUSED</code>, <code>INVALID_PHONE</code>, <code>INVALID_ADDRESS</code>, <code>CAPTCHA_FAILED</code>, <code>TOO_MANY_ORDERS</code>.</p>
+</section>
+
+</body>
+</html>
