@@ -17,14 +17,14 @@
 
 1. Restoranning Instagram'dan tashqaridagi rasmiy sayti bo'lishi: restoran haqida, menyu, narxlar, manzil, ish vaqti, aloqa.
 2. Mijoz saytdan ro'yxatdan o'tmasdan, 1–2 daqiqada taom buyurtma qila olishi.
-3. Har bir buyurtma **darhol restoran menejerlarining Telegram guruhiga** tushishi va menejer uni Telegram'dan turib boshqarishi
+3. Har bir buyurtma **darhol menejerning shaxsiy Telegram'iga** kelishi va menejer uni Telegram'dan turib boshqarishi
    (qabul qilish → yo'lga chiqarish → yetkazildi / bekor qilish). Restoran uchun alohida murakkab CRM shart emas.
 4. Instagram bio'dagi havola, Google/Yandex xaritalar va qidiruvdan keladigan mijozlarni buyurtmaga aylantirish.
 
 ### O'lchanadigan natijalar (KPI)
 - Mobil telefonda sahifa 2,5 soniyadan tez ochiladi (LCP < 2,5 s, Lighthouse Mobile ≥ 90).
 - Saytga kirgandan buyurtma tasdiqlanguncha — 60 soniyadan kam (oddiy buyurtma uchun).
-- Buyurtma saytda tasdiqlangandan Telegram guruhga tushguncha — 5 soniyadan kam.
+- Buyurtma saytda tasdiqlangandan menejerning Telegram'iga kelguncha — 5 soniyadan kam.
 - Bitta ham buyurtma yo'qolmasligi: Telegram ishlamay qolsa ham buyurtma bazada saqlanadi va qayta yuboriladi.
 
 ---
@@ -35,9 +35,8 @@
 |---|---|
 | Landing / sayt | Restoranning bir sahifali (va bir nechta yordamchi sahifali) veb-sayti |
 | Mijoz | Saytdan buyurtma beruvchi odam |
-| Menejer | Restoran xodimi, buyurtmalarni Telegram guruhda qabul qiladi |
-| Menejerlar guruhi | Telegram guruh, unda bot va restoran menejerlari bor |
-| Bot | Restoranning Telegram boti — buyurtmalarni guruhga yuboradi, tugmalarni qayta ishlaydi |
+| Menejer | Restoran xodimi, buyurtmalarni o'zining shaxsiy Telegram'ida (bot bilan chatda) qabul qiladi |
+| Bot | Restoranning Telegram boti — buyurtmalarni menejerga shaxsiy xabar qilib yuboradi, tugmalarni qayta ishlaydi |
 | Admin panel | Menyu, narx, rasm, ish vaqtini tahrirlash uchun himoyalangan sahifa |
 | Stop-list | Vaqtincha tugagan, buyurtma qilib bo'lmaydigan taomlar ro'yxati |
 
@@ -57,7 +56,7 @@
 ### Kiradi
 - Landing sayt (UZ/RU) — bo'limlar 5-bandda.
 - Onlayn menyu, savatcha va buyurtma formasi.
-- Buyurtmani Telegram menejerlar guruhiga yuborish va statuslarni tugmalar bilan boshqarish.
+- Buyurtmani menejerning shaxsiy Telegram'iga yuborish va statuslarni tugmalar bilan boshqarish.
 - Menyuni boshqarish uchun oddiy admin panel.
 - SEO, analitika, domen va hostingga joylash.
 
@@ -93,7 +92,7 @@
 | 4 | **Menyu** | Kategoriya tablari (gorizontal, scroll), taom kartochkalari, «Savatga qo'shish» | MVP |
 | 5 | **Biz haqimizda** | Qisqa tarix, interyer suratlari, oshpaz | MVP |
 | 6 | **Galereya** | Interyer va taomlar suratlari (Instagram'dan tanlab olinadi) | MVP |
-| 7 | **Banket / stol band qilish** | Zal haqida, sig'imi, «Stol band qilish» formasi (ism, telefon, sana, vaqt, mehmonlar soni) → so'rov ham Telegram guruhga tushadi | **[?]** |
+| 7 | **Banket / stol band qilish** | Zal haqida, sig'imi, «Stol band qilish» formasi (ism, telefon, sana, vaqt, mehmonlar soni) → so'rov ham menejerning Telegram'iga keladi | **[?]** |
 | 8 | **Sharhlar** | Haqiqiy mijozlar sharhlari (Google/Yandex xaritadan yoki Instagram'dan, ruxsat bilan). Soxta sharh yozilmaydi | MVP |
 | 9 | **Yetkazib berish shartlari** | Hudud, narx, minimal buyurtma summasi, taxminiy vaqt, to'lov usullari | MVP |
 | 10 | **Aloqa** | Manzil, mo'ljal, xarita (Yandex yoki Google, embed), telefon, Instagram, Telegram, ish vaqti | MVP |
@@ -155,7 +154,7 @@ Menyu → Savatga qo'shish → Savatcha → Rasmiylashtirish formasi → Tasdiql
 ### 6.4. Restoran yopiq bo'lganda
 - Ish vaqtidan tashqarida sayt ochiq qoladi, menyu ko'rinadi, lekin: «Hozir yopiqmiz. Buyurtmalar 10:00 dan qabul qilinadi»
   va faqat «belgilangan vaqtga» buyurtma beriladi **[?]** yoki buyurtma tugmasi o'chiriladi.
-- Menejer guruhdan buyurtma qabulini qo'lda to'xtatishi mumkin (8.4-band) — saytda shu xabar chiqadi.
+- Menejer bot orqali buyurtma qabulini qo'lda to'xtatishi mumkin (8.4-band) — saytda shu xabar chiqadi.
 
 ---
 
@@ -163,9 +162,13 @@ Menyu → Savatga qo'shish → Savatcha → Rasmiylashtirish formasi → Tasdiql
 
 ### 7.1. Sozlash
 - Restoran nomidan Telegram bot yaratiladi (@BotFather), masalan `@mushtariy_order_bot` (nom buyurtmachi bilan kelishiladi).
-- «Mushtariy — Buyurtmalar» nomli yopiq guruh yaratiladi, unga bot va menejerlar qo'shiladi.
-- Tugmalarni faqat shu guruh a'zolari bosa oladi; boshqa joydan kelgan bosishlar rad etiladi.
-- **[?]** Banket/stol band qilish so'rovlari uchun alohida guruh yoki shu guruhda alohida mavzu (topic).
+- Buyurtmalar **menejerning shaxsiy Telegram'iga** keladi (bot bilan chatda), guruh ishlatilmaydi.
+- Menejer bir marta maxsus taklif havolasi orqali botni ochadi (`/start`) va menejer sifatida ro'yxatdan o'tadi
+  (Telegram qoidasi: bot faqat o'zini ochgan odamga yoza oladi).
+- Menejerlar ro'yxati admin panelda boshqariladi: qo'shish, o'chirish, vaqtincha o'chirish.
+- Bir nechta menejer bo'lsa, buyurtma hammasiga keladi; birinchi «Qabul qilish»ni bosgan oladi, boshqalarda xabar
+  «Dilshod qabul qildi» deb yangilanadi. **[?]** Menejerlar soni.
+- Tugma va buyruqlarni faqat ro'yxatdagi menejerlar ishlata oladi; boshqa bosishlar rad etiladi.
 
 ### 7.2. Yangi buyurtma xabari (namuna)
 
@@ -196,11 +199,11 @@ Yetkazib berish: 15 000 so'm
 ```
 
 - Telefon raqami bosiladigan (`tel:`) bo'ladi — menejer bir bosishda qo'ng'iroq qiladi.
-- Til: guruhdagi xabarlar bitta tilda (UZ yoki RU, sozlamada tanlanadi), taom nomlari ham shu tilda.
+- Til: menejerga keladigan xabarlar bitta tilda (UZ yoki RU, sozlamada tanlanadi), taom nomlari ham shu tilda.
 
 ### 7.3. Statuslar va tugmalar
 
-| Status | Kim o'zgartiradi | Tugmalar | Guruhdagi xabarda nima o'zgaradi |
+| Status | Kim o'zgartiradi | Tugmalar | Xabarda nima o'zgaradi |
 |---|---|---|---|
 | 🆕 Yangi | — | ✅ Qabul qilish · ❌ Bekor qilish | — |
 | ✅ Qabul qilindi | menejer | 👨‍🍳 Tayyorlanmoqda **[?]** · 🚴 Yo'lga chiqdi · ❌ Bekor qilish | «✅ Qabul qildi: Dilshod, 19:44» |
@@ -209,22 +212,22 @@ Yetkazib berish: 15 000 so'm
 | ❌ Bekor qilindi | menejer | — | Sabab so'raladi (tugmalar: «Mijoz rad etdi», «Javob bermadi», «Taom tugagan», «Boshqa») |
 
 - Olib ketish (pickup) buyurtmalari uchun «Yo'lga chiqdi» o'rniga «🛍 Tayyor, olib ketish mumkin».
-- Har bir o'zgarish xabarning o'zida tahrirlanadi (yangi xabar tashlanmaydi) — guruh toza turadi.
+- Har bir o'zgarish xabarning o'zida tahrirlanadi (yangi xabar tashlanmaydi) — chat toza turadi.
 - Har o'zgarish bazaga yoziladi: kim, qachon, qaysi statusdan qaysiga.
 - Mijoz Telegram'ni bog'lagan bo'lsa, unga status haqida xabar boradi (uning tilida).
-- 5 daqiqa ichida hech kim «Qabul qilish»ni bosmasa — guruhga eslatma: «⚠️ #1024 hali qabul qilinmadi» **[?]**.
+- 5 daqiqa ichida hech kim «Qabul qilish»ni bosmasa — menejerga qayta eslatma «⚠️ #1024 hali qabul qilinmadi», keyin zaxira menejerga **[?]**.
 
-### 7.4. Guruhdagi bot buyruqlari
+### 7.4. Menejer buyruqlari (bot bilan chatda)
 | Buyruq | Vazifasi |
 |---|---|
-| `/id` | Guruh ID sini ko'rsatadi (sozlash uchun) |
+| `/orders` | Hali yopilmagan (faol) buyurtmalar ro'yxati |
 | `/pause` · `/resume` | Saytda buyurtma qabulini vaqtincha to'xtatish / qayta yoqish (masalan, oshxona band) |
 | `/stop <taom>` · `/unstop <taom>` | Taomni stop-listga qo'shish / chiqarish (yoki tugmali ro'yxat orqali) |
 | `/today` | Bugungi buyurtmalar soni va summasi, statuslar bo'yicha |
 
 ### 7.5. Ishonchlilik
 - Buyurtma **avval bazaga yoziladi**, keyin Telegram'ga yuboriladi. Telegram javob bermasa — 3 marta qayta urinadi,
-  baribir bo'lmasa xato logga yoziladi va zaxira kanalga (ikkinchi guruh yoki e-mail) yuboriladi.
+  baribir bo'lmasa xato logga yoziladi va zaxira menejerga yoki e-mail'ga yuboriladi.
 - Bot tokeni faqat serverda saqlanadi, sayt kodida (brauzerda) **hech qachon** bo'lmaydi.
 - Bitta bot tokeni bilan faqat bitta server nusxasi ishlaydi (webhook rejimi).
 
@@ -239,6 +242,7 @@ Yetkazib berish: 15 000 so'm
 | Kirish: login + parol (yoki Telegram Login faqat ruxsat etilgan akkauntlar uchun) | MVP |
 | Kategoriyalar: qo'shish, tahrirlash, tartibini o'zgartirish, yashirish | MVP |
 | Taomlar: nom UZ/RU, tavsif UZ/RU, narx, eski narx, porsiya, surat yuklash, belgilar, faol/stop-list | MVP |
+| Menejerlar: qo'shish (taklif havolasi orqali), o'chirish, vaqtincha o'chirish | MVP |
 | Sozlamalar: ish vaqti (hafta kunlari bo'yicha), yetkazib berish narxi, minimal summa, telefon, manzil, buyurtma qabuli yoqilgan/o'chirilgan | MVP |
 | Buyurtmalar ro'yxati: filtr (sana, status), qidiruv (telefon, raqam), batafsil ko'rish | MVP |
 | Hisobot: kunlik/oylik buyurtmalar soni, summa, eng ko'p sotilgan taomlar, Excel'ga eksport | 2-bosqich |
@@ -312,13 +316,13 @@ Yuklangan suratlar avtomatik siqiladi va WebP/AVIF formatiga o'giriladi (bir nec
 ## 11. Texnik yechim (arxitektura)
 
 Repozitoriyda allaqachon ishlaydigan backend bor (Node.js, Express, Telegraf, PostgreSQL): mahsulotlar, buyurtmalar,
-narxni serverda hisoblash, admin guruhga buyurtma yuborish va statuslar tugmalari tayyor. Landing uchun **shu backendni
+narxni serverda hisoblash, menejerga buyurtma yuborish va statuslar tugmalari tayyor. Landing uchun **shu backendni
 qayta ishlatish va kengaytirish** tavsiya etiladi — noldan yozishdan tezroq va arzonroq.
 
 ```
  Mijoz (brauzer)                Server (Node.js + Express)              Telegram
  ┌────────────────┐  HTTPS  ┌─────────────────────────────┐  Bot API  ┌──────────────────┐
- │ Landing sayt   │────────▶│ REST API                    │──────────▶│ Menejerlar guruhi│
+ │ Landing sayt   │────────▶│ REST API                    │──────────▶│ Menejer Telegram'i│
  │ Next.js (SSG)  │◀────────│ Buyurtma, menyu, sozlamalar │◀──────────│ (tugmalar)       │
  └────────────────┘         │ Telegraf bot (webhook)      │           └──────────────────┘
  ┌────────────────┐         │            │                │           ┌──────────────────┐
@@ -348,7 +352,8 @@ qayta ishlatish va kengaytirish** tavsiya etiladi — noldan yozishdan tezroq va
    alohida `categories` jadvaliga o'tkaziladi (nom UZ/RU, tartib, faol).
 3. `products` ga: `weight` / `portion`, `badges`, `is_in_stop_list`.
 4. `settings` jadvali: ish vaqti, yetkazib berish narxi, minimal summa, buyurtma qabuli yoqilgan/o'chirilgan.
-5. Admin guruh xabari formatiga sayt buyurtmasi maydonlari qo'shiladi (7.2-band).
+5. Buyurtma bitta admin guruh o'rniga ro'yxatdagi menejerlarning shaxsiy chatlariga yuboriladi: `managers` jadvali
+   (telegram_id, ism, faol), taklif havolasi orqali ro'yxatdan o'tish; xabar formatiga sayt maydonlari qo'shiladi (7.2-band).
 6. Mavjud Telegram Mini App bilan bitta baza va bitta menyu ishlatiladi — restoran xohlasa, bot ichida ham buyurtma qabul qilinadi.
 
 ### 11.2. API (yangi va o'zgaradigan)
@@ -408,7 +413,7 @@ tushunarli xabar ko'rsatadi.
 - [ ] Manzil, mo'ljal, xaritadagi nuqta, telefon raqam(lar), ish vaqti (hafta kunlari bo'yicha).
 - [ ] Yetkazib berish shartlari: hudud, narx (qat'iy yoki masofaga qarab), minimal summa, taxminiy vaqt.
 - [ ] To'lov usullari (naqd, kuryerda karta terminali).
-- [ ] Menejerlar ro'yxati (Telegram akkauntlari) — guruhga qo'shish uchun.
+- [ ] Menejerlar ro'yxati (Telegram akkauntlari) — ularni bot orqali menejer sifatida ro'yxatdan o'tkazish uchun.
 - [ ] Domen (bor bo'lsa — kirish ma'lumotlari; bo'lmasa — nom tanlash).
 - [ ] Haqiqiy mijozlar sharhlari (ruxsat bilan).
 - [ ] Yuridik ma'lumotlar (maxfiylik siyosati uchun: kompaniya nomi, STIR).
@@ -421,7 +426,7 @@ tushunarli xabar ko'rsatadi.
 |---|---|---|
 | 1 | Telefondan (Instagram in-app browser) saytni ochish | 2,5 s ichida ochiladi, matn va tugmalar to'g'ri, gorizontal scroll yo'q |
 | 2 | Til almashtirish UZ ↔ RU | Barcha matnlar, taom nomlari, xatolar tarjima qilingan; tanlov eslab qolinadi |
-| 3 | 3 ta taomni savatga qo'shib, yetkazib berish bilan naqd buyurtma berish | «Rahmat» sahifasi raqam bilan; 5 s ichida guruhda 7.2-banddagi formatda xabar |
+| 3 | 3 ta taomni savatga qo'shib, yetkazib berish bilan naqd buyurtma berish | «Rahmat» sahifasi raqam bilan; 5 s ichida menejerning Telegram'ida 7.2-banddagi formatda xabar |
 | 4 | Menejer «Qabul qilish → Yo'lga chiqdi → Yetkazildi» ni bosadi | Xabar tahrirlanadi, kim va qachon bosgani yoziladi, bazada tarix bor |
 | 5 | Mijoz «Telegram'da kuzatish»ni bosib botni ochadi | Har status o'zgarishida unga xabar keladi |
 | 6 | Brauzerda narxni o'zgartirib (DevTools) buyurtma yuborish | Server bazadagi narx bo'yicha hisoblaydi |
@@ -430,7 +435,7 @@ tushunarli xabar ko'rsatadi.
 | 9 | Ish vaqtidan tashqarida buyurtma | Kelishilgan xatti-harakat (6.4) ishlaydi |
 | 10 | Bir telefondan ketma-ket 4 ta buyurtma | 4-si rad etiladi (`TOO_MANY_ORDERS`) |
 | 11 | Telegram API vaqtincha ishlamaydi | Buyurtma bazada saqlanadi, qayta yuboriladi, mijoz buni sezmaydi |
-| 12 | Begona odam guruhdan tashqarida callback yuboradi | Rad etiladi |
+| 12 | Ro'yxatda yo'q odam menejer tugmasini bosadi | Rad etiladi |
 | 13 | Admin panelda narx/surat o'zgartiriladi | 1 daqiqa ichida saytda yangilanadi |
 | 14 | Lighthouse Mobile | 10.1-banddagi ko'rsatkichlar |
 
@@ -459,12 +464,13 @@ yetkazish narxini masofaga qarab hisoblash, promokodlar, hisobotlar va Excel eks
 1. Yetkazib berish o'zingizdami (o'z kuryerlaringiz) yoki taksi/servis orqali? Olib ketish (pickup) ham kerakmi?
 2. Yetkazib berish hududi va narxi qanday? Minimal buyurtma summasi bormi?
 3. To'lov: faqat naqdmi yoki kuryerda karta terminali ham bormi? Onlayn to'lov qachon kerak?
-4. Stol band qilish / banket so'rovlari saytda bo'lsinmi? Ular ham shu Telegram guruhga tushsinmi?
+4. Stol band qilish / banket so'rovlari saytda bo'lsinmi? Ular ham shu menejerga kelsinmi?
 5. Menyuda porsiya tanlash yoki qo'shimchalar (modifikatorlar) bormi?
-6. Filiallar nechta? Har birining alohida menyusi/guruhi kerakmi?
+6. Filiallar nechta? Har birining alohida menyusi/menejeri kerakmi?
 7. Ish vaqtidan tashqarida oldindan buyurtma qabul qilinsinmi?
 8. Menejer 5 daqiqada javob bermasa eslatma kerakmi?
 9. Domen bormi? Brendbuk (logotip, ranglar) bormi?
 10. Kassa dasturi (iiko, R-Keeper, Poster, ...) ishlatiladimi?
 11. Ingliz tili kerakmi?
 12. Reklama (Instagram/Facebook Ads) uchun Meta Pixel o'rnatilsinmi?
+13. Buyurtmalarni nechta menejer qabul qiladi? Ularning Telegram akkauntlari qaysi?
