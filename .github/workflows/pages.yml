@@ -1,15 +1,13 @@
-# GitHub Pages'ga joylash:
-#   Mini App (frontend)          → https://<owner>.github.io/<repo>/
-#   Mushtariy landing (landing/) → https://<owner>.github.io/<repo>/landing/
+# Mini App (frontend) ni GitHub Pages'ga joylash: https://<owner>.github.io/<repo>/
 # Bir martalik sozlash: Settings → Pages → Build and deployment → Source: "GitHub Actions".
 # Backend manzili: standart https://fast-del-bot-abdul0018.onrender.com/api (render.yaml); boshqacha bo'lsa
 #   Settings → Secrets and variables → Actions → Variables → API_URL = https://<backend>/api
-name: Deploy Mini App and landing to GitHub Pages
+name: Deploy Mini App to GitHub Pages
 
 on:
   push:
-    branches: [claude/telegram-bot-mini-app-lyr39c, claude/friendly-gates-51czcq]
-    paths: ['frontend/**', 'landing/**', '.github/workflows/pages.yml']
+    branches: [claude/telegram-bot-mini-app-lyr39c]
+    paths: ['frontend/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 
 permissions:
@@ -53,12 +51,6 @@ jobs:
 
       # _next/ papkasi Jekyll tomonidan e'tiborsiz qoldirilmasligi uchun
       - run: touch out/.nojekyll
-
-      # Statik landing — Mini App yonida /landing/ manzilida
-      - name: Add landing page
-        run: |
-          mkdir -p out/landing
-          cp -r ../landing/index.html ../landing/styles.css ../landing/app.js ../landing/assets out/landing/
 
       - uses: actions/upload-pages-artifact@v3
         with:
