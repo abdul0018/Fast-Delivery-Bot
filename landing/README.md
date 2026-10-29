@@ -24,14 +24,13 @@ Keyingi bosqich (TZ, 7-bo'lim): buyurtma bot orqali menejerga to'g'ridan-to'g'ri
 |---|---|---|
 | `managerTelegram` | `mushtariy_manager` | Menejerning haqiqiy Telegram username'i (@ belgisisiz) |
 | `phone`, `phoneText` | `+998 00 000 00 00` | Restoran telefoni |
-| `address` | «Manzil kiritiladi» | Manzil (UZ va RU) |
+| `address`, `mapUrl`, `coords` | Buxoro, Namozgoh 1-tor ko'chasi (Yandex Xarita) | Tayyor — Yandex'dagi restoran sahifasidan olingan |
 | `hours` | `10:00 – 23:00` | Haqiqiy ish vaqti |
 
 Shuningdek:
 - **Menyu** (`DISHES` / `CATEGORIES` — `app.js`): taomlar, tavsiflar va narxlar namuna.
 - **Sharhlar** (`index.html`, «Mehmonlarimiz» bo'limi): namuna, haqiqiy sharhlar bilan almashtiriladi.
 - **Va'dalar** (afzalliklar qatori, «Shinam zal», banket bo'limi): restoran bajara oladiganini qoldiring.
-- **Xarita havolasi** (`index.html`, `.map-card`): restoranning Google/Yandex xaritadagi aniq havolasi.
 
 ## Rasmlar va ularning manbasi
 

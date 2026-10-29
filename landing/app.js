@@ -10,7 +10,10 @@ const CONFIG = {
   managerTelegram: 'mushtariy_manager', // menejerning Telegram username'i, @ belgisisiz
   phone: '+998000000000', // tel: havolasi uchun
   phoneText: '+998 00 000 00 00', // sahifada ko'rinadigan ko'rinishi
-  address: { uz: 'Manzil kiritiladi', ru: 'Адрес будет указан' },
+  address: { uz: "Buxoro, Namozgoh 1-tor ko'chasi", ru: 'Бухара, Намозгох 1-тор кўчаси' },
+  // Yandex Xaritadagi restoran sahifasi va koordinatalari (lat, lon)
+  mapUrl: 'https://yandex.uz/maps/org/mushtariy_premium/17302299057/',
+  coords: [39.750472, 64.40389],
   hours: '10:00 – 23:00',
 };
 
@@ -109,7 +112,7 @@ const I18N = {
     'faq.q3': 'Сколько стоит доставка?', 'faq.a3': 'Цена и время зависят от адреса — менеджер точно скажет по телефону. Можно забрать заказ самостоятельно.',
     'faq.q4': 'Можно заказать к определённому времени?', 'faq.a4': 'Да. При оформлении выберите «К определённому времени» и укажите час.',
     'faq.q5': 'За сколько бронировать банкет?', 'faq.a5': 'Чем раньше, тем лучше: зал и меню согласуем заранее. Оставьте заявку через «Забронировать стол».',
-    'ct.s': 'Ждём вас', 'ct.h': 'Давайте накроем стол вместе', 'ct.addr': 'Адрес', 'ct.map': 'Открыть на карте', 'ct.daily': ', ежедневно',
+    'ct.s': 'Ждём вас', 'ct.h': 'Давайте накроем стол вместе', 'ct.addr': 'Адрес', 'ct.map': 'Открыть на карте', 'ct.route': 'Маршрут', 'ct.daily': ', ежедневно',
     'ft.tag': 'Национальный вкус, премиальный сервис и незабываемые моменты.',
     'ft.nav': 'Страница', 'ft.order': 'Заказ', 'ft.cart': 'Корзина', 'ft.social': 'Соцсети',
     'ft.note': 'Фото блюд и зала — Pexels; цены и отзывы — примеры, будут заменены настоящими данными ресторана.',
@@ -545,6 +548,8 @@ function applyConfig() {
     if (a.closest('.contact-list')) a.textContent = `@${CONFIG.managerTelegram}`;
   });
   $$('.js-year').forEach((el) => { el.textContent = new Date().getFullYear(); });
+  $$('.js-map-link').forEach((a) => { a.href = CONFIG.mapUrl; });
+  $$('.js-route-link').forEach((a) => { a.href = `https://yandex.uz/maps/?rtext=~${CONFIG.coords.join('%2C')}&rtt=auto`; });
 }
 
 document.documentElement.classList.add('js');
