@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mushtariy Premium Restaurant — milliy taomlar va banketlar</title>
+  <meta name="description" content="Mushtariy Premium Restaurant: milliy taomlar, banket va oilaviy kechalar. Menyudan tanlang — buyurtma to'g'ridan-to'g'ri menejerimizning Telegram'iga boradi.">
+  <meta name="theme-color" content="#F5EFE4">
+  <meta property="og:title" content="Mushtariy Premium Restaurant">
+  <meta property="og:description" content="Milliy ta'm, premium xizmat. Buyurtma va stol band qilish — Telegram orqali.">
+  <meta property="og:image" content="assets/img/og.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/img/logo-badge-160.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero-osh.jpg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#menu" data-i18n="skip">Menyuga o'tish</a>
+
+<!-- ================================================================ HEADER -->
+<header class="site-header" id="top">
+  <div class="wrap header-row">
+    <a class="brand" href="#top" aria-label="Mushtariy Premium Restaurant">
+      <img src="assets/img/logo-badge-160.png" width="48" height="48" alt="">
+      <span class="brand-text">
+        <span class="brand-name">Mushtariy</span>
+        <span class="brand-sub">Premium Restaurant</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Asosiy">
+      <a href="#menu" data-i18n="nav.menu">Menyu</a>
+      <a href="#about" data-i18n="nav.about">Biz haqimizda</a>
+      <a href="#how" data-i18n="nav.how">Qanday buyurtma</a>
+      <a href="#banquet" data-i18n="nav.banquet">Banket</a>
+      <a href="#contact" data-i18n="nav.contact">Aloqa</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang" role="group" aria-label="Til / Язык">
+        <button type="button" data-lang="uz" aria-pressed="true">UZ</button>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+      <a class="icon-btn hide-sm js-phone-link" href="tel:+998000000000" aria-label="Qo'ng'iroq qilish">
+        <svg aria-hidden="true"><use href="#i-phone"/></svg>
+      </a>
+      <button class="cart-btn" type="button" data-open="cart" aria-label="Savatcha">
+        <svg aria-hidden="true"><use href="#i-bag"/></svg>
+        <span class="cart-count" data-cart-count hidden>0</span>
+      </button>
+      <a class="btn btn-ink hide-md" href="#menu" data-i18n="cta.order">Buyurtma berish</a>
+      <button class="icon-btn burger" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menyu">
+        <svg aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" hidden>
+    <a href="#menu" data-i18n="nav.menu">Menyu</a>
+    <a href="#about" data-i18n="nav.about">Biz haqimizda</a>
+    <a href="#how" data-i18n="nav.how">Qanday buyurtma</a>
+    <a href="#banquet" data-i18n="nav.banquet">Banket</a>
+    <a href="#contact" data-i18n="nav.contact">Aloqa</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ================================================================ 1. HERO -->
+<section class="hero">
+  <svg class="ornament ornament-hero" aria-hidden="true"><use href="#o-sprig"/></svg>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 class="display">
+        <span data-i18n="hero.l1">Milliy ta'm.</span>
+        <span data-i18n="hero.l2">Premium xizmat.</span>
+        <span class="script" data-i18n="hero.l3">Unutilmas lahzalar</span>
+      </h1>
+      <p class="lead" data-i18n="hero.lead">Toshkent oshidan tandir go'shtgacha — oshpazlarimiz tayyorlagan taomlar uyingizga yetkaziladi yoki shinam zalimizda dasturxonga tortiladi.</p>
+      <div class="hero-cta">
+        <a class="btn btn-ink btn-lg" href="#menu">
+          <span data-i18n="cta.order">Buyurtma berish</span>
+          <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <button class="btn btn-line btn-lg" type="button" data-open="reserve" data-i18n="cta.reserve">Stol band qilish</button>
+      </div>
+      <ul class="hero-facts">
+        <li>
+          <svg aria-hidden="true"><use href="#i-clock"/></svg>
+          <span><b data-i18n="facts.hours">Ish vaqti</b><span class="js-hours">10:00 – 23:00</span></span>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="#i-telegram"/></svg>
+          <span><b data-i18n="facts.order">Buyurtma</b><span data-i18n="facts.orderv">Telegram orqali</span></span>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="#i-phone"/></svg>
+          <span><b data-i18n="facts.phone">Telefon</b><a class="js-phone-link js-phone-text" href="tel:+998000000000">+998 00 000 00 00</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-photo">
+        <img src="assets/img/hero-osh.jpg" width="1200" height="1200" alt="Toshkent oshi oltin hoshiyali likopchada" data-i18n-alt="hero.alt">
+      </div>
+      <div class="hero-pick" data-dish="osh">
+        <img src="assets/img/osh-160.jpg" width="64" height="64" alt="">
+        <div>
+          <span class="hero-pick-label" data-i18n="hero.pick">Bugun dasturxonda</span>
+          <b class="hero-pick-name" data-dish-name>Toshkent oshi</b>
+          <span class="price" data-dish-price>65 000 so'm</span>
+        </div>
+        <button class="add-btn" type="button" data-add="osh" aria-label="Savatchaga qo'shish">
+          <svg aria-hidden="true"><use href="#i-plus"/></svg>
+        </button>
+      </div>
+      <img class="hero-stamp" src="assets/img/logo-badge-160.png" width="112" height="112" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ PROMISES STRIP -->
+<section class="promises" aria-label="Afzalliklar">
+  <div class="wrap promises-row">
+    <div class="promise">
+      <svg aria-hidden="true"><use href="#i-leaf"/></svg>
+      <div><b data-i18n="pr.1t">Har kuni yangi masalliq</b><p data-i18n="pr.1d">Go'sht, sabzavot va ziravorlar har tong tanlanadi</p></div>
+    </div>
+    <div class="promise">
+      <svg aria-hidden="true"><use href="#i-flame"/></svg>
+      <div><b data-i18n="pr.2t">Qozon va tandirda</b><p data-i18n="pr.2d">Milliy taomlar asl usulda, shoshilmasdan pishiriladi</p></div>
+    </div>
+    <div class="promise">
+      <svg aria-hidden="true"><use href="#i-hall"/></svg>
+      <div><b data-i18n="pr.3t">Shinam zal</b><p data-i18n="pr.3d">Oilaviy kechalar, to'y va tug'ilgan kunlar uchun</p></div>
+    </div>
+    <div class="promise">
+      <svg aria-hidden="true"><use href="#i-truck"/></svg>
+      <div><b data-i18n="pr.4t">Uyingizgacha</b><p data-i18n="pr.4d">Issiq holda yetkazib beramiz yoki o'zingiz olib ketasiz</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 2. PAIN → SOLUTION -->
+<section class="contrast section">
+  <div class="wrap">
+    <h2 class="h2 center">
+      <span data-i18n="pain.h1">Mehmon kutish — quvonch.</span>
+      <span class="script" data-i18n="pain.h2">Ovoragarchilik emas</span>
+    </h2>
+    <div class="contrast-grid">
+      <div class="contrast-before">
+        <h3 class="h3" data-i18n="pain.beforeT">Odatda shunday bo'ladi</h3>
+        <ul class="ticks ticks-x">
+          <li data-i18n="pain.b1">Ertalabdan bozor, keyin oshxonada soatlab turish</li>
+          <li data-i18n="pain.b2">Mehmonlar kelib qoladi — osh hali damlanmagan</li>
+          <li data-i18n="pain.b3">Dasturxon atrofida emas, gaz plita yonidasiz</li>
+          <li data-i18n="pain.b4">Kechasi esa — tog'dek idish-tovoq</li>
+        </ul>
+      </div>
+      <div class="contrast-after">
+        <h3 class="h3" data-i18n="pain.afterT">Mushtariy bilan</h3>
+        <ul class="ticks">
+          <li data-i18n="pain.a1">Menyudan bir necha daqiqada tanlaysiz</li>
+          <li data-i18n="pain.a2">Menejer qo'ng'iroq qilib, hammasini tasdiqlaydi</li>
+          <li data-i18n="pain.a3">Taom issiq holda, aytilgan vaqtda eshigingizda</li>
+          <li data-i18n="pain.a4">Siz esa — mehmonlar bilan, dasturxon boshida</li>
+        </ul>
+        <a class="btn btn-gold" href="#menu">
+          <span data-i18n="pain.cta">Menyuni ochish</span>
+          <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ STORY -->
+<section class="story section" id="about">
+  <div class="wrap story-grid">
+    <figure class="story-photo">
+      <img src="assets/img/facade.jpg" width="1020" height="790" loading="lazy" alt="Mushtariy Premium Restaurant binosi kechqurun" data-i18n-alt="story.alt">
+    </figure>
+    <div class="story-copy">
+      <h2 class="h2">
+        <span class="script" data-i18n="story.s">Bizning hikoya</span>
+        <span data-i18n="story.h">Oshxonamizdan — dasturxoningizga</span>
+      </h2>
+      <p data-i18n="story.p1">Mushtariy — kechqurun uzoqdan ko'rinadigan oltin toj ostidagi restoran. Bu yerda milliy taomlarni oilaviy retseptlar bo'yicha, qozon va tandirda, shoshilmasdan tayyorlaymiz.</p>
+      <p data-i18n="story.p2">Zalimizda oilaviy kechalar va katta tantanalar o'tadi. Uyda bo'lsangiz — o'sha taomlarni issiq holda eshigingizgacha olib boramiz.</p>
+      <div class="story-actions">
+        <a class="link-arrow" href="#banquet"><span data-i18n="story.cta">Banket va tadbirlar</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 3. MENU -->
+<section class="menu section" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <h2 class="h2">
+        <span class="script" data-i18n="menu.s">Menyudan</span>
+        <span data-i18n="menu.h">Mushtariy dasturxoni</span>
+      </h2>
+      <div class="tabs" role="tablist" aria-label="Kategoriyalar" data-tabs></div>
+    </div>
+    <div class="dish-grid" data-dish-grid aria-live="polite"></div>
+    <p class="menu-note" data-i18n="menu.note">Narxlar porsiya uchun. Yetkazib berish narxini menejer buyurtmani tasdiqlashda aytadi.</p>
+  </div>
+</section>
+
+<!-- ================================================================ 3b. HOW IT WORKS (dark) -->
+<section class="how section-dark" id="how">
+  <div class="wrap how-grid">
+    <div class="how-copy">
+      <h2 class="h2 on-dark">
+        <span data-i18n="how.h">Buyurtma to'g'ridan-to'g'ri menejerga</span>
+        <span class="script" data-i18n="how.s">Telegram orqali</span>
+      </h2>
+      <p class="lead on-dark-2" data-i18n="how.lead">Ro'yxatdan o'tish, ilova yuklash shart emas. Savatchani to'ldirasiz — buyurtmangiz tayyor xabar bo'lib menejerimizning Telegram'iga boradi.</p>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div><b data-i18n="how.1t">Taom tanlang</b><p data-i18n="how.1d">Menyudan «+» tugmasi bilan savatchaga qo'shing</p></div></li>
+        <li><span class="step-n">2</span><div><b data-i18n="how.2t">Ma'lumot qoldiring</b><p data-i18n="how.2d">Ism, telefon, manzil va qulay vaqt</p></div></li>
+        <li><span class="step-n">3</span><div><b data-i18n="how.3t">Telegram'da yuboring</b><p data-i18n="how.3d">Xabar tayyor holda ochiladi — faqat «Yuborish»ni bosasiz</p></div></li>
+        <li><span class="step-n">4</span><div><b data-i18n="how.4t">Menejer tasdiqlaydi</b><p data-i18n="how.4d">Qo'ng'iroq qilib aniqlashtiradi va taomni yo'lga chiqaradi</p></div></li>
+      </ol>
+    </div>
+
+    <div class="tg-preview" aria-label="Menejerga boradigan xabar">
+      <div class="tg-top">
+        <img src="assets/img/logo-badge-160.png" width="40" height="40" alt="">
+        <div><b data-i18n="how.tgName">Mushtariy menejeri</b><span data-i18n="how.tgStatus">odatda tez javob beradi</span></div>
+      </div>
+      <div class="tg-body">
+        <div class="tg-bubble" data-tg-preview></div>
+        <p class="tg-hint" data-i18n="how.hint">Savatchangizga taom qo'shing — xabar shu yerda jonli yangilanadi.</p>
+      </div>
+      <button class="btn btn-gold btn-block" type="button" data-open="cart">
+        <svg aria-hidden="true"><use href="#i-telegram"/></svg>
+        <span data-i18n="how.cta">Buyurtmani rasmiylashtirish</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 4. SOCIAL PROOF -->
+<section class="proof section">
+  <div class="wrap">
+    <div class="proof-head">
+      <h2 class="h2 center">
+        <span class="script" data-i18n="proof.s">Mehmonlarimiz</span>
+        <span data-i18n="proof.h">Dasturxondan keyin aytilgan so'zlar</span>
+      </h2>
+      <p class="sample-note" data-i18n="proof.note">Namuna sharhlar — sayt ishga tushganda mehmonlarning haqiqiy fikrlari (Google, Yandex, Instagram) bilan almashtiriladi.</p>
+    </div>
+    <div class="quotes">
+      <figure class="quote">
+        <svg class="quote-mark" aria-hidden="true"><use href="#i-quote"/></svg>
+        <blockquote data-i18n="proof.q1">Oilamiz bilan tug'ilgan kunni shu yerda o'tkazdik. Osh va tandir go'sht — hammaga yoqdi, xizmat ham juda e'tiborli edi.</blockquote>
+        <figcaption><span class="avatar">M</span><span><b>Madina</b><span data-i18n="proof.r1">oilaviy kecha</span></span></figcaption>
+      </figure>
+      <figure class="quote">
+        <svg class="quote-mark" aria-hidden="true"><use href="#i-quote"/></svg>
+        <blockquote data-i18n="proof.q2">Ofisga 12 kishilik tushlik buyurtma qildik. Menejer darhol qo'ng'iroq qildi, taom aytilgan vaqtda, issiq holda keldi.</blockquote>
+        <figcaption><span class="avatar">J</span><span><b>Jasur</b><span data-i18n="proof.r2">korporativ buyurtma</span></span></figcaption>
+      </figure>
+      <figure class="quote">
+        <svg class="quote-mark" aria-hidden="true"><use href="#i-quote"/></svg>
+        <blockquote data-i18n="proof.q3">Telegram orqali buyurtma berish juda qulay ekan: hech qanday ilova yo'q, menyudan tanladim — bo'ldi.</blockquote>
+        <figcaption><span class="avatar">D</span><span><b>Dilnoza</b><span data-i18n="proof.r3">uyga yetkazib berish</span></span></figcaption>
+      </figure>
+    </div>
+    <a class="insta-card" href="https://www.instagram.com/mushtariy_premium_restaurant" target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-instagram"/></svg>
+      <span><b>@mushtariy_premium_restaurant</b><span data-i18n="proof.insta">Zal, taomlar va tadbirlarimizni Instagram'da kuzating</span></span>
+      <svg class="insta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================================================================ BANQUET -->
+<section class="banquet" id="banquet">
+  <img class="banquet-bg" src="assets/img/zal.jpg" width="1600" height="939" loading="lazy" alt="">
+  <div class="wrap banquet-inner">
+    <h2 class="h2 on-dark">
+      <span class="script" data-i18n="bq.s">Har qanday tantana uchun</span>
+      <span data-i18n="bq.h">To'y, tug'ilgan kun, korporativ</span>
+    </h2>
+    <p class="on-dark-2" data-i18n="bq.p">Zal, menyu va bezakni siz bilan birga tuzamiz. Sana va mehmonlar sonini yozing — menejer qo'ng'iroq qilib, takliflarni aytadi.</p>
+    <div class="banquet-cta">
+      <button class="btn btn-gold btn-lg" type="button" data-open="reserve" data-i18n="cta.reserve">Stol band qilish</button>
+      <a class="btn btn-line-light btn-lg js-phone-link" href="tel:+998000000000">
+        <svg aria-hidden="true"><use href="#i-phone"/></svg>
+        <span data-i18n="cta.call">Qo'ng'iroq qilish</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 5. CTA + RISK + FAQ -->
+<section class="close section">
+  <div class="wrap close-grid">
+    <div class="close-offer">
+      <h2 class="h2">
+        <span data-i18n="close.h">Bugungi kechki ovqat —</span>
+        <span class="script" data-i18n="close.s">Mushtariy'dan</span>
+      </h2>
+      <ul class="guarantees">
+        <li>
+          <svg aria-hidden="true"><use href="#i-wallet"/></svg>
+          <div><b data-i18n="close.g1t">Oldindan to'lov yo'q</b><p data-i18n="close.g1d">To'lov taomni qabul qilganingizda — naqd yoki karta orqali.</p></div>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="#i-check"/></svg>
+          <div><b data-i18n="close.g2t">Menejer tasdiqlaguncha — hech qanday majburiyat</b><p data-i18n="close.g2d">Fikringiz o'zgarsa, qo'ng'iroqda aytasiz — buyurtma bepul bekor qilinadi.</p></div>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="#i-telegram"/></svg>
+          <div><b data-i18n="close.g3t">Hammasi yozma, Telegram'da</b><p data-i18n="close.g3d">Nima buyurtma qilganingiz va jami summa — yozishmada saqlanib qoladi.</p></div>
+        </li>
+      </ul>
+      <a class="btn btn-ink btn-xl" href="#menu">
+        <span data-i18n="close.cta">Menyudan tanlash</span>
+        <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+    </div>
+
+    <div class="faq">
+      <h3 class="h3" data-i18n="faq.h">Ko'p so'raladigan savollar</h3>
+      <details>
+        <summary data-i18n="faq.q1">Buyurtma qanday tasdiqlanadi?</summary>
+        <p data-i18n="faq.a1">Xabaringiz menejerga boradi. U sizga qo'ng'iroq qilib, tarkib, manzil va vaqtni aniqlashtiradi. Shundan keyingina taom tayyorlanadi.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q2">Telegram bo'lmasa-chi?</summary>
+        <p data-i18n="faq.a2">Sahifadagi raqamga qo'ng'iroq qiling — menejer buyurtmani telefonda qabul qiladi.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q3">Yetkazib berish qancha turadi?</summary>
+        <p data-i18n="faq.a3">Narx va vaqt manzilingizga bog'liq — menejer qo'ng'iroqda aniq aytadi. Xohlasangiz, o'zingiz olib ketishingiz mumkin.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q4">Ma'lum bir vaqtga buyurtma bersa bo'ladimi?</summary>
+        <p data-i18n="faq.a4">Ha. Rasmiylashtirishda «Belgilangan vaqtga»ni tanlang va soatni yozing.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q5">Banket uchun qancha oldin aytish kerak?</summary>
+        <p data-i18n="faq.a5">Qancha erta bo'lsa, shuncha yaxshi: zal va menyuni oldindan kelishib olamiz. «Stol band qilish» orqali so'rov qoldiring.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ CONTACT -->
+<section class="contact section" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <h2 class="h2">
+        <span class="script" data-i18n="ct.s">Kutib qolamiz</span>
+        <span data-i18n="ct.h">Keling, birga dasturxon yozamiz</span>
+      </h2>
+      <ul class="contact-list">
+        <li><svg aria-hidden="true"><use href="#i-pin"/></svg><span><b data-i18n="ct.addr">Manzil</b><span class="js-address">Manzil kiritiladi</span></span></li>
+        <li><svg aria-hidden="true"><use href="#i-phone"/></svg><span><b data-i18n="facts.phone">Telefon</b><a class="js-phone-link js-phone-text" href="tel:+998000000000">+998 00 000 00 00</a></span></li>
+        <li><svg aria-hidden="true"><use href="#i-clock"/></svg><span><b data-i18n="facts.hours">Ish vaqti</b><span class="js-hours" data-i18n-suffix="ct.daily">10:00 – 23:00</span></span></li>
+        <li><svg aria-hidden="true"><use href="#i-telegram"/></svg><span><b>Telegram</b><a class="js-tg-link" href="https://t.me/" target="_blank" rel="noopener">@menejer</a></span></li>
+      </ul>
+    </div>
+    <a class="map-card" href="https://www.google.com/maps/search/?api=1&query=Mushtariy+Premium+Restaurant" target="_blank" rel="noopener">
+      <svg class="map-art" viewBox="0 0 600 420" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+        <rect width="600" height="420" fill="#ECE3D2"/>
+        <path d="M-20 300 C 120 260, 220 330, 360 280 S 560 220, 640 250" stroke="#D9CDB6" stroke-width="34" fill="none"/>
+        <path d="M150 -20 L 210 440" stroke="#FBF8F2" stroke-width="22"/>
+        <path d="M-20 120 L 640 170" stroke="#FBF8F2" stroke-width="18"/>
+        <path d="M420 -20 L 380 440" stroke="#FBF8F2" stroke-width="14"/>
+        <path d="M-20 380 L 640 350" stroke="#FBF8F2" stroke-width="10"/>
+        <path d="M260 -20 C 280 120, 300 200, 290 440" stroke="#FBF8F2" stroke-width="8"/>
+        <rect x="40" y="20" width="90" height="80" rx="8" fill="#E3D8C3"/>
+        <rect x="230" y="190" width="40" height="60" rx="6" fill="#E3D8C3"/>
+        <rect x="450" y="40" width="120" height="100" rx="8" fill="#DCE3CF"/>
+        <rect x="440" y="300" width="120" height="70" rx="8" fill="#E3D8C3"/>
+        <circle cx="330" cy="190" r="46" fill="#B48A45" opacity=".18"/>
+        <path d="M330 120 c-26 0-44 19-44 43 0 32 44 75 44 75s44-43 44-75c0-24-18-43-44-43z" fill="#17130E"/>
+        <circle cx="330" cy="162" r="14" fill="#D8B370"/>
+      </svg>
+      <span class="map-label">
+        <b>Mushtariy Premium Restaurant</b>
+        <span data-i18n="ct.map">Xaritada ochish</span>
+        <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ================================================================ FOOTER -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/logo-badge.png" width="120" height="120" loading="lazy" alt="Mushtariy Premium Restaurant">
+      <p data-i18n="ft.tag">Milliy ta'm, premium xizmat va unutilmas lahzalar.</p>
+    </div>
+    <div>
+      <h4 data-i18n="ft.nav">Sahifa</h4>
+      <a href="#menu" data-i18n="nav.menu">Menyu</a>
+      <a href="#about" data-i18n="nav.about">Biz haqimizda</a>
+      <a href="#banquet" data-i18n="nav.banquet">Banket</a>
+      <a href="#contact" data-i18n="nav.contact">Aloqa</a>
+    </div>
+    <div>
+      <h4 data-i18n="ft.order">Buyurtma</h4>
+      <button type="button" class="footer-link" data-open="cart" data-i18n="ft.cart">Savatcha</button>
+      <button type="button" class="footer-link" data-open="reserve" data-i18n="cta.reserve">Stol band qilish</button>
+      <a class="js-phone-link js-phone-text" href="tel:+998000000000">+998 00 000 00 00</a>
+    </div>
+    <div>
+      <h4 data-i18n="ft.social">Ijtimoiy tarmoqlar</h4>
+      <a href="https://www.instagram.com/mushtariy_premium_restaurant" target="_blank" rel="noopener">Instagram</a>
+      <a class="js-tg-link" href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© <span class="js-year">2026</span> Mushtariy Premium Restaurant</span>
+    <span data-i18n="ft.note">Taom va zal suratlari, narxlar va sharhlar — namuna; restoranning haqiqiy ma'lumotlari bilan almashtiriladi.</span>
+  </div>
+</footer>
+
+<!-- ================================================================ MOBILE CART BAR -->
+<button class="cart-bar" type="button" data-open="cart" hidden>
+  <span class="cart-bar-count" data-cart-count>0</span>
+  <span data-i18n="bar.label">Savatcha</span>
+  <span class="price" data-cart-total>0 so'm</span>
+  <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+</button>
+
+<!-- ================================================================ DRAWERS -->
+<div class="scrim" data-scrim hidden></div>
+
+<aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+  <div class="drawer-head">
+    <h2 class="h3" id="cart-title" data-cart-title data-i18n="cart.title">Savatcha</h2>
+    <button class="icon-btn" type="button" data-close aria-label="Yopish"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+
+  <div class="drawer-body" data-step="cart">
+    <div class="cart-empty" data-cart-empty>
+      <img src="assets/img/logo-badge-160.png" width="88" height="88" alt="">
+      <p data-i18n="cart.empty">Savatcha hozircha bo'sh. Menyudan taom tanlang.</p>
+      <a class="btn btn-ink" href="#menu" data-close data-i18n="pain.cta">Menyuni ochish</a>
+    </div>
+    <ul class="cart-list" data-cart-list></ul>
+  </div>
+
+  <form class="drawer-body checkout" data-step="checkout" novalidate hidden>
+    <fieldset class="seg" data-seg="type">
+      <legend class="sr-only" data-i18n="co.type">Olish usuli</legend>
+      <label><input type="radio" name="type" value="delivery" checked><span data-i18n="co.delivery">Yetkazib berish</span></label>
+      <label><input type="radio" name="type" value="pickup"><span data-i18n="co.pickup">Olib ketish</span></label>
+    </fieldset>
+
+    <div class="field">
+      <label for="co-name" data-i18n="co.name">Ismingiz</label>
+      <input id="co-name" name="name" autocomplete="given-name" required maxlength="50">
+      <p class="field-err" data-i18n="err.name">Ismingizni yozing</p>
+    </div>
+    <div class="field">
+      <label for="co-phone" data-i18n="co.phone">Telefon</label>
+      <input id="co-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+998 90 123 45 67" required>
+      <p class="field-err" data-i18n="err.phone">Telefon raqami to'liq emas: +998 va 9 ta raqam</p>
+    </div>
+    <div class="field" data-when="delivery">
+      <label for="co-address" data-i18n="co.address">Manzil</label>
+      <input id="co-address" name="address" autocomplete="street-address" data-i18n-ph="co.addressPh" placeholder="Ko'cha, uy, xonadon">
+      <p class="field-err" data-i18n="err.address">Yetkazib berish uchun manzilni yozing</p>
+    </div>
+    <div class="field" data-when="delivery">
+      <label for="co-landmark" data-i18n="co.landmark">Mo'ljal <span class="opt">(ixtiyoriy)</span></label>
+      <input id="co-landmark" name="landmark" data-i18n-ph="co.landmarkPh" placeholder="Masalan, maktab yonida">
+    </div>
+
+    <fieldset class="seg" data-seg="when">
+      <legend class="seg-legend" data-i18n="co.when">Qachon</legend>
+      <label><input type="radio" name="when" value="asap" checked><span data-i18n="co.asap">Imkon qadar tez</span></label>
+      <label><input type="radio" name="when" value="time"><span data-i18n="co.time">Belgilangan vaqtga</span></label>
+    </fieldset>
+    <div class="field" data-when-time hidden>
+      <label for="co-time" data-i18n="co.timeL">Soat</label>
+      <input id="co-time" name="time" type="time" step="900">
+      <p class="field-err" data-i18n="err.time">Soatni tanlang</p>
+    </div>
+
+    <fieldset class="seg" data-seg="pay">
+      <legend class="seg-legend" data-i18n="co.pay">To'lov</legend>
+      <label><input type="radio" name="pay" value="cash" checked><span data-i18n="co.cash">Naqd pul</span></label>
+      <label><input type="radio" name="pay" value="card"><span data-i18n="co.card">Karta orqali</span></label>
+    </fieldset>
+
+    <div class="field">
+      <label for="co-comment" data-i18n="co.comment">Izoh <span class="opt">(ixtiyoriy)</span></label>
+      <textarea id="co-comment" name="comment" rows="2" maxlength="300" data-i18n-ph="co.commentPh" placeholder="Masalan, domofon ishlamaydi"></textarea>
+    </div>
+  </form>
+
+  <div class="drawer-body sent" data-step="sent" hidden>
+    <div class="sent-mark"><svg aria-hidden="true"><use href="#i-telegram"/></svg></div>
+    <h3 class="h3" data-i18n="sent.h">Telegram ochildi</h3>
+    <p data-i18n="sent.p">Xabar tayyor — Telegram'da «Yuborish» tugmasini bosing. Menejer qo'ng'iroq qilib buyurtmani tasdiqlaydi.</p>
+    <div class="sent-actions">
+      <a class="btn btn-ink btn-block" data-sent-open href="#" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-telegram"/></svg><span data-i18n="sent.again">Telegram'ni qayta ochish</span>
+      </a>
+      <button class="btn btn-line btn-block" type="button" data-copy><span data-i18n="sent.copy">Xabarni nusxalash</span></button>
+      <a class="btn btn-line btn-block js-phone-link" href="tel:+998000000000"><span data-i18n="sent.call">Telegram yo'qmi? Qo'ng'iroq qiling</span></a>
+    </div>
+    <button class="link-btn" type="button" data-new-order data-i18n="sent.new">Yangi buyurtma</button>
+  </div>
+
+  <div class="drawer-foot" data-foot>
+    <div class="total-row">
+      <span data-i18n="cart.total">Jami</span>
+      <b class="price price-lg" data-cart-total>0 so'm</b>
+    </div>
+    <p class="total-note" data-i18n="cart.feeNote">Yetkazib berish narxi alohida — menejer aytadi</p>
+    <button class="btn btn-ink btn-block btn-lg" type="button" data-next disabled>
+      <span data-next-label data-i18n="cart.next">Rasmiylashtirish</span>
+      <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+    </button>
+    <button class="link-btn" type="button" data-back hidden data-i18n="co.back">← Savatchaga qaytish</button>
+  </div>
+</aside>
+
+<aside class="drawer" id="reserve" role="dialog" aria-modal="true" aria-labelledby="reserve-title" hidden>
+  <div class="drawer-head">
+    <h2 class="h3" id="reserve-title" data-i18n="rs.title">Stol band qilish</h2>
+    <button class="icon-btn" type="button" data-close aria-label="Yopish"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <form class="drawer-body checkout" data-reserve-form novalidate>
+    <p class="drawer-lead" data-i18n="rs.lead">So'rovingiz menejerga Telegram orqali boradi. U qo'ng'iroq qilib, zal va menyuni kelishadi.</p>
+    <div class="field">
+      <label for="rs-name" data-i18n="co.name">Ismingiz</label>
+      <input id="rs-name" name="name" autocomplete="given-name" required maxlength="50">
+      <p class="field-err" data-i18n="err.name">Ismingizni yozing</p>
+    </div>
+    <div class="field">
+      <label for="rs-phone" data-i18n="co.phone">Telefon</label>
+      <input id="rs-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+998 90 123 45 67" required>
+      <p class="field-err" data-i18n="err.phone">Telefon raqami to'liq emas: +998 va 9 ta raqam</p>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="rs-date" data-i18n="rs.date">Sana</label>
+        <input id="rs-date" name="date" type="date" required>
+        <p class="field-err" data-i18n="err.date">Sanani tanlang</p>
+      </div>
+      <div class="field">
+        <label for="rs-time" data-i18n="co.timeL">Soat</label>
+        <input id="rs-time" name="time" type="time" step="900" required>
+        <p class="field-err" data-i18n="err.time">Soatni tanlang</p>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="rs-guests" data-i18n="rs.guests">Mehmonlar soni</label>
+        <input id="rs-guests" name="guests" type="number" min="1" max="500" inputmode="numeric" value="4" required>
+        <p class="field-err" data-i18n="err.guests">1 dan 500 gacha</p>
+      </div>
+      <div class="field">
+        <label for="rs-occasion" data-i18n="rs.occasion">Munosabat</label>
+        <select id="rs-occasion" name="occasion">
+          <option value="family" data-i18n="rs.o1">Oilaviy kechki ovqat</option>
+          <option value="birthday" data-i18n="rs.o2">Tug'ilgan kun</option>
+          <option value="wedding" data-i18n="rs.o3">To'y / nikoh oqshomi</option>
+          <option value="corporate" data-i18n="rs.o4">Korporativ</option>
+          <option value="other" data-i18n="rs.o5">Boshqa</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="rs-comment" data-i18n="co.comment">Izoh <span class="opt">(ixtiyoriy)</span></label>
+      <textarea id="rs-comment" name="comment" rows="2" maxlength="300"></textarea>
+    </div>
+    <button class="btn btn-ink btn-block btn-lg" type="submit">
+      <svg aria-hidden="true"><use href="#i-telegram"/></svg>
+      <span data-i18n="rs.send">Telegram orqali yuborish</span>
+    </button>
+  </form>
+</aside>
+
+<div class="toast" role="status" aria-live="polite" data-toast hidden></div>
+
+<!-- ================================================================ ICONS (1.6 stroke, 24 grid) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.2l1.6 4-2 1.3a11 11 0 0 0 6.9 6.9l1.3-2 4 1.6V19a1.6 1.6 0 0 1-1.7 1.6A16.3 16.3 0 0 1 3.4 5.7 1.6 1.6 0 0 1 5 4z"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5.5 8h13l-1 12.2a1 1 0 0 1-1 .8h-9a1 1 0 0 1-1-.8L5.5 8z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M20.5 4.5 3.6 11.1c-.8.3-.8 1.4 0 1.7l4.1 1.4 1.6 4.9c.2.7 1.1.9 1.6.4l2.3-2.2 4.2 3.1c.6.4 1.4.1 1.6-.6l2.9-13.3c.2-.8-.6-1.4-1.4-1z"/><path d="m7.7 14.2 9-6.2-6.9 7.4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l4.5 4.5L19.5 6.5"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 10-9"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21c-3.9 0-6.5-2.6-6.5-6.2 0-3.3 2.4-5.4 3.6-8.3.6 1.9 1.6 3 2.7 3.6.3-2.4 1.5-4.8 3.7-6.6-.3 3.6 3 5.8 3 10.3 0 4-2.6 7.2-6.5 7.2z"/><path d="M12 21c-1.7 0-2.8-1.2-2.8-2.8 0-1.7 1.4-2.6 2.1-4.2 1.4 1 3.5 2.4 3.5 4.3 0 1.6-1.1 2.7-2.8 2.7z"/></symbol>
+    <symbol id="i-hall" viewBox="0 0 24 24"><path d="M12 3v2.5"/><path d="M5 11a7 6 0 0 1 14 0"/><path d="M3.5 11h17"/><path d="M6 11v9M18 11v9M9.5 14v6M14.5 14v6M3.5 20h17"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6.5h11v9H3z"/><path d="M14 9.5h3.6l3 3.2v2.8H14"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-5.7 6.5-11A6.5 6.5 0 0 0 5.5 10c0 5.3 6.5 11 6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7.5A1.5 1.5 0 0 1 5.5 6H18v3"/><path d="M4 7.5V18a1.5 1.5 0 0 0 1.5 1.5H20V9H5.5A1.5 1.5 0 0 1 4 7.5z"/><circle cx="16" cy="14.3" r="1.1"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 32 24"><path d="M3 22v-8C3 7 7 3 13 2l1 3c-4 1-6 4-6 7h5v10zm16 0v-8c0-7 4-11 10-12l1 3c-4 1-6 4-6 7h5v10z"/></symbol>
+    <symbol id="o-sprig" viewBox="0 0 220 420"><path d="M110 410C100 300 112 190 160 20"/><path d="M118 330c-30-10-52-34-58-70 30 8 50 34 58 70zM124 270c28-14 44-40 44-74-28 12-42 40-44 74zM130 210c-30-8-52-30-60-64 30 6 52 30 60 64zM140 150c26-14 40-38 40-70-26 12-38 38-40 70zM150 95c-24-6-42-24-48-52 24 4 42 24 48 52z"/></symbol>
+  </defs>
+</svg>
+
+<script src="app.js" defer></script>
+</body>
+</html>
