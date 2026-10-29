@@ -40,20 +40,23 @@ Shuningdek:
 | `assets/img/logo-badge*.png` | Restoranning Instagram profilidagi logotip (skrinshotdan kesilgan). Asl vektor fayl bilan almashtirish tavsiya etiladi |
 | `assets/img/facade.jpg` | Restoran binosi — Instagram'dagi videodan kadr (odamlar kesib tashlangan) |
 | `assets/img/og.jpg` | Ulashish rasmi: logotip + `hero-osh.jpg` |
-| `osh`, `hero-osh`, `lagmon`, `manti`, `tandir`, `qozon-kabob`, `shashlik`, `salat`, `desert`, `choy`, `zal` | **AI-generatsiya namuna** (Pollinations.ai, flux). Restoranning haqiqiy fotosuratlari bilan **shu nomlarda** almashtiriladi: taomlar 900×900 (+ 160×160 `*-160.jpg`), `hero-osh` 1200×1200, `zal` 1600 kenglik |
+| taom va zal suratlari | **Pexels** fotosuratlari ([Pexels litsenziyasi](https://www.pexels.com/license/): bepul, tijoriy foydalanish mumkin, muallifni ko'rsatish shart emas). Restoranning o'z taomlari emas — o'z fotosuratlari tayyor bo'lganda **shu nomlarda** almashtiriladi |
 
-AI rasmlar uchun umumiy prompt: `<taom tavsifi>, professional food photography, premium Uzbek restaurant, dark charcoal
-stone table, warm low key lighting, gold rimmed dark ceramic plate, shallow depth of field, 50mm, editorial, appetizing,
-no text, no watermark`. Taom tavsiflari: osh — "Uzbek plov osh portion on plate, golden rice, carrots, lamb pieces, quail egg";
-lagmon — "Uzbek lagman soup, hand pulled noodles in rich broth with beef, peppers and vegetables in a deep bowl";
-manti — "Uzbek manti steamed dumplings on a plate with sour cream and black pepper"; tandir — "Uzbek tandir gosht, slow
-roasted lamb leg from clay oven, crispy skin, with greens"; qozon-kabob — "Uzbek kazan kabob: golden fried lamb ribs pieces
-with crispy fried potato wedges and raw red onion rings and fresh dill on a black plate"; shashlik — "Uzbek lamb shashlik
-kebab skewers on a plate with sliced raw onions and herbs, flatbread"; salat — "Uzbek achichuk salad, thin sliced tomatoes
-and onions with fresh basil in a bowl"; desert — "Uzbek chak chak honey dessert and baklava pieces on a plate with mint";
-choy — "Uzbek green tea in traditional blue and white piyola cup with teapot, dried apricots and nuts"; zal — "elegant luxury
-banquet hall interior of a premium Uzbek restaurant at evening, round tables with white tablecloths, crystal chandeliers,
-warm golden light, black and gold decor, no people".
+| Fayl | Pexels |
+|---|---|
+| `hero-osh.jpg` | https://www.pexels.com/photo/10541694/ |
+| `osh.jpg` | https://www.pexels.com/photo/10522937/ |
+| `lagmon.jpg` | https://www.pexels.com/photo/27588093/ |
+| `manti.jpg` | https://www.pexels.com/photo/12716792/ |
+| `qovurma.jpg` | https://www.pexels.com/photo/27588084/ |
+| `shashlik.jpg` | https://www.pexels.com/photo/8707683/ |
+| `somsa.jpg` | https://www.pexels.com/photo/19441250/ |
+| `salat.jpg` | https://www.pexels.com/photo/1639555/ |
+| `non.jpg` | https://www.pexels.com/photo/20045238/ |
+| `choy.jpg` | https://www.pexels.com/photo/4589177/ |
+| `zal.jpg` | https://www.pexels.com/photo/12688995/ |
+
+O'lchamlar: taomlar 900×900 (+ 160×160 `*-160.jpg`), `hero-osh` 1200×1200, `zal` 1600 kenglik.
 
 ## Tuzilma
 
