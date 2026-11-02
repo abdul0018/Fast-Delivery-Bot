@@ -13,6 +13,8 @@ export interface PickedLocation {
 
 interface MapRequest {
   initial: GeoPoint | null;
+  /** initial nuqtaning aniqligi (metr) — taxminiy bo'lsa xaritada doira va maslahat ko'rsatiladi */
+  accuracy?: number | null;
   onPick: (picked: PickedLocation) => void;
 }
 

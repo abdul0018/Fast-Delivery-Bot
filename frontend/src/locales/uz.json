@@ -184,6 +184,15 @@
     "openSettings": "Sozlamalarni ochish",
     "unavailable": "Joylashuvni aniqlab bo'lmadi. Xaritadan nuqta tanlang.",
     "details": "Xonadon, kirish, qavat",
-    "detailsPlaceholder": "Masalan: 12-xonadon, 2-kirish, 3-qavat"
+    "detailsPlaceholder": "Masalan: 12-xonadon, 2-kirish, 3-qavat",
+    "searchPlaceholder": "Ko'cha, uy, mahalla yoki mo'ljal",
+    "search": "Qidirish",
+    "noResults": "Hech narsa topilmadi. Ko'cha yoki mo'ljalni yozing.",
+    "searchFailed": "Qidiruv hozir ishlamayapti — xaritani o'zingiz suring.",
+    "lowAccuracy": "Aniqlik ≈ {m} m. Pin aynan uyingiz ustida turishi uchun xaritani suring.",
+    "zoomIn": "Yaqinlashtirish",
+    "zoomOut": "Uzoqlashtirish",
+    "addressHint": "Ko'cha nomini tuzatish mumkin",
+    "checkOnMap": "Nuqtani xaritada tekshiring"
   }
 }

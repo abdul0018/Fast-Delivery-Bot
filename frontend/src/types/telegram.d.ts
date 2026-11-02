@@ -52,7 +52,9 @@ declare global {
       isAccessRequested: boolean;
       isAccessGranted: boolean;
       init(callback?: () => void): void;
-      getLocation(callback: (data: { latitude: number; longitude: number } | null) => void): void;
+      getLocation(
+        callback: (data: { latitude: number; longitude: number; horizontal_accuracy?: number | null } | null) => void,
+      ): void;
       openSettings(): void;
     };
     HapticFeedback: {

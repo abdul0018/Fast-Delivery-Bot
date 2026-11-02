@@ -7,7 +7,14 @@ import { useState } from 'react';
 import { LocateFixed, Map, MapPin } from 'lucide-react';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
-import { formatPoint, getCurrentLocation, openLocationSettings, reverseGeocode, type GeoError } from '@/lib/geo';
+import {
+  ACCURATE_ENOUGH_METERS,
+  formatPoint,
+  getCurrentLocation,
+  openLocationSettings,
+  reverseGeocode,
+  type GeoError,
+} from '@/lib/geo';
 import { cn } from '@/lib/utils';
 import { useUiStore } from '@/store/uiStore';
 import type { GeoPoint } from '@/types';
@@ -37,7 +44,18 @@ export function LocationField({ value, onChange, error, id }: LocationFieldProps
     setLocating(true);
     setDenied(false);
     try {
-      const point = await getCurrentLocation();
+      const fix = await getCurrentLocation();
+      const point = { latitude: fix.latitude, longitude: fix.longitude };
+      // Taxminiy joylashuv (Wi-Fi / IP bo'yicha, yuzlab metr xato bo'lishi mumkin) — xaritada tasdiqlatamiz
+      if (fix.accuracy != null && fix.accuracy > ACCURATE_ENOUGH_METERS) {
+        useUiStore.getState().showToast(t('location.checkOnMap'));
+        openMap({
+          initial: point,
+          accuracy: fix.accuracy,
+          onPick: (picked) => onChange({ point: picked.point, address: picked.address ?? formatPoint(picked.point) }),
+        });
+        return;
+      }
       const address = await reverseGeocode(point, lang);
       onChange({ point, address: address ?? formatPoint(point) });
       haptic.notify('success');
@@ -71,9 +89,23 @@ export function LocationField({ value, onChange, error, id }: LocationFieldProps
           error ? 'border-sale bg-surface' : 'border-transparent',
         )}
       >
-        <p className={cn('text-[15px] leading-snug', hasValue ? 'text-ink' : 'text-ink-2')}>
-          {locating ? t('location.locating') : hasValue ? value.address : t('location.empty')}
-        </p>
+        {locating ? (
+          <p className="text-[15px] leading-snug text-ink-2">{t('location.locating')}</p>
+        ) : hasValue ? (
+          <>
+            {/* Nuqta (kuryer uchun) saqlanadi; ko'cha nomini mijoz o'zi tuzatishi mumkin */}
+            <textarea
+              rows={2}
+              value={value.address}
+              onChange={(event) => onChange({ ...value, address: event.target.value })}
+              aria-label={t('cart.address')}
+              className="block w-full resize-none bg-transparent text-[15px] leading-snug text-ink outline-none"
+            />
+            <p className="mt-0.5 text-[12px] text-ink-2">{t('location.addressHint')}</p>
+          </>
+        ) : (
+          <p className="text-[15px] leading-snug text-ink-2">{t('location.empty')}</p>
+        )}
         <div className="mt-3 flex flex-col gap-2">
           <button
             type="button"
