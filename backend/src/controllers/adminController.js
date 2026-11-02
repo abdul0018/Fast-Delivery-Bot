@@ -3,7 +3,8 @@
  */
 const config = require('../config/default');
 const { t } = require('../utils/i18n');
-const { adminOrderKeyboard } = require('../utils/keyboards');
+const { Markup } = require('telegraf');
+const { adminOrderKeyboard, adminPanelUrl } = require('../utils/keyboards');
 const { updateOrderStatus, formatOrderForAdmin, loadOrder } = require('./cartController');
 
 // Ruxsat etilgan holat o'tishlari
@@ -43,4 +44,15 @@ async function changeOrderStatus(ctx) {
   });
 }
 
-module.exports = { changeOrderStatus, TRANSITIONS };
+/** /admin — admin guruhida admin panel (sayt) havolasini yuboradi */
+async function adminPanel(ctx) {
+  if (!isAdminChat(ctx)) return;
+  const lang = config.bot.adminLanguage;
+  if (!config.admin.password) {
+    await ctx.reply(t(lang, 'admin.panelDisabled'));
+    return;
+  }
+  await ctx.reply(t(lang, 'admin.panelText'), Markup.inlineKeyboard([[Markup.button.url(t(lang, 'admin.panelButton'), adminPanelUrl())]]));
+}
+
+module.exports = { changeOrderStatus, adminPanel, TRANSITIONS };

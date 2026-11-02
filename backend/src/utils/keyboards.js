@@ -12,6 +12,15 @@ const webAppUrl = (lang) => {
   return url.toString();
 };
 
+/** Admin panel manzili: <Mini App>/admin/ (GitHub Pages) */
+const adminPanelUrl = () => {
+  const url = new URL(config.bot.webAppUrl);
+  url.search = '';
+  url.hash = '';
+  if (!url.pathname.endsWith('/')) url.pathname += '/';
+  return new URL('admin/', url).toString();
+};
+
 /** Til tanlash (inline) */
 const languageKeyboard = () =>
   Markup.inlineKeyboard([
@@ -50,4 +59,4 @@ const adminOrderKeyboard = (order, lang = config.bot.adminLanguage) => {
   }
 };
 
-module.exports = { languageKeyboard, mainKeyboard, openAppKeyboard, adminOrderKeyboard, webAppUrl };
+module.exports = { languageKeyboard, mainKeyboard, openAppKeyboard, adminOrderKeyboard, webAppUrl, adminPanelUrl };

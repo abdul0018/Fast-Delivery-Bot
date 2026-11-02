@@ -25,6 +25,8 @@ services:
         value: https://abdul0018.github.io
       - key: ADMIN_CHAT_ID       # botni guruhga qo'shing, guruhda /id yuboring va shu yerga yozing
         sync: false
+      - key: ADMIN_PASSWORD      # admin panel paroli (kamida 8 belgi): <Mini App>/admin/
+        sync: false
       - key: ADMIN_LANGUAGE
         value: uz
       - key: SUPPORT_PHONE

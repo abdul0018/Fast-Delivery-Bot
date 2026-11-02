@@ -4,6 +4,7 @@
  *  GET   /api/health
  *  GET   /api/config      — to'lov usullari, Order Bump narxi (ochiq)
  *  GET   /api/products    — faol mahsulotlar (ochiq)
+ *  GET   /api/images/:id  — admin yuklagan mahsulot rasmi (ochiq)
  *  GET   /api/me          — joriy foydalanuvchi            (initData)
  *  PATCH /api/me          — til / telefon / manzil         (initData)
  *  GET   /api/orders      — foydalanuvchi buyurtmalari     (initData)
@@ -11,7 +12,7 @@
  */
 const express = require('express');
 const config = require('../config/default');
-const { Product, Order } = require('../models');
+const { Product, Order, Image } = require('../models');
 const { sequelize } = require('../database/connection');
 const { webAppAuth } = require('../middlewares/auth.middleware');
 const { SUPPORTED_LANGUAGES } = require('../utils/i18n');
@@ -68,6 +69,22 @@ router.get(
       ],
     });
     res.json({ products: products.map((product) => product.toPublicJSON()) });
+  }),
+);
+
+// Admin panelda yuklangan rasmlar: id o'zgarmaydi, shuning uchun brauzer bir yil keshlaydi
+router.get(
+  '/images/:id',
+  handle(async (req, res) => {
+    if (!/^[0-9a-f-]{36}$/i.test(req.params.id)) return res.status(404).json({ error: 'NOT_FOUND' });
+    const image = await Image.findByPk(req.params.id);
+    if (!image) return res.status(404).json({ error: 'NOT_FOUND' });
+    res.set({
+      'Content-Type': image.mimeType,
+      'Cache-Control': 'public, max-age=31536000, immutable',
+      'Cross-Origin-Resource-Policy': 'cross-origin',
+    });
+    return res.send(image.data);
   }),
 );
 

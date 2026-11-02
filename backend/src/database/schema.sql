@@ -87,3 +87,14 @@ CREATE TABLE IF NOT EXISTS orders (
 );
 CREATE INDEX IF NOT EXISTS orders_user_id ON orders (user_id);
 CREATE INDEX IF NOT EXISTS orders_status ON orders (status);
+CREATE INDEX IF NOT EXISTS orders_created_at ON orders (created_at);
+
+-- ---------- Admin yuklagan rasmlar / Фото из админки ----------
+-- Render bepul tarifida disk vaqtinchalik, shuning uchun rasmlar bazada (siqilgan JPEG, ~100 KB)
+CREATE TABLE IF NOT EXISTS images (
+  id          UUID         PRIMARY KEY,
+  mime_type   VARCHAR(50)  NOT NULL,
+  size        INTEGER      NOT NULL,
+  data        BYTEA        NOT NULL,
+  created_at  TIMESTAMPTZ  NOT NULL DEFAULT NOW()
+);

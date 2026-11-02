@@ -48,7 +48,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   }, [lang]);
 
   // Telegram "Orqaga" tugmasi: avval ochiq panelni yopadi, keyin oldingi sahifaga qaytadi
-  useBackButton(Boolean(activeProduct) || contactsOpen || mapOpen || pathname !== '/', () => {
+  useBackButton(!pathname?.startsWith('/admin') && (Boolean(activeProduct) || contactsOpen || mapOpen || pathname !== '/'), () => {
     const ui = useUiStore.getState();
     if (ui.mapRequest) ui.closeMap();
     else if (ui.activeProduct) closeProduct();
@@ -56,6 +56,8 @@ export function AppShell({ children }: { children: ReactNode }) {
     else router.back();
   });
 
+  // Admin panel (/admin) — alohida sayt: mijoz ilovasining navigatsiyasi va onboarding'isiz
+  if (pathname?.startsWith('/admin')) return <>{children}</>;
   if (!hydrated || !ready) return <Splash />;
   if (!onboarded) return <Onboarding />;
 

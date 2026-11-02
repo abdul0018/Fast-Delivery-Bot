@@ -24,6 +24,13 @@ Shablon har qanday do'konga moslashadi: brend — `frontend/src/config/brand.ts`
 - Admin tugmalari: ✅ Qabul qilish → 🚴 Yo'lga chiqdi → 🏁 Yetkazildi / ❌ Bekor qilish (mijozga uning tilida xabar boradi)
 - To'lovlar: hozircha faqat naqd pul; Payme/Click provider token qo'shilganda yoqiladi
 
+**Admin panel** — `https://abdul0018.github.io/Fast-Delivery-Bot/admin/` (telefon uchun moslashgan sayt, parol — `ADMIN_PASSWORD`)
+- **Statistika:** tushum (o'tgan davr bilan taqqoslash), kunlik grafik, buyurtmalar, o'rtacha chek, mijozlar, ommabop mahsulotlar, holatlar
+- **Mahsulotlar:** qo'shish, tahrirlash (narx, eski narx — chegirma, birlik, kategoriya, RU/UZ nom va tavsif), telefondan rasm yuklash,
+  katalogda ko'rsatish/yashirish bir bosishda, savatcha taklifi, tartib, o'chirish
+- **Buyurtmalar:** holat bo'yicha filtr, mijoz, telefon, manzil + xarita, "Принять → Отправить → Доставлен / Отменить" (mijozga xabar boradi)
+- Admin guruhida `/admin` — panel havolasini yuboradi. Rasmlar bazada saqlanadi (Render diski vaqtinchalik), yuklashdan oldin siqiladi.
+
 **Mini App**
 1. **Onboarding** — 3 ta swipe slayd, faqat birinchi kirishda
 2. **Bosh sahifa** — ism bilan salomlashish, stories, hero vidjet, ommabop mahsulotlar
@@ -99,7 +106,11 @@ Ishga tushgach bot "Menyu" tugmasini Mini App'ga o'zi bog'laydi; jadvallar va me
 (`-100...`). Uni Render'da `ADMIN_CHAT_ID` ga yozing (servis qayta ishga tushadi). Shu paytgacha bot
 buyurtma qabul qilmaydi — mijozga "vaqtincha to'xtatilgan" deb ko'rsatiladi, hech bir buyurtma yo'qolmaydi.
 
-**4. Tekshirish.** Botga `/start` → til → "🍔 Menyu" → mahsulot → savatcha → manzil va telefon → *Tasdiqlash*.
+**3a. Admin panel.** Render → *Environment* → `ADMIN_PASSWORD` (kamida 8 belgi) → *Save, rebuild, and deploy*.
+So'ng `https://abdul0018.github.io/Fast-Delivery-Bot/admin/` ni oching va shu parol bilan kiring. Parolni almashtirsangiz,
+barcha qurilmalardagi eski kirishlar bekor bo'ladi.
+
+**4. Tekshirish.** Botga `/start` → til → "🐟 Каталог" → mahsulot → savatcha → manzil va telefon → *Tasdiqlash*.
 Guruhga buyurtma tushadi; "✅ Qabul qilish → 🚴 Yo'lga chiqdi → 🏁 Yetkazildi" tugmalari mijozga xabar yuboradi.
 `https://<render-manzil>/api/health` → `{"ok":true}` (baza bilan aloqa ham tekshiriladi).
 

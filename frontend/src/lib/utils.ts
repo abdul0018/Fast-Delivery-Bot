@@ -6,7 +6,13 @@ import type { Lang, Localized } from '@/types';
  * next/link avtomatik qo'shadi, lekin oddiy <img src> qo'shmaydi.
  */
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
-export const asset = (path: string) => (path.startsWith('/') && !path.startsWith('//') ? `${BASE_PATH}${path}` : path);
+/** Admin panelda yuklangan rasmlar backend'da: /api/images/<id> -> https://<backend>/api/images/<id> */
+const API_ORIGIN = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api').replace(/\/api\/?$/, '');
+export const asset = (path: string | null | undefined) => {
+  if (!path) return '';
+  if (path.startsWith('/api/')) return `${API_ORIGIN}${path}`;
+  return path.startsWith('/') && !path.startsWith('//') ? `${BASE_PATH}${path}` : path;
+};
 
 /** Tailwind klasslarini shartli birlashtirish */
 export const cn = (...inputs: ClassValue[]) => clsx(inputs);

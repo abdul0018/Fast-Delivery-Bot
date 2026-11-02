@@ -19,6 +19,8 @@ function registerBotRoutes(bot) {
   bot.command('orders', startController.myOrders);
   // Admin sozlash uchun: guruhda /id — shu chat ID sini ko'rsatadi (ADMIN_CHAT_ID ga yoziladi)
   bot.command('id', startController.chatId);
+  // Admin guruhida: admin panel (mahsulotlar, narxlar, statistika) havolasi
+  bot.command('admin', adminController.adminPanel);
 
   // Inline tugmalar
   bot.action(/^lang:(uz|ru)$/, startController.chooseLanguage);

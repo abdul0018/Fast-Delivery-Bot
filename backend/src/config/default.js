@@ -70,6 +70,13 @@ const config = {
     allowDevAuth: env !== 'production' && process.env.ALLOW_DEV_AUTH === 'true',
   },
 
+  admin: {
+    // Admin panel (sayt) paroli. Kamida 8 belgi; bo'sh bo'lsa admin panel o'chiq
+    password: (process.env.ADMIN_PASSWORD || '').length >= 8 ? process.env.ADMIN_PASSWORD : '',
+    // Kirish necha kun amal qiladi
+    sessionDays: toInt(process.env.ADMIN_SESSION_DAYS, 30),
+  },
+
   payments: {
     // BotFather -> Payments orqali olingan Payme/Click provider token
     providerToken: process.env.PAYMENT_PROVIDER_TOKEN || '',

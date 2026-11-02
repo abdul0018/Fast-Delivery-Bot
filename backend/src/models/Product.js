@@ -53,6 +53,17 @@ Product.prototype.toPublicJSON = function toPublicJSON() {
   };
 };
 
+/** Admin panel uchun: barcha maydonlar (yashirin mahsulotlar ham) */
+Product.prototype.toAdminJSON = function toAdminJSON() {
+  return {
+    ...this.toPublicJSON(),
+    isActive: this.isActive,
+    sortOrder: this.sortOrder,
+    createdAt: this.createdAt,
+    updatedAt: this.updatedAt,
+  };
+};
+
 Product.CATEGORIES = CATEGORIES;
 
 module.exports = Product;
