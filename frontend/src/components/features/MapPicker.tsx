@@ -6,15 +6,14 @@
  *  - Qidiruv: ko'cha, uy, mahalla yoki mo'ljal (Toshkent bo'yicha)
  *  - Xarita ochilganda joylashuv avtomatik aniqlanadi; taxminiy bo'lsa — aniqlik doirasi va maslahat
  *  - Telegram oynasi o'lchami o'zgarsa xarita qayta o'lchanadi (aks holda markaz noto'g'ri hisoblanardi)
- * Xarita: Leaflet + OpenStreetMap (bepul, kalitsiz; atributsiya majburiy).
+ * Xarita: Yandex Maps (O'zbekistonda eng aniq manzillar); kalit ishlamasa — Leaflet + OpenStreetMap (lib/mapEngine.ts).
  */
 import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { LocateFixed, Minus, Plus, Search, X } from 'lucide-react';
-import type { Circle, Map as LeafletMap } from 'leaflet';
+// Zaxira xarita (OpenStreetMap) uslublari
 import 'leaflet/dist/leaflet.css';
 import { Button } from '@/components/ui/Button';
-import { brand } from '@/config/brand';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import {
@@ -28,12 +27,10 @@ import {
   type GeoError,
   type GeoFix,
 } from '@/lib/geo';
+import { createMapEngine, type MapEngine } from '@/lib/mapEngine';
 import { cn } from '@/lib/utils';
 import { useUiStore } from '@/store/uiStore';
 import type { GeoPoint } from '@/types';
-
-const TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
 export function MapPicker() {
   const request = useUiStore((state) => state.mapRequest);
@@ -68,9 +65,7 @@ function MapPickerView({
   const closeMap = useUiStore((state) => state.closeMap);
   const showToast = useUiStore((state) => state.showToast);
   const container = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<LeafletMap | null>(null);
-  const circleRef = useRef<Circle | null>(null);
-  const leafletRef = useRef<typeof import('leaflet') | null>(null);
+  const mapRef = useRef<MapEngine | null>(null);
   const [ready, setReady] = useState(false);
   const [center, setCenter] = useState<GeoPoint>(initial ?? DEFAULT_CENTER);
   const [moving, setMoving] = useState(false);
@@ -84,20 +79,9 @@ function MapPickerView({
 
   /** Aniqlik doirasi: nuqta taxminiy bo'lsa foydalanuvchi qaysi hudud ichida ekanini ko'radi */
   const showAccuracy = useCallback((point: GeoPoint, meters: number | null) => {
-    const L = leafletRef.current;
-    const map = mapRef.current;
-    circleRef.current?.remove();
-    circleRef.current = null;
     setAccuracy(meters);
-    if (!L || !map || !meters || meters <= ACCURATE_ENOUGH_METERS) return;
-    circleRef.current = L.circle([point.latitude, point.longitude], {
-      radius: Math.min(meters, 3000),
-      color: brand.colors.brand,
-      weight: 1.5,
-      fillColor: brand.colors.brand,
-      fillOpacity: 0.1,
-      interactive: false,
-    }).addTo(map);
+    const lowAccuracy = meters != null && meters > ACCURATE_ENOUGH_METERS;
+    mapRef.current?.setCircle(lowAccuracy ? point : null, lowAccuracy ? Math.min(meters, 3000) : undefined);
   }, []);
 
   const flyTo = useCallback((point: GeoPoint, meters: number | null = null) => {
@@ -105,7 +89,7 @@ function MapPickerView({
     if (!map) return;
     // Taxminiy joylashuvda — butun aniqlik doirasi ko'rinadigan masshtab
     const zoom = meters && meters > ACCURATE_ENOUGH_METERS ? Math.max(14, 18 - Math.ceil(Math.log2(meters / 60))) : 18;
-    map.flyTo([point.latitude, point.longitude], zoom, { duration: 0.7 });
+    map.flyTo(point, zoom);
   }, []);
 
   const locate = useCallback(
@@ -125,44 +109,48 @@ function MapPickerView({
     [flyTo, haptic, showAccuracy, showToast, t],
   );
 
-  // Xaritani yaratish (faqat brauzerda, Leaflet dinamik yuklanadi)
+  // Xaritani yaratish: Yandex (kalit ishlasa) yoki OpenStreetMap
   useEffect(() => {
     let cancelled = false;
-    let map: LeafletMap | null = null;
+    let engine: MapEngine | null = null;
     let observer: ResizeObserver | null = null;
     void (async () => {
-      const L = (await import('leaflet')).default;
-      if (cancelled || !container.current) return;
-      leafletRef.current = L;
+      if (!container.current) return;
       const start = initial ?? DEFAULT_CENTER;
-      map = L.map(container.current, { zoomControl: false, attributionControl: true }).setView(
-        [start.latitude, start.longitude],
-        initial ? (initialAccuracy && initialAccuracy > ACCURATE_ENOUGH_METERS ? 16 : 18) : 12,
+      const zoom = initial ? (initialAccuracy && initialAccuracy > ACCURATE_ENOUGH_METERS ? 16 : 18) : 12;
+      engine = await createMapEngine(
+        container.current,
+        start,
+        zoom,
+        {
+          onMoveStart: () => setMoving(true),
+          onMoveEnd: (point) => {
+            setMoving(false);
+            setCenter(point);
+          },
+          // Foydalanuvchi xaritani o'zi surdi — nuqtani aniqlashtirdi, maslahat endi kerak emas
+          onUserDrag: () => setAccuracy(null),
+        },
+        lang,
       );
-      L.tileLayer(TILES, { maxZoom: 19, attribution: ATTRIBUTION }).addTo(map);
-      map.attributionControl.setPrefix(false);
-      map.on('movestart', () => setMoving(true));
-      // Foydalanuvchi xaritani o'zi surdi — nuqtani aniqlashtirdi, maslahat endi kerak emas
-      map.on('dragstart', () => setAccuracy(null));
-      map.on('moveend', () => {
-        const c = map!.getCenter();
-        setMoving(false);
-        setCenter({ latitude: c.lat, longitude: c.lng });
-      });
+      if (cancelled) {
+        engine.destroy();
+        return;
+      }
       // Telegram oynasi kengaysa / klaviatura ochilsa — xarita o'lchamini yangilaymiz, markaz joyida qoladi
-      observer = new ResizeObserver(() => map?.invalidateSize({ animate: false }));
-      observer.observe(container.current);
-      mapRef.current = map;
+      observer = new ResizeObserver(() => engine?.resize());
+      observer.observe(container.current!);
+      mapRef.current = engine;
+      setCenter(engine.getCenter());
       setReady(true);
     })();
     return () => {
       cancelled = true;
       observer?.disconnect();
-      map?.remove();
+      engine?.destroy();
       mapRef.current = null;
-      circleRef.current = null;
     };
-  }, [initial, initialAccuracy]);
+  }, [initial, initialAccuracy]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Xarita tayyor bo'lgach: oldingi nuqta taxminiy bo'lsa — doira; nuqta bo'lmasa — joylashuvni o'zimiz aniqlaymiz
   useEffect(() => {
@@ -222,8 +210,7 @@ function MapPickerView({
 
   const zoom = (delta: number) => {
     haptic.select();
-    const map = mapRef.current;
-    if (map) map.setZoom(map.getZoom() + delta);
+    mapRef.current?.zoomBy(delta);
   };
 
   const confirm = async () => {

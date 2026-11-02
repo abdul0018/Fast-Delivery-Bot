@@ -2,10 +2,12 @@
  * Joylashuv yordamchilari:
  *  - getCurrentLocation — Telegram LocationManager (Bot API 8.0+), bo'lmasa brauzer GPS (bir necha soniya
  *                         ichidagi eng aniq natija). Aniqlik (metr) ham qaytariladi — taxminiy bo'lsa xaritada tekshiramiz.
- *  - reverseGeocode     — nuqtadan manzil: ko'cha va uy, mahalla, tuman (OpenStreetMap Nominatim, bepul, kalitsiz)
- *  - searchAddress      — Toshkent bo'yicha manzil / joy qidirish (ko'cha, mahalla, mo'ljal)
+ *  - reverseGeocode     — nuqtadan manzil: avval Yandex geokoder (O'zbekistonda eng aniq), ishlamasa —
+ *                         OpenStreetMap Nominatim (bepul, kalitsiz)
+ *  - searchAddress      — Toshkent bo'yicha manzil / joy qidirish (ko'cha, mahalla, mo'ljal) — Yandex, zaxira: Nominatim
  */
 import type { GeoPoint, Lang } from '@/types';
+import { yandexReverse, yandexSearch } from './yandexMaps';
 
 export type GeoError = 'denied' | 'unavailable';
 
@@ -161,6 +163,12 @@ export async function reverseGeocode(point: GeoPoint, lang: Lang): Promise<strin
   const key = `${point.latitude.toFixed(5)},${point.longitude.toFixed(5)},${lang}`;
   if (reverseCache.has(key)) return reverseCache.get(key) ?? null;
 
+  const fromYandex = await yandexReverse(point, lang);
+  if (fromYandex !== undefined) {
+    reverseCache.set(key, fromYandex);
+    return fromYandex;
+  }
+
   const url =
     `https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&addressdetails=1&layer=address,poi` +
     `&lat=${point.latitude}&lon=${point.longitude}&accept-language=${lang === 'uz' ? 'uz,ru' : 'ru'}`;
@@ -186,6 +194,8 @@ export interface AddressResult {
 export async function searchAddress(query: string, lang: Lang): Promise<AddressResult[]> {
   const q = query.trim();
   if (q.length < 3) return [];
+  const fromYandex = await yandexSearch(q, lang);
+  if (fromYandex !== undefined) return fromYandex;
   const url =
     `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=6&bounded=1` +
     `&viewbox=${TASHKENT_VIEWBOX}&q=${encodeURIComponent(q)}&accept-language=${lang === 'uz' ? 'uz,ru' : 'ru'}`;

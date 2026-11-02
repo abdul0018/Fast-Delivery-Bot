@@ -28,6 +28,8 @@ export const brand = {
   chrome: '#F4F4F2',
   /** Telegram bot (admin panelga "Открыть в Telegram" havolasi uchun) */
   botUsername: 'morefish_uz_bot',
+  /** Yandex Maps JS API kaliti (developer.tech.yandex.ru, HTTP Referer: abdul0018.github.io). Bo'sh — OpenStreetMap */
+  yandexMapsKey: 'ff7a5154-c3b7-4d2b-95dd-17f7cc1ad5c9',
   contacts: {
     phone: '+998 90 349 70 71',
     telegram: 'morefishuz',
