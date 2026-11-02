@@ -3,7 +3,7 @@
  * Har bir himoyalangan so'rovga Telegram initData "Authorization: tma <initData>" sarlavhasida yuboriladi —
  * backend uni bot tokeni bilan tekshiradi (auth.middleware.js).
  */
-import type { AppConfig, AppUser, CreateOrderPayload, Lang, Order, Product } from '@/types';
+import type { AppConfig, AppUser, CreateOrderPayload, GeoPoint, Lang, Order, Product } from '@/types';
 
 const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api').replace(/\/$/, '');
 const DEV_AUTH = process.env.NEXT_PUBLIC_DEV_AUTH === 'true';
@@ -53,7 +53,7 @@ export const api = {
 
   getMe: () => request<{ user: AppUser }>('/me', {}, true).then((res) => res.user),
 
-  updateMe: (data: Partial<{ language: Lang; phone: string; address: string }>) =>
+  updateMe: (data: Partial<{ language: Lang; phone: string; address: string; location: GeoPoint | null }>) =>
     request<{ user: AppUser }>('/me', { method: 'PATCH', body: JSON.stringify(data) }, true).then((res) => res.user),
 
   getOrders: () => request<{ orders: Order[] }>('/orders', {}, true).then((res) => res.orders),

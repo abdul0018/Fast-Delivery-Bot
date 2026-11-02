@@ -3,13 +3,13 @@
  */
 import { create } from 'zustand';
 import { api, canAuthenticate } from '@/lib/api';
-import type { AppUser, Lang } from '@/types';
+import type { AppUser, GeoPoint, Lang } from '@/types';
 
 interface UserState {
   me: AppUser | null;
   loaded: boolean;
   loadMe: () => Promise<AppUser | null>;
-  updateMe: (data: Partial<{ language: Lang; phone: string; address: string }>) => Promise<void>;
+  updateMe: (data: Partial<{ language: Lang; phone: string; address: string; location: GeoPoint | null }>) => Promise<void>;
 }
 
 export const useUserStore = create<UserState>()((set) => ({

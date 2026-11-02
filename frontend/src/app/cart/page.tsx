@@ -7,14 +7,15 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { MapPin, MessageSquareText, Phone, ShoppingBag, Trash2 } from 'lucide-react';
+import { Building2, MessageSquareText, Phone, ShoppingBag, Trash2 } from 'lucide-react';
 import { CartList } from '@/components/features/CartList';
 import { OrderBump } from '@/components/features/OrderBump';
 import { OrderSuccess } from '@/components/features/OrderSuccess';
 import { PaymentMethods } from '@/components/features/PaymentMethods';
 import { PageHeader } from '@/components/layout/Header';
 import { Button, buttonClasses } from '@/components/ui/Button';
-import { Input, Textarea } from '@/components/ui/Input';
+import { Input } from '@/components/ui/Input';
+import { LocationField, type LocationValue } from '@/components/features/LocationField';
 import { brand } from '@/config/brand';
 import { useCart } from '@/hooks/useCart';
 import { useCatalog } from '@/hooks/useCatalog';
@@ -38,7 +39,9 @@ export default function CartPage() {
   const me = useUserStore((state) => state.me);
   const showToast = useUiStore((state) => state.showToast);
 
-  const [address, setAddress] = useState('');
+  // Manzil: xaritadan / geolokatsiyadan tanlangan nuqta + aniqlangan ko'cha manzili; qo'shimcha — xonadon, kirish, qavat
+  const [location, setLocation] = useState<LocationValue>({ point: null, address: '' });
+  const [details, setDetails] = useState('');
   const [phone, setPhone] = useState('');
   const [comment, setComment] = useState('');
   const [addressError, setAddressError] = useState<string>();
@@ -49,7 +52,14 @@ export default function CartPage() {
   // Oldingi buyurtmadagi manzil va telefonni avtomatik to'ldirish
   useEffect(() => {
     if (!me) return;
-    setAddress((current) => current || me.address || '');
+    setLocation((current) =>
+      current.point || current.address
+        ? current
+        : {
+            point: me.latitude != null && me.longitude != null ? { latitude: me.latitude, longitude: me.longitude } : null,
+            address: me.address ?? '',
+          },
+    );
     setPhone((current) => current || me.phone || '');
   }, [me]);
 
@@ -92,7 +102,7 @@ export default function CartPage() {
       showToast(t('errors.UNAUTHORIZED'));
       return;
     }
-    if (address.trim().length < MIN_ADDRESS_LENGTH) {
+    if (!location.point && location.address.trim().length < MIN_ADDRESS_LENGTH) {
       haptic.notify('error');
       setAddressError(t('errors.INVALID_ADDRESS'));
       document.getElementById('address')?.focus();
@@ -113,7 +123,8 @@ export default function CartPage() {
         items: cart.items.map((item) => ({ productId: item.product.id, quantity: item.quantity })),
         bump: cart.bump,
         paymentMethod: cart.paymentMethod,
-        address: address.trim(),
+        address: [location.address.trim(), details.trim()].filter(Boolean).join(', '),
+        location: location.point,
         phone: phone.trim() || undefined,
         comment: comment.trim() || undefined,
       });
@@ -197,17 +208,22 @@ export default function CartPage() {
         <section>
           <h2 className="mb-3 text-[20px] font-semibold">{t('cart.delivery')}</h2>
           <div className="space-y-3 rounded-[20px] bg-surface p-4">
-            <Textarea
+            <LocationField
               id="address"
-              icon={<MapPin size={15} strokeWidth={2} />}
-              label={t('cart.address')}
-              placeholder={t('cart.addressPlaceholder')}
-              value={address}
+              value={location}
               error={addressError}
-              onChange={(event) => {
-                setAddress(event.target.value);
+              onChange={(next) => {
+                setLocation(next);
                 setAddressError(undefined);
               }}
+            />
+            <Input
+              id="details"
+              icon={<Building2 size={15} strokeWidth={2} />}
+              label={t('location.details')}
+              placeholder={t('location.detailsPlaceholder')}
+              value={details}
+              onChange={(event) => setDetails(event.target.value)}
             />
             <Input
               id="phone"

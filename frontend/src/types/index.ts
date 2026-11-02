@@ -2,6 +2,11 @@
 
 export type Lang = 'uz' | 'ru';
 
+export interface GeoPoint {
+  latitude: number;
+  longitude: number;
+}
+
 export type Localized<T = string> = Record<Lang, T>;
 
 /** Katalog bo'limi (brand.ts → categories) */
@@ -58,6 +63,8 @@ export interface AppUser {
   language: Lang | null;
   phone: string | null;
   address: string | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface AppConfig {
@@ -71,6 +78,8 @@ export interface CreateOrderPayload {
   bump: boolean;
   paymentMethod: PaymentMethod;
   address: string;
+  /** Xaritadan / geolokatsiyadan tanlangan nuqta */
+  location?: GeoPoint | null;
   phone?: string;
   comment?: string;
 }

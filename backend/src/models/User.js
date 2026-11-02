@@ -16,6 +16,9 @@ const User = sequelize.define(
     language: { type: DataTypes.ENUM('uz', 'ru'), allowNull: true },
     phone: { type: DataTypes.STRING(32) },
     address: { type: DataTypes.TEXT },
+    // Oxirgi tanlangan yetkazish nuqtasi (xaritadan yoki geolokatsiyadan)
+    latitude: { type: DataTypes.DOUBLE, allowNull: true },
+    longitude: { type: DataTypes.DOUBLE, allowNull: true },
     isBlocked: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
   },
   { tableName: 'users' },
@@ -32,6 +35,8 @@ User.prototype.toPublicJSON = function toPublicJSON() {
     language: this.language,
     phone: this.phone,
     address: this.address,
+    latitude: this.latitude,
+    longitude: this.longitude,
   };
 };
 

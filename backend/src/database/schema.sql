@@ -31,6 +31,8 @@ CREATE TABLE IF NOT EXISTS users (
   language     enum_users_language,          -- NULL = hali tanlanmagan
   phone        VARCHAR(32),
   address      TEXT,
+  latitude     DOUBLE PRECISION,             -- oxirgi yetkazish nuqtasi
+  longitude    DOUBLE PRECISION,
   is_blocked   BOOLEAN      NOT NULL DEFAULT FALSE,
   created_at   TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
   updated_at   TIMESTAMPTZ  NOT NULL DEFAULT NOW()
@@ -75,6 +77,8 @@ CREATE TABLE IF NOT EXISTS orders (
   payment_status      enum_orders_payment_status NOT NULL DEFAULT 'pending',
   status              enum_orders_status         NOT NULL DEFAULT 'new',
   address             TEXT         NOT NULL,
+  latitude            DOUBLE PRECISION,                     -- xaritadan tanlangan nuqta
+  longitude           DOUBLE PRECISION,
   phone               VARCHAR(32),
   comment             TEXT,
   payment_charge_id   VARCHAR(255),

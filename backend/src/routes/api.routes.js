@@ -83,7 +83,7 @@ router.patch(
   '/me',
   webAppAuth,
   handle(async (req, res) => {
-    const { language, phone, address } = req.body || {};
+    const { language, phone, address, location } = req.body || {};
     const updates = {};
     if (language !== undefined) {
       if (!SUPPORTED_LANGUAGES.includes(language)) return res.status(400).json({ error: 'INVALID_LANGUAGE' });
@@ -91,6 +91,11 @@ router.patch(
     }
     if (phone !== undefined) updates.phone = String(phone).trim().slice(0, 32) || null;
     if (address !== undefined) updates.address = String(address).trim().slice(0, 500) || null;
+    if (location !== undefined) {
+      const point = cartController.parseLocation(location);
+      updates.latitude = point?.latitude ?? null;
+      updates.longitude = point?.longitude ?? null;
+    }
 
     await req.user.update(updates);
     return res.json({ user: req.user.toPublicJSON() });

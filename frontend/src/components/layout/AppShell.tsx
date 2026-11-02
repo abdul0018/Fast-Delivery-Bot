@@ -9,6 +9,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { ContactsSheet } from '@/components/features/ContactsSheet';
+import { MapPicker } from '@/components/features/MapPicker';
 import { Onboarding } from '@/components/features/Onboarding';
 import { ProductSheet } from '@/components/features/ProductSheet';
 import { Toast } from '@/components/ui/Toast';
@@ -35,6 +36,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const onboarded = useSettingsStore((state) => state.onboarded);
   const activeProduct = useUiStore((state) => state.activeProduct);
   const contactsOpen = useUiStore((state) => state.contactsOpen);
+  const mapOpen = useUiStore((state) => Boolean(state.mapRequest));
   const closeProduct = useUiStore((state) => state.closeProduct);
   const closeContacts = useUiStore((state) => state.closeContacts);
   const pathname = usePathname();
@@ -46,9 +48,10 @@ export function AppShell({ children }: { children: ReactNode }) {
   }, [lang]);
 
   // Telegram "Orqaga" tugmasi: avval ochiq panelni yopadi, keyin oldingi sahifaga qaytadi
-  useBackButton(Boolean(activeProduct) || contactsOpen || pathname !== '/', () => {
+  useBackButton(Boolean(activeProduct) || contactsOpen || mapOpen || pathname !== '/', () => {
     const ui = useUiStore.getState();
-    if (ui.activeProduct) closeProduct();
+    if (ui.mapRequest) ui.closeMap();
+    else if (ui.activeProduct) closeProduct();
     else if (ui.contactsOpen) closeContacts();
     else router.back();
   });
@@ -63,6 +66,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <BottomNavigation />
       <ProductSheet />
       <ContactsSheet />
+      <MapPicker />
       <Toast />
     </>
   );

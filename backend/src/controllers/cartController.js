@@ -31,6 +31,19 @@ function normalizePhone(value) {
   return `+${digits}`;
 }
 
+/** Xaritadan / geolokatsiyadan kelgan nuqta: { latitude, longitude } yoki null */
+function parseLocation(location) {
+  if (!location || typeof location !== 'object') return null;
+  const latitude = Number(location.latitude);
+  const longitude = Number(location.longitude);
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return null;
+  if (Math.abs(latitude) > 90 || Math.abs(longitude) > 180) return null;
+  return { latitude: Math.round(latitude * 1e6) / 1e6, longitude: Math.round(longitude * 1e6) / 1e6 };
+}
+
+/** Yandex Xaritalarda nuqtani ochuvchi havola */
+const mapUrl = (latitude, longitude) => `https://yandex.uz/maps/?pt=${longitude},${latitude}&z=17&l=map`;
+
 /** Bitta foydalanuvchi qisqa vaqtda juda ko'p buyurtma bermasligi uchun (xotirada, bitta server nusxasi uchun) */
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const recentOrders = new Map();
@@ -132,6 +145,9 @@ function formatOrderForAdmin(order, user, bumpProduct, lang = config.bot.adminLa
     `${t(lang, 'admin.customer')}: <a href="tg://user?id=${user.telegramId}">${escapeHtml(customer)}</a>${username}`,
     `${t(lang, 'admin.phone')}: ${escapeHtml(order.phone || user.phone || '—')}`,
     `${t(lang, 'admin.address')}: ${escapeHtml(order.address)}`,
+    order.latitude != null && order.longitude != null
+      ? `${t(lang, 'admin.map')}: <a href="${mapUrl(order.latitude, order.longitude)}">${t(lang, 'admin.openMap')}</a>`
+      : null,
     order.comment ? `${t(lang, 'admin.comment')}: ${escapeHtml(order.comment)}` : null,
     '',
     `<b>${t(lang, 'admin.items')}:</b>`,
@@ -161,10 +177,19 @@ async function notifyAdmin(order, attempt = 1) {
     return;
   }
   try {
-    await bot.telegram.sendMessage(config.bot.adminChatId, formatOrderForAdmin(order, order.user, order.bumpProduct), {
+    const message = await bot.telegram.sendMessage(config.bot.adminChatId, formatOrderForAdmin(order, order.user, order.bumpProduct), {
       parse_mode: 'HTML',
+      link_preview_options: { is_disabled: true },
       ...adminOrderKeyboard(order),
     });
+    // Aniq nuqta — Telegram lokatsiyasi sifatida (kuryer / Yandex buyurtmasi uchun qulay)
+    if (order.latitude != null && order.longitude != null) {
+      await bot.telegram
+        .sendLocation(config.bot.adminChatId, order.latitude, order.longitude, {
+          reply_parameters: { message_id: message.message_id },
+        })
+        .catch((error) => logger.warn(`Lokatsiya yuborilmadi (#${order.id}):`, error.message));
+    }
   } catch (error) {
     // Tarmoq uzilishi bo'lsa bir necha marta qayta urinamiz — buyurtma operatorga albatta yetib borsin
     if (attempt < 3) {
@@ -212,14 +237,17 @@ async function createInvoiceLink(order, lang) {
  * @returns {{ order: Order, invoiceUrl: string | null }}
  */
 async function createOrder(user, lang, payload) {
-  const { items, bump = false, paymentMethod, address, phone, comment } = payload || {};
+  const { items, bump = false, paymentMethod, address, phone, comment, location } = payload || {};
 
   // Production'da buyurtmalar qabul qiluvchi (admin guruh) sozlanmagan bo'lsa, buyurtma yo'qolib ketmasligi uchun qabul qilmaymiz
   if (config.isProduction && !config.bot.adminChatId) throw new OrderError('ORDER_DESK_OFFLINE', 503);
   if (!availablePaymentMethods().includes(paymentMethod)) throw new OrderError('PAYMENT_UNAVAILABLE');
 
-  const cleanAddress = String(address || '').trim();
-  if (cleanAddress.length < 5 || cleanAddress.length > 500) throw new OrderError('INVALID_ADDRESS');
+  // Manzil: xaritadan / geolokatsiyadan tanlangan nuqta yoki matn (kamida bittasi shart)
+  const point = parseLocation(location);
+  let cleanAddress = String(address || '').trim().slice(0, 500);
+  if (!point && cleanAddress.length < 5) throw new OrderError('INVALID_ADDRESS');
+  if (!cleanAddress) cleanAddress = `📍 ${point.latitude}, ${point.longitude}`;
   // Kuryer bog'lanishi uchun telefon majburiy (naqd to'lovda ayniqsa)
   const cleanPhone = normalizePhone(phone || user.phone);
   if (!cleanPhone) throw new OrderError('INVALID_PHONE');
@@ -244,13 +272,18 @@ async function createOrder(user, lang, payload) {
         paymentStatus: 'pending',
         status: 'new',
         address: cleanAddress,
+        latitude: point?.latitude ?? null,
+        longitude: point?.longitude ?? null,
         phone: cleanPhone,
         comment: cleanComment,
       },
       { transaction },
     );
     // Keyingi buyurtmalar uchun manzil va telefonni eslab qolamiz
-    await user.update({ address: cleanAddress, phone: cleanPhone }, { transaction });
+    await user.update(
+      { address: cleanAddress, phone: cleanPhone, ...(point ? { latitude: point.latitude, longitude: point.longitude } : {}) },
+      { transaction },
+    );
     return created;
   });
 
@@ -305,6 +338,7 @@ async function updateOrderStatus(orderId, status) {
 
 module.exports = {
   OrderError,
+  parseLocation,
   availablePaymentMethods,
   findBumpProduct,
   calculateCart,

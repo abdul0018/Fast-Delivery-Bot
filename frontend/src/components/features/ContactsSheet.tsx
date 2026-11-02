@@ -2,10 +2,11 @@
 
 /** Yetkazish manzili va telefonni tahrirlash paneli (bosh sahifadagi manzil tugmasi va profildan ochiladi) */
 import { useEffect, useState } from 'react';
-import { MapPin, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { BottomSheet } from '@/components/ui/BottomSheet';
 import { Button } from '@/components/ui/Button';
-import { Input, Textarea } from '@/components/ui/Input';
+import { Input } from '@/components/ui/Input';
+import { LocationField, type LocationValue } from './LocationField';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import { canAuthenticate } from '@/lib/api';
@@ -20,13 +21,16 @@ export function ContactsSheet() {
   const updateMe = useUserStore((state) => state.updateMe);
   const { t } = useI18n();
   const { haptic } = useTelegram();
-  const [address, setAddress] = useState('');
+  const [location, setLocation] = useState<LocationValue>({ point: null, address: '' });
   const [phone, setPhone] = useState('');
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (!open) return;
-    setAddress(me?.address ?? '');
+    setLocation({
+      point: me?.latitude != null && me?.longitude != null ? { latitude: me.latitude, longitude: me.longitude } : null,
+      address: me?.address ?? '',
+    });
     setPhone(me?.phone ?? '');
   }, [open, me]);
 
@@ -37,7 +41,7 @@ export function ContactsSheet() {
       return;
     }
     setSaving(true);
-    await updateMe({ address: address.trim(), phone: phone.trim() });
+    await updateMe({ address: location.address.trim(), location: location.point, phone: phone.trim() });
     setSaving(false);
     haptic.notify('success');
     showToast(t('profile.saved'));
@@ -57,14 +61,7 @@ export function ContactsSheet() {
     >
       <div className="space-y-3 px-5 pt-8 pb-6">
         <h2 className="mb-1 text-[22px] font-semibold">{t('profile.contacts')}</h2>
-        <Textarea
-          id="contacts-address"
-          icon={<MapPin size={15} strokeWidth={2} />}
-          label={t('cart.address')}
-          placeholder={t('cart.addressPlaceholder')}
-          value={address}
-          onChange={(event) => setAddress(event.target.value)}
-        />
+        <LocationField value={location} onChange={setLocation} />
         <Input
           id="contacts-phone"
           icon={<Phone size={15} strokeWidth={2} />}

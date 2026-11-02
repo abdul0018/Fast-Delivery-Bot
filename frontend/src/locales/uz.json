@@ -131,7 +131,7 @@
     "CART_EMPTY": "Savatcha bo'sh",
     "INVALID_ITEM": "Savatchada xatolik bor",
     "PRODUCT_UNAVAILABLE": "Ba'zi mahsulotlar hozir mavjud emas",
-    "INVALID_ADDRESS": "Iltimos, manzilni to'liq kiriting",
+    "INVALID_ADDRESS": "Yetkazish manzilini ko'rsating — «Mening joylashuvim»ni bosing yoki xaritadan tanlang",
     "PAYMENT_UNAVAILABLE": "Bu to'lov usuli hozircha mavjud emas",
     "PAYMENT_FAILED": "To'lov havolasini yaratib bo'lmadi",
     "MIN_TOTAL": "Buyurtma summasi juda kam",
@@ -169,5 +169,21 @@
     "pending": "To'lov kutilmoqda",
     "paid": "To'langan",
     "failed": "To'lov xatosi"
+  },
+  "location": {
+    "title": "Yetkazish manzili",
+    "useMyLocation": "Mening joylashuvim",
+    "chooseOnMap": "Xaritadan tanlash",
+    "change": "Xaritada o'zgartirish",
+    "locating": "Joylashuvingiz aniqlanmoqda…",
+    "resolving": "Manzil aniqlanmoqda…",
+    "confirm": "Shu yerga yetkazish",
+    "deliverHere": "Shu manzilga yetkazamiz",
+    "empty": "Buyurtmani qayerga yetkazishni ko'rsating — bir bosishda yoki xaritada",
+    "denied": "Joylashuvga ruxsat yo'q.",
+    "openSettings": "Sozlamalarni ochish",
+    "unavailable": "Joylashuvni aniqlab bo'lmadi. Xaritadan nuqta tanlang.",
+    "details": "Xonadon, kirish, qavat",
+    "detailsPlaceholder": "Masalan: 12-xonadon, 2-kirish, 3-qavat"
   }
 }

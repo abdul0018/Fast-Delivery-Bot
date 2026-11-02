@@ -24,6 +24,9 @@ const Order = sequelize.define(
     paymentStatus: { type: DataTypes.ENUM(...PAYMENT_STATUSES), allowNull: false, defaultValue: 'pending' },
     status: { type: DataTypes.ENUM(...STATUSES), allowNull: false, defaultValue: 'new' },
     address: { type: DataTypes.TEXT, allowNull: false },
+    // Yetkazish nuqtasi (xaritadan / geolokatsiyadan) — kuryer uchun aniq joy
+    latitude: { type: DataTypes.DOUBLE, allowNull: true },
+    longitude: { type: DataTypes.DOUBLE, allowNull: true },
     phone: { type: DataTypes.STRING(32) },
     comment: { type: DataTypes.TEXT },
     paymentChargeId: { type: DataTypes.STRING },
@@ -45,6 +48,8 @@ Order.prototype.toPublicJSON = function toPublicJSON() {
     paymentStatus: this.paymentStatus,
     status: this.status,
     address: this.address,
+    latitude: this.latitude,
+    longitude: this.longitude,
     createdAt: this.createdAt,
   };
 };

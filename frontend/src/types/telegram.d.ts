@@ -45,6 +45,16 @@ declare global {
       onClick(cb: () => void): void;
       offClick(cb: () => void): void;
     };
+    /** Bot API 8.0+: foydalanuvchi joylashuvi (ruxsat bilan) */
+    LocationManager?: {
+      isInited: boolean;
+      isLocationAvailable: boolean;
+      isAccessRequested: boolean;
+      isAccessGranted: boolean;
+      init(callback?: () => void): void;
+      getLocation(callback: (data: { latitude: number; longitude: number } | null) => void): void;
+      openSettings(): void;
+    };
     HapticFeedback: {
       impactOccurred(style: HapticImpact): void;
       notificationOccurred(type: HapticNotification): void;
