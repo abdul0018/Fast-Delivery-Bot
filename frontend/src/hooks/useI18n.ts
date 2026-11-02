@@ -21,7 +21,7 @@ export function useI18n() {
     (key: TranslationKey, params?: TranslateParams) => translate(lang, key, params),
     [lang],
   );
-  const pick = useCallback(<T,>(value: Localized<T>) => pickLocalized(value, lang), [lang]);
+  const pick = useCallback(<T,>(value: Localized<T> | null | undefined) => pickLocalized(value, lang), [lang]);
   const price = useCallback(
     (amount: number) => `${formatPrice(amount)} ${translate(lang, 'common.currency')}`,
     [lang],

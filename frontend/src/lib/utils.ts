@@ -20,7 +20,9 @@ export const discountPercent = (price: number, oldPrice: number | null) =>
   oldPrice && oldPrice > price ? Math.round(((oldPrice - price) / oldPrice) * 100) : 0;
 
 /** { uz, ru } dan joriy tildagi qiymatni olish */
-export const pick = <T>(value: Localized<T>, lang: Lang): T => value[lang] ?? value.uz;
+export const pick = <T>(value: Localized<T> | null | undefined, lang: Lang): T =>
+  // Eski API javobida maydon bo'lmasligi mumkin (masalan, unit) — bo'sh qiymat qaytaramiz
+  (value ? (value[lang] ?? value.ru ?? value.uz) : '') as T;
 
 // Brauzerlarda o'zbekcha sana ma'lumotlari to'liq emas, shuning uchun oy nomlari qo'lda
 const MONTHS: Record<Lang, string[]> = {
