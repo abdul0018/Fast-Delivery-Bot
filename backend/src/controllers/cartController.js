@@ -82,6 +82,8 @@ async function calculateCart(items, withBump) {
     productId: product.id,
     nameUz: product.nameUz,
     nameRu: product.nameRu,
+    unitUz: product.unitUz,
+    unitRu: product.unitRu,
     price: product.price,
     quantity: quantities.get(product.id),
   }));
@@ -92,7 +94,8 @@ async function calculateCart(items, withBump) {
     bumpProduct = await findBumpProduct();
     if (!bumpProduct) throw new OrderError('BUMP_UNAVAILABLE');
   }
-  const bumpPrice = bumpProduct ? config.order.bumpPrice : 0;
+  // Taklif narxi: ORDER_BUMP_PRICE berilgan bo'lsa shu, aks holda mahsulotning o'z narxi (soxta chegirma yo'q)
+  const bumpPrice = bumpProduct ? (config.order.bumpPrice ?? bumpProduct.price) : 0;
 
   return { lines, subtotal, bumpProduct, bumpPrice, total: subtotal + bumpPrice };
 }
@@ -100,6 +103,12 @@ async function calculateCart(items, withBump) {
 // ------------------------------------------------------------------ Xabarlar
 
 const productName = (line, lang) => (lang === 'ru' ? line.nameRu : line.nameUz);
+const productUnit = (line, lang) => (lang === 'ru' ? line.unitRu : line.unitUz);
+/** "Лосось юкола (1 кг)" */
+const nameWithUnit = (line, lang) => {
+  const unit = productUnit(line, lang);
+  return unit ? `${productName(line, lang)} (${unit})` : productName(line, lang);
+};
 
 /** Admin (yoki guruh) uchun buyurtma matni */
 function formatOrderForAdmin(order, user, bumpProduct, lang = config.bot.adminLanguage) {
@@ -109,11 +118,11 @@ function formatOrderForAdmin(order, user, bumpProduct, lang = config.bot.adminLa
 
   const items = order.items.map(
     (line) =>
-      `• ${escapeHtml(productName(line, lang))} × ${line.quantity} = ${formatPrice(line.price * line.quantity)} ${currency}`,
+      `• ${escapeHtml(nameWithUnit(line, lang))} × ${line.quantity} = ${formatPrice(line.price * line.quantity)} ${currency}`,
   );
   if (order.bumpPrice > 0 && bumpProduct) {
     items.push(
-      `➕ ${escapeHtml(productName(bumpProduct, lang))} (${t(lang, 'admin.bump')}) = ${formatPrice(order.bumpPrice)} ${currency}`,
+      `➕ ${escapeHtml(nameWithUnit(bumpProduct, lang))} — ${t(lang, 'admin.bump')} = ${formatPrice(order.bumpPrice)} ${currency}`,
     );
   }
 

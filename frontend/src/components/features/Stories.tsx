@@ -22,14 +22,15 @@ interface Story {
   text: TranslationKey;
 }
 
-const img = (name: string) => `/images/products/${name}.jpg`;
+const img = (name: string) => `/images/promo/${name}.jpg`;
 
+// MoreFish Telegram kanalidagi haqiqiy postlar asosida
 const STORIES: Story[] = [
-  { id: 'burgers-20', image: img('double-burger'), title: 'stories.s1Title', text: 'stories.s1Text' },
-  { id: 'family-combo', image: img('family-combo'), title: 'stories.s2Title', text: 'stories.s2Text' },
-  { id: 'black-angus', image: img('black-angus'), title: 'stories.s3Title', text: 'stories.s3Text' },
-  { id: 'free-delivery', image: img('bag-delivery'), title: 'stories.s4Title', text: 'stories.s4Text' },
-  { id: 'cola-5000', image: img('coca-cola'), title: 'stories.s5Title', text: 'stories.s5Text' },
+  { id: 'tolstolobik-promo', image: img('tolstolobik'), title: 'stories.s1Title', text: 'stories.s1Text' },
+  { id: 'chess-roll', image: img('chess-roll'), title: 'stories.s2Title', text: 'stories.s2Text' },
+  { id: 'yukola', image: img('yukola'), title: 'stories.s3Title', text: 'stories.s3Text' },
+  { id: 'sazan', image: img('sazan'), title: 'stories.s4Title', text: 'stories.s4Text' },
+  { id: 'caviar', image: img('caviar-jars'), title: 'stories.s5Title', text: 'stories.s5Text' },
 ];
 
 const STORY_DURATION_MS = 5000;

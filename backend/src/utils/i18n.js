@@ -9,7 +9,8 @@ const ru = require('../locales/ru.json');
 
 const dictionaries = { uz, ru };
 const SUPPORTED_LANGUAGES = Object.keys(dictionaries);
-const DEFAULT_LANGUAGE = 'uz';
+// Standart til — rus tili (MoreFish mijozlari asosan rus tilida yozadi)
+const DEFAULT_LANGUAGE = 'ru';
 
 /** Nuqta bilan yozilgan kalit bo'yicha qiymat olish: "menu.orders" */
 const resolve = (dict, key) =>
@@ -31,6 +32,6 @@ function t(lang, key, params) {
 const allTranslations = (key) => SUPPORTED_LANGUAGES.map((lang) => t(lang, key));
 
 /** Telegram language_code dan mos tilni aniqlash */
-const detectLanguage = (languageCode) => (languageCode && languageCode.startsWith('ru') ? 'ru' : null);
+const detectLanguage = (languageCode) => (languageCode && languageCode.startsWith('uz') ? 'uz' : null);
 
 module.exports = { t, allTranslations, normalizeLanguage, detectLanguage, SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE };

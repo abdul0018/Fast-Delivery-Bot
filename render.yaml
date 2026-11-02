@@ -28,5 +28,5 @@ services:
       - key: ADMIN_LANGUAGE
         value: uz
       - key: SUPPORT_PHONE
-        sync: false
+        value: +998 90 349 70 71
       # WEBHOOK_DOMAIN kerak emas: Render o'z manzilini RENDER_EXTERNAL_URL orqali beradi

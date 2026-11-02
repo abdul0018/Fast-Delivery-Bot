@@ -51,7 +51,7 @@ router.get(
     res.json({
       currency: 'UZS',
       paymentMethods: cartController.availablePaymentMethods(),
-      bump: bumpProduct ? { product: bumpProduct.toPublicJSON(), price: config.order.bumpPrice } : null,
+      bump: bumpProduct ? { product: bumpProduct.toPublicJSON(), price: config.order.bumpPrice ?? bumpProduct.price } : null,
     });
   }),
 );

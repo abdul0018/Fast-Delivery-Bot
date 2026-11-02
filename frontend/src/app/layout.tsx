@@ -8,7 +8,7 @@ import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   title: brand.name,
-  description: "Fast-food yetkazib berish — Telegram Mini App / Доставка фастфуда",
+  description: 'MoreFish — икра, рыба и мясные деликатесы с доставкой по Ташкенту',
 };
 
 export const viewport: Viewport = {

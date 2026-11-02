@@ -35,7 +35,9 @@ const config = {
     adminLanguage: process.env.ADMIN_LANGUAGE === 'ru' ? 'ru' : 'uz',
     // Mini App manzili (Telegram faqat HTTPS qabul qiladi)
     webAppUrl: process.env.WEBAPP_URL || 'https://example.com',
-    supportPhone: process.env.SUPPORT_PHONE || '+998 90 000 00 00',
+    supportPhone: process.env.SUPPORT_PHONE || '+998 90 349 70 71',
+    // Do'kon nomi (bot xabarlari va invoice'da)
+    shopName: process.env.SHOP_NAME || 'MoreFish',
     // Webhook rejimi: domen ko'rsatilsa bot long polling o'rniga webhook orqali ishlaydi
     // (Render/Railway kabi "uxlab qoladigan" hostinglar uchun shart). Bo'sh — long polling (VPS).
     // Render o'z manzilini RENDER_EXTERNAL_URL da beradi — u yerda qo'lda yozish shart emas
@@ -74,8 +76,8 @@ const config = {
   },
 
   order: {
-    // Order Bump (qo'shimcha taklif) narxi, so'mda
-    bumpPrice: toInt(process.env.ORDER_BUMP_PRICE, 5000),
+    // Order Bump (qo'shimcha taklif) narxi, so'mda. Bo'sh — taklif mahsulotining o'z narxi
+    bumpPrice: process.env.ORDER_BUMP_PRICE ? toInt(process.env.ORDER_BUMP_PRICE, null) : null,
     minTotal: toInt(process.env.MIN_ORDER_TOTAL, 0),
     maxItemQuantity: 50,
     // Bitta foydalanuvchi 10 daqiqada nechta buyurtma bera oladi (spam/xato bosishlardan himoya)

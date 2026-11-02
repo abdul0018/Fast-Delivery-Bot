@@ -86,7 +86,7 @@ function validateInitData(initData, botToken, maxAgeSeconds) {
 }
 
 /** Faqat ALLOW_DEV_AUTH=true va production bo'lmaganda: brauzerda test qilish uchun */
-const DEV_USER = { id: 1, first_name: 'Dev', last_name: 'User', username: 'dev_user', language_code: 'uz' };
+const DEV_USER = { id: 1, first_name: 'Dev', last_name: 'User', username: 'dev_user', language_code: 'ru' };
 
 async function webAppAuth(req, res, next) {
   try {

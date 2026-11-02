@@ -38,12 +38,13 @@ export function ProductCard({ product, className }: { product: Product; classNam
           <img src={asset(product.image)} alt="" loading="lazy" className="size-full object-cover" />
         </div>
         <div className="flex flex-1 flex-col px-1.5 pt-2.5">
-          {/* Narx — birinchi qator, eski narx — doim ikkinchi qator: nomlar bir qatorda tekislanadi */}
+          {/* Narx — birinchi qator, ikkinchi qator: birlik ("1 кг") va eski narx (bo'lsa) — nomlar bir qatorda tekislanadi */}
           <p className={cn('price text-[17px] leading-tight font-semibold whitespace-nowrap', discount > 0 ? 'text-sale' : 'text-ink')}>
             {formatPrice(product.price)} <span className="text-[13px] font-medium">{t('common.currency')}</span>
           </p>
-          <p className="price h-[18px] text-[13px] leading-[18px] text-ink-2 line-through">
-            {product.oldPrice ? formatPrice(product.oldPrice) : null}
+          <p className="price flex h-[18px] items-baseline gap-1.5 text-[13px] leading-[18px] text-ink-2">
+            {pick(product.unit) && <span>/ {pick(product.unit)}</span>}
+            {product.oldPrice ? <span className="line-through">{formatPrice(product.oldPrice)}</span> : null}
           </p>
           <h3 className="mt-1 line-clamp-2 text-[14px] leading-[1.3] text-ink">{name}</h3>
         </div>

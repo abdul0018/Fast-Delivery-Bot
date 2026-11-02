@@ -15,6 +15,7 @@ import { PaymentMethods } from '@/components/features/PaymentMethods';
 import { PageHeader } from '@/components/layout/Header';
 import { Button, buttonClasses } from '@/components/ui/Button';
 import { Input, Textarea } from '@/components/ui/Input';
+import { brand } from '@/config/brand';
 import { useCart } from '@/hooks/useCart';
 import { useCatalog } from '@/hooks/useCatalog';
 import { useI18n } from '@/hooks/useI18n';
@@ -30,7 +31,7 @@ const MIN_PHONE_DIGITS = 9;
 
 export default function CartPage() {
   const router = useRouter();
-  const { t, price } = useI18n();
+  const { t, price, pick } = useI18n();
   const { webApp, haptic } = useTelegram();
   const { config } = useCatalog();
   const cart = useCart();
@@ -255,7 +256,7 @@ export default function CartPage() {
             )}
             <div className="flex justify-between gap-3">
               <dt className="text-ink-2">{t('cart.deliveryFee')}</dt>
-              <dd className="font-medium text-ok">{t('cart.free')}</dd>
+              <dd className="text-right text-ink-2">{pick(brand.delivery)}</dd>
             </div>
           </dl>
           <div className="mt-3.5 flex items-baseline justify-between border-t border-line pt-3.5">

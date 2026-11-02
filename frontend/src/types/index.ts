@@ -4,7 +4,8 @@ export type Lang = 'uz' | 'ru';
 
 export type Localized<T = string> = Record<Lang, T>;
 
-export type Category = 'burgers' | 'pizza' | 'drinks' | 'premium';
+/** Katalog bo'limi (brand.ts → categories) */
+export type Category = string;
 
 export interface Product {
   id: number;
@@ -15,6 +16,8 @@ export interface Product {
   ingredients: Localized<string[]>;
   price: number;
   oldPrice: number | null;
+  /** Narx nimaga: "1 кг", "100 г", "4 шт" */
+  unit: Localized;
   image: string;
   isUpsell: boolean;
 }
@@ -27,6 +30,8 @@ export interface OrderLine {
   productId: number;
   nameUz: string;
   nameRu: string;
+  unitUz?: string | null;
+  unitRu?: string | null;
   price: number;
   quantity: number;
 }

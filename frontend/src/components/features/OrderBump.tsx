@@ -41,7 +41,8 @@ export function OrderBump() {
             <span className="text-[15px] font-semibold">
               {formatPrice(price)} {t('common.currency')}
             </span>
-            <span className="text-[12px] text-ink-2 line-through">{formatPrice(product.price)}</span>
+            {price < product.price && <span className="text-[12px] text-ink-2 line-through">{formatPrice(product.price)}</span>}
+            {pick(product.unit) && <span className="text-[12px] text-ink-2">/ {pick(product.unit)}</span>}
           </span>
         </span>
         <Switch checked={bump} onChange={toggle} label={t('cart.bumpTitle')} />

@@ -1,17 +1,18 @@
 /**
- * Mahsulot (ikki tilli nom va tarkib) / Товар (двуязычный)
+ * Mahsulot (ikki tilli nom, tarkib va o'lchov birligi) / Товар (двуязычный, с единицей продажи)
  */
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/connection');
 
-const CATEGORIES = ['burgers', 'pizza', 'drinks', 'premium'];
+// Kategoriyalar oddiy matn — har bir do'kon o'zinikini belgilaydi (MoreFish: dudlangan baliq, losos, delikateslar, ikra)
+const CATEGORIES = ['smoked', 'salmon', 'delicacy', 'caviar'];
 
 const Product = sequelize.define(
   'Product',
   {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     slug: { type: DataTypes.STRING(100), allowNull: false, unique: true },
-    category: { type: DataTypes.ENUM(...CATEGORIES), allowNull: false },
+    category: { type: DataTypes.STRING(50), allowNull: false },
     nameUz: { type: DataTypes.STRING, allowNull: false },
     nameRu: { type: DataTypes.STRING, allowNull: false },
     descriptionUz: { type: DataTypes.TEXT },
@@ -20,6 +21,9 @@ const Product = sequelize.define(
     ingredientsRu: { type: DataTypes.JSONB, allowNull: false, defaultValue: [] },
     price: { type: DataTypes.INTEGER, allowNull: false, validate: { min: 0 } },
     oldPrice: { type: DataTypes.INTEGER, allowNull: true, validate: { min: 0 } },
+    // Narx nimaga: "1 кг", "100 г", "4 шт" — miqdor shu birlikda hisoblanadi
+    unitUz: { type: DataTypes.STRING(30), allowNull: true },
+    unitRu: { type: DataTypes.STRING(30), allowNull: true },
     image: { type: DataTypes.STRING(500) },
     isActive: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
     // Savatchadagi "Order Bump" taklifi uchun ishlatiladigan mahsulot (masalan, Kola)
@@ -43,6 +47,7 @@ Product.prototype.toPublicJSON = function toPublicJSON() {
     ingredients: { uz: this.ingredientsUz || [], ru: this.ingredientsRu || [] },
     price: this.price,
     oldPrice: this.oldPrice,
+    unit: { uz: this.unitUz || '', ru: this.unitRu || '' },
     image: this.image,
     isUpsell: this.isUpsell,
   };

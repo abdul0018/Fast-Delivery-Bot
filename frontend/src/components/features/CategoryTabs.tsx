@@ -10,18 +10,17 @@ import { LayoutGrid } from 'lucide-react';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
 import { asset, cn } from '@/lib/utils';
+import { brand } from '@/config/brand';
+import type { TranslationKey } from '@/lib/i18n';
 import type { Category } from '@/types';
 
 export type CategoryFilter = 'all' | Category;
 
-export const CATEGORY_IDS: CategoryFilter[] = ['all', 'burgers', 'pizza', 'drinks', 'premium'];
+// Bo'limlar brand.ts dan olinadi (do'konga qarab o'zgaradi)
+export const CATEGORY_IDS: CategoryFilter[] = ['all', ...brand.categories.map((category) => category.id)];
 
-const IMAGES: Record<Category, string> = {
-  burgers: '/images/products/classic-burger.jpg',
-  pizza: '/images/products/pepperoni.jpg',
-  drinks: '/images/products/coca-cola.jpg',
-  premium: '/images/products/black-angus.jpg',
-};
+const IMAGES: Record<string, string> = Object.fromEntries(brand.categories.map((category) => [category.id, category.image]));
+const label = (id: CategoryFilter) => `catalog.categories.${id}` as TranslationKey;
 
 interface CategoryTabsProps {
   value: CategoryFilter | null;
@@ -45,7 +44,7 @@ export function CategoryTabs({ value, onChange, variant = 'chips' }: CategoryTab
   };
 
   if (variant === 'tiles') {
-    const ids = CATEGORY_IDS.filter((id): id is Category => id !== 'all');
+    const ids = CATEGORY_IDS.filter((id) => id !== 'all');
     return (
       <div className="grid grid-cols-4 gap-2 px-4">
         {ids.map((id) => (
@@ -59,7 +58,7 @@ export function CategoryTabs({ value, onChange, variant = 'chips' }: CategoryTab
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={asset(IMAGES[id])} alt="" className="size-full scale-110 object-cover" />
             </span>
-            <span className="w-full truncate text-center text-[12px] font-medium">{t(`catalog.categories.${id}`)}</span>
+            <span className="w-full truncate text-center text-[12px] font-medium">{t(label(id))}</span>
           </button>
         ))}
       </div>
@@ -89,7 +88,7 @@ export function CategoryTabs({ value, onChange, variant = 'chips' }: CategoryTab
               // eslint-disable-next-line @next/next/no-img-element
               <img src={asset(IMAGES[id])} alt="" className="size-8 rounded-full bg-tile object-cover" />
             )}
-            {t(`catalog.categories.${id}`)}
+            {t(label(id))}
           </button>
         );
       })}

@@ -15,7 +15,7 @@ const webAppUrl = (lang) => {
 /** Til tanlash (inline) */
 const languageKeyboard = () =>
   Markup.inlineKeyboard([
-    [Markup.button.callback("🇺🇿 O'zbekcha", 'lang:uz'), Markup.button.callback('🇷🇺 Русский', 'lang:ru')],
+    [Markup.button.callback('🇷🇺 Русский', 'lang:ru'), Markup.button.callback("🇺🇿 O'zbekcha", 'lang:uz')],
   ]);
 
 /**

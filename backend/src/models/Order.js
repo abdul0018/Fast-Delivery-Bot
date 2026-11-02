@@ -14,7 +14,7 @@ const Order = sequelize.define(
   {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     userId: { type: DataTypes.INTEGER, allowNull: false },
-    // [{ productId, nameUz, nameRu, price, quantity }]
+    // [{ productId, nameUz, nameRu, unitUz, unitRu, price, quantity }]
     items: { type: DataTypes.JSONB, allowNull: false },
     subtotal: { type: DataTypes.INTEGER, allowNull: false },
     bumpProductId: { type: DataTypes.INTEGER, allowNull: true },

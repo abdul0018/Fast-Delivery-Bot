@@ -6,7 +6,7 @@
  * Har bir slayd: katta yumaloq burchakli taom surati, sarlavha va matn.
  */
 import { useRef, useState, type ReactNode } from 'react';
-import { ClipboardCheck, DoorOpen, Pointer, Star } from 'lucide-react';
+import { ClipboardCheck, DoorOpen, Pointer } from 'lucide-react';
 import { Logo } from '@/components/layout/Header';
 import { Button } from '@/components/ui/Button';
 import { useI18n } from '@/hooks/useI18n';
@@ -75,13 +75,13 @@ export function Onboarding() {
         className="no-scrollbar flex min-h-0 flex-1 snap-x snap-mandatory overflow-x-auto overflow-y-hidden"
       >
         {/* 1. Muammo / Yechim */}
-        <Slide image="/images/products/classic-burger.jpg">
+        <Slide image="/images/promo/yukola.jpg">
           <h2 className="text-[30px] leading-[1.1] font-semibold tracking-[-0.03em]">{t('onboarding.slide1Title')}</h2>
           <p className="mt-2.5 text-[17px] leading-snug text-ink-2">{t('onboarding.slide1Text')}</p>
         </Slide>
 
         {/* 2. Qanday ishlaydi */}
-        <Slide image="/images/products/bag-delivery.jpg">
+        <Slide image="/images/promo/chess-roll.jpg">
           <h2 className="text-[30px] leading-[1.1] font-semibold tracking-[-0.03em]">{t('onboarding.slide2Title')}</h2>
           <ol className="mt-4 grid grid-cols-3 gap-2">
             {steps.map(({ icon: Icon, key }, i) => (
@@ -98,13 +98,10 @@ export function Onboarding() {
           </ol>
         </Slide>
 
-        {/* 3. Ijtimoiy isbot (raqamlar har bir restoran uchun almashtiriladi) */}
-        <Slide image="/images/products/hero-spread.jpg">
+        {/* 3. Yetkazib berish */}
+        <Slide image="/images/promo/caviar-jars.jpg">
           <h2 className="text-[30px] leading-[1.1] font-semibold tracking-[-0.03em]">{t('onboarding.slide3Title')}</h2>
-          <p className="mt-2.5 flex items-center gap-1.5 text-[17px] text-ink-2">
-            <Star size={18} strokeWidth={0} className="fill-brand" />
-            {t('onboarding.rating')}
-          </p>
+          <p className="mt-2.5 text-[17px] leading-snug text-ink-2">{t('onboarding.slide3Text')}</p>
         </Slide>
       </div>
 

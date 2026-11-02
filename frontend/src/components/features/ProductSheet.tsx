@@ -6,7 +6,7 @@
  * va pastga yopishgan "soni + Savatchaga qo'shish — narx" paneli.
  */
 import { useEffect, useState } from 'react';
-import { Leaf, Plus, ShieldCheck, Timer, X } from 'lucide-react';
+import { Plus, X } from 'lucide-react';
 import { BottomSheet } from '@/components/ui/BottomSheet';
 import { Button } from '@/components/ui/Button';
 import { QuantityStepper } from '@/components/ui/QuantityStepper';
@@ -18,14 +18,8 @@ import { asset, discountPercent, formatPrice } from '@/lib/utils';
 import { useCatalogStore } from '@/store/catalogStore';
 import { useUiStore } from '@/store/uiStore';
 import type { Product } from '@/types';
+import { PROMISE_ICONS } from './Promises';
 
-// Faqat restoran brand.ts da tasdiqlagan va'dalar (xavfni yopuvchi blok)
-const { deliveryMinutes, halal, freshDaily } = brand.promises;
-const TRUST_ITEMS = [
-  halal ? { icon: ShieldCheck, key: 'product.trustHalal' as const } : null,
-  deliveryMinutes ? { icon: Timer, key: 'product.trustFast' as const } : null,
-  freshDaily ? { icon: Leaf, key: 'product.trustFresh' as const } : null,
-].filter((item) => item !== null);
 
 export function ProductSheet() {
   const activeProduct = useUiStore((state) => state.activeProduct);
@@ -73,8 +67,10 @@ function ProductDetails({
   const products = useCatalogStore((state) => state.products);
   const discount = discountPercent(product.price, product.oldPrice);
   const ingredients = pick(product.ingredients);
-  // Ichimlik qo'shish qatori (ichimlikning o'zida ko'rsatilmaydi)
-  const addOns = product.category === 'drinks' ? [] : products.filter((item) => item.category === 'drinks').slice(0, 3);
+  // "Qo'shib oling" qatori (brand.addOnCategory, masalan ikra) — shu kategoriyaning o'zida ko'rsatilmaydi
+  const addOns =
+    product.category === brand.addOnCategory ? [] : products.filter((item) => item.category === brand.addOnCategory).slice(0, 3);
+  const unit = pick(product.unit);
 
   return (
     <div className="pb-6">
@@ -99,6 +95,7 @@ function ProductDetails({
               <span className={discount > 0 ? 'text-[22px] font-semibold text-sale' : 'text-[22px] font-semibold'}>
                 {price(product.price)}
               </span>
+              {unit && <span className="text-[15px] text-ink-2">/ {unit}</span>}
               {product.oldPrice && <span className="text-[15px] text-ink-2 line-through">{formatPrice(product.oldPrice)}</span>}
             </p>
             <QuantityStepper
@@ -156,22 +153,26 @@ function ProductDetails({
                   </span>
                   <span className="mt-2 line-clamp-1 px-1 text-[12px] text-ink">{pick(item.name)}</span>
                   <span className="price px-1 text-[13px] font-semibold">{price(item.price)}</span>
+                  {pick(item.unit) && <span className="px-1 text-[12px] text-ink-2">{pick(item.unit)}</span>}
                 </button>
               ))}
             </div>
           </section>
         )}
 
-        {TRUST_ITEMS.length > 0 && (
+        {brand.promises.length > 0 && (
           <section className="grid gap-3 rounded-[16px] border border-line px-4 py-3.5">
-            {TRUST_ITEMS.map(({ icon: Icon, key }) => (
-              <div key={key} className="flex items-center gap-3 text-[14px]">
-                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-tile text-ink">
-                  <Icon size={17} strokeWidth={2} />
-                </span>
-                {t(key, { minutes: deliveryMinutes ?? '' })}
-              </div>
-            ))}
+            {brand.promises.map(({ icon, text }) => {
+              const Icon = PROMISE_ICONS[icon];
+              return (
+                <div key={icon} className="flex items-center gap-3 text-[14px]">
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-soft text-brand-ink">
+                    <Icon size={17} strokeWidth={2} />
+                  </span>
+                  {pick(text)}
+                </div>
+              );
+            })}
           </section>
         )}
       </div>

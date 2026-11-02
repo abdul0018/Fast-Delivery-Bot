@@ -1,6 +1,13 @@
-# 🍔 Fast Delivery — Telegram Bot + Mini App (UZ / RU)
+# 🐟 MoreFish — Telegram Bot + Mini App (RU / UZ)
 
-O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqonli Telegram Mini App.
+**MoreFish** (Ikra · Baliq · Go'sht delikateslari, Toshkent) uchun ikki tilli Telegram bot va Telegram Mini App.
+Standart til — rus tili; bot birinchi kirishda tilni so'raydi (🇷🇺 Русский / 🇺🇿 O'zbekcha).
+Shablon har qanday do'konga moslashadi: brend — `frontend/src/config/brand.ts`, katalog — `backend/src/database/seed.js`.
+
+**Katalog (10 mahsulot, narxlar do'kon yorliqlari va postlaridan):** Толстолобик г/к (акция 4 шт — 100 000),
+Сазан крупный (65 000/шт), Дорадо х/к (350 000/кг), Масляная рыба х/к (275 000), Сом копчёный (560 000),
+Лосось юкола (350 000/кг), Лосось с/с (65 000/100 г), Шахматный рулет (750 000/кг), Тунец х/к (360 000/кг),
+Икра форели (190 000/200 г). Скумбрия х/к — narxi berilmagan, katalogda yashirin (`isActive: false`).
 
 | Qism | Texnologiyalar | Papka |
 |---|---|---|
@@ -20,7 +27,7 @@ O'zbekistondagi fast-food restoranlari uchun ikki tilli Telegram bot va to'laqon
 **Mini App**
 1. **Onboarding** — 3 ta swipe slayd, faqat birinchi kirishda
 2. **Bosh sahifa** — ism bilan salomlashish, stories, hero vidjet, ommabop mahsulotlar
-3. **Katalog** — gorizontal kategoriyalar, eski (chizilgan) va yangi (qizil) narx, tezkor "+" tugmasi
+3. **Katalog** — gorizontal kategoriyalar (Копчёная рыба, Лосось, Деликатесы, Икра), narx va birlik ("/ 1 кг"), tezkor "+" tugmasi
 4. **Mahsulot** — Bottom Sheet: katta rasm, tarkibi, ishonch bloki, sticky "Savatchaga qo'shish — narx"
 5. **Savatcha** — Order Stack, Order Bump (Switch), manzil, to'lov usullari, jami summa, bitta bosishda tasdiqlash
 

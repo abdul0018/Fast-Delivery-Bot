@@ -36,7 +36,7 @@ async function start(ctx) {
   if (ctx.chat.type !== 'private') return;
 
   if (!ctx.state.user.language) {
-    await ctx.reply(t('uz', 'language.choose'), languageKeyboard());
+    await ctx.reply(t('ru', 'language.choose'), languageKeyboard());
     return;
   }
   await sendWelcome(ctx);

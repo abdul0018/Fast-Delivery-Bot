@@ -19,28 +19,45 @@ const { t } = require('./utils/i18n');
 const { webAppUrl } = require('./utils/keyboards');
 
 async function configureBotProfile() {
-  // Standart "Menyu" tugmasi (chat ichida pastki chap burchakda) — Mini App'ni ochadi
+  // Standart "Katalog" tugmasi (chat ichida pastki chap burchakda) — Mini App'ni ochadi. Standart til — rus.
   await bot.telegram.setChatMenuButton({
-    menuButton: { type: 'web_app', text: t('uz', 'menuButton'), web_app: { url: webAppUrl('uz') } },
+    menuButton: { type: 'web_app', text: t('ru', 'menuButton'), web_app: { url: webAppUrl('ru') } },
   });
 
-  // Komandalar ro'yxati har bir til uchun alohida
+  // Komandalar: standart (rus) va o'zbek tilida
   const commands = {
-    uz: [
-      { command: 'start', description: 'Botni ishga tushirish' },
-      { command: 'menu', description: 'Menyuni ochish' },
-      { command: 'orders', description: 'Buyurtmalarim' },
-      { command: 'lang', description: "Tilni o'zgartirish" },
-    ],
     ru: [
       { command: 'start', description: 'Запустить бота' },
-      { command: 'menu', description: 'Открыть меню' },
+      { command: 'menu', description: 'Открыть каталог' },
       { command: 'orders', description: 'Мои заказы' },
       { command: 'lang', description: 'Сменить язык' },
     ],
+    uz: [
+      { command: 'start', description: 'Botni ishga tushirish' },
+      { command: 'menu', description: 'Katalogni ochish' },
+      { command: 'orders', description: 'Buyurtmalarim' },
+      { command: 'lang', description: "Tilni o'zgartirish" },
+    ],
   };
-  await bot.telegram.setMyCommands(commands.uz);
-  await bot.telegram.setMyCommands(commands.ru, { language_code: 'ru' });
+  await bot.telegram.setMyCommands(commands.ru);
+  await bot.telegram.setMyCommands(commands.uz, { language_code: 'uz' });
+
+  // Bot profilidagi tavsif (chat ochilganda ko'rinadi)
+  const descriptions = {
+    ru: {
+      short: 'Икра · Рыба · Мясные деликатесы. Доставка по Ташкенту.',
+      full: 'MoreFish — икра, копчёная рыба, норвежский лосось и мясные деликатесы. Закажите в каталоге — доставим по Ташкенту через Yandex.',
+    },
+    uz: {
+      short: "Ikra · Baliq · Go'sht delikateslari. Toshkent bo'ylab yetkazib berish.",
+      full: "MoreFish — ikra, dudlangan baliq, Norvegiya lososi va go'sht delikateslari. Katalogdan buyurtma bering — Toshkent bo'ylab Yandex orqali yetkazamiz.",
+    },
+  };
+  for (const [lang, text] of Object.entries(descriptions)) {
+    const extra = lang === 'ru' ? {} : { language_code: lang };
+    await bot.telegram.callApi('setMyShortDescription', { short_description: text.short, ...extra });
+    await bot.telegram.callApi('setMyDescription', { description: text.full, ...extra });
+  }
 }
 
 const ALLOWED_UPDATES = ['message', 'callback_query', 'pre_checkout_query'];

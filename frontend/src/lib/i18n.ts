@@ -8,7 +8,8 @@ import type { Lang } from '@/types';
 
 export const dictionaries = { uz, ru } as const;
 export const SUPPORTED_LANGS: Lang[] = ['uz', 'ru'];
-export const DEFAULT_LANG: Lang = 'uz';
+// Standart til — rus tili
+export const DEFAULT_LANG: Lang = 'ru';
 
 /** "cart.methods.cash" kabi barcha kalitlar uchun tip */
 type Paths<T, P extends string = ''> = {
@@ -31,4 +32,4 @@ export function translate(lang: Lang, key: TranslationKey | string, params?: Tra
 export const isLang = (value: unknown): value is Lang => SUPPORTED_LANGS.includes(value as Lang);
 
 /** Telegram language_code -> ilova tili */
-export const detectLang = (code?: string | null): Lang => (code?.startsWith('ru') ? 'ru' : DEFAULT_LANG);
+export const detectLang = (code?: string | null): Lang => (code?.startsWith('uz') ? 'uz' : DEFAULT_LANG);

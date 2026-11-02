@@ -2,27 +2,25 @@
 
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { ChevronDown, HandPlatter, MapPin } from 'lucide-react';
+import { ChevronDown, MapPin } from 'lucide-react';
 import { brand } from '@/config/brand';
 import { useTelegram } from '@/hooks/useTelegram';
 import { useI18n } from '@/hooks/useI18n';
-import { cn } from '@/lib/utils';
+import { asset, cn } from '@/lib/utils';
 import { useUiStore } from '@/store/uiStore';
 import { useUserStore } from '@/store/userStore';
 
-/** Logotip: brend rangidagi kvadrat ichida patnis belgisi + restoran nomi (brand.ts) */
+/** Logotip: do'kon belgisi (brand.logo) + nomi */
 export function Logo({ className, size = 'md' }: { className?: string; size?: 'md' | 'lg' }) {
   const lg = size === 'lg';
   return (
     <span className={cn('inline-flex items-center gap-2.5 font-semibold', lg && 'flex-col gap-3', className)}>
-      <span
-        className={cn(
-          'flex items-center justify-center bg-brand text-on-brand',
-          lg ? 'size-[72px] rounded-[22px]' : 'size-9 rounded-[11px]',
-        )}
-      >
-        <HandPlatter size={lg ? 40 : 21} strokeWidth={lg ? 1.75 : 2} />
-      </span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={asset(brand.logo)}
+        alt=""
+        className={cn('shrink-0 rounded-full bg-white object-contain', lg ? 'size-[120px]' : 'size-9 ring-1 ring-line')}
+      />
       <span className={lg ? 'text-[22px] tracking-[-0.02em]' : 'text-[16px] tracking-[-0.01em]'}>{brand.name}</span>
     </span>
   );
