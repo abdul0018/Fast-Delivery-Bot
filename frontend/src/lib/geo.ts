@@ -2,12 +2,10 @@
  * Joylashuv yordamchilari:
  *  - getCurrentLocation — Telegram LocationManager (Bot API 8.0+), bo'lmasa brauzer GPS (bir necha soniya
  *                         ichidagi eng aniq natija). Aniqlik (metr) ham qaytariladi — taxminiy bo'lsa xaritada tekshiramiz.
- *  - reverseGeocode     — nuqtadan manzil: avval Yandex geokoder (O'zbekistonda eng aniq), ishlamasa —
- *                         OpenStreetMap Nominatim (bepul, kalitsiz)
- *  - searchAddress      — Toshkent bo'yicha manzil / joy qidirish (ko'cha, mahalla, mo'ljal) — Yandex, zaxira: Nominatim
+ *  - reverseGeocode     — nuqtadan manzil: ko'cha va uy, mahalla, tuman (OpenStreetMap Nominatim, bepul, kalitsiz)
+ *  - searchAddress      — Toshkent bo'yicha manzil / joy qidirish (ko'cha, mahalla, mo'ljal)
  */
 import type { GeoPoint, Lang } from '@/types';
-import { yandexReverse, yandexSearch } from './yandexMaps';
 
 export type GeoError = 'denied' | 'unavailable';
 
@@ -158,30 +156,85 @@ function formatAddress(a: NominatimAddress, name: string | undefined, lang: Lang
 
 const reverseCache = new Map<string, string | null>();
 
+/**
+ * Nominatim qoidasi: sekundiga ko'pi bilan 1 so'rov — aks holda javob bermay qoladi.
+ * So'rovlarni navbatga qo'yamiz va har biriga vaqt chegarasi qo'yamiz (osilib qolmasin).
+ */
+let lastNominatimAt = 0;
+async function nominatimFetch(url: string, timeoutMs = 7000): Promise<Response> {
+  const wait = lastNominatimAt + 1100 - Date.now();
+  lastNominatimAt = Math.max(Date.now(), lastNominatimAt + 1100);
+  if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait));
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { headers: { Accept: 'application/json' }, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+interface PhotonProperties {
+  name?: string;
+  street?: string;
+  housenumber?: string;
+  district?: string;
+  locality?: string;
+  city?: string;
+  county?: string;
+}
+
+/** Zaxira: Photon (komoot, OpenStreetMap ma'lumotlari) — Nominatim javob bermasa */
+async function photonReverse(point: GeoPoint, lang: Lang): Promise<string | null> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 6000);
+  try {
+    const response = await fetch(`https://photon.komoot.io/reverse?lat=${point.latitude}&lon=${point.longitude}&limit=1`, {
+      signal: controller.signal,
+    });
+    if (!response.ok) return null;
+    const data: { features?: { properties: PhotonProperties }[] } = await response.json();
+    const props = data.features?.[0]?.properties;
+    if (!props) return null;
+    return formatAddress(
+      {
+        road: props.street,
+        house_number: props.housenumber,
+        neighbourhood: props.locality,
+        district: props.district ?? props.county,
+        city: props.city,
+      },
+      props.name,
+      lang,
+    );
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 /** Nuqta → "Ko'cha, uy, mahalla, tuman, shahar". Topilmasa null. */
 export async function reverseGeocode(point: GeoPoint, lang: Lang): Promise<string | null> {
   const key = `${point.latitude.toFixed(5)},${point.longitude.toFixed(5)},${lang}`;
   if (reverseCache.has(key)) return reverseCache.get(key) ?? null;
 
-  const fromYandex = await yandexReverse(point, lang);
-  if (fromYandex !== undefined) {
-    reverseCache.set(key, fromYandex);
-    return fromYandex;
-  }
-
   const url =
     `https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&addressdetails=1&layer=address,poi` +
     `&lat=${point.latitude}&lon=${point.longitude}&accept-language=${lang === 'uz' ? 'uz,ru' : 'ru'}`;
+  let label: string | null = null;
   try {
-    const response = await fetch(url, { headers: { Accept: 'application/json' } });
-    if (!response.ok) return null;
-    const data = await response.json();
-    const label = formatAddress(data.address ?? {}, data.name || undefined, lang);
-    reverseCache.set(key, label);
-    return label;
+    const response = await nominatimFetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      label = formatAddress(data.address ?? {}, data.name || undefined, lang);
+    }
   } catch {
-    return null;
+    /* vaqt tugadi yoki tarmoq — zaxiraga o'tamiz */
   }
+  label ??= await photonReverse(point, lang);
+  if (label) reverseCache.set(key, label);
+  return label;
 }
 
 export interface AddressResult {
@@ -194,12 +247,10 @@ export interface AddressResult {
 export async function searchAddress(query: string, lang: Lang): Promise<AddressResult[]> {
   const q = query.trim();
   if (q.length < 3) return [];
-  const fromYandex = await yandexSearch(q, lang);
-  if (fromYandex !== undefined) return fromYandex;
   const url =
     `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=6&bounded=1` +
     `&viewbox=${TASHKENT_VIEWBOX}&q=${encodeURIComponent(q)}&accept-language=${lang === 'uz' ? 'uz,ru' : 'ru'}`;
-  const response = await fetch(url, { headers: { Accept: 'application/json' } });
+  const response = await nominatimFetch(url, 9000);
   if (!response.ok) throw new Error('SEARCH_FAILED');
   const data: { lat: string; lon: string; name?: string; display_name: string; address?: NominatimAddress }[] = await response.json();
   const seen = new Set<string>();

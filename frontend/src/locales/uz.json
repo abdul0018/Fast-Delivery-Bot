@@ -10,7 +10,8 @@
     "increase": "Ko'paytirish",
     "prev": "Oldingi",
     "next": "Keyingi",
-    "clear": "Tozalash"
+    "clear": "Tozalash",
+    "back": "Orqaga"
   },
   "nav": {
     "home": "Bosh sahifa",
@@ -185,7 +186,7 @@
     "unavailable": "Joylashuvni aniqlab bo'lmadi. Xaritadan nuqta tanlang.",
     "details": "Xonadon, kirish, qavat",
     "detailsPlaceholder": "Masalan: 12-xonadon, 2-kirish, 3-qavat",
-    "searchPlaceholder": "Ko'cha, uy, mahalla yoki mo'ljal",
+    "searchPlaceholder": "Manzilni kiriting",
     "search": "Qidirish",
     "noResults": "Hech narsa topilmadi. Ko'cha yoki mo'ljalni yozing.",
     "searchFailed": "Qidiruv hozir ishlamayapti — xaritani o'zingiz suring.",
@@ -193,6 +194,9 @@
     "zoomIn": "Yaqinlashtirish",
     "zoomOut": "Uzoqlashtirish",
     "addressHint": "Ko'cha nomini tuzatish mumkin",
-    "checkOnMap": "Nuqtani xaritada tekshiring"
+    "checkOnMap": "Nuqtani xaritada tekshiring",
+    "newAddress": "Yangi manzil",
+    "locatingShort": "Joylashuv aniqlanmoqda",
+    "resolvingButton": "Manzil aniqlanmoqda…"
   }
 }
