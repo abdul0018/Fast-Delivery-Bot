@@ -17,6 +17,7 @@ const { registerBotRoutes } = require('./routes/bot.routes');
 const { createServer } = require('./server');
 const { t } = require('./utils/i18n');
 const { webAppUrl } = require('./utils/keyboards');
+const { setupCommands } = require('./utils/commands');
 
 async function configureBotProfile() {
   // Standart "Katalog" tugmasi (chat ichida pastki chap burchakda) — Mini App'ni ochadi. Standart til — rus.
@@ -24,29 +25,8 @@ async function configureBotProfile() {
     menuButton: { type: 'web_app', text: t('ru', 'menuButton'), web_app: { url: webAppUrl('ru') } },
   });
 
-  // Komandalar: standart (rus) va o'zbek tilida
-  const commands = {
-    ru: [
-      { command: 'start', description: 'Запустить бота' },
-      { command: 'menu', description: 'Открыть каталог' },
-      { command: 'orders', description: 'Мои заказы' },
-      { command: 'lang', description: 'Сменить язык' },
-    ],
-    uz: [
-      { command: 'start', description: 'Botni ishga tushirish' },
-      { command: 'menu', description: 'Katalogni ochish' },
-      { command: 'orders', description: 'Buyurtmalarim' },
-      { command: 'lang', description: "Tilni o'zgartirish" },
-    ],
-  };
-  await bot.telegram.setMyCommands(commands.ru);
-  await bot.telegram.setMyCommands(commands.uz, { language_code: 'uz' });
-  // Do'kon egasi / adminlar menyusida qo'shimcha /admin (boshqa foydalanuvchilarga ko'rinmaydi)
-  for (const id of config.admin.ids) {
-    await bot.telegram
-      .setMyCommands([...commands.ru, { command: 'admin', description: 'Админ-панель' }], { scope: { type: 'chat', chat_id: Number(id) } })
-      .catch((error) => logger.warn(`Admin komandasi ${id} uchun o'rnatilmadi (botga /start yuborilmagan bo'lishi mumkin): ${error.message}`));
-  }
+  // Komandalar: standart (rus), o'zbek tilida va adminlar uchun /admin
+  await setupCommands(bot.telegram);
 
   // Bot profilidagi tavsif (chat ochilganda ko'rinadi)
   const descriptions = {

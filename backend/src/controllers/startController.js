@@ -7,6 +7,7 @@ const { escapeHtml, formatPrice } = require('../utils/format');
 const { languageKeyboard, mainKeyboard, openAppKeyboard, webAppUrl } = require('../utils/keyboards');
 const { Order } = require('../models');
 const logger = require('../utils/logger');
+const { setAdminCommands } = require('../utils/commands');
 
 /** Chat uchun pastki chap "Menyu" tugmasini (Menu Button) Mini App'ga bog'lash */
 async function setMenuButton(ctx, lang) {
@@ -34,6 +35,10 @@ async function sendWelcome(ctx) {
 /** /start — til tanlanmagan bo'lsa avval tilni so'raymiz */
 async function start(ctx) {
   if (ctx.chat.type !== 'private') return;
+  // Do'kon egasi botni birinchi marta ochganda — uning menyusiga /admin qo'shiladi
+  if (config.admin.ids.includes(String(ctx.from.id))) {
+    setAdminCommands(ctx.telegram, ctx.from.id, ctx.state.user.language || 'ru');
+  }
   // t.me/<bot>?start=admin — admin panel tugmasi (guruhdagi /admin havolasidan)
   if (ctx.payload === 'admin') {
     await require('./adminController').adminPanel(ctx);
