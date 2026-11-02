@@ -14,6 +14,9 @@ const toInt = (value, fallback) => {
 
 const env = process.env.NODE_ENV || 'development';
 
+// Do'kon egasining Telegram ID si: buyurtmalar shu chatga keladi va admin panelga parolsiz kiradi
+const OWNER_TELEGRAM_ID = '5100225298';
+
 /** "https://site.uz/app?x=1" -> "https://site.uz" (CORS faqat origin bilan ishlaydi) */
 const toOrigin = (value) => {
   try {
@@ -30,7 +33,8 @@ const config = {
   bot: {
     token: process.env.BOT_TOKEN,
     // Buyurtmalar tushadigan admin yoki guruh chat ID (guruh uchun "-100..." ko'rinishida)
-    adminChatId: process.env.ADMIN_CHAT_ID || null,
+    // Bo'sh bo'lsa — do'kon egasining shaxsiy chati (OWNER_TELEGRAM_ID)
+    adminChatId: process.env.ADMIN_CHAT_ID || OWNER_TELEGRAM_ID,
     // Admin xabarlari tili: uz | ru
     adminLanguage: process.env.ADMIN_LANGUAGE === 'ru' ? 'ru' : 'uz',
     // Mini App manzili (Telegram faqat HTTPS qabul qiladi)
@@ -71,7 +75,15 @@ const config = {
   },
 
   admin: {
-    // Admin panel (sayt) paroli. Kamida 8 belgi; bo'sh bo'lsa admin panel o'chiq
+    // Admin panelga Telegram orqali parolsiz kirish: buyurtmalar guruhi (ADMIN_CHAT_ID) a'zolari va shu ID lar
+    ids: [
+      ...new Set(
+        [OWNER_TELEGRAM_ID, ...(process.env.ADMIN_IDS || '').split(',')]
+          .map((id) => id.trim())
+          .filter((id) => /^\d+$/.test(id)),
+      ),
+    ],
+    // Ixtiyoriy: brauzerdan (Telegramsiz) kirish uchun parol. Kamida 8 belgi; bo'sh — faqat Telegram orqali
     password: (process.env.ADMIN_PASSWORD || '').length >= 8 ? process.env.ADMIN_PASSWORD : '',
     // Kirish necha kun amal qiladi
     sessionDays: toInt(process.env.ADMIN_SESSION_DAYS, 30),

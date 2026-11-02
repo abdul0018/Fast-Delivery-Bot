@@ -1,6 +1,7 @@
 # Render Blueprint — bot + API. Bir marta bosing:
 #   https://render.com/deploy?repo=https://github.com/abdul0018/Fast-Delivery-Bot
-# So'raladigan yagona qiymatlar: BOT_TOKEN va DATABASE_URL (ADMIN_CHAT_ID — keyin, guruhda /id bilan).
+# So'raladigan yagona qiymatlar: BOT_TOKEN va DATABASE_URL.
+# Buyurtmalar va admin panel — do'kon egasi (Telegram ID 5100225298, backend/src/config/default.js). Boshqa guruh kerak bo'lsa: ADMIN_CHAT_ID.
 # Mini App GitHub Pages'da: https://abdul0018.github.io/Fast-Delivery-Bot/ (.github/workflows/pages.yml)
 services:
   - type: web
@@ -23,10 +24,6 @@ services:
         value: https://abdul0018.github.io/Fast-Delivery-Bot/
       - key: CORS_ORIGINS
         value: https://abdul0018.github.io
-      - key: ADMIN_CHAT_ID       # botni guruhga qo'shing, guruhda /id yuboring va shu yerga yozing
-        sync: false
-      - key: ADMIN_PASSWORD      # admin panel paroli (kamida 8 belgi): <Mini App>/admin/
-        sync: false
       - key: ADMIN_LANGUAGE
         value: uz
       - key: SUPPORT_PHONE

@@ -24,12 +24,12 @@ Shablon har qanday do'konga moslashadi: brend — `frontend/src/config/brand.ts`
 - Admin tugmalari: ✅ Qabul qilish → 🚴 Yo'lga chiqdi → 🏁 Yetkazildi / ❌ Bekor qilish (mijozga uning tilida xabar boradi)
 - To'lovlar: hozircha faqat naqd pul; Payme/Click provider token qo'shilganda yoqiladi
 
-**Admin panel** — `https://abdul0018.github.io/Fast-Delivery-Bot/admin/` (telefon uchun moslashgan sayt, parol — `ADMIN_PASSWORD`)
+**Admin panel** — `https://abdul0018.github.io/Fast-Delivery-Bot/admin/` (telefon uchun moslashgan; **parolsiz** — botda `/admin` → panel Telegram ichida ochiladi)
 - **Statistika:** tushum (o'tgan davr bilan taqqoslash), kunlik grafik, buyurtmalar, o'rtacha chek, mijozlar, ommabop mahsulotlar, holatlar
 - **Mahsulotlar:** qo'shish, tahrirlash (narx, eski narx — chegirma, birlik, kategoriya, RU/UZ nom va tavsif), telefondan rasm yuklash,
   katalogda ko'rsatish/yashirish bir bosishda, savatcha taklifi, tartib, o'chirish
 - **Buyurtmalar:** holat bo'yicha filtr, mijoz, telefon, manzil + xarita, "Принять → Отправить → Доставлен / Отменить" (mijozga xabar boradi)
-- Admin guruhida `/admin` — panel havolasini yuboradi. Rasmlar bazada saqlanadi (Render diski vaqtinchalik), yuklashdan oldin siqiladi.
+- Botda `/admin` — panelni Telegram ichida parolsiz ochadi (faqat do'kon egasi / adminlar). Rasmlar bazada saqlanadi (Render diski vaqtinchalik), yuklashdan oldin siqiladi.
 
 **Mini App**
 1. **Onboarding** — 3 ta swipe slayd, faqat birinchi kirishda
@@ -64,7 +64,7 @@ Xavfsizlik: Mini App so'rovlari Telegram `initData` imzosi (HMAC-SHA256) bilan t
 
 ```bash
 cd backend
-cp .env.example .env      # BOT_TOKEN, DATABASE_URL, WEBAPP_URL, ADMIN_CHAT_ID ni to'ldiring
+cp .env.example .env      # BOT_TOKEN, DATABASE_URL, WEBAPP_URL ni to'ldiring
 npm install
 npm run db:seed           # jadvallarni yaratadi va 12 ta mahsulot qo'shadi
 npm run dev               # API: http://localhost:4000/api + bot (long polling)
@@ -102,13 +102,11 @@ https://render.com/deploy?repo=https://github.com/abdul0018/Fast-Delivery-Bot �
 `render.yaml` da yozilgan, webhook manzili Render'ning `RENDER_EXTERNAL_URL` idan avtomatik olinadi.
 Ishga tushgach bot "Menyu" tugmasini Mini App'ga o'zi bog'laydi; jadvallar va menyu bazada bo'lmasa o'zi yaratiladi.
 
-**3. Admin guruh.** Telegram'da guruh yarating, botni qo'shing, guruhda `/id` yuboring — bot chat ID ni yozadi
-(`-100...`). Uni Render'da `ADMIN_CHAT_ID` ga yozing (servis qayta ishga tushadi). Shu paytgacha bot
-buyurtma qabul qilmaydi — mijozga "vaqtincha to'xtatilgan" deb ko'rsatiladi, hech bir buyurtma yo'qolmaydi.
-
-**3a. Admin panel.** Render → *Environment* → `ADMIN_PASSWORD` (kamida 8 belgi) → *Save, rebuild, and deploy*.
-So'ng `https://abdul0018.github.io/Fast-Delivery-Bot/admin/` ni oching va shu parol bilan kiring. Parolni almashtirsangiz,
-barcha qurilmalardagi eski kirishlar bekor bo'ladi.
+**3. Do'kon egasi (buyurtmalar va admin panel).** Egasi — Telegram ID `5100225298` (`backend/src/config/default.js` →
+`OWNER_TELEGRAM_ID`). U botga `/start` yuborishi kerak — shundan so'ng har bir buyurtma uning shaxsiy chatiga keladi.
+Admin panel: botda `/admin` → "⚙️ Открыть админ-панель" — Telegram ichida parolsiz ochiladi (Telegram foydalanuvchini o'zi
+tasdiqlaydi; boshqa odamlarga "Нет доступа"). Qo'shimcha adminlar — `ADMIN_IDS`; buyurtmalarni guruhga yuborish — `ADMIN_CHAT_ID`
+(guruhda `/id`), shunda guruh a'zolari ham panelga kira oladi. Brauzerdan parol bilan kirish ixtiyoriy — `ADMIN_PASSWORD`.
 
 **4. Tekshirish.** Botga `/start` → til → "🐟 Каталог" → mahsulot → savatcha → manzil va telefon → *Tasdiqlash*.
 Guruhga buyurtma tushadi; "✅ Qabul qilish → 🚴 Yo'lga chiqdi → 🏁 Yetkazildi" tugmalari mijozga xabar yuboradi.

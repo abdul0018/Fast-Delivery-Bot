@@ -1,7 +1,9 @@
 /**
  * Admin panel API (sayt: <Mini App>/admin/) — Authorization: Bearer <token>
  *
- *  POST   /api/admin/login            — parol bilan kirish (ochiq)
+ *  GET    /api/admin/info             — kirish usullari (ochiq)
+ *  POST   /api/admin/telegram         — Telegram ichida parolsiz kirish: initData (ochiq)
+ *  POST   /api/admin/login            — brauzerdan parol bilan kirish, ADMIN_PASSWORD bo'lsa (ochiq)
  *  GET    /api/admin/products         — barcha mahsulotlar (yashirinlari ham)
  *  POST   /api/admin/products         — yangi mahsulot
  *  PATCH  /api/admin/products/:id     — tahrirlash (narx, rasm, nom, ko'rinish ...)
@@ -16,7 +18,7 @@ const express = require('express');
 const { Op, QueryTypes } = require('sequelize');
 const { Product, Order, User, Image } = require('../models');
 const { sequelize } = require('../database/connection');
-const { login, adminAuth } = require('../middlewares/admin.middleware');
+const { info, login, telegramLogin, adminAuth } = require('../middlewares/admin.middleware');
 const cartController = require('../controllers/cartController');
 const { TRANSITIONS } = require('../controllers/adminController');
 const logger = require('../utils/logger');
@@ -50,6 +52,8 @@ const handle = (fn) => async (req, res) => {
   }
 };
 
+router.get('/info', info);
+router.post('/telegram', handle(telegramLogin));
 router.post('/login', login);
 router.use(adminAuth);
 

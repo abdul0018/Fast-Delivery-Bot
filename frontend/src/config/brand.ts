@@ -26,6 +26,8 @@ export const brand = {
   },
   /** Telegram sarlavha va fon rangi (ilova foni bilan bir xil) */
   chrome: '#F4F4F2',
+  /** Telegram bot (admin panelga "Открыть в Telegram" havolasi uchun) */
+  botUsername: 'morefish_uz_bot',
   contacts: {
     phone: '+998 90 349 70 71',
     telegram: 'morefishuz',

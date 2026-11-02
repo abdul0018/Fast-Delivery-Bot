@@ -75,9 +75,10 @@
     "chatId": "🆔 Bu chat ID si: <code>{id}</code>\nBuyurtmalar shu yerga tushishi uchun uni serverdagi <b>ADMIN_CHAT_ID</b> ga yozing.",
     "map": "🗺 Xarita",
     "openMap": "Yandex Xaritalarda ochish",
-    "panelText": "⚙️ MoreFish admin paneli: mahsulotlar, narxlar, rasmlar, buyurtmalar va statistika.\nParol bilan kiriladi (ADMIN_PASSWORD).",
-    "panelButton": "Admin panelni ochish",
-    "panelDisabled": "Admin panel o'chiq: server sozlamalarida (Render → Environment) ADMIN_PASSWORD ni kiriting (kamida 8 belgi)."
+    "panelText": "⚙️ MoreFish admin paneli: mahsulotlar, narxlar, rasmlar, buyurtmalar va statistika.\nTugmani bosing — Telegram ichida parolsiz ochiladi.",
+    "panelButton": "⚙️ Admin panelni ochish",
+    "panelGroup": "⚙️ Admin panel bot bilan shaxsiy chatda ochiladi — tugmani bosing.",
+    "panelDenied": "⛔ Admin panel faqat do'kon egasi uchun.\nSizning Telegram ID: {id}"
   },
   "errors": {
     "generic": "😔 Xatolik yuz berdi. Iltimos, keyinroq urinib ko'ring.",

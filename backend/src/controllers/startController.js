@@ -34,6 +34,11 @@ async function sendWelcome(ctx) {
 /** /start — til tanlanmagan bo'lsa avval tilni so'raymiz */
 async function start(ctx) {
   if (ctx.chat.type !== 'private') return;
+  // t.me/<bot>?start=admin — admin panel tugmasi (guruhdagi /admin havolasidan)
+  if (ctx.payload === 'admin') {
+    await require('./adminController').adminPanel(ctx);
+    return;
+  }
 
   if (!ctx.state.user.language) {
     await ctx.reply(t('ru', 'language.choose'), languageKeyboard());

@@ -5,6 +5,7 @@ const config = require('../config/default');
 const { t } = require('../utils/i18n');
 const { Markup } = require('telegraf');
 const { adminOrderKeyboard, adminPanelUrl } = require('../utils/keyboards');
+const { isAdmin } = require('../utils/admins');
 const { updateOrderStatus, formatOrderForAdmin, loadOrder } = require('./cartController');
 
 // Ruxsat etilgan holat o'tishlari
@@ -44,15 +45,30 @@ async function changeOrderStatus(ctx) {
   });
 }
 
-/** /admin — admin guruhida admin panel (sayt) havolasini yuboradi */
+/**
+ * /admin — admin panel (parolsiz):
+ *  - shaxsiy chatda admin uchun: panelni Telegram ichida ochuvchi tugma (Telegram foydalanuvchini o'zi tasdiqlaydi)
+ *  - buyurtmalar guruhida: botning shaxsiy chatiga havola (web_app tugmalari faqat shaxsiy chatda ishlaydi)
+ */
 async function adminPanel(ctx) {
-  if (!isAdminChat(ctx)) return;
   const lang = config.bot.adminLanguage;
-  if (!config.admin.password) {
-    await ctx.reply(t(lang, 'admin.panelDisabled'));
+
+  if (ctx.chat?.type === 'private') {
+    if (!(await isAdmin(ctx.from?.id))) {
+      await ctx.reply(t(lang, 'admin.panelDenied', { id: ctx.from?.id ?? '' }));
+      return;
+    }
+    await ctx.reply(t(lang, 'admin.panelText'), Markup.inlineKeyboard([[Markup.button.webApp(t(lang, 'admin.panelButton'), adminPanelUrl())]]));
     return;
   }
-  await ctx.reply(t(lang, 'admin.panelText'), Markup.inlineKeyboard([[Markup.button.url(t(lang, 'admin.panelButton'), adminPanelUrl())]]));
+
+  if (!isAdminChat(ctx)) return;
+  const username = ctx.botInfo?.username;
+  if (!username) return;
+  await ctx.reply(
+    t(lang, 'admin.panelGroup'),
+    Markup.inlineKeyboard([[Markup.button.url(t(lang, 'admin.panelButton'), `https://t.me/${username}?start=admin`)]]),
+  );
 }
 
 module.exports = { changeOrderStatus, adminPanel, TRANSITIONS };

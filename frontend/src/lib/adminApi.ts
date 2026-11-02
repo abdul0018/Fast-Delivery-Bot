@@ -128,7 +128,7 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   }
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
-    if (response.status === 401 && path !== '/login') onUnauthorized?.();
+    if (response.status === 401 && path !== '/login' && path !== '/telegram') onUnauthorized?.();
     throw new AdminApiError(data.error || 'generic', response.status, data.field);
   }
   return data as T;
@@ -137,6 +137,9 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
 const json = (method: string, body: unknown): RequestInit => ({ method, body: JSON.stringify(body) });
 
 export const adminApi = {
+  info: () => request<{ passwordEnabled: boolean; telegramEnabled: boolean; botUsername: string | null }>('/info'),
+  /** Telegram ichida parolsiz kirish — Telegram imzolagan initData */
+  telegramLogin: (initData: string) => request<{ token: string; name: string | null }>('/telegram', json('POST', { initData })),
   login: (password: string) => request<{ token: string }>('/login', json('POST', { password })),
 
   getProducts: () => request<{ products: AdminProduct[]; categories: string[] }>('/products'),
@@ -170,7 +173,10 @@ export function adminErrorText(error: unknown): string {
   const messages: Record<string, string> = {
     WRONG_PASSWORD: 'Неверный пароль',
     TOO_MANY_ATTEMPTS: 'Слишком много попыток. Подождите 15 минут.',
-    ADMIN_DISABLED: 'Админ-панель выключена: задайте ADMIN_PASSWORD (минимум 8 символов) в Render → Environment.',
+    PASSWORD_DISABLED: 'Вход по паролю выключен — откройте панель через бота командой /admin.',
+    NOT_ADMIN: 'Нет доступа: админ-панель открывается только у владельца магазина.',
+    NO_ADMIN_CHAT: 'Владелец магазина не настроен на сервере.',
+    INVALID_INIT_DATA: 'Telegram не подтвердил вход. Закройте панель и откройте снова через /admin.',
     NOT_FOUND: 'Сервер ещё не обновлён — сделайте Manual Deploy на Render.',
     NETWORK: 'Нет связи с сервером. Если он спал, подождите 30–50 секунд и повторите.',
     UNAUTHORIZED: 'Сессия истекла — войдите снова.',

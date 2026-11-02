@@ -41,6 +41,12 @@ async function configureBotProfile() {
   };
   await bot.telegram.setMyCommands(commands.ru);
   await bot.telegram.setMyCommands(commands.uz, { language_code: 'uz' });
+  // Do'kon egasi / adminlar menyusida qo'shimcha /admin (boshqa foydalanuvchilarga ko'rinmaydi)
+  for (const id of config.admin.ids) {
+    await bot.telegram
+      .setMyCommands([...commands.ru, { command: 'admin', description: 'Админ-панель' }], { scope: { type: 'chat', chat_id: Number(id) } })
+      .catch((error) => logger.warn(`Admin komandasi ${id} uchun o'rnatilmadi (botga /start yuborilmagan bo'lishi mumkin): ${error.message}`));
+  }
 
   // Bot profilidagi tavsif (chat ochilganda ko'rinadi)
   const descriptions = {
@@ -94,6 +100,9 @@ async function main() {
   });
 
   await configureBotProfile().catch((error) => logger.warn('Bot profili sozlanmadi:', error.message));
+  if (!process.env.ADMIN_CHAT_ID) {
+    logger.info(`📬 Buyurtmalar do'kon egasining shaxsiy chatiga yuboriladi: ${config.bot.adminChatId}`);
+  }
   if (!config.bot.adminChatId) {
     logger.warn("❗ ADMIN_CHAT_ID ko'rsatilmagan: botni admin guruhga qo'shing, guruhda /id yuboring va javobni .env ga yozing");
   }
