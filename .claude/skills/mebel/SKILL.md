@@ -1,9 +1,9 @@
 ---
-name: premium-minimal-edit
-description: Recreate the user's "clean, premium, minimal" short-form editing style (9:16 interior/lifestyle reels) — sparse word-synced 3-tier typography (neon-yellow heavy italic + white signature script + white thin sans), bottom scrim, hard-pop text, whip-blur exits, amber light-leak transitions, B-roll cut on the spoken noun, logo outro; plus the music-only "cinematic collage" variant. Use whenever the user says "recreate", "recreate for my video", "edit this in my style", "premium minimal style", or hands over footage/script to be edited like the reference reels.
+name: mebel
+description: /mebel — recreate the user's "clean, premium, minimal" short-form editing style (9:16 interior/lifestyle reels) — sparse word-synced 3-tier typography (neon-yellow heavy italic + white signature script + white thin sans), bottom scrim, hard-pop text, whip-blur exits, amber light-leak transitions, B-roll cut on the spoken noun, logo outro; plus the music-only "cinematic collage" variant. Use whenever the user says "recreate", "recreate for my video", "edit this in my style", "premium minimal style", or hands over footage/script to be edited like the reference reels.
 ---
 
-# Premium Minimal Edit — style bible
+# /mebel — Premium Minimal Edit style bible
 
 Learned from the reference reels (see `references/`). When the user says **"recreate"**,
 apply this file to *their* footage/script. Do not copy the reference brand, text or logo.
