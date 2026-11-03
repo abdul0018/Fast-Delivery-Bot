@@ -29,8 +29,8 @@ export const brand = {
   /** Telegram bot (admin panelga "Открыть в Telegram" havolasi uchun) */
   botUsername: 'morefish_uz_bot',
   contacts: {
-    phone: '+998 90 349 70 71',
-    telegram: 'morefishuz',
+    phone: '+998903497071',
+    telegram: 'morefish_uz',
     instagram: 'morefish.uz',
   },
   /** Do'konning postlaridan olingan haqiqiy va'dalar */

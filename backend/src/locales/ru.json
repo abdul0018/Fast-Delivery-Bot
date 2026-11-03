@@ -18,7 +18,7 @@
   },
   "menuButton": "Каталог",
   "contact": {
-    "info": "📞 Телефон / WhatsApp: <b>{phone}</b>\n✈️ Telegram: @morefishuz\n📷 Instagram: @morefish.uz\n🚕 Доставка по Ташкенту через Yandex"
+    "info": "📞 Телефон: <b>{phone}</b>\n✈️ Telegram: <a href=\"https://t.me/morefish_uz\">t.me/morefish_uz</a>\n📷 Instagram: <a href=\"https://www.instagram.com/morefish.uz/\">instagram.com/morefish.uz</a>\n🚕 Доставка по Ташкенту через Yandex"
   },
   "phone": {
     "saved": "✅ Ваш номер сохранён: {phone}"

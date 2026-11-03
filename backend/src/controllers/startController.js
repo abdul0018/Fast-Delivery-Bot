@@ -4,7 +4,7 @@
 const config = require('../config/default');
 const { t } = require('../utils/i18n');
 const { escapeHtml, formatPrice } = require('../utils/format');
-const { languageKeyboard, mainKeyboard, openAppKeyboard, webAppUrl } = require('../utils/keyboards');
+const { languageKeyboard, mainKeyboard, openAppKeyboard, webAppUrl, contactKeyboard } = require('../utils/keyboards');
 const { Order } = require('../models');
 const logger = require('../utils/logger');
 const { setAdminCommands } = require('../utils/commands');
@@ -75,7 +75,11 @@ async function openMenu(ctx) {
 
 /** "📞 Aloqa" */
 async function contactInfo(ctx) {
-  await ctx.reply(ctx.t('contact.info', { phone: escapeHtml(config.bot.supportPhone) }), { parse_mode: 'HTML' });
+  await ctx.reply(ctx.t('contact.info', { phone: escapeHtml(config.bot.supportPhone) }), {
+    parse_mode: 'HTML',
+    link_preview_options: { is_disabled: true },
+    ...contactKeyboard(),
+  });
 }
 
 /** Foydalanuvchi "📱 Raqamni yuborish" orqali kontaktini yuborganda */

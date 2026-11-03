@@ -21,6 +21,12 @@ const adminPanelUrl = () => {
   return new URL('admin/', url).toString();
 };
 
+/** "Aloqa" xabari ostidagi tugmalar: Telegram va Instagram */
+const contactKeyboard = () =>
+  Markup.inlineKeyboard([
+    [Markup.button.url('✈️ Telegram', config.bot.telegramUrl), Markup.button.url('📷 Instagram', config.bot.instagramUrl)],
+  ]);
+
 /** Til tanlash (inline) */
 const languageKeyboard = () =>
   Markup.inlineKeyboard([
@@ -59,4 +65,4 @@ const adminOrderKeyboard = (order, lang = config.bot.adminLanguage) => {
   }
 };
 
-module.exports = { languageKeyboard, mainKeyboard, openAppKeyboard, adminOrderKeyboard, webAppUrl, adminPanelUrl };
+module.exports = { languageKeyboard, mainKeyboard, openAppKeyboard, adminOrderKeyboard, webAppUrl, adminPanelUrl, contactKeyboard };

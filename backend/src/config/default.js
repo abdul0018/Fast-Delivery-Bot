@@ -39,7 +39,10 @@ const config = {
     adminLanguage: process.env.ADMIN_LANGUAGE === 'ru' ? 'ru' : 'uz',
     // Mini App manzili (Telegram faqat HTTPS qabul qiladi)
     webAppUrl: process.env.WEBAPP_URL || 'https://example.com',
-    supportPhone: process.env.SUPPORT_PHONE || '+998 90 349 70 71',
+    supportPhone: process.env.SUPPORT_PHONE || '+998903497071',
+    // Aloqa: Telegram kanal/akkaunt va Instagram (bot "Aloqa" xabarida tugma sifatida)
+    telegramUrl: 'https://t.me/morefish_uz',
+    instagramUrl: 'https://www.instagram.com/morefish.uz/',
     // Do'kon nomi (bot xabarlari va invoice'da)
     shopName: process.env.SHOP_NAME || 'MoreFish',
     // Webhook rejimi: domen ko'rsatilsa bot long polling o'rniga webhook orqali ishlaydi
