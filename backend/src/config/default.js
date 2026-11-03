@@ -39,7 +39,9 @@ const config = {
     adminLanguage: process.env.ADMIN_LANGUAGE === 'ru' ? 'ru' : 'uz',
     // Mini App manzili (Telegram faqat HTTPS qabul qiladi)
     webAppUrl: process.env.WEBAPP_URL || 'https://example.com',
-    supportPhone: process.env.SUPPORT_PHONE || '+998903497071',
+    // Do'kon aloqa ma'lumotlari (bot "Aloqa" xabari). Render'dagi eski SUPPORT_PHONE bu yerdagi to'g'ri raqamni
+    // almashtirib qo'ymasligi uchun muhit o'zgaruvchisidan o'qilmaydi — o'zgartirish faqat shu yerda.
+    supportPhone: '+998903497071',
     // Aloqa: Telegram kanal/akkaunt va Instagram (bot "Aloqa" xabarida tugma sifatida)
     telegramUrl: 'https://t.me/morefish_uz',
     instagramUrl: 'https://www.instagram.com/morefish.uz/',

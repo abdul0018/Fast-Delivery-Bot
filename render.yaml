@@ -26,6 +26,4 @@ services:
         value: https://abdul0018.github.io
       - key: ADMIN_LANGUAGE
         value: uz
-      - key: SUPPORT_PHONE
-        value: '+998903497071'
       # WEBHOOK_DOMAIN kerak emas: Render o'z manzilini RENDER_EXTERNAL_URL orqali beradi

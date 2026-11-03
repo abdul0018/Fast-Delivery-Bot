@@ -39,7 +39,8 @@ const handle = (fn) => async (req, res) => {
 router.get('/health', async (req, res) => {
   try {
     await sequelize.query('SELECT 1');
-    res.json({ ok: true });
+    // Qaysi versiya ishlayapti (Render har deploy'da commit'ni beradi) — yangilanish chiqqanini tekshirish uchun
+    res.json({ ok: true, version: (process.env.RENDER_GIT_COMMIT || '').slice(0, 7) || null });
   } catch {
     res.status(503).json({ ok: false });
   }
