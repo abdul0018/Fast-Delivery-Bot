@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, OffthreadVideo, staticFile, useCurrentFrame, interpolate, Easing, random} from 'remotion';
+import {AbsoluteFill, OffthreadVideo, Img, staticFile, useCurrentFrame, interpolate, Easing, random} from 'remotion';
 import './fonts';
 import track from './track.json';
 import {FPS, SEGS, LEAKS, CARD, PAGES, END_CARD, SRC_END} from './data';
@@ -65,7 +65,7 @@ const CardFrame: React.FC<{t: number; children: React.ReactNode}> = ({t, childre
   const inset = 0.075 * p, insetY = 0.085 * p, r = 34 * p;
   return (
     <AbsoluteFill>
-      <Paper />
+      <Img src={staticFile('paper_light.png')} style={{position: 'absolute', width: W, height: H}} />
       <div style={{position: 'absolute', left: W * inset, top: H * insetY, width: W * (1 - 2 * inset), height: H * (1 - 2 * insetY),
         borderRadius: r, overflow: 'hidden', boxShadow: `0 ${18 * p}px ${50 * p}px rgba(0,0,0,${0.28 * p})`}}>
         <div style={{position: 'absolute', left: -W * inset, top: -H * insetY, width: W, height: H}}>{children}</div>
@@ -186,13 +186,7 @@ const Captions: React.FC<{t: number}> = ({t}) => {
 // ---------------- Grain + vignette ----------------
 const Grain: React.FC<{f: number}> = ({f}) => (
   <AbsoluteFill style={{pointerEvents: 'none'}}>
-    <svg width={W} height={H} style={{position: 'absolute', opacity: 0.11, mixBlendMode: 'overlay'}}>
-      <filter id={`g${f % 8}`}>
-        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves={2} seed={f % 8} />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
-      <rect width={W} height={H} filter={`url(#g${f % 8})`} />
-    </svg>
+    <Img src={staticFile(`grain_${f % 8}.png`)} style={{position: 'absolute', width: W, height: H, opacity: 0.16, mixBlendMode: 'overlay'}} />
     <AbsoluteFill style={{background: 'radial-gradient(ellipse 85% 75% at 50% 48%, rgba(0,0,0,0) 60%, rgba(0,0,0,.28) 100%)'}} />
   </AbsoluteFill>
 );
@@ -203,7 +197,7 @@ const EndCard: React.FC<{t: number}> = ({t}) => {
   const word = 'INMODA';
   return (
     <AbsoluteFill>
-      <Paper tone="#17120d" light="#3a2e22" />
+      <Img src={staticFile('paper_dark.png')} style={{position: 'absolute', width: W, height: H}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse 70% 45% at 50% 46%, rgba(255,200,120,.16), rgba(0,0,0,.55) 100%)'}} />
       <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
         <div style={{letterSpacing: '0.14em', marginLeft: '0.14em'}}>
@@ -218,6 +212,8 @@ const EndCard: React.FC<{t: number}> = ({t}) => {
     </AbsoluteFill>
   );
 };
+
+export const PaperStill: React.FC<{dark?: boolean}> = ({dark}) => dark ? <Paper tone="#17120d" light="#3a2e22" /> : <Paper />;
 
 export const Reel: React.FC = () => {
   const frame = useCurrentFrame();
