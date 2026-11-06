@@ -13,6 +13,14 @@ There are three modes:
 - **Mode B — Music-only cinematic showcase** (no narration) → §7.
 - **Mode C — Lusso kinetic captions + SFX** (user asks for captions / the Lusso caption style / its sound effects) → §7b.
 
+## ⚠ User preferences (always apply)
+- **Keep the footage quality exactly as shot.** No colour grade/LUT, film grain, vignette or zoom/punch-in
+  (zooming upscales and softens). Use the original clip directly, not a re-encoded proxy.
+- **No shadows anywhere:** no text-shadow or drop-shadow on captions, no dark glow behind text, no box-shadow on cards.
+- **Export like CapCut:** 1080×1920, **30 fps, 12 Mbps** H.264 High (CBR-ish), AAC 320k.
+  Render the intermediate at max quality first (Remotion `--jpeg-quality=100 --crf=10`).
+- Effects that *are* fine: caption animations, light leaks, the paper-card section, the end card and the SFX.
+
 ---
 
 ## 0. The philosophy (why it reads as "premium")

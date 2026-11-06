@@ -36,7 +36,7 @@ const Footage: React.FC<{t: number}> = ({t}) => {
     <AbsoluteFill style={{overflow: 'hidden', background: '#000'}}>
       <div style={{position: 'absolute', width: W, height: H, transformOrigin: '0 0',
         transform: `translate(${x}px, ${y}px) scale(${z})`}}>
-        <OffthreadVideo src={staticFile('raw_graded.mp4')} muted style={{width: W, height: H}} />
+        <OffthreadVideo src={staticFile('raw.mp4')} muted style={{width: W, height: H}} />
       </div>
     </AbsoluteFill>
   );
@@ -67,7 +67,7 @@ const CardFrame: React.FC<{t: number; children: React.ReactNode}> = ({t, childre
     <AbsoluteFill>
       <Img src={staticFile('paper_light.png')} style={{position: 'absolute', width: W, height: H}} />
       <div style={{position: 'absolute', left: W * inset, top: H * insetY, width: W * (1 - 2 * inset), height: H * (1 - 2 * insetY),
-        borderRadius: r, overflow: 'hidden', boxShadow: `0 ${18 * p}px ${50 * p}px rgba(0,0,0,${0.28 * p})`}}>
+        borderRadius: r, overflow: 'hidden'}}>
         <div style={{position: 'absolute', left: -W * inset, top: -H * insetY, width: W, height: H}}>{children}</div>
       </div>
     </AbsoluteFill>
@@ -101,10 +101,10 @@ const Leak: React.FC<{t: number; at: number; i: number}> = ({t, at, i}) => {
 // ---------------- Captions ----------------
 type Wd = [number, string, 'w' | 'g' | 's' | 'y', boolean?];
 const BASE: Record<string, {size: number; cw: number; css: React.CSSProperties}> = {
-  w: {size: 62, cw: 0.58, css: {fontFamily: 'Poppins', fontStyle: 'italic', fontWeight: 600, color: '#fff', textShadow: '0 2px 3px rgba(0,0,0,.55), 0 3px 14px rgba(0,0,0,.45)'}},
-  s: {size: 96, cw: 0.47, css: {fontFamily: 'Playfair Display', fontWeight: 400, color: '#fff', textShadow: '0 2px 3px rgba(0,0,0,.55), 0 3px 16px rgba(0,0,0,.45)'}},
-  g: {size: 150, cw: 0.47, css: {fontFamily: 'Playfair Display', fontWeight: 600, backgroundImage: GOLD, WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', filter: 'drop-shadow(0 2px 2px rgba(40,22,0,.7)) drop-shadow(0 4px 14px rgba(0,0,0,.5))'}},
-  y: {size: 104, cw: 0.6, css: {fontFamily: 'Poppins', fontStyle: 'italic', fontWeight: 700, backgroundImage: YGOLD, WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', filter: 'drop-shadow(0 2px 2px rgba(40,22,0,.7)) drop-shadow(0 4px 12px rgba(0,0,0,.5))'}},
+  w: {size: 62, cw: 0.58, css: {fontFamily: 'Poppins', fontStyle: 'italic', fontWeight: 600, color: '#fff'}},
+  s: {size: 96, cw: 0.47, css: {fontFamily: 'Playfair Display', fontWeight: 400, color: '#fff'}},
+  g: {size: 150, cw: 0.47, css: {fontFamily: 'Playfair Display', fontWeight: 600, backgroundImage: GOLD, WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent'}},
+  y: {size: 104, cw: 0.6, css: {fontFamily: 'Poppins', fontStyle: 'italic', fontWeight: 700, backgroundImage: YGOLD, WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent'}},
 };
 
 const Letters: React.FC<{text: string; st: string; size: number; f0: number; fEnd: number; f: number; seed: string; condensed: boolean}> = (
@@ -122,7 +122,7 @@ const Letters: React.FC<{text: string; st: string; size: number; f0: number; fEn
         return (
           <span key={i} style={{...BASE[st].css, fontSize: size, display: 'inline-block', opacity: o,
             transform: `translateY(${((1 - p) * 0.45 - q * 0.35) * size}px) rotate(${(1 - p) * rot + q * rot2}deg) scale(${0.55 + 0.45 * p})`,
-            filter: `${BASE[st].css.filter ?? ''} blur(${(1 - p) * 9 + q * 8}px)`}}>{c === ' ' ? ' ' : c}</span>
+            filter: (1 - p) * 9 + q * 8 > 0.05 ? `blur(${(1 - p) * 9 + q * 8}px)` : undefined}}>{c === ' ' ? ' ' : c}</span>
         );
       })}
     </span>
@@ -154,9 +154,6 @@ const Captions: React.FC<{t: number}> = ({t}) => {
   });
   return (
     <AbsoluteFill style={{pointerEvents: 'none'}}>
-      <div style={{position: 'absolute', left: xc * W, top: H * 0.4, transform: 'translate(-50%,-50%)', width: W * maxW * 1.15, height: H * 0.3,
-        opacity: interpolate(t, [pStart, pStart + 0.15], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}),
-        background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(10,8,6,.42) 0%, rgba(10,8,6,.22) 45%, rgba(10,8,6,0) 75%)'}} />
       <div style={{position: 'absolute', left: xc * W, top: H * 0.4, transform: 'translate(-50%,-50%)', textAlign: 'center', width: W * maxW}}>
         {lines.map(({ln, k}, li) => (
           <div key={li} style={{lineHeight: 1.0, marginTop: li ? -6 : 0, whiteSpace: 'nowrap'}}>
@@ -228,7 +225,6 @@ export const Reel: React.FC = () => {
           <Captions t={t} />
         </>
       ) : <EndCard t={t} />}
-      <Grain f={frame} />
       {LEAKS.map((at, i) => <Leak key={i} t={t} at={at} i={i} />)}
     </AbsoluteFill>
   );
