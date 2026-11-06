@@ -1,6 +1,6 @@
 ---
 name: mebel
-description: /mebel — recreate the user's "clean, premium, minimal" short-form editing style (9:16 interior/lifestyle reels) — sparse word-synced 3-tier typography (neon-yellow heavy italic + white signature script + white thin sans), bottom scrim, hard-pop text, whip-blur exits, amber light-leak transitions, B-roll cut on the spoken noun, logo outro; plus the music-only "cinematic collage" variant. Use whenever the user says "recreate", "recreate for my video", "edit this in my style", "premium minimal style", or hands over footage/script to be edited like the reference reels.
+description: /mebel — recreate the user's "clean, premium, minimal" short-form editing style (9:16 interior/lifestyle reels) — sparse word-synced 3-tier typography (neon-yellow heavy italic + white signature script + white thin sans), bottom scrim, hard-pop text, whip-blur exits, amber light-leak transitions, B-roll cut on the spoken noun, logo outro; plus the music-only "cinematic collage" variant, and the Lusso-style full kinetic captions (gold serif + italic sans, letter-scatter) with extracted whoosh/impact SFX. Use whenever the user says "recreate", "recreate for my video", "edit this in my style", "premium minimal style", or hands over footage/script to be edited like the reference reels.
 ---
 
 # /mebel — Premium Minimal Edit style bible
@@ -8,9 +8,10 @@ description: /mebel — recreate the user's "clean, premium, minimal" short-form
 Learned from the reference reels (see `references/`). When the user says **"recreate"**,
 apply this file to *their* footage/script. Do not copy the reference brand, text or logo.
 
-There are two modes. Pick by the audio:
+There are three modes:
 - **Mode A — Voiceover / talking-head explainer** (has narration) → §1–§6. This is the core style.
 - **Mode B — Music-only cinematic showcase** (no narration) → §7.
+- **Mode C — Lusso kinetic captions + SFX** (user asks for captions / the Lusso caption style / its sound effects) → §7b.
 
 ---
 
@@ -195,6 +196,55 @@ Same premium restraint, but driven by the beat instead of the voice.
 
 ---
 
+## 7b. Mode C — "Lusso" kinetic captions + SFX (full word-by-word captions)
+
+Use when the user asks for **captions / "caption style" / "same sound effects"** (reference V3, a
+Lusso Modern Home ad). This *overrides* the "no full captions" rule of Mode A. Everything else
+(grade, light leaks, restraint in colour) still applies.
+
+**Captions:** every spoken word appears, in pages of 1–4 words (3 lines max), placed mid-frame at
+about 40% height, beside the presenter in negative space (opposite side from them). There is no box.
+Each page mixes 4 voices:
+| style | use | look (1080×1920) |
+|---|---|---|
+| `w` | small connector words | Poppins SemiBold *Italic*, 62 px, white, soft shadow |
+| `g` | hero noun / brand | Playfair Display SemiBold, 150 px, squeezed to scaleX .88, **metallic gold gradient** (#FFF1BF→#F7D27A→#E3A93B→#B97A1C→#F3CC72), dark drop-shadow. Optional mirrored **reflection** below (38% opacity, fading mask) for brand/product names |
+| `s` | trailing words | Playfair Display Regular, 96 px, white |
+| `y` | punchy verbs/nouns | Poppins Bold *Italic*, 104 px, yellow-gold gradient (#FFE680→#FFC93C→#E89A16) |
+- **In:** each word lands on its spoken onset. Letters build one by one (stagger ≤1.2 f, total ≤9 f).
+  Each letter goes from opacity 0, blur 9 px, +0.45em lower, scale .55 and a random ±35° rotation to rest
+  in 7 f, ease-out cubic.
+- **Out:** in the last 5 f of the page the letters scatter: they rise 0.35em, rotate randomly, blur 8 px and fade.
+  The next page starts immediately.
+- On bright footage, add a faint radial dark glow behind the block (≈.4→0 alpha) so gold stays legible.
+
+**Transitions/look:**
+- Prism light leak (~10 f): warm film-burn wash, a diagonal **rainbow band** sweeping across, dust specks and scratch lines.
+- Hard zoom "cuts" between segments (punch-in 1.25–1.55×) that follow the presenter.
+- A **rounded-card-on-crumpled-paper** section (video inset 7.5% / 8.5%, radius 34 px), used for list lines.
+- Fine film grain (~11% overlay) and a soft vignette throughout.
+- End card: wordmark letter-built in gold serif on dark crumpled paper, a gold rule, and the URL in white italic.
+
+**SFX (in `sfx/`, extracted from the Lusso audio with demucs):**
+- `impact1–4.wav`: whoosh-impact hits, peak at 0.20 s.
+- `leak_whoosh.wav`: peak at 0.25 s.
+- `outro_hit.wav`: peak at 0.25 s.
+
+Place each so its peak lands on the cut. Use one on every transition: light leaks get `leak_whoosh`, zoom cuts and card in/out get `impact*`, the end card gets `outro_hit`.
+Level: SFX window RMS ≈ 5–6 dB under the voice. Gains used: impact1 0, impact2 +2, impact3 +5, impact4 +5.5, leak 0, outro +3 dB.
+There are no per-word pops. Lusso has a soft music bed, but it was not reused.
+
+**Voice chain:** highpass 80 → afftdn nf −28 → EQ −2 dB @220, +2.5 dB @3.2k → compressor 3:1 → loudnorm −15 LUFS → final mix ≈ −14 LUFS.
+
+**Non-English speech:** whisper `small` with `language=uz` and `initial_prompt=<script>`. Align the
+script words to the whisper words (DP on fuzzy ratio), then hand-check. Speakers skip or rephrase lines, so
+**caption what is said**, not the script, and tell the user where they differ.
+
+Working example (Inmoda reel, Uzbek): `template/kinetic-captions/` holds `Reel.tsx` and `data.ts`
+(segments, leaks, caption pages), the tracker and the mix script.
+
+---
+
 ## 8. Reference material
 - `references/v1-voiceover-breakdown.md` — word-by-word transcript, shot list, every text
   and transition event with timestamps (Mode A source).
@@ -203,6 +253,6 @@ Same premium restraint, but driven by the beat instead of the voice.
   screen, logo outro, collage intro and serif title.
 - `template/PremiumMinimal.tsx` — Remotion components implementing §2–§3.
 
-Built from **2 reference videos** so far (V1 voiceover explainer, V2 music showcase). The user
+Built from **3 reference videos** so far (V1 voiceover explainer, V2 music showcase, V3 Lusso captions+SFX). The user
 plans ~20. When new reference videos arrive, analyse them the same way and append findings here
 (keep the measured numbers; note where a new ref contradicts an old one).
