@@ -19,6 +19,8 @@ There are three modes:
 - **No shadows anywhere:** no text-shadow or drop-shadow on captions, no dark glow behind text, no box-shadow on cards.
 - **Export like CapCut:** 1080×1920, **30 fps, 12 Mbps** H.264 High (CBR-ish), AAC 320k.
   Render the intermediate at max quality first (Remotion `--jpeg-quality=100 --crf=10`).
+- **Inmoda end card:** use `brand/inmoda_endcard_1080x1920.png` (INMODA, Luxury Furniture Store, ESTD 2017) as the final ~3 s.
+  It enters behind the last light leak with a 6-frame fade. Music: an instrumental lounge track, ducked under the voice.
 - Effects that *are* fine: caption animations, light leaks, the paper-card section, the end card and the SFX.
 
 ---
