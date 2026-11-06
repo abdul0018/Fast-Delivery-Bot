@@ -5,7 +5,8 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/connection');
 
-const PAYMENT_METHODS = ['cash', 'payme_click'];
+// card — kartaga o'tkazma: mijoz chek skrinshotini botga yuboradi, admin tasdiqlaydi
+const PAYMENT_METHODS = ['cash', 'card', 'payme_click'];
 const PAYMENT_STATUSES = ['pending', 'paid', 'failed'];
 const STATUSES = ['new', 'confirmed', 'delivering', 'completed', 'cancelled'];
 
@@ -30,6 +31,8 @@ const Order = sequelize.define(
     phone: { type: DataTypes.STRING(32) },
     comment: { type: DataTypes.TEXT },
     paymentChargeId: { type: DataTypes.STRING },
+    // Kartaga o'tkazma: mijoz yuborgan chek (Telegram file_id) — admin ko'rib tasdiqlaydi yoki rad etadi
+    receiptFileId: { type: DataTypes.STRING, allowNull: true },
   },
   {
     tableName: 'orders',
@@ -50,6 +53,7 @@ Order.prototype.toPublicJSON = function toPublicJSON() {
     address: this.address,
     latitude: this.latitude,
     longitude: this.longitude,
+    hasReceipt: Boolean(this.receiptFileId),
     createdAt: this.createdAt,
   };
 };

@@ -7,10 +7,11 @@ const config = require('../config/default');
 const bot = require('../core/bot');
 const { sequelize } = require('../database/connection');
 const { Product, Order, User } = require('../models');
-const { t } = require('../utils/i18n');
+const { t, DEFAULT_LANGUAGE } = require('../utils/i18n');
 const { formatPrice, escapeHtml } = require('../utils/format');
 const { adminOrderKeyboard, openAppKeyboard } = require('../utils/keyboards');
 const logger = require('../utils/logger');
+const { getCard } = require('../utils/settings');
 
 /** API javobida qaytariladigan biznes xatolik */
 class OrderError extends Error {
@@ -58,6 +59,8 @@ function checkRateLimit(userId) {
 /** Hozir faol bo'lgan to'lov usullari */
 function availablePaymentMethods() {
   const methods = ['cash'];
+  // Kartaga o'tkazma — admin panelda karta raqami saqlangan bo'lsa
+  if (getCard()) methods.push('card');
   if (config.payments.providerToken) methods.push('payme_click');
   return methods;
 }
@@ -123,6 +126,14 @@ const nameWithUnit = (line, lang) => {
   return unit ? `${productName(line, lang)} (${unit})` : productName(line, lang);
 };
 
+/** To'lov holati: kartada — "chek kutilmoqda" / "chek tekshirilmoqda" ham ko'rsatiladi */
+function paymentStatusLabel(order, lang) {
+  if (order.paymentMethod === 'card' && order.paymentStatus === 'pending') {
+    return t(lang, order.receiptFileId ? 'paymentStatus.review' : 'paymentStatus.awaitingReceipt');
+  }
+  return t(lang, `paymentStatus.${order.paymentStatus}`);
+}
+
 /** Admin (yoki guruh) uchun buyurtma matni */
 function formatOrderForAdmin(order, user, bumpProduct, lang = config.bot.adminLanguage) {
   const currency = t(lang, 'currency');
@@ -154,7 +165,7 @@ function formatOrderForAdmin(order, user, bumpProduct, lang = config.bot.adminLa
     ...items,
     '',
     `${t(lang, 'admin.total')}: <b>${formatPrice(order.total)} ${currency}</b>`,
-    `${t(lang, 'admin.payment')}: ${t(lang, `payment.${order.paymentMethod}`)} (${t(lang, `paymentStatus.${order.paymentStatus}`)})`,
+    `${t(lang, 'admin.payment')}: ${t(lang, `payment.${order.paymentMethod}`)} (${paymentStatusLabel(order, lang)})`,
     `${t(lang, 'admin.status')}: ${t(lang, `status.${order.status}`)}`,
   ]
     .filter((line) => line !== null)
@@ -202,7 +213,7 @@ async function notifyAdmin(order, attempt = 1) {
 
 /** Mijozga uning tilida xabar */
 async function notifyUser(user, key, params, extra = {}) {
-  const lang = user.language || 'uz';
+  const lang = user.language || DEFAULT_LANGUAGE;
   try {
     await bot.telegram.sendMessage(String(user.telegramId), t(lang, key, params), { parse_mode: 'HTML', ...extra });
   } catch (error) {
@@ -257,7 +268,8 @@ async function createOrder(user, lang, payload) {
   if (cart.total < config.order.minTotal) throw new OrderError('MIN_TOTAL');
   checkRateLimit(user.id);
 
-  const isOnline = paymentMethod !== 'cash';
+  // Telegram invoice faqat Payme/Click uchun; naqd va kartaga o'tkazma — invoicesiz
+  const isOnline = paymentMethod === 'payme_click';
 
   const order = await sequelize.transaction(async (transaction) => {
     const created = await Order.create(
@@ -290,15 +302,19 @@ async function createOrder(user, lang, payload) {
   const fullOrder = await loadOrder(order.id);
 
   if (!isOnline) {
-    // Naqd to'lov: admin va mijozga xabar fonda yuboriladi (API javobi kutib qolmasligi uchun).
-    // Ikkala funksiya ham xatolarni o'zi ushlaydi.
+    // Naqd / kartaga o'tkazma: admin va mijozga xabar fonda yuboriladi (API javobi kutib qolmasligi uchun).
+    // Funksiyalar xatolarni o'zi ushlaydi.
     void notifyAdmin(fullOrder);
-    void notifyUser(user, 'order.created', {
-      id: order.id,
-      total: formatPrice(order.total),
-      payment: t(lang, `payment.${paymentMethod}`),
-      address: escapeHtml(cleanAddress),
-    });
+    void (async () => {
+      await notifyUser(user, 'order.created', {
+        id: order.id,
+        total: formatPrice(order.total),
+        payment: t(lang, `payment.${paymentMethod}`),
+        address: escapeHtml(cleanAddress),
+      });
+      // Kartaga o'tkazma: karta rekvizitlari va "chek skrinshotini shu yerga yuboring"
+      if (paymentMethod === 'card') await sendCardInstructions(fullOrder);
+    })();
     return { order: fullOrder, invoiceUrl: null };
   }
 
@@ -320,7 +336,7 @@ async function markOrderPaid(orderId, chargeId) {
 
   await order.update({ paymentStatus: 'paid', paymentChargeId: chargeId });
   await notifyAdmin(order);
-  await notifyUser(order.user, 'order.paid', { id: order.id }, openAppKeyboard(order.user.language || 'uz'));
+  await notifyUser(order.user, 'order.paid', { id: order.id }, openAppKeyboard(order.user.language || DEFAULT_LANGUAGE));
   return order;
 }
 
@@ -331,9 +347,65 @@ async function updateOrderStatus(orderId, status) {
   if (order.status === status) return order;
 
   await order.update({ status });
-  const lang = order.user.language || 'uz';
+  const lang = order.user.language || DEFAULT_LANGUAGE;
   await notifyUser(order.user, 'order.statusChanged', { id: order.id, status: t(lang, `status.${status}`) });
   return order;
+}
+
+// ------------------------------------------------------------------ Kartaga o'tkazma (chek bilan)
+
+/** Mijozga: karta raqami, summa va "chek skrinshotini yuboring" */
+async function sendCardInstructions(order) {
+  const card = getCard();
+  if (!card) return;
+  await notifyUser(order.user, 'cardPayment.instructions', {
+    id: order.id,
+    total: formatPrice(order.total),
+    card: card.number,
+    holder: card.holder ? `\n👤 ${escapeHtml(card.holder)}` : '',
+    bank: card.bank ? `\n🏦 ${escapeHtml(card.bank)}` : '',
+  });
+}
+
+/** Chek kutilayotgan oxirgi buyurtma (kartaga o'tkazma, to'lanmagan, bekor qilinmagan) */
+const findOrderAwaitingReceipt = (userId) =>
+  Order.findOne({
+    where: { userId, paymentMethod: 'card', paymentStatus: ['pending', 'failed'], status: ['new', 'confirmed', 'delivering'] },
+    order: [['createdAt', 'DESC']],
+    include: [{ model: User, as: 'user' }],
+  });
+
+/** Admin uchun chek izohi */
+function formatReceiptCaption(order, lang = config.bot.adminLanguage) {
+  const user = order.user;
+  const customer = [user.firstName, user.lastName].filter(Boolean).join(' ') || '—';
+  return [
+    t(lang, 'cardPayment.adminTitle', { id: order.id }),
+    `${t(lang, 'admin.customer')}: <a href="tg://user?id=${user.telegramId}">${escapeHtml(customer)}</a>${user.username ? ` (@${escapeHtml(user.username)})` : ''}`,
+    `${t(lang, 'admin.phone')}: ${escapeHtml(order.phone || user.phone || '—')}`,
+    `${t(lang, 'admin.total')}: <b>${formatPrice(order.total)} ${t(lang, 'currency')}</b>`,
+  ].join('\n');
+}
+
+/**
+ * Admin chekni tasdiqladi yoki rad etdi (bot tugmasi yoki admin panel).
+ * Tasdiq: to'landi + yangi buyurtma "Готовится" holatiga o'tadi. Rad: mijoz chekni qayta yuborishi mumkin.
+ */
+async function reviewCardPayment(orderId, approve) {
+  const order = await loadOrder(orderId);
+  if (!order) throw new OrderError('ORDER_NOT_FOUND', 404);
+  if (order.paymentMethod !== 'card') throw new OrderError('NOT_CARD_PAYMENT');
+  if (order.paymentStatus === 'paid') return { order, changed: false };
+
+  if (approve) {
+    await order.update({ paymentStatus: 'paid', ...(order.status === 'new' ? { status: 'confirmed' } : {}) });
+    await notifyUser(order.user, 'cardPayment.approved', { id: order.id });
+  } else {
+    await order.update({ paymentStatus: 'failed' });
+    await notifyUser(order.user, 'cardPayment.declined', { id: order.id, phone: escapeHtml(config.bot.supportPhone) });
+  }
+  logger.info(`💳 Buyurtma #${order.id}: chek ${approve ? 'tasdiqlandi' : 'rad etildi'}`);
+  return { order, changed: true };
 }
 
 module.exports = {
@@ -347,4 +419,9 @@ module.exports = {
   updateOrderStatus,
   formatOrderForAdmin,
   loadOrder,
+  paymentStatusLabel,
+  sendCardInstructions,
+  findOrderAwaitingReceipt,
+  formatReceiptCaption,
+  reviewCardPayment,
 };

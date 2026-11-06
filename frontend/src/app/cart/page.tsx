@@ -174,7 +174,8 @@ export default function CartPage() {
     );
   }
 
-  const ctaLabel = cart.paymentMethod === 'cash' ? 'cart.confirm' : 'cart.pay';
+  // "Оплатить" — faqat onlayn (Payme/Click); naqd va kartaga o'tkazmada buyurtma avval tasdiqlanadi
+  const ctaLabel = cart.paymentMethod === 'payme_click' ? 'cart.pay' : 'cart.confirm';
 
   return (
     <>

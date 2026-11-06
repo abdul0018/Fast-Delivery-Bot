@@ -2,9 +2,9 @@
 
 /**
  * To'lov usullari — faqat backend yoqqan usullar ko'rsatiladi (/api/config).
- * Hozircha faqat "Naqd pul"; Payme/Click PAYMENT_PROVIDER_TOKEN qo'shilganda avtomatik paydo bo'ladi.
+ * Naqd pul; "Karta orqali" — admin panelda karta raqami saqlangan bo'lsa; Payme/Click — PAYMENT_PROVIDER_TOKEN bilan.
  */
-import { Banknote, Check, CreditCard, type LucideIcon } from 'lucide-react';
+import { Banknote, Check, CreditCard, Wallet, type LucideIcon } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
 import { useI18n } from '@/hooks/useI18n';
 import { useTelegram } from '@/hooks/useTelegram';
@@ -13,7 +13,8 @@ import type { PaymentMethod } from '@/types';
 
 const METHODS: { id: PaymentMethod; icon: LucideIcon }[] = [
   { id: 'cash', icon: Banknote },
-  { id: 'payme_click', icon: CreditCard },
+  { id: 'card', icon: CreditCard },
+  { id: 'payme_click', icon: Wallet },
 ];
 
 export function PaymentMethods({ available }: { available: PaymentMethod[] }) {

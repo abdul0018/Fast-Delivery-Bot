@@ -5,7 +5,7 @@
  * holatni o'zgartirish tugmalari (mijozga Telegram'da xabar boradi).
  */
 import { useCallback, useEffect, useState } from 'react';
-import { ClipboardList, MapPin, MessageSquareText, Phone, RefreshCw, Send } from 'lucide-react';
+import { ClipboardList, CreditCard, MapPin, MessageSquareText, Phone, Receipt, RefreshCw, Send } from 'lucide-react';
 import { adminApi, adminErrorText, type AdminOrder } from '@/lib/adminApi';
 import { cn, formatPrice } from '@/lib/utils';
 import type { OrderStatus } from '@/types';
@@ -29,6 +29,100 @@ const STATUS_STYLE: Record<OrderStatus, string> = {
   completed: 'bg-tile text-ink-2',
   cancelled: 'bg-tile text-ink-2 line-through',
 };
+
+const PAYMENT_LABELS: Record<string, string> = { cash: 'наличные', card: 'картой', payme_click: 'Payme / Click' };
+
+/** Kartaga o'tkazma holati */
+function cardPaymentState(order: AdminOrder): { text: string; tone: 'wait' | 'review' | 'ok' | 'bad' } {
+  if (order.paymentStatus === 'paid') return { text: 'Оплата подтверждена', tone: 'ok' };
+  if (order.paymentStatus === 'failed') return { text: 'Чек отклонён — ждём новый', tone: 'bad' };
+  return order.hasReceipt ? { text: 'Чек получен — проверьте', tone: 'review' } : { text: 'Ждём чек от клиента', tone: 'wait' };
+}
+
+function CardPaymentBlock({ order, onChange }: { order: AdminOrder; onChange: (order: AdminOrder) => void }) {
+  const toast = useAdminToast();
+  const [receipt, setReceipt] = useState<string | null>(null);
+  const [loadingReceipt, setLoadingReceipt] = useState(false);
+  const [busy, setBusy] = useState<'approve' | 'decline' | null>(null);
+  const state = cardPaymentState(order);
+
+  useEffect(() => () => {
+    if (receipt) URL.revokeObjectURL(receipt);
+  }, [receipt]);
+
+  const showReceipt = async () => {
+    setLoadingReceipt(true);
+    try {
+      setReceipt(await adminApi.receiptUrl(order.id));
+    } catch (error) {
+      toast(adminErrorText(error), 'error');
+    } finally {
+      setLoadingReceipt(false);
+    }
+  };
+
+  const review = async (approve: boolean) => {
+    if (!approve && !window.confirm(`Отклонить оплату заказа №${order.id}? Клиент получит сообщение и сможет отправить чек ещё раз.`)) return;
+    setBusy(approve ? 'approve' : 'decline');
+    try {
+      const updated = await adminApi.reviewPayment(order.id, approve);
+      onChange({ ...order, ...updated, customer: order.customer, phone: order.phone, comment: order.comment });
+      toast(approve ? `Оплата заказа №${order.id} подтверждена` : `Оплата заказа №${order.id} отклонена`);
+    } catch (error) {
+      toast(adminErrorText(error), 'error');
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  return (
+    <div className="mt-3 rounded-[16px] bg-tile p-3">
+      <p className="flex items-center gap-2 text-[14px] font-semibold">
+        <CreditCard size={16} className="shrink-0" />
+        <span className={cn(state.tone === 'ok' && 'text-ok', state.tone === 'bad' && 'text-sale')}>{state.text}</span>
+      </p>
+      {order.hasReceipt && !receipt && (
+        <button
+          type="button"
+          onClick={showReceipt}
+          disabled={loadingReceipt}
+          className="mt-2 flex h-10 items-center gap-2 rounded-[12px] bg-surface px-3.5 text-[14px] font-semibold disabled:opacity-60"
+        >
+          <Receipt size={16} />
+          {loadingReceipt ? 'Загружаем чек…' : 'Показать чек'}
+        </button>
+      )}
+      {receipt && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <a href={receipt} target="_blank" rel="noreferrer">
+          <img src={receipt} alt={`Чек по заказу №${order.id}`} className="mt-2 max-h-[420px] w-full rounded-[12px] bg-surface object-contain" />
+        </a>
+      )}
+      {order.paymentStatus !== 'paid' && order.status !== 'cancelled' && (
+        <div className="mt-2.5 flex gap-2">
+          <button
+            type="button"
+            disabled={busy !== null}
+            onClick={() => review(true)}
+            className="flex h-11 flex-1 items-center justify-center gap-2 rounded-[14px] bg-ok text-[15px] font-semibold text-white disabled:opacity-50"
+          >
+            {busy === 'approve' && <span className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />}
+            Оплата пришла
+          </button>
+          <button
+            type="button"
+            disabled={busy !== null}
+            onClick={() => review(false)}
+            className="flex h-11 flex-1 items-center justify-center gap-2 rounded-[14px] bg-surface text-[15px] font-semibold text-sale disabled:opacity-50"
+          >
+            {busy === 'decline' && <span className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />}
+            Отклонить
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
 
 const formatTime = (iso: string) => {
   const date = new Date(iso);
@@ -95,7 +189,7 @@ function OrderCard({ order, onChange }: { order: AdminOrder; onChange: (order: A
           </li>
         )}
         <li className="flex justify-between gap-3 pt-1 text-[15px] font-semibold">
-          <span>Итого · наличные</span>
+          <span>Итого · {PAYMENT_LABELS[order.paymentMethod] ?? order.paymentMethod}</span>
           <span className="price">{som(order.total)}</span>
         </li>
       </ul>
@@ -138,6 +232,8 @@ function OrderCard({ order, onChange }: { order: AdminOrder; onChange: (order: A
           </p>
         )}
       </div>
+
+      {order.paymentMethod === 'card' && <CardPaymentBlock order={order} onChange={onChange} />}
 
       {order.next.length > 0 && (
         <div className="mt-4 flex gap-2">

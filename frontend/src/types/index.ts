@@ -27,7 +27,8 @@ export interface Product {
   isUpsell: boolean;
 }
 
-export type PaymentMethod = 'cash' | 'payme_click';
+/** card — kartaga o'tkazma: mijoz chekni botga yuboradi, admin tasdiqlaydi */
+export type PaymentMethod = 'cash' | 'card' | 'payme_click';
 export type OrderStatus = 'new' | 'confirmed' | 'delivering' | 'completed' | 'cancelled';
 export type PaymentStatus = 'pending' | 'paid' | 'failed';
 
@@ -51,6 +52,8 @@ export interface Order {
   paymentStatus: PaymentStatus;
   status: OrderStatus;
   address: string;
+  /** Kartaga o'tkazma: chek yuborilganmi (tekshirilmoqda) */
+  hasReceipt?: boolean;
   createdAt: string;
 }
 
@@ -71,6 +74,8 @@ export interface AppConfig {
   currency: 'UZS';
   paymentMethods: PaymentMethod[];
   bump: { product: Product; price: number } | null;
+  /** Kartaga o'tkazma rekvizitlari (admin panelda saqlangan bo'lsa) */
+  card?: { number: string; holder: string; bank: string } | null;
 }
 
 export interface CreateOrderPayload {

@@ -12,6 +12,10 @@
  *  GET    /api/admin/orders           — buyurtmalar (?status=&offset=&limit=)
  *  PATCH  /api/admin/orders/:id       — holatni o'zgartirish (mijozga xabar boradi)
  *  GET    /api/admin/stats?days=30    — statistika (Toshkent vaqti bilan)
+ *  PATCH  /api/admin/orders/:id/payment — kartaga o'tkazma chekini tasdiqlash / rad etish { approve }
+ *  GET    /api/admin/orders/:id/receipt — chek rasmi (Telegram'dan)
+ *  GET    /api/admin/settings          — sozlamalar (to'lov kartasi)
+ *  PUT    /api/admin/settings          — saqlash
  */
 const crypto = require('crypto');
 const express = require('express');
@@ -20,6 +24,8 @@ const { Product, Order, User, Image } = require('../models');
 const { sequelize } = require('../database/connection');
 const { info, login, telegramLogin, adminAuth } = require('../middlewares/admin.middleware');
 const cartController = require('../controllers/cartController');
+const bot = require('../core/bot');
+const { getSettings, saveSettings } = require('../utils/settings');
 const { TRANSITIONS } = require('../controllers/adminController');
 const logger = require('../utils/logger');
 
@@ -263,6 +269,7 @@ router.get(
         ...order.toPublicJSON(),
         phone: order.phone,
         comment: order.comment,
+        paymentStatus: order.paymentStatus,
         next: TRANSITIONS[order.status],
         customer: order.user
           ? {
@@ -286,6 +293,56 @@ router.patch(
 
     const order = await cartController.updateOrderStatus(current.id, status);
     return res.json({ order: { ...order.toPublicJSON(), next: TRANSITIONS[order.status] } });
+  }),
+);
+
+router.patch(
+  '/orders/:id/payment',
+  handle(async (req, res) => {
+    const { order } = await cartController.reviewCardPayment(Number(req.params.id), Boolean(req.body?.approve));
+    return res.json({ order: { ...order.toPublicJSON(), next: TRANSITIONS[order.status] } });
+  }),
+);
+
+/** Chek rasmi: Telegram serveridan olib beriladi (bot tokeni brauzerga chiqmaydi) */
+router.get(
+  '/orders/:id/receipt',
+  handle(async (req, res) => {
+    const order = await Order.findByPk(Number(req.params.id));
+    if (!order?.receiptFileId) return res.status(404).json({ error: 'NOT_FOUND' });
+    const link = await bot.telegram.getFileLink(order.receiptFileId);
+    const response = await fetch(link.href);
+    if (!response.ok) return res.status(502).json({ error: 'RECEIPT_UNAVAILABLE' });
+    res.set({ 'Content-Type': response.headers.get('content-type') || 'image/jpeg', 'Cache-Control': 'private, max-age=3600' });
+    return res.send(Buffer.from(await response.arrayBuffer()));
+  }),
+);
+
+// ------------------------------------------------------------------ Sozlamalar (to'lov kartasi)
+
+router.get(
+  '/settings',
+  handle(async (req, res) => {
+    res.json({ settings: getSettings() });
+  }),
+);
+
+router.put(
+  '/settings',
+  handle(async (req, res) => {
+    const body = req.body || {};
+    const patch = {};
+    if (body.cardNumber !== undefined) {
+      const digits = String(body.cardNumber).replace(/\D/g, '');
+      // Uzcard / Humo / Visa — 16 raqam; bo'sh — kartaga o'tkazma o'chiriladi
+      if (digits && digits.length !== 16) throw new InputError('INVALID_CARD', 'cardNumber');
+      patch.cardNumber = digits;
+    }
+    if (body.cardHolder !== undefined) patch.cardHolder = text(body.cardHolder, 'cardHolder', 60);
+    if (body.cardBank !== undefined) patch.cardBank = text(body.cardBank, 'cardBank', 60);
+    const settings = await saveSettings(patch);
+    logger.info(`Admin: sozlamalar yangilandi (${Object.keys(patch).join(', ')})`);
+    res.json({ settings });
   }),
 );
 

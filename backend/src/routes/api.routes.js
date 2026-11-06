@@ -17,6 +17,7 @@ const { sequelize } = require('../database/connection');
 const { webAppAuth } = require('../middlewares/auth.middleware');
 const { SUPPORTED_LANGUAGES } = require('../utils/i18n');
 const cartController = require('../controllers/cartController');
+const { getCard } = require('../utils/settings');
 const logger = require('../utils/logger');
 
 const router = express.Router();
@@ -53,6 +54,8 @@ router.get(
     res.json({
       currency: 'UZS',
       paymentMethods: cartController.availablePaymentMethods(),
+      // Kartaga o'tkazma rekvizitlari (buyurtmadan keyin mijozga ko'rsatiladi)
+      card: getCard(),
       bump: bumpProduct ? { product: bumpProduct.toPublicJSON(), price: config.order.bumpPrice ?? bumpProduct.price } : null,
     });
   }),

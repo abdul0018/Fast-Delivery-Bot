@@ -1,46 +1,36 @@
-"use client";
+'use client';
 
 /**
- * Admin panel (sayt, telefon uchun moslashgan): Statistika · Mahsulotlar · Buyurtmalar.
+ * Admin panel (sayt, telefon uchun moslashgan): Statistika · Mahsulotlar · Buyurtmalar · Sozlamalar.
  * Kirish — parolsiz: Telegram ichida ochilganda (botda /admin) avtomatik, Telegram tasdig'i bilan.
  */
-import { useEffect, useState } from "react";
-import {
-  BarChart3,
-  ClipboardList,
-  LogOut,
-  Package,
-  type LucideIcon,
-} from "lucide-react";
-import { Logo } from "@/components/layout/Header";
-import {
-  adminApi,
-  adminErrorText,
-  setUnauthorizedHandler,
-  tokenStore,
-} from "@/lib/adminApi";
-import { cn } from "@/lib/utils";
-import { AdminToastProvider } from "./adminUi";
-import { LoginScreen } from "./LoginScreen";
-import { OrdersView } from "./OrdersView";
-import { ProductsView } from "./ProductsView";
-import { StatsView } from "./StatsView";
+import { useEffect, useState } from 'react';
+import { BarChart3, ClipboardList, LogOut, Package, Settings, type LucideIcon } from 'lucide-react';
+import { Logo } from '@/components/layout/Header';
+import { adminApi, adminErrorText, setUnauthorizedHandler, tokenStore } from '@/lib/adminApi';
+import { cn } from '@/lib/utils';
+import { AdminToastProvider } from './adminUi';
+import { LoginScreen } from './LoginScreen';
+import { OrdersView } from './OrdersView';
+import { ProductsView } from './ProductsView';
+import { SettingsView } from './SettingsView';
+import { StatsView } from './StatsView';
 
-type Tab = "stats" | "products" | "orders";
-const TAB_KEY = "morefish-admin-tab";
+type Tab = 'stats' | 'products' | 'orders' | 'settings';
+const TAB_KEY = 'morefish-admin-tab';
 
 const TABS: { id: Tab; label: string; icon: LucideIcon }[] = [
-  { id: "stats", label: "Статистика", icon: BarChart3 },
-  { id: "products", label: "Товары", icon: Package },
-  { id: "orders", label: "Заказы", icon: ClipboardList },
+  { id: 'stats', label: 'Статистика', icon: BarChart3 },
+  { id: 'products', label: 'Товары', icon: Package },
+  { id: 'orders', label: 'Заказы', icon: ClipboardList },
+  { id: 'settings', label: 'Настройки', icon: Settings },
 ];
 
-const isTab = (value: unknown): value is Tab =>
-  TABS.some((tab) => tab.id === value);
+const isTab = (value: unknown): value is Tab => TABS.some((tab) => tab.id === value);
 
 export function AdminApp() {
   const [authed, setAuthed] = useState<boolean | null>(null);
-  const [tab, setTab] = useState<Tab>("stats");
+  const [tab, setTab] = useState<Tab>('stats');
   const [telegramError, setTelegramError] = useState<string>();
   const [inTelegram, setInTelegram] = useState(false);
 
@@ -102,19 +92,14 @@ export function AdminApp() {
   return (
     <AdminToastProvider>
       {!authed ? (
-        <LoginScreen
-          onLogin={() => setAuthed(true)}
-          telegramError={telegramError}
-        />
+        <LoginScreen onLogin={() => setAuthed(true)} telegramError={telegramError} />
       ) : (
         <div className="min-h-dvh bg-ground text-ink">
           <header className="sticky top-0 z-30 border-b border-line bg-ground/95 backdrop-blur">
             <div className="mx-auto flex h-14 max-w-2xl items-center justify-between px-4">
               <span className="flex items-center gap-2">
                 <Logo />
-                <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[12px] font-semibold text-brand-ink">
-                  Админ
-                </span>
+                <span className="rounded-full bg-brand-soft px-2 py-0.5 text-[12px] font-semibold text-brand-ink">Админ</span>
               </span>
               {!inTelegram && (
                 <button
@@ -130,15 +115,14 @@ export function AdminApp() {
           </header>
 
           <main className="mx-auto max-w-2xl px-4 pt-4 pb-32">
-            {tab === "stats" && (
-              <StatsView onOpenOrders={() => selectTab("orders")} />
-            )}
-            {tab === "products" && <ProductsView />}
-            {tab === "orders" && <OrdersView />}
+            {tab === 'stats' && <StatsView onOpenOrders={() => selectTab('orders')} />}
+            {tab === 'products' && <ProductsView />}
+            {tab === 'orders' && <OrdersView />}
+            {tab === 'settings' && <SettingsView />}
           </main>
 
           <nav aria-label="Разделы" className="fixed inset-x-0 bottom-0 z-40">
-            <ul className="mx-auto grid max-w-2xl grid-cols-3 border-t border-line bg-surface px-2 pt-1.5 pb-safe">
+            <ul className="mx-auto grid max-w-2xl grid-cols-4 border-t border-line bg-surface px-2 pt-1.5 pb-safe">
               {TABS.map(({ id, label, icon: Icon }) => {
                 const active = tab === id;
                 return (
@@ -146,10 +130,10 @@ export function AdminApp() {
                     <button
                       type="button"
                       onClick={() => selectTab(id)}
-                      aria-current={active ? "page" : undefined}
+                      aria-current={active ? 'page' : undefined}
                       className={cn(
-                        "flex w-full flex-col items-center gap-1 rounded-[12px] py-1.5 text-[11px] font-medium transition-colors duration-200",
-                        active ? "text-ink" : "text-ink-2",
+                        'flex w-full flex-col items-center gap-1 rounded-[12px] py-1.5 text-[11px] font-medium transition-colors duration-200',
+                        active ? 'text-ink' : 'text-ink-2',
                       )}
                     >
                       <Icon size={24} strokeWidth={active ? 2.1 : 1.75} />

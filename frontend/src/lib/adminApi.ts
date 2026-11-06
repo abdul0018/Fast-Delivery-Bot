@@ -1,7 +1,7 @@
 /**
  * Admin panel API klienti: parol bilan kirish -> token (localStorage) -> "Authorization: Bearer <token>".
  */
-import type { Category, Localized, OrderLine, OrderStatus, PaymentMethod } from '@/types';
+import type { Category, Localized, OrderLine, OrderStatus, PaymentMethod, PaymentStatus } from '@/types';
 
 const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api').replace(/\/$/, '');
 const TOKEN_KEY = 'morefish-admin-token';
@@ -48,6 +48,9 @@ export interface AdminOrder {
   bumpPrice: number;
   total: number;
   paymentMethod: PaymentMethod;
+  paymentStatus: PaymentStatus;
+  /** Kartaga o'tkazma: mijoz chek yuborgan */
+  hasReceipt?: boolean;
   status: OrderStatus;
   address: string;
   latitude: number | null;
@@ -78,6 +81,12 @@ export interface AdminStats {
   daily: { date: string; orders: number; revenue: number }[];
   statuses: Partial<Record<OrderStatus, number>>;
   topProducts: { productId: number; name: string; quantity: number; revenue: number }[];
+}
+
+export interface ShopSettings {
+  cardNumber: string;
+  cardHolder: string;
+  cardBank: string;
 }
 
 export class AdminApiError extends Error {
@@ -165,6 +174,23 @@ export const adminApi = {
     request<{ order: AdminOrder }>(`/orders/${id}`, json('PATCH', { status })).then((res) => res.order),
 
   getStats: (days: number) => request<AdminStats>(`/stats?days=${days}`),
+
+  /** Kartaga o'tkazma chekini tasdiqlash / rad etish (mijozga Telegram'da xabar boradi) */
+  reviewPayment: (id: number, approve: boolean) =>
+    request<{ order: AdminOrder }>(`/orders/${id}/payment`, json('PATCH', { approve })).then((res) => res.order),
+  /** Chek rasmi (token bilan) — <img> uchun obyekt URL */
+  receiptUrl: async (id: number) => {
+    const token = tokenStore.get();
+    const response = await fetch(`${API_URL}/admin/orders/${id}/receipt`, { headers: token ? { Authorization: `Bearer ${token}` } : {} }).catch(() => {
+      throw new AdminApiError('NETWORK', 0);
+    });
+    if (!response.ok) throw new AdminApiError('RECEIPT_UNAVAILABLE', response.status);
+    return URL.createObjectURL(await response.blob());
+  },
+
+  getSettings: () => request<{ settings: ShopSettings }>('/settings').then((res) => res.settings),
+  saveSettings: (settings: Partial<ShopSettings>) =>
+    request<{ settings: ShopSettings }>('/settings', json('PUT', settings)).then((res) => res.settings),
 };
 
 /** Xato kodlari — admin uchun tushunarli matn */
@@ -186,6 +212,9 @@ export function adminErrorText(error: unknown): string {
     INVALID_IMAGE: 'Не удалось загрузить фото (JPEG, PNG или WebP, до 3 МБ)',
     TOO_LONG: 'Слишком длинный текст',
     INVALID_STATUS: 'Статус уже изменён — обновите список',
+    INVALID_CARD: 'Номер карты — 16 цифр',
+    RECEIPT_UNAVAILABLE: 'Не удалось загрузить чек',
+    NOT_CARD_PAYMENT: 'Этот заказ не оплачивается картой',
   };
   return messages[code] ?? 'Что-то пошло не так. Попробуйте ещё раз.';
 }

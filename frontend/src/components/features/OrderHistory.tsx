@@ -61,7 +61,8 @@ export function OrderHistory() {
             <div className="mt-1.5 flex items-center justify-between gap-2 text-[13px]">
               <span className="price text-ink-2">
                 {formatDate(order.createdAt, lang)} · {t('profile.items', { count })}
-                {awaitingPayment && ` · ${t(`paymentStatus.${order.paymentStatus}`)}`}
+                {awaitingPayment &&
+                  ` · ${t(order.paymentMethod === 'card' && order.hasReceipt && order.paymentStatus === 'pending' ? 'paymentStatus.review' : `paymentStatus.${order.paymentStatus}`)}`}
               </span>
               <span className="price text-[15px] font-semibold text-ink">{price(order.total)}</span>
             </div>

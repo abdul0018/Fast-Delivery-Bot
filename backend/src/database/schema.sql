@@ -10,7 +10,7 @@ DO $$ BEGIN
 EXCEPTION WHEN duplicate_object THEN NULL; END $$;
 
 DO $$ BEGIN
-  CREATE TYPE enum_orders_payment_method AS ENUM ('cash', 'payme_click');
+  CREATE TYPE enum_orders_payment_method AS ENUM ('cash', 'card', 'payme_click');
 EXCEPTION WHEN duplicate_object THEN NULL; END $$;
 
 DO $$ BEGIN
@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS orders (
   phone               VARCHAR(32),
   comment             TEXT,
   payment_charge_id   VARCHAR(255),
+  receipt_file_id     VARCHAR(255),                         -- kartaga o'tkazma: mijoz yuborgan chek (Telegram file_id)
   created_at          TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
   updated_at          TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );
@@ -97,4 +98,16 @@ CREATE TABLE IF NOT EXISTS images (
   size        INTEGER      NOT NULL,
   data        BYTEA        NOT NULL,
   created_at  TIMESTAMPTZ  NOT NULL DEFAULT NOW()
+);
+
+-- Mavjud bazani yangilash (kartaga o'tkazma)
+ALTER TYPE enum_orders_payment_method ADD VALUE IF NOT EXISTS 'card';
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS receipt_file_id VARCHAR(255);
+
+-- ---------- Do'kon sozlamalari (admin panel): to'lov kartasi va h.k. ----------
+CREATE TABLE IF NOT EXISTS settings (
+  key         VARCHAR(100) PRIMARY KEY,
+  value       TEXT,
+  created_at  TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
+  updated_at  TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );

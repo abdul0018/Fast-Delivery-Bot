@@ -38,11 +38,14 @@
   "paymentStatus": {
     "pending": "⏳ Kutilmoqda",
     "paid": "✅ To'langan",
-    "failed": "❌ Xatolik"
+    "failed": "❌ Xatolik",
+    "awaitingReceipt": "⏳ chek kutilmoqda",
+    "review": "🧾 chek tekshirilmoqda"
   },
   "payment": {
     "cash": "💵 Naqd pul",
-    "payme_click": "💳 Payme / Click"
+    "payme_click": "💳 Payme / Click",
+    "card": "💳 Karta orqali (o'tkazma)"
   },
   "order": {
     "created": "✅ Buyurtmangiz <b>#{id}</b> qabul qilindi!\n\n💰 Jami: <b>{total} so'm</b>\n💳 To'lov: {payment}\n📍 Manzil: {address}\n\nMenejerimiz tez orada tasdiqlash uchun bog'lanadi. Yetkazib berish — Yandex orqali, alohida to'lanadi.",
@@ -85,5 +88,18 @@
     "orderNotFound": "Buyurtma topilmadi",
     "alreadyPaid": "Bu buyurtma allaqachon to'langan"
   },
-  "unknown": "Buyurtma berish uchun «🐟 Katalog» tugmasini bosing 👇"
+  "unknown": "Buyurtma berish uchun «🐟 Katalog» tugmasini bosing 👇",
+  "cardPayment": {
+    "instructions": "💳 <b>#{id} buyurtmani karta orqali to'lash</b>\n\n<b>{total} so'm</b>ni quyidagi kartaga o'tkazing:\n<code>{card}</code>{holder}{bank}\n\n📎 To'lovdan so'ng shu yerga <b>chek skrinshotini</b> yuboring — tekshirib, buyurtmani tasdiqlaymiz.\n<i>Nusxa olish uchun karta raqamini bosing.</i>",
+    "received": "✅ Chek qabul qilindi! <b>#{id}</b> buyurtma to'lovini tekshiryapmiz — odatda bir necha daqiqa.",
+    "noOrder": "🤔 Karta orqali to'lov kutilayotgan buyurtma yo'q. Katalogda buyurtma bering va «Karta orqali»ni tanlang.",
+    "approved": "✅ <b>#{id}</b> buyurtma to'lovi tasdiqlandi! Buyurtma tayyorlanmoqda — tez orada yetkazamiz.",
+    "declined": "❌ <b>#{id}</b> buyurtma to'lovi tasdiqlanmadi. Summa va karta raqamini tekshirib, chekni qayta yuboring — yoki qo'ng'iroq qiling: {phone}",
+    "adminTitle": "🧾 <b>#{id} buyurtma cheki</b>",
+    "approve": "✅ To'lovni tasdiqlash",
+    "decline": "❌ Rad etish",
+    "approvedMark": "✅ <b>To'lov tasdiqlandi</b>",
+    "declinedMark": "❌ <b>To'lov rad etildi</b> — mijoz chekni qayta yuborishi mumkin",
+    "alreadyPaid": "Bu buyurtma allaqachon to'langan"
+  }
 }

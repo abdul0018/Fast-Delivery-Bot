@@ -18,6 +18,7 @@ const { createServer } = require('./server');
 const { t } = require('./utils/i18n');
 const { webAppUrl } = require('./utils/keyboards');
 const { setupCommands } = require('./utils/commands');
+const { loadSettings } = require('./utils/settings');
 
 async function configureBotProfile() {
   // Standart "Katalog" tugmasi (chat ichida pastki chap burchakda) — Mini App'ni ochadi. Standart til — rus.
@@ -56,6 +57,8 @@ async function main() {
 
   // Birinchi ishga tushirishda menyu bo'sh bo'lsa — namuna mahsulotlarni qo'shamiz
   if ((await Product.count()) === 0) await seedProducts();
+  // Do'kon sozlamalari (to'lov kartasi) — keshga
+  await loadSettings();
 
   registerBotRoutes(bot);
 

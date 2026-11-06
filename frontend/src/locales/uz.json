@@ -103,7 +103,9 @@
       "cash": "Naqd pul",
       "cashHint": "Kuryerga yetkazilganda",
       "payme_click": "Payme / Click",
-      "payme_clickHint": "Karta orqali onlayn"
+      "payme_clickHint": "Karta orqali onlayn",
+      "card": "Karta orqali (o'tkazma)",
+      "cardHint": "Uzcard / Humo — o'tkazing va chekni botga yuboring"
     },
     "soon": "Tez orada",
     "subtotal": "Mahsulotlar",
@@ -169,7 +171,8 @@
   "paymentStatus": {
     "pending": "To'lov kutilmoqda",
     "paid": "To'langan",
-    "failed": "To'lov xatosi"
+    "failed": "To'lov xatosi",
+    "review": "Chek tekshirilmoqda"
   },
   "location": {
     "title": "Yetkazish manzili",
@@ -198,5 +201,20 @@
     "newAddress": "Yangi manzil",
     "locatingShort": "Joylashuv aniqlanmoqda",
     "resolvingButton": "Manzil aniqlanmoqda…"
+  },
+  "cardPay": {
+    "title": "Buyurtmani to'lang",
+    "text": "Summani kartaga o'tkazing va chek skrinshotini botga yuboring — tekshirib, buyurtmani tasdiqlaymiz.",
+    "amount": "To'lov summasi",
+    "card": "Karta raqami",
+    "holder": "Qabul qiluvchi",
+    "copy": "Nusxa olish",
+    "copied": "Karta raqami nusxalandi",
+    "step1": "{price}ni kartaga o'tkazing",
+    "step2": "Chek skrinshotini oling",
+    "step3": "Uni bot chatiga yuboring — rekvizitlar u yerda ham bor",
+    "sendReceipt": "Chekni botga yuborish",
+    "later": "Keyinroq to'layman",
+    "copiedShort": "Nusxalandi"
   }
 }

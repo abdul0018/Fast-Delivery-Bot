@@ -6,7 +6,7 @@ const { t } = require('../utils/i18n');
 const { Markup } = require('telegraf');
 const { adminOrderKeyboard, adminPanelUrl } = require('../utils/keyboards');
 const { isAdmin } = require('../utils/admins');
-const { updateOrderStatus, formatOrderForAdmin, loadOrder } = require('./cartController');
+const { updateOrderStatus, formatOrderForAdmin, loadOrder, reviewCardPayment, formatReceiptCaption, OrderError } = require('./cartController');
 
 // Ruxsat etilgan holat o'tishlari
 const TRANSITIONS = {
@@ -45,6 +45,31 @@ async function changeOrderStatus(ctx) {
   });
 }
 
+/** Chek ostidagi tugma: pay:(approve|decline):<id> — to'lovni tasdiqlash yoki rad etish */
+async function reviewPayment(ctx) {
+  const lang = config.bot.adminLanguage;
+  if (!isAdminChat(ctx) && !(await isAdmin(ctx.from?.id))) {
+    await ctx.answerCbQuery(t(lang, 'admin.notAllowed'), { show_alert: true });
+    return;
+  }
+  const [, action, rawId] = ctx.match;
+  try {
+    const { order, changed } = await reviewCardPayment(Number(rawId), action === 'approve');
+    await ctx.answerCbQuery(changed ? t(lang, 'admin.updated') : t(lang, 'cardPayment.alreadyPaid'));
+    const result = order.paymentStatus === 'paid' ? t(lang, 'cardPayment.approvedMark') : t(lang, 'cardPayment.declinedMark');
+    // Chek izohiga natija yoziladi, tugmalar olib tashlanadi (qayta bosilmasin)
+    await ctx
+      .editMessageCaption(`${formatReceiptCaption(order)}\n\n${result}`, { parse_mode: 'HTML', reply_markup: undefined })
+      .catch(() => ctx.editMessageReplyMarkup(undefined).catch(() => {}));
+  } catch (error) {
+    if (error instanceof OrderError) {
+      await ctx.answerCbQuery(t(lang, 'errors.orderNotFound'), { show_alert: true });
+      return;
+    }
+    throw error;
+  }
+}
+
 /**
  * /admin — admin panel (parolsiz):
  *  - shaxsiy chatda admin uchun: panelni Telegram ichida ochuvchi tugma (Telegram foydalanuvchini o'zi tasdiqlaydi)
@@ -71,4 +96,4 @@ async function adminPanel(ctx) {
   );
 }
 
-module.exports = { changeOrderStatus, adminPanel, TRANSITIONS };
+module.exports = { changeOrderStatus, adminPanel, reviewPayment, TRANSITIONS };

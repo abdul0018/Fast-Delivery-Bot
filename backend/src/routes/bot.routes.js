@@ -25,10 +25,16 @@ function registerBotRoutes(bot) {
   // Inline tugmalar
   bot.action(/^lang:(uz|ru)$/, startController.chooseLanguage);
   bot.action(/^order:(confirmed|delivering|completed|cancelled):(\d+)$/, adminController.changeOrderStatus);
+  // Kartaga o'tkazma cheki: tasdiqlash / rad etish
+  bot.action(/^pay:(approve|decline):(\d+)$/, adminController.reviewPayment);
 
   // To'lovlar
   bot.on('pre_checkout_query', paymentController.preCheckout);
   bot.on(message('successful_payment'), paymentController.successfulPayment);
+
+  // Kartaga o'tkazma: mijoz chek skrinshotini yuboradi
+  bot.on(message('photo'), paymentController.receiveReceipt);
+  bot.on(message('document'), paymentController.receiveReceipt);
 
   // Kontakt (telefon raqam)
   bot.on(message('contact'), startController.savePhone);

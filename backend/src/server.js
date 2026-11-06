@@ -24,7 +24,7 @@ function createServer({ webhook = null } = {}) {
     cors({
       origin: config.server.corsOrigins.includes('*') ? true : config.server.corsOrigins,
       allowedHeaders: ['Content-Type', 'Authorization'],
-      methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     }),
   );
   app.use(express.json({ limit: '100kb' }));
